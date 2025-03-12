@@ -1,0 +1,99 @@
+/* NewNavbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  background: transparent;
+  z-index: 1000;
+  font-family: "Arial Bold";
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 1rem;
+  margin-top: 3px;
+  color: #fff;
+}
+
+/* Ensure navbar-right items are always aligned to the right */
+.navbar-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+/* Mobile view: Menu icon and dropdown menu */
+@media (max-width: 767px) {
+  .menu-icon {
+    display: block;
+    width: 50px;
+    height: auto;
+    /* Pin the menu icon to the right edge */
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    right: 20px; /* Ensure the dropdown is pinned to the right */
+    top: 50px; /* Adjust as needed */
+    background: #61397d;
+    border: 5px solid #fff;
+    border-radius: 30px;
+    list-style: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-menu.open {
+    display: flex;
+  }
+}
+
+/* Desktop view: Inline menu items */
+@media (min-width: 768px) {
+  .menu-icon {
+    display: none;
+  }
+  
+  .navbar-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .navbar-menu li a {
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Hover Effects */
+.menu-icon img:hover {
+  transform: rotate(1deg);
+  transition: transform 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+  color: #ffd700;
+  transition: color 0.3s ease;
+}
+
+/* Adjust scroll margin for in-page navigation */
+.section {
+  scroll-margin-top: 80px;
+}

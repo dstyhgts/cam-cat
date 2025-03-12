@@ -1,0 +1,64 @@
+/* Container that centers the grid and controls overall width */
+.simple-stage-container {
+    width: 100%;
+    max-width: 1200px; /* or any max you prefer */
+    margin: 0 auto;    /* center horizontally */
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  
+  /* 2-column grid: left (text), right (image) */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* space between columns */
+    align-items: center; /* vertically center each column's content */
+  }
+  
+  /* Left column styling */
+  .stage-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* text aligned left */
+  }
+  
+  .stage-text h1 {
+    font-size: 2.5rem; /* adjust as needed */
+    margin-bottom: 16px;
+  }
+  
+  .stage-text p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #ccc; /* example color, adjust to your design */
+  }
+  
+  /* Right column styling */
+  .stage-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .responsive-img {
+    width: 100%;
+    max-width: 500px; /* limit the image size if you want */
+    border-radius: 8px; /* optional corner rounding */
+  }
+  
+  /* ========== MOBILE RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .stage-grid {
+      grid-template-columns: 1fr; /* stack columns on mobile */
+      text-align: center;         /* optional, to center text on mobile */
+    }
+  
+    .stage-text {
+      align-items: center;
+    }
+  
+    .stage-image {
+      margin-top: 20px; /* spacing between text & image on mobile */
+    }
+  }

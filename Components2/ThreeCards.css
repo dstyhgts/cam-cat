@@ -1,0 +1,138 @@
+/******************************************************
+  Grid Container
+  - 3 columns on desktop
+  - 2 columns on medium
+  - 1 column on mobile
+  - 2 rows total:
+    row 1 => 3 cards
+    row 2 => single centered button
+******************************************************/
+.three-cards-grid {
+    display: grid;
+    /* default: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto; /* first row for cards, second row for the button */
+    gap: 2rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: #b94239; /* example background color */
+  }
+  
+  /* 2 columns below 1200px */
+  @media (max-width: 1200px) {
+    .three-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* 1 column below 700px */
+  @media (max-width: 700px) {
+    .three-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /******************************************************
+    Card Item
+    - 15% smaller than 420 => 357px max
+    - On hover: rotate(-3deg) scale(1.1)
+  ******************************************************/
+  .three-card-item {
+    position: relative;
+    width: 100%;
+    max-width: 512px;
+    margin: 0 auto;
+    border: 10px solid #ffffff;
+    border-radius: 30px;
+    background-color: #006063; /* teal interior */
+    padding: 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect: slight rotation & scale */
+  /* .three-card-item:hover {
+    transform: rotate(-3deg) scale(1.1);
+  } */
+  
+  /******************************************************
+    Top Rectangle
+  ******************************************************/
+  .three-card-top {
+    border: 8px solid #ffffff;
+    border-radius: 20px;
+    background-color: #00a1a7;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .three-card-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+  }
+  
+  /******************************************************
+    Middle Rectangle
+    (Extended downward since there's no bottom rectangle)
+  ******************************************************/
+  .three-card-middle {
+    border: 8px solid #ffffff;
+    border-radius: 20px;
+    background-color: #00a1a7;
+    text-align: left;
+    padding: 2rem;
+    min-height: 220px;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+  }
+  
+  /******************************************************
+    Single ORDER NOW Button
+    - Placed in row 2
+    - Centered under the middle column
+  ******************************************************/
+  .three-cards-button {
+    grid-column: 2; /* middle column on large screens */
+    grid-row: 2;    /* second row */
+    margin: 0 auto;
+    font-size: 32px;
+    font-weight: bold;
+    background-color: #ffe600; /* bright yellow */
+    color: #4b0082; /* purple text */
+    border: 4px solid #4b0082; /* purple border */
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: opacity 0.2s ease;
+  }
+  
+  .three-cards-button:hover {
+    opacity: 0.8;
+  }
+  
+  /******************************************************
+    Responsive Positioning for the Button
+    - On 2 columns or 1 column, ensure the button is centered
+  ******************************************************/
+  @media (max-width: 1200px) {
+    /* With 2 columns, place button under the second column (still col 2). */
+    .three-cards-button {
+      grid-column: 2; /* middle column on large screens */
+      grid-row: 4; 
+    }
+  }
+  
+  @media (max-width: 700px) {
+    /* With 1 column, the button is on row 2, column 1 => full width */
+    .three-cards-button {
+      grid-column: 1;
+    }
+  }
+  

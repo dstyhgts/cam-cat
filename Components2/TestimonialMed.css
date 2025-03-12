@@ -1,0 +1,51 @@
+.testimonial-med-container {
+    /* Force a square between 256px and 512px */
+    width: clamp(256px, 50vw);
+    aspect-ratio: 1 / 1;
+  
+    /* Style */
+    background-color: #8ee4ec; /* same teal or any variation */
+    border: 5px solid #ffffff;
+    border-radius: 30px;
+    box-sizing: border-box;
+    position: relative;
+    padding: 1rem;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Label at top-left */
+  .testimonial-med-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #333333;
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+  
+  /* Center the bigger quote text */
+  .testimonial-med-quote {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-align: center;
+    width: 80%;
+  }
+  
+  /* Author at bottom-left */
+  .testimonial-med-author {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.9rem;
+    color: #333333;
+    opacity: 0.9;
+  }
+  
