@@ -1,42 +1,1050 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+
+/* html and body allow native scrolling on their own */
 html,
 body {
-  max-width: 100vw;
+  width: 100%;
+  height: 100%;
+  background: #b94239;
+  color: #46bdc6;
+  font-family: "PP Neue Montreal", sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* ... the rest of your component styles remain as before ... */
+
+
+/* Container class (if used elsewhere) */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #E3E1AA;
+  background-size: cover;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Navigation and related elements */
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  padding: 1.5em;
 }
-
+nav > div {
+  flex: 1;
+}
+.cta {
+  text-align: center;
+}
+.links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2em;
+}
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Hero Section */
+.hero {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 1.5em;
+  width: 35%;
+}
+.hero h1 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.hero p {
+  color: #E3E1AA;
+  line-height: 1.5;
+}
+
+/* Misc Elements */
+i {
+  position: relative;
+}
+.overlay-toggle {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 250px;
+  height: 150px;
+  margin: 0.75em;
+  padding: 1em;
+  border-radius: 0.5em;
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10000;
+  opacity: 0; /* start hidden */
+  transition: background 0.3s, color 0.3s;
+}
+.overlay-toggle:hover {
+  background: #020b44; /* match card background on hover */
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Simple Navbar */
+.simple-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  background: transparent;
+  color: #46bdc6;
+  z-index: 100; /* Lower than the sidebar and footer */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+}
+/* .left {
+  flex: 1;
+} */
+.center {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  color: #46bdc6;
+}
+.right a {
+  text-decoration: none;
+  color: #46bdc6;
+}
+img {
+  height: 40px;
+  cursor: pointer;
+}
+h2 {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* For example, in your global or layout CSS */
+.services-main {
+  padding-bottom: 100px; /* Adjust this value to match the Footer height */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Header */
+
+/* In your Footer.css or global CSS, adjust these properties */
+.footer {
+  position: absolute; /* instead of fixed or absolute */
+  z-index: 100;      /* or a lower z-index */
+  background-color: #b94239;
+}
+
+.footer-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer-header h1 {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 12vw;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 175%;
+  color: #b94239;
+  text-align: center;
+}
+
+/* Item */
+.item {
+  position: absolute;
+  padding: 0.5em 0.5em 4em 0.5em;
+  width: 200px;
+  height: 225px;
+  overflow: hidden;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.3em;
+  background: #e3e3e3;
+}
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.3em;
+  background-color: #E3E1AA;
+}
+
+/* Main Navbar */
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  background: transparent;
+  color: #46bdc6;
+  z-index: 10000000;
+  opacity: 0; /* starts hidden */
+}
+.left {
+  position: fixed;      /* Keeps the logo fixed on the viewport */
+  top: 10px;            /* Adjust this value as needed */
+  left: 10px;           /* Adjust this value as needed */
+  width: 155px;         /* Sets a fixed width for the logo */
+  height: auto;   
+}
+
+.center {
+  position: fixed;      /* Keeps the logo fixed on the viewport */
+  top: 16px;            /* Adjust this value as needed */
+  left: 170px;           /* Adjust this value as needed */
+  width: 155px;         /* Sets a fixed width for the logo */
+  height: auto; 
+  text-align: left;
+}
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+.right a {
+  text-decoration: none;
+  color: #46bdc6;
+}
+img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.lg-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.lg-loader {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 10;
+  opacity: 0; /* Initially hidden */
+}
+.lg-loader p {
+  margin: 0;
+  padding: 0;
+  /* Shared font style for Title and Loader */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+.lg-gallery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.lg-item {
+  position: absolute;
+  width: 175px;
+  height: 250px;
+  overflow: hidden;
+}
+.lg-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Shared font style for Title and Loader */
+.title {
+  position: absolute;
+  z-index: 20;
+  opacity: 0;
+}
+.sub-title {
+  position: relative;
+  z-index: 20;
+  opacity: 0;
+  font-size: 2rem;
+  font-weight: 900;
+}
+@media (max-width: 768px) {
+  .lg-item {
+    width: 100px;
+    height: 150px;
+  }
+  .lg-loader {
+    width: 30px;
+    height: 15px;
   }
 }
+
+
+
+
+/* Horizontal Scroll Component Unique Styles */
+.hs-wrapper {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-color: rgb(0, 0, 0);
+  opacity: 1;
+  overflow: hidden;
+}
+.hs-inner {
+  display: flex;
+  width: 500vw; /* 5 sections */
+  height: 100%;
+}
+.hs-section {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  padding: 6em 2em 0 2em;
+  display: flex;
+  gap: 2em;
+  overflow: hidden;
+  color: white;
+}
+.hs-img {
+  width: 100%;
+  height: 100%;
+  background-color: #020b44;
+}
+.hs-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hs-section h1 {
+  width: 50%;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.hs-section p {
+  width: 40%;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+#hs-section-1,
+#hs-section-4 {
+  display: flex;
+  justify-content: space-between;
+}
+.hs-img-2,
+.hs-img-3,
+.hs-img-4,
+.hs-img-6,
+.hs-img-7,
+.hs-img-9 {
+  flex: 1;
+}
+.hs-img-1,
+.hs-img-5,
+.hs-img-8 {
+  flex: 2;
+}
+.hs-timeline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  padding: 2.25em 1em;
+  display: flex;
+  justify-content: space-around;
+  z-index: 300;
+  pointer-events: none;
+}
+.hs-scroller {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+  font-family: "PP Neue Montreal", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 120%;
+  pointer-events: auto;
+}
+.hs-scroller span {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 13px;
+  padding: 0 3em;
+}
+.hs-marker {
+  width: 1px;
+  height: 100%;
+  background: #fff;
+}
+
+/* Overall Wrapper with total height 700vh */
+.hb-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 600vh;
+  overflow: hidden;
+}
+
+/* Phase A: Hero Section */
+.hb-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.hb-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.hb-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hb-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: "PP Neue Montreal", sans-serif;
+  text-align: center;
+}
+.hb-hero-overlay h1 {
+  font-size: 12vw;
+  margin: 0.5em;
+}
+/* Phase B: Grid Animation Section */
+.hb-grid-container {
+  position: relative;
+  width: 100vw;
+  height: 400vh;
+}
+/* The grid is fixed only during Phase B */
+.hb-fixed-grid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 160vw;
+  height: 100vh;
+  z-index: 50;
+}
+.hb-gallery-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4em;
+  transition: transform 0.3s ease;
+}
+.hb-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  will-change: transform;
+}
+.hb-img {
+  flex: 1;
+  overflow: hidden;
+  background: #fff;
+}
+.hb-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Phase C: Footer Section */
+.hb-footer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e1dedc;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hb-footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.hb-footer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* html {
+  scroll-behavior: smooth;
+} */
+
+
+
+
+
+
+/* Global resets
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body font */
+/* body {
+  font-family: "PP Neue Montreal";
+} */
+
+/* Ensure images cover their container */
+/* img { */
+  /* width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */ 
+
+/* Generic section styling (each section takes full viewport) */
+.cs-hero,
+.cs-outro,
+.cs-sticky-cards {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hero and Outro styling */
+.cs-hero,
+.cs-outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  background-color: #202020;
+  color: #fff;
+}
+
+.cs-hero h1,
+.cs-outro h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Sticky cards section background */
+.cs-sticky-cards {
+  background-color: #e3e3e3;
+}
+
+/* Card styling */
+.cs-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  width: 25%;
+  height: 50%;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: #202020;
+  color: #fff;
+}
+
+/* Card image container */
+.cs-card-img {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Card content container */
+.cs-card-content {
+  flex: 0 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* Card text styling */
+.cs-card-content p {
+  text-transform: uppercase;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 12px;
+}
+
+/* Responsive adjustments for cards */
+@media (max-width: 900px) {
+  .cs-card {
+    width: 75%;
+  }
+}
+
+
+/* Global resets */
+
+  
+  /* Each section takes full viewport */
+  .cs-hero,
+  .cs-outro,
+  .cs-sticky-cards {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Hero and Outro styling */
+  .cs-hero,
+  .cs-outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1em;
+    background-color: #202020;
+    color: #fff;
+  }
+  
+  .cs-hero h1,
+  .cs-outro h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  /* Sticky container background */
+  .cs-sticky-cards {
+    background-color: #e3e3e3;
+  }
+  
+  /* Card styling */
+  .cs-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    width: 25%;
+    height: 50%;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    background-color: #202020;
+    color: #fff;
+    z-index: 2;
+  }
+  
+  /* Card image container */
+  .cs-card-img {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+  }
+
+
+
+
+
+  
+  .zs-animation-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400vh; /* Overall scroll duration; adjust if needed */
+    overflow: hidden;
+    background: #6C66C6;
+}
+  
+/* The pinned section that holds the gallery and hero overlay */
+.zs-sticky {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #6C66C6;
+    overflow: hidden;
+    z-index: 1;
+}
+  
+/* Animated gallery: centered, transforms during scroll */
+.zs-gallery-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 160vw;
+    height: 100vh;
+    display: flex;
+    gap: 2em;
+}
+  
+/* Column and image styling */
+.zs-col {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+    will-change: transform;
+}
+  
+.zs-img {
+    flex: 1;
+    overflow: hidden;
+    background-color: #6C66C6;
+}
+  
+.zs-img.zs-main img {
+    position: relative;
+    transform: scale(2);
+    will-change: transform;
+}
+  
+/* Hero overlay remains as originally defined */
+.zs-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;  /* Increased height */
+    transform: translateY(0%);
+    pointer-events: none;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0, 0, 0); /* Optional tint */
+}
+  
+.zs-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.zs-hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 3;
+}
+  
+.zs-hero-text h1 {
+    font-size: 3rem;
+    margin: 0.5em 0;
+}
+  
+.zs-hero-text p {
+    font-size: 1.2rem;
+}
+  
+/* Extra scroll space that drives the ScrollTrigger progress */
+.zs-ws {
+    width: 100%;
+    height: 300vh;
+    background-color: #6C66C6;
+}
+
+/* --- New Text Overlay Styles --- */
+.zs-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  /* Initially scaled down to 0.8; on scroll it will softly scale up */
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.zs-text-layer {
+  font-size: 1.5rem;  /* Scaled down text */
+  color: #fff;
+  opacity: 0;
+  transform: translateY(50px);
+  padding: 1em 0;
+  text-align: left;
+}
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+/* StickyScroll Component Styles */
+.ss-app {
+  position: relative;
+}
+
+.ss-hero,
+.ss-intro,
+.ss-outro {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+}
+
+.ss-hero {
+  padding: 0;
+}
+
+.ss-intro {
+  /* background-color: #6C66C6; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ss-outro {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ss-intro h1,
+.ss-outro h1 {
+  margin-bottom: 0;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ss-cards {
+  position: relative;
+}
+
+.ss-card {
+  position: relative;
+}
+
+.ss-card-inner {
+  position: relative;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  display: flex;
+  gap: 4em;
+}
+
+.ss-card-content {
+  flex: 3;
+}
+
+.ss-card-img {
+  flex: 1;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75em;
+  overflow: hidden;
+  filter: grayscale(100%);
+}
+
+.ss-card-content h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 2.5em;
+}
+
+.ss-card-content p {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 2.5em;
+}
+
+/* Specific card background colors */
+#card-1 .ss-card-inner {
+  background-color: #C3BFFF;
+}
+
+#card-2 .ss-card-inner {
+  background-color: #e2e0aa;
+}
+
+#card-3 .ss-card-inner {
+  background-color: #bcae8c;
+}
+
+#card-4 .ss-card-inner {
+  background-color: #807D46;
+  color: #fff;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .ss-card-inner {
+    flex-direction: column;
+  }
+  .ss-card-img {
+    display: none;
+  }
+  .ss-card-content h1 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+  .ss-card-content p {
+    font-size: 1rem;
+  }
+}
+
+/* .ss-outro {
+  display: none;
+} */
+
+
+
+
+
+
+
+
+/* Global reset to prevent horizontal overflow */
+
+
+/* GalleryScroll component styles */
+.gs-slider {
+  position: absolute; /* Relative to its parent (.ss-outro) */
+  top: 0;
+  left: 0;
+  /* Remove the percentage width and let the content define the width */
+  width: auto;
+  height: 100%; /* Fills the parent's height */
+  display: flex;
+  justify-content: flex-start; /* Align cards flush left */
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+
+.gs-card {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column-reverse;
+  transition: transform 0.1s ease-out;
+  overflow: hidden;
+  will-change: transform;
+  /* Optionally add a margin-right if you want spacing between cards */
+  margin-right: 20px;
+}
+
+.gs-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+  filter: grayscale(100%);
+}
+
+/* Ensure the parent container (for example, .ss-outro) confines GalleryScroll */
+.ss-outro {
+  position: relative;
+  overflow: hidden;
+}
+
+
+
