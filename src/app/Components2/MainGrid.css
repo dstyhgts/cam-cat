@@ -1,0 +1,26 @@
+/* MainGrid.css */
+.main-grid {
+  display: grid;
+  /* Removed: background-color: #b94239; */
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(2, 256px);
+  gap: 16px;
+  justify-content: start;
+  padding: 32px;
+  padding-left: 150px;
+  padding-right: 150px;
+  height: 100vh;
+  overflow: visible;
+}
+
+/* Single column on narrower screens (<900px) */
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 256px;
+    width: 15%;
+    padding-left: 32px;
+    height: 100%;
+    padding-bottom: 150px;
+  }
+}

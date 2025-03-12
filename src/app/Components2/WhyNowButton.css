@@ -1,0 +1,224 @@
+/* ============ BASE CONTAINER (Default 256×256) ============ */
+.why-now-container {
+  font-family: "Arial Black", sans-serif;
+  position: relative;
+  display: block;
+  width: 256px;
+  height: 256px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition:
+    width 200ms ease-in-out,
+    height 200ms ease-in-out,
+    transform 300ms ease-in-out;
+}
+
+/* YELLOW BACKGROUND (Hover Tilt) */
+.why-now-background {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: #FFD85D;
+  z-index: 0;
+  opacity: 0;
+  transform: translate(0, 0) rotate(0deg);
+  transition:
+    opacity 300ms ease-in-out,
+    transform 300ms ease-in-out;
+}
+
+/* TEAL CARD (Default + Expanded) */
+.why-now-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #FFFFFF;
+  background-color: #B94239;
+  color: #FFFFFF;
+  border-radius: 30px;
+  padding: 16px;
+
+  font-size: 25.89px; /* ~26px */
+  line-height: 1.2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  transition:
+    transform 300ms ease-in-out,
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out;
+}
+
+/* Default Card Text */
+.why-now-title {
+  font-size: 1em; /* ~26px */
+  margin-bottom: 0.5em;
+}
+.why-now-subtext {
+  font-size: 0.6em; /* ~15.53px */
+  line-height: 1.3;
+  max-width: 220px;
+}
+.arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 1em;
+}
+
+/* Hover tilt if not expanded */
+.why-now-container:not(.expanded):hover .why-now-card {
+  transform: rotate(3deg);
+  background-color: rgba(185,66,57, 0.9); /* 80% opacity on hover */
+
+}
+.why-now-container:not(.expanded):hover .why-now-background {
+  opacity: 1;
+  transform: translate(15px, 15px) rotate(3deg);
+}
+
+/* ========== EXPANDED STATE (common) ========== */
+.why-now-container.expanded {
+  z-index: 10;
+  width: auto;
+  height: auto;
+}
+
+.why-now-container.expanded .why-now-background {
+  display: none; /* hide yellow shape in expanded mode */
+}
+
+.why-now-container.expanded .why-now-card {
+  transform: none;
+  padding: 16px 16px 40px;
+  overflow: visible; /* so the top rectangle can overhang */
+}
+
+/* ========== DESKTOP (≥900px) ========== */
+@media (min-width: 900px) {
+  .why-now-container.expanded {
+    /* Spans both columns, up to 768px wide, centered */
+    grid-column: 1 / 3;
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+/* 
+  ========== MOBILE (<900px) ==========
+  1) Fill the single-column width. 
+  2) Overhanging title stays (negative margins). 
+  3) Height is auto => no extra space. 
+  4) No horizontal scroll => keep the card within viewport width.
+*/
+@media (max-width: 900px) {
+  .why-now-container.expanded {
+    /* Use 100% so it fully occupies the single column's width */
+    width: 92vw;
+    height: auto; 
+    border-radius: 12px;
+  }
+
+  .why-now-container.expanded .why-now-card {
+    width: 100%;
+    height: auto;
+    /* Overflow is visible so the negative margin top bar 
+       is still visible, but the card won't exceed screen width. */
+    overflow: visible; 
+  }
+}
+
+/* ========== OVERFLOW TITLE BOX ========== */
+.why-now-overflow-title {
+  position: relative;
+  background-color: #B94239;
+  border: 2px solid #FFFFFF;
+  border-radius: 30px;
+  padding: 24px;
+  /* Negative margins => separate, overhanging shape */
+  margin: -40px -40px 20px;
+  text-align: center;
+}
+.why-now-overflow-title h2 {
+  margin: 0;
+  font-size: 1.3em; /* ~33.66px */
+  line-height: 1.2;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* ========== EXPANDED CONTENT ========== */
+.why-now-expanded-content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  font-size: 0.6em; /* ~15.53px */
+  line-height: 1.4;
+}
+.intro-paragraph {
+  margin-bottom: 16px;
+  max-width: 90%;
+  word-wrap: break-word;
+}
+.why-now-expanded-content h3 {
+  font-size: 0.7em; /* ~18px */
+  margin-bottom: 8px;
+}
+
+/* SVG container top-right */
+.svg-container {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder-svg {
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Bullet list with emojis */
+.why-now-bullets {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+}
+.why-now-bullets li {
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+.emoji {
+  display: inline-block;
+  width: 1.2em;
+  margin-right: 0.3em;
+}
+.li-desc {
+  font-weight: normal;
+}
+
+/* "THE INSTANT-PRINT EXPERIENCE" section */
+.why-now-experience {
+  margin-top: 20px;
+}
+.why-now-experience h3 {
+  margin-bottom: 8px;
+  font-size: 0.7em;
+}
+.why-now-experience p {
+  word-wrap: break-word;
+  max-width: 90%;
+}

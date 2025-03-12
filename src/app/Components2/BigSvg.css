@@ -1,0 +1,49 @@
+.layout-container {
+    display: flex;
+    flex-direction: row;
+    /* Fill the full viewport height so the SVG can fill the remaining space */
+    min-height: 100vh;
+    /* Use the red background color here */
+    background-color: #b94239;
+    z-index: 1000;
+    
+  }
+  
+  /* You can adjust the left side to remain at "auto" width
+     (it will size to fit the grid content), or force a fixed width if desired. */
+  .layout-container > * {
+    /* Let each child "take up space" naturally */
+    flex: 0 0 0;
+  }
+  
+  /* The SVG wrapper flexes to fill the rest of the horizontal space. */
+  .svg-wrapper {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Optional padding if you want some spacing around the SVG */
+    padding: 1rem;
+  }
+  
+  .large-svg {
+    /* Make the SVG responsive. */
+    max-width: 100vw;
+    height: auto;
+    /* If you need a minimum or maximum height, adjust accordingly. */
+  }
+
+  @media (max-width: 900px) {
+    .svg-wrapper {
+      flex: 1; 
+      height: 100%;
+      display: flex;
+      align-items: right;
+      justify-content: center;
+      /* Optional padding if you want some spacing around the SVG */
+      padding: 1rem;
+    }
+
+  }
+
+  

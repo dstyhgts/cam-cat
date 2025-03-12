@@ -1,0 +1,15 @@
+/* ImageOverlay.css */
+.image-overlay {
+    position: relative;
+    transform: translateX(200px); /* Ensures each image stays fixed in the viewport */
+    z-index: 9999;   /* Makes sure it overlays other content */
+    pointer-events: none; /* So that clicks pass through if needed */
+    padding-top: -100px;
+  }
+
+  @media (max-width: 900px) {
+    .image-overlay {
+    position: relative;
+    transform: translateX(80px) translateY(280px); /* Ensures each image stays fixed in the viewport */}
+    
+  }
