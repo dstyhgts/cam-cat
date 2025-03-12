@@ -1,0 +1,79 @@
+.packs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 30;
+    overflow: hidden;
+    background: #b94239;
+  }
+  
+  .packs-project-list {
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+    list-style: none;
+  }
+  
+  .packs-project {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    will-change: transform;
+    z-index: 2; /* Animated projects appear above other elements */
+  }
+  
+  .packs-template {
+    display: none;
+  }
+  
+  .packs-side {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .packs-img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .packs-title {
+    display: flex;
+    flex-direction: column; /* allow stacking of title and description */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1em;
+  }
+  
+  .packs-title h1 {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -0.0125rem;
+    margin: 0;
+  }
+  
+  .packs-description {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    color: #fff; /* adjust based on background */
+    max-width: 90%; /* ensures text wraps within container */
+  }
+  
+  /* Only target images within packs-container */
+  .packs-container img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    transform: translateY(0) scale(1.5);
+  }
+  

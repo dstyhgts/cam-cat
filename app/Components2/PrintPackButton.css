@@ -1,0 +1,339 @@
+/* ============ BASE CONTAINER (Default 512×256) ============ */
+h6
+{
+    font-size: 41.89px;
+    color: #FFFFFF;
+    margin: 0;
+    transition: opacity 300ms ease-in-out;
+    line-height: .9em;
+}
+h5
+{
+    font-size: 25.89px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+p1
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5em;
+    line-height: 120%;
+}
+p
+{
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5em;
+}
+
+h3
+{
+    font-size: 67.77px;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: .9em;
+
+}
+
+
+.printpack-container {
+    font-family: "Arial Black", sans-serif;
+    grid-column: span 2;
+    position: relative;
+    display: block;
+    width: 512px;
+    height: 256px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition:
+      width 300ms ease-in-out,
+      height 300ms ease-in-out,
+      transform 300ms ease-in-out;
+  }
+
+  @media (max-width: 900px) {
+    .printpack-container {
+      grid-column: 1; /* or 1 / -1, so it just becomes a single column item */
+    }
+  }
+  
+  /* ============ BACKGROUND (Hover Tilt) ============ */
+  .printpack-background {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background-color: #61397D;
+    border: 2px solid #FFFFFF;
+    z-index: 0;
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+    transition:
+      opacity 300ms ease-in-out,
+      transform 300ms ease-in-out;
+  }
+  
+  /* ============ CARD (Default) ============ */
+  .printpack-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FFFFFF;
+    background-color: #61397D;
+    color: #FFFFFF;
+    border-radius: 30px;
+    padding: 16px;
+  
+    font-size: 25.89px; /* ~26px */
+    line-height: 1.2;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    /* Ellipse inside the card, top-right corner */
+    .printpack-ellipse {
+        position: absolute;
+        rotate: 0deg;
+        top: 10px; 
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        background-color: #61397D;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+      .printpack-ellipse p {
+        position: absolute;
+        top: 8px; 
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        font-size: 0.5em;
+        font-weight: bold;
+        color: #FFFFFF;
+      }
+      
+      .printpack-ellipse2 p1 {
+        position: absolute;
+        rotate: 0deg;
+        top: 18px; 
+        right: 10px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        font-size: 41.89px;
+        font-weight: bold;
+        color: #FFFFFF;
+      }
+  
+  
+    transition:
+      transform 300ms ease-in-out,
+      background-color 300ms ease-in-out,
+      color 300ms ease-in-out,
+      opacity 300ms ease-in-out;
+  }
+  
+  .printpack-topline {
+    font-size: 0.6em;
+    color: #ffffff;
+    margin-bottom: 0.5em;
+  }
+
+  /* Default Title & subtext */
+  .printpack-title {
+    font-size: 67.77px; /* ~26px */
+    line-height: .8;
+    margin-bottom: 0.2em;
+  }
+  .printpack-subtext {
+    font-size: 0.6em; /* ~15.53px */
+    line-height: 1.3;
+    max-width: 420px;
+  }
+  
+  /* Arrows behind the card */
+  .bottom-arrows {
+    position: absolute;
+    bottom: 5px;
+    left: 16px;
+    z-index: 0;
+  }
+  .bottom-arrows .arrow-down {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-right: 8px;
+  }
+  
+  /* Hover effect: slight translation + slight opacity change */
+  .printpack-container:not(.expanded):hover .printpack-card {
+    opacity: 0.9;
+    transform: translate(0px, -30px);
+  }
+  .printpack-container:not(.expanded):hover .printpack-background {
+    opacity: 1;
+  }
+  
+  /* 3 star elements on hover */
+  .star {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #FFD85D no-repeat center center;
+    background-size: contain;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    z-index: 2;
+  }
+  .star1 { top: 20px; right: 40px; }
+  .star2 { top: 70px; left: 100px; }
+  .star3 { top: 150px; right: 80px; }
+  .printpack-container:not(.expanded):hover .star {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* ============ EXPANDED STATE ============ */
+  .printpack-container.expanded {
+    z-index: 10;
+    width: auto;
+    height: auto;
+  }
+  .printpack-container.expanded .printpack-background {
+    display: none;
+  }
+  
+  /* 
+    ========== LAYOUT FOR TWO CARDS (side by side or stacked)
+  */
+  .printpack-expanded-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px; /* 24px gap between the two separate cards */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  /* Each expanded card => own container with same base font size ~26px */
+  .printpack-expanded-card {
+    background-color: #3F2452;
+    border: 2px solid #FFFFFF;
+    border-radius: 30px;
+    color: #FFFFFF;
+    padding: 16px;
+    box-sizing: border-box;
+  
+    /* 
+      Use the same base font size as the default card 
+      => paragraphs/headings at 0.6em, etc.
+    */
+    font-size: 25.89px; 
+    line-height: 1.2;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  /* Overhanging "Print-Pack" title in left card */
+  .printpack-overflow-title {
+    position: relative;
+    background-color: #61397D;
+    border: 2px solid #FFFFFF;
+    border-radius: 30px;
+    padding: 24px;
+    margin: -40px -40px 20px; /* negative margins => overhang */
+    text-align: center;
+    z-index: 2;
+  }
+  .printpack-overflow-title h2 {
+    margin: 0;
+    font-size: 2.8rem; /* ~33.66px */
+    line-height: 1.2;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  
+  /* 
+    Inner frame => a slightly different color or border if you want.
+    But user asked for a smaller border around the text. 
+    We'll do the same color #784289 as an example.
+  */
+  .printpack-inner-frame {
+    background-color: #784289; /* or any slightly lighter color */
+    border: 2px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+.right-card {
+    position: relative;
+    z-index: 1;
+    max-width: 384px;
+    height: 100%;
+  }
+  
+  /* Standard scaling for paragraphs, headings inside expanded cards */
+  .expanded-card p,
+  .expanded-card h3,
+  .expanded-card h4,
+  .expanded-card ul,
+  .expanded-card li {
+    font-size: 0.6em; /* ~15.53px */
+    line-height: 1.3;
+  }
+  
+  /* 
+    ========== DESKTOP (≥900px) ========== 
+    side by side => each card ~50% 
+  */
+  @media (min-width: 900px) {
+    .printpack-container.expanded {
+      grid-column: 1 / 3;
+      width: 1200px; /* or whatever max you prefer */
+      height: auto;
+      margin: 0 auto;
+    }
+  
+    .printpack-expanded-card {
+      flex: 1 1 calc(50% - 12px); 
+      /* half the container minus half the 24px gap => 12px */
+    }
+  }
+  
+  /* 
+    ========== MOBILE (<900px) ==========
+    stacked => each card 100% width 
+  */
+  @media (max-width: 900px) {
+    .printpack-container.expanded {
+      width: 92vw;
+      height: auto;
+      border-radius: 30px;
+    }
+    .printpack-expanded-card {
+      flex: 1 1 100%;
+    }
+  }
+  
