@@ -14,7 +14,7 @@ const WelcomeCamera = () => {
       <div className="left-content">
         {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
         {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
-        <h1 className="main-title">UNLIMITED CONTENT, INFINITE FUN.</h1>
+        <h1 className="main-title">YOU'RE THE CONTENT CREATOR</h1>
         {/* <p className="subtitle">
           Every celebration is a story. Camera Catering makes each guest the storyteller.
         </p> */}
@@ -25,10 +25,11 @@ const WelcomeCamera = () => {
         <div className="new-section">
           <span className="new-badge">*NEW!</span>
           <p className="new-description">
-            Rapid® Print cameras to take the user experience to the next level. 
-            It’s basically a hand-held Photo Booth, but so much better. Trust us.
+            {/* Rapid® Print cameras to take the user experience to the next level. 
+            It’s basically a hand-held Photo Booth, but so much better. Trust us. */}
           </p>
           <p className="new-description">
+            
             The possibility for thousands of photographs and videos of your event, 
             all on one roll of paper, from every angle.
           </p>
@@ -45,8 +46,9 @@ const WelcomeCamera = () => {
 
           {/* Middle Rectangle */}
           <div className="card-middle-rectangle">
-            <p>Here’s some placeholder text for your card body.</p>
-            <p>Add as much text as you want here, since we’ve made the card bigger.</p>
+            <p>A new concept for event photography using vintage cameras put into the
+            hands of your guests.</p>
+            <p></p>
           </div>
 
           {/* Bottom Rectangle with ORDER NOW box */}

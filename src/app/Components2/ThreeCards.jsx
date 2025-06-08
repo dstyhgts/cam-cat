@@ -91,6 +91,9 @@ const ThreeCards = () => {
 
   return (
     <div className="three-cards-grid">
+      <button className="three-cards-button" onClick={handleOrderNow}>
+        Get Cameras!
+      </button>
       {/* Render 3 cards in the first row */}
       {cardData.map((card, index) => (
         <div className="three-card-item" key={index}>
@@ -107,9 +110,6 @@ const ThreeCards = () => {
       ))}
 
       {/* Single button on second row, centered under the middle card */}
-      <button className="three-cards-button" onClick={handleOrderNow}>
-        ORDER NOW!
-      </button>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 .brandingSection {
   position: relative;
   width: 100%;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
   min-height: 100vh;
   /* background-color: #423c76; */
   background-color: #b94239;
@@ -82,9 +82,24 @@
     If you want bigger text/images on mobile, 
     do it here. 
   */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .bigParagraph {
       font-size: clamp(1.8rem, 8vw, 5rem);
     }
+
+    .brandingSection {
+      position: relative;
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+      min-height: 100vh;
+      /* background-color: #423c76; */
+      background-color: #b94239;
+      margin: 0;
+      bottom: 0px;
+      padding: 10; /* no horizontal padding => edge to edge */
+      box-sizing: border-box;
+      overflow-x: hidden;
+      }
   }
   
