@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Card from "../components/Card"; // ✅ Corrected path
+import Card from "../components/Card.jsx"; // ✅ Corrected path
 
 export default function Projects() {
   const cardsRef = useRef([]);
