@@ -5,7 +5,7 @@
   padding-right: 50px;
   min-height: 100vh;
   /* background-color: #423c76; */
-  background-color: #b94239;
+  background-color: #0000FF;
   margin: 0;
   bottom: 0px;
   padding: 10; /* no horizontal padding => edge to edge */
@@ -94,7 +94,7 @@
       padding-right: 10px;
       min-height: 100vh;
       /* background-color: #423c76; */
-      background-color: #b94239;
+      background-color: #0000FF;
       margin: 0;
       bottom: 0px;
       padding: 10; /* no horizontal padding => edge to edge */
