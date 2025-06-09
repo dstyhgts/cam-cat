@@ -82,7 +82,7 @@
     If you want bigger text/images on mobile, 
     do it here. 
   */
-  @media (max-width: 900px) {
+  @media (max-width: 375px) {
     .bigParagraph {
       font-size: clamp(1.8rem, 8vw, 5rem);
     }

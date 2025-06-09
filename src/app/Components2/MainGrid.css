@@ -24,3 +24,13 @@
     padding-bottom: 150px;
   }
 }
+
+@media (max-width: 375px) {
+  .main-grid {
+    grid-template-columns: 256px;
+    width: 15%;
+    padding-left: 32px;
+    height: 100%;
+    padding-bottom: 150px;
+  }
+}
