@@ -6,19 +6,19 @@
   - Normal block element for easy grid integration
 ****************************************************/
 .about-card-container {
-    width: clamp(512px, 70vw, 512px);
-    aspect-ratio: 2 / 2;
-    min-width: 512px;
-    min-height: 512px;
+    width: min(90vw, 512px);
+    aspect-ratio: 1 / 1.2;
+    min-width: auto;
+    min-height: auto;
     grid-column: 1;
+    margin: 0 auto;
     background-color: transparent;
-    border: 8px solid #ffffff;
+    border: 3px solid #ffffff;
     border-radius: 20px;
     box-sizing: border-box;
-    position: relative; /* for absolutely positioned arrows */
-    margin: 1rem auto;  /* center horizontally if desired */
-    padding: 1rem;      /* space around the inner sections */
-    overflow: visible;  /* so arrows can poke outside */
+    position: relative;
+    padding: 16px;
+    overflow: visible;
     font-family: Arial, sans-serif;
   }
   
@@ -122,8 +122,14 @@
 @media (max-width: 900px) {
   .about-card-container {
     width: min(90vw, 512px);
+    aspect-ratio: 1 / 1.2;
     margin: 0 auto;
     padding: 12px;
+  }
+
+  .about-card-container.expanded {
+    position: relative;
+    z-index: 100;
   }
 
   .about-card-image-frame {
@@ -158,9 +164,18 @@
     transition: transform 0.3s ease;
   }
 
-  .about-card-container.expanded {
-    position: relative;
-    z-index: 100;
+  .about-card-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+  }
+
+  .about-card-arrow-left {
+    left: -1rem;
+  }
+
+  .about-card-arrow-right {
+    right: -1rem;
   }
 }
   

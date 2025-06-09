@@ -56,7 +56,10 @@ h3
 
   @media (max-width: 900px) {
     .printpack-container {
-      grid-column: 1; /* or 1 / -1, so it just becomes a single column item */
+      grid-column: 1;
+      width: min(90vw, 512px);
+      height: auto;
+      margin: 0 auto;
     }
   }
   
@@ -328,12 +331,34 @@ h3
   */
   @media (max-width: 900px) {
     .printpack-container.expanded {
-      width: 92vw;
+      width: min(90vw, 512px);
       height: auto;
-      border-radius: 30px;
+      margin: 0 auto;
+      padding: 16px;
+      position: relative;
+      z-index: 100;
     }
     .printpack-expanded-card {
-      flex: 1 1 100%;
+      width: 100%;
+      padding: 12px;
+    }
+
+    .printpack-overflow-title {
+      margin: -12px -12px 16px;
+      padding: 12px;
+      border-radius: 16px;
+    }
+
+    .printpack-inner-frame {
+      padding: 12px;
+    }
+
+    .printpack-title {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .printpack-subtext {
+      font-size: clamp(0.9rem, 4vw, 1rem);
     }
   }
   

@@ -53,7 +53,10 @@ h3
 
   @media (max-width: 900px) {
     .classics-container {
-      grid-column: 1; /* or 1 / -1, so it just becomes a single column item */
+      grid-column: 1;
+      width: min(90vw, 512px);
+      height: auto;
+      margin: 0 auto;
     }
   }
   
@@ -325,12 +328,16 @@ h3
   */
   @media (max-width: 900px) {
     .classics-container.expanded {
-      width: 92vw;
+      width: min(90vw, 512px);
       height: auto;
-      border-radius: 30px;
+      margin: 0 auto;
+      padding: 16px;
+      position: relative;
+      z-index: 100;
     }
     .classics-expanded-card {
-      flex: 1 1 100%;
+      width: 100%;
+      padding: 12px;
     }
   }
   

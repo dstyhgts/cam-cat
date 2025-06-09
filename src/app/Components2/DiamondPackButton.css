@@ -29,6 +29,11 @@
       z-index: 100;
     }
 
+    .diamond-bgframe {
+      width: 100%;
+      height: 100%;
+    }
+
     .diamond-card {
       width: 100%;
       height: auto;
@@ -51,9 +56,21 @@
       right: 8px;
     }
 
+    .diamond-ellipse p {
+      font-size: 0.4em;
+    }
+
+    .diamond-ellipse2 p1 {
+      font-size: 32px;
+    }
+
     .diamond-line1,
     .diamond-line2 {
       font-size: clamp(0.8rem, 3vw, 0.9rem);
+    }
+
+    .diamond-card.clicked {
+      transform: translateY(-20px) rotate(-5deg);
     }
   }
   
