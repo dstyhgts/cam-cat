@@ -7,7 +7,7 @@
     padding-top: -100px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .image-overlay {
     position: relative;
     transform: translateX(80px) translateY(280px); /* Ensures each image stays fixed in the viewport */}

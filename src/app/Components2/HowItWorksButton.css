@@ -118,7 +118,7 @@
   3) Height is auto => no extra space. 
   4) No horizontal scroll => keep the card within viewport width.
 */
-@media (max-width: 375px) {
+@media (max-width: 900px) {
   .hiw-container.expanded {
     /* Use 100% so it fully occupies the single column's width */
     width: 92vw;

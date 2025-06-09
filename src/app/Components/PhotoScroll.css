@@ -81,7 +81,7 @@
     will-change: transform;
   }
   
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .ps-card {
       width: 50%;
       height: 240px;

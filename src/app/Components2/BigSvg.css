@@ -33,7 +33,7 @@
     /* If you need a minimum or maximum height, adjust accordingly. */
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .svg-wrapper {
       flex: 1; 
       height: 100%;

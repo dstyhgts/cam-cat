@@ -222,17 +222,3 @@
   word-wrap: break-word;
   max-width: 90%;
 }
-
-@media (max-width: 375px) {
-  .memory-container.expanded {
-    width: 92vw;
-    height: auto;
-    border-radius: 12px;
-  }
-
-  .memory-container.expanded .memory-card {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-}

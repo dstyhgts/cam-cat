@@ -173,7 +173,7 @@
   .camera-edge-svg {
     position: absolute;
   top: 0;
-  bottom: 0;               /* Let it span the container's full height */
+  bottom: 0;               /* Let it span the container’s full height */
   right: 0;
   transform: translateX(50%);
   z-index: 1;
@@ -197,7 +197,7 @@
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .welcome-camera-container {
       flex-direction: column;
       margin: 0;

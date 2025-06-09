@@ -222,17 +222,3 @@
   word-wrap: break-word;
   max-width: 90%;
 }
-
-@media (max-width: 375px) {
-  .instant-container.expanded {
-    width: 92vw;
-    height: auto;
-    border-radius: 12px;
-  }
-
-  .instant-container.expanded .instant-card {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-}

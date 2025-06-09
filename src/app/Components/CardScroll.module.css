@@ -140,7 +140,7 @@
   }
   
   /* Responsive adjustments for cards */
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .cs-card {
       width: 75%;
     }

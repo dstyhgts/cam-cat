@@ -12,7 +12,7 @@
     z-index: 100;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 900px) {
     .diamond-container {
       grid-column: 1; /* or 1 / -1, so it just becomes a single column item */
     }
