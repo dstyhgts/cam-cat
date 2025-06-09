@@ -14,6 +14,7 @@ import TestimonialMed from './TestimonialMed';
 import TestimonialBig from './TestimonialBig';
 import AboutCard from './AboutCard';
 import ImagesContainer from './ImageContainer';
+import ThreeCards from './ThreeCards';
 
 const MainGrid = () => {
   return (
@@ -32,6 +33,7 @@ const MainGrid = () => {
       <TestimonialMed />
       <TestimonialBig />
       <AboutCard />
+      <ThreeCards />
     </div>
   );
 };
