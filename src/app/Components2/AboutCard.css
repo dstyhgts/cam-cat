@@ -6,116 +6,178 @@
   - Normal block element for easy grid integration
 ****************************************************/
 .about-card-container {
-    width: clamp(512px, 70vw, 512px);
-    aspect-ratio: 2 / 2;
-    min-width: 512px;
-    min-height: 512px;
-    grid-column: 1;
-    background-color: transparent;
-    border: 8px solid #ffffff;
-    border-radius: 20px;
-    box-sizing: border-box;
-    position: relative; /* for absolutely positioned arrows */
-    margin: 1rem auto;  /* center horizontally if desired */
-    padding: 1rem;      /* space around the inner sections */
-    overflow: visible;  /* so arrows can poke outside */
-    font-family: Arial, sans-serif;
-  }
-  
-  /****************************************************
-    Image Frame
-    - Sits at the top
-    - Has its own teal background & white border
-    - Fixed aspect ratio for consistent image area
-  ****************************************************/
-  .about-card-image-frame {
-    background-color: #46bdc6;
-    border: 4px solid #ffffff;
-    border-radius: 12px;
-    width: 100%;
-    aspect-ratio: 2 / 1; /* or 16 / 9, etc. Adjust as needed */
-    position: relative;
-    overflow: hidden; /* hide the carousel overflow */
-    margin-bottom: 1rem;
-  }
-  
-  /****************************************************
-    Carousel Outer/Inner
-    - Basic horizontal slider
-    - "inner" flex row translates left/right
-  ****************************************************/
-  .about-card-carousel-outer {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .about-card-carousel-inner {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease;
-  }
-  
-  /* Each slide takes full width of the frame */
-  .about-card-slide {
-    flex: 0 0 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /****************************************************
-    Slide Images
-    - Fill the frame container
-    - object-fit: cover to maintain aspect ratio
-  ****************************************************/
-  .about-card-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /****************************************************
-    Arrows
-    - Absolutely positioned outside the teal frame
-    - Centered vertically with a negative translateY
-  ****************************************************/
-  .about-card-arrow {
-    position: absolute;
-    top: 128px;            /* half of 256px => center */
-    transform: translateY(-50%);
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-  }
-  
-  /* Simpler approach: manually place them, e.g. top: 4.5rem if your aspect ratio is 2:1. */
-  .about-card-arrow-left {
-    left: -1.5rem; /* shift arrow outside the frame */
-  }
-  
-  .about-card-arrow-right {
-    right: -1.5rem;
-  }
-  
-  /****************************************************
-    Text Section
-    - Grows as needed
-  ****************************************************/
-  .about-card-text {
-    color: #ffffff;
-    margin-top: 0.5rem;
-  }
-  
-  .about-card-text h1,
-  .about-card-text h2,
-  .about-card-text p {
-    margin: 0.5rem 0;
-  }
-  
+  width: min(90vw, 512px);
+  aspect-ratio: 1 / 1.2;
+  min-width: auto;
+  min-height: auto;
+  grid-column: 1;
+  margin: 0 auto;
+  background-color: transparent;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 16px;
+  overflow: visible;
+  font-family: Arial, sans-serif;
+  z-index: 1;
+}
+
+/****************************************************
+  Image Frame
+  - Sits at the top
+  - Has its own teal background & white border
+  - Fixed aspect ratio for consistent image area
+****************************************************/
+.about-card-image-frame {
+  background-color: #46bdc6;
+  border: 4px solid #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 2 / 1; /* or 16 / 9, etc. Adjust as needed */
+  position: relative;
+  overflow: hidden; /* hide the carousel overflow */
+  margin-bottom: 1rem;
+}
+
+/****************************************************
+  Carousel Outer/Inner
+  - Basic horizontal slider
+  - "inner" flex row translates left/right
+****************************************************/
+.about-card-carousel-outer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-card-carousel-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+/* Each slide takes full width of the frame */
+.about-card-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/****************************************************
+  Slide Images
+  - Fill the frame container
+  - object-fit: cover to maintain aspect ratio
+****************************************************/
+.about-card-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/****************************************************
+  Arrows
+  - Absolutely positioned outside the teal frame
+  - Centered vertically with a negative translateY
+****************************************************/
+.about-card-arrow {
+  position: absolute;
+  top: 128px;            /* half of 256px => center */
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Simpler approach: manually place them, e.g. top: 4.5rem if your aspect ratio is 2:1. */
+.about-card-arrow-left {
+  left: -1.5rem; /* shift arrow outside the frame */
+}
+
+.about-card-arrow-right {
+  right: -1.5rem;
+}
+
+/****************************************************
+  Text Section
+  - Grows as needed
+****************************************************/
+.about-card-text {
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+.about-card-text h1,
+.about-card-text h2,
+.about-card-text p {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 900px) {
+.about-card-container {
+  width: min(90vw, 512px);
+  aspect-ratio: 1 / 1.2;
+  margin: 0 auto;
+  padding: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-card-container.expanded {
+  position: relative;
+  z-index: 100;
+}
+
+.about-card-image-frame {
+  border-width: 3px;
+  margin-bottom: 0.75rem;
+  border-radius: 16px;
+}
+
+.about-card-carousel-outer {
+  border-radius: 12px;
+}
+
+.about-card-slide img {
+  object-position: center;
+}
+
+.about-card-content {
+  padding: 12px;
+}
+
+.about-card-title {
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+.about-card-text {
+  font-size: clamp(0.9rem, 4vw, 1rem);
+  line-height: 1.4;
+}
+
+.about-card-carousel-inner {
+  transition: transform 0.3s ease;
+}
+
+.about-card-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+}
+
+.about-card-arrow-left {
+  left: -1rem;
+}
+
+.about-card-arrow-right {
+  right: -1rem;
+}
+}
