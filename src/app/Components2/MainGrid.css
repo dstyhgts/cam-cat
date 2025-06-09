@@ -6,21 +6,34 @@
   grid-auto-rows: min-content;
   grid-template-columns: repeat(2, 256px);
   gap: 16px;
-  justify-content: start;
+  justify-content: center;
   padding: 32px;
-  padding-left: 150px;
-  padding-right: 150px;
-  height: 100vh;
+  min-height: 100vh;
   overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Single column on narrower screens (<900px) */
 @media (max-width: 900px) {
   .main-grid {
-    grid-template-columns: 256px;
-    width: 15%;
-    padding-left: 32px;
-    height: 100%;
+    grid-template-columns: minmax(256px, 90vw);
+    width: 100%;
+    padding: 16px;
+    justify-content: center;
+    height: auto;
+    min-height: 100vh;
     padding-bottom: 150px;
   }
+}
+
+/* Ensure expanded cards push content down */
+.main-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+.main-grid > *.expanded {
+  z-index: 2;
+  margin-bottom: 32px;
 }

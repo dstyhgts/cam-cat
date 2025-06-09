@@ -1,51 +1,85 @@
-.testimonial-small-container {
-    /* Force a square between 256px and 512px */
-    width: clamp(256px);
-    aspect-ratio: 1 / 1;
-  
-    /* Style */
-    background-color: #8ee4ec; /* light teal (adjust as you wish) */
-    border: 5px solid #ffffff;
-    border-radius: 30px;
-    box-sizing: border-box;
-    position: relative; /* so we can position label at top left, etc. */
+.testimonial-small {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-small-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.testimonial-small-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.testimonial-small-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testimonial-small-author-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonial-small-author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-small-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-small-author-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.testimonial-small-author-title {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .testimonial-small {
+    width: 90vw;
     padding: 1rem;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+    border-radius: 12px;
   }
-  
-  /* Label at top-left */
-  .testimonial-small-label {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #333333;
-    opacity: 0.8;
-    text-transform: uppercase;
-  }
-  
-  /* Center the big quote text */
-  .testimonial-small-quote {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    font-size: 1.75rem;
-    font-weight: 900;
-    text-align: center;
-    width: 80%; /* so longer text can wrap */
-  }
-  
-  /* Author at bottom-left */
-  .testimonial-small-author {
-    position: absolute;
-    bottom: 0.75rem;
-    left: 0.75rem;
+
+  .testimonial-small-text {
     font-size: 0.9rem;
-    color: #333333;
-    opacity: 0.9;
   }
+
+  .testimonial-small-author-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .testimonial-small-author-name {
+    font-size: 0.85rem;
+  }
+
+  .testimonial-small-author-title {
+    font-size: 0.75rem;
+  }
+}
   

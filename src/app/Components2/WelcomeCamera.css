@@ -13,7 +13,7 @@
     background-color: transparent;
     color: transparent; /* Optional: set a background color */
     margin: 0;
-    padding: 6rem;
+    padding: 2rem;
   
     box-sizing: border-box;
     font-family: "Arial Black", Arial, sans-serif;
@@ -173,7 +173,7 @@
   .camera-edge-svg {
     position: absolute;
   top: 0;
-  bottom: 0;               /* Let it span the container’s full height */
+  bottom: 0;               /* Let it span the container's full height */
   right: 0;
   transform: translateX(50%);
   z-index: 1;
@@ -199,10 +199,11 @@
 
   @media (max-width: 900px) {
     .welcome-camera-container {
+      padding: 1rem;
       flex-direction: column;
-      margin: 0;
-      padding: 0;
-      padding-top: 50px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
   
     .main-title {

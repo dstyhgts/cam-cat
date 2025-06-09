@@ -11,6 +11,7 @@
     width 200ms ease-in-out,
     height 200ms ease-in-out,
     transform 300ms ease-in-out;
+  margin: 0 auto;
 }
 
 /* YELLOW BACKGROUND (Hover Tilt) */
@@ -88,50 +89,54 @@
   z-index: 10;
   width: auto;
   height: auto;
+  margin: 0 auto;
 }
 
 .why-now-container.expanded .why-now-background {
-  display: none; /* hide yellow shape in expanded mode */
+  display: none;
 }
 
 .why-now-container.expanded .why-now-card {
   transform: none;
   padding: 16px 16px 40px;
-  overflow: visible; /* so the top rectangle can overhang */
+  overflow: visible;
+  width: 100%;
 }
 
 /* ========== DESKTOP (≥900px) ========== */
 @media (min-width: 900px) {
   .why-now-container.expanded {
-    /* Spans both columns, up to 768px wide, centered */
     grid-column: 1 / 3;
-    width: 900px;
+    width: min(900px, 90vw);
     height: auto;
     margin: 0 auto;
   }
 }
 
-/* 
-  ========== MOBILE (<900px) ==========
-  1) Fill the single-column width. 
-  2) Overhanging title stays (negative margins). 
-  3) Height is auto => no extra space. 
-  4) No horizontal scroll => keep the card within viewport width.
-*/
+/* ========== MOBILE (<900px) ========== */
 @media (max-width: 900px) {
+  .why-now-container {
+    width: min(256px, 90vw);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
   .why-now-container.expanded {
-    /* Use 100% so it fully occupies the single column's width */
-    width: 92vw;
-    height: auto; 
+    width: 90vw;
+    height: auto;
     border-radius: 12px;
   }
 
   .why-now-container.expanded .why-now-card {
     width: 100%;
     height: auto;
-    /* Overflow is visible so the negative margin top bar 
-       is still visible, but the card won't exceed screen width. */
-    overflow: visible; 
+    overflow: visible;
+    border-radius: 12px;
+  }
+
+  .why-now-overflow-title {
+    margin: -20px -20px 20px;
+    border-radius: 12px;
   }
 }
 

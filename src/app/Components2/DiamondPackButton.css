@@ -10,6 +10,13 @@
     cursor: pointer;
     font-family: "Arial Black", sans-serif;
     z-index: 100;
+    display: block;
+    border-radius: 30px;
+    transition:
+      width 200ms ease-in-out,
+      height 200ms ease-in-out,
+      transform 300ms ease-in-out;
+    margin: 0 auto;
   }
 
   @media (max-width: 900px) {
@@ -232,5 +239,61 @@
   /* if .clicked is false => run springOut (quick revert) */
   .diamond-card:not(.clicked)[class*="springIn-"] {
     animation: springOut 0.4s;
+  }
+  
+  /* ========== EXPANDED STATE (common) ========== */
+  .diamond-container.expanded {
+    z-index: 10;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .diamond-container.expanded .diamond-background {
+    display: none;
+  }
+
+  .diamond-container.expanded .diamond-card {
+    transform: none;
+    padding: 16px 16px 40px;
+    overflow: visible;
+    width: 100%;
+  }
+
+  /* ========== DESKTOP (≥900px) ========== */
+  @media (min-width: 900px) {
+    .diamond-container.expanded {
+      grid-column: 1 / 3;
+      width: min(900px, 90vw);
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  /* ========== MOBILE (<900px) ========== */
+  @media (max-width: 900px) {
+    .diamond-container {
+      width: min(256px, 90vw);
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    .diamond-container.expanded {
+      width: 90vw;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .diamond-container.expanded .diamond-card {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      border-radius: 12px;
+    }
+
+    .diamond-overflow-title {
+      margin: -20px -20px 20px;
+      border-radius: 12px;
+    }
   }
   
