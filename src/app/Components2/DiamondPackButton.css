@@ -2,13 +2,19 @@
   ============ CONTAINER (512×256), no overflow clipping ============
 */
 .diamond-container {
-    position: relative;
+    font-family: "Arial Black", sans-serif;
     grid-column: span 2;
+    position: relative;
+    display: block;
     width: 512px;
     height: 256px;
-    overflow: visible; /* ensures top card not clipped */
+    border-radius: 30px;
     cursor: pointer;
-    font-family: "Arial Black", sans-serif;
+    transition:
+      width 300ms ease-in-out,
+      height 300ms ease-in-out,
+      transform 300ms ease-in-out;
+    overflow: visible; /* ensures top card not clipped */
     z-index: 100;
   }
 

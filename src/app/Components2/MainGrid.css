@@ -14,16 +14,33 @@
   height: 100vh;
   overflow: visible;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   box-sizing: border-box;
   position: relative;
+}
+
+/* Ensure all pack components have consistent base size */
+.main-grid > [class*="container"] {
+  width: 512px;
+  height: 256px;
+  grid-column: span 2;
 }
 
 /* Single column on narrower screens (<900px) */
 @media (max-width: 900px) {
   .main-grid {
     grid-template-columns: minmax(256px, 90vw);
-    gap: 16px;
     padding: 16px;
+    gap: 16px;
+  }
+
+  /* Consistent mobile sizing for all pack components */
+  .main-grid > [class*="container"] {
+    width: min(90vw, 512px);
+    height: auto;
+    grid-column: 1;
+    margin: 0 auto;
   }
 
   /* When any card is expanded */
@@ -31,17 +48,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-  }
-
-  /* Hide other cards when one is expanded */
-  .main-grid:has(.expanded) > *:not(.expanded) {
-    display: none;
+    gap: 24px;
   }
 
   /* Ensure expanded cards take full width and push content down */
+  .main-grid > *.expanded {
+    width: min(90vw, 512px);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    transform: none !important; /* Prevent any transform that might cause overlap */
+  }
+
+  /* Ensure proper spacing between cards */
   .main-grid > * {
-    width: 100%;
     margin-bottom: 16px;
   }
 
