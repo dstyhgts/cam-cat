@@ -61,6 +61,55 @@ h3
       height: auto;
       margin: 0 auto;
     }
+
+    .printpack-container.expanded {
+      width: min(90vw, 512px);
+      height: auto;
+      margin: 0 auto;
+      padding: 16px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .printpack-bgframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    .printpack-card {
+      width: 100%;
+      height: auto;
+      padding: 12px;
+    }
+
+    .printpack-title {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .printpack-subtext {
+      font-size: clamp(0.9rem, 4vw, 1rem);
+    }
+
+    .printpack-ellipse,
+    .printpack-ellipse2 {
+      width: 40px;
+      height: 40px;
+      top: 8px;
+      right: 8px;
+    }
+
+    .printpack-ellipse p {
+      font-size: 0.4em;
+    }
+
+    .printpack-ellipse2 p1 {
+      font-size: 32px;
+    }
+
+    .printpack-line1,
+    .printpack-line2 {
+      font-size: clamp(0.8rem, 3vw, 0.9rem);
+    }
   }
   
   /* ============ BACKGROUND (Hover Tilt) ============ */

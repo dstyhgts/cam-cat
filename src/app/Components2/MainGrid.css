@@ -20,8 +20,8 @@
   position: relative;
 }
 
-/* Ensure all pack components have consistent base size */
-.main-grid > [class*="container"] {
+/* Pack-specific sizing */
+.main-grid > [class*="PackButton"] {
   width: 512px;
   height: 256px;
   grid-column: span 2;
@@ -35,8 +35,8 @@
     gap: 16px;
   }
 
-  /* Consistent mobile sizing for all pack components */
-  .main-grid > [class*="container"] {
+  /* Pack-specific mobile sizing */
+  .main-grid > [class*="PackButton"] {
     width: min(90vw, 512px);
     height: auto;
     grid-column: 1;
