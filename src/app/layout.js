@@ -48,11 +48,10 @@ export default function RootLayout({ children }) {
         {/* Content */}
       </section>
       <section id="section6" style={{ height: '100vh', scrollMarginTop: '300px' }}>
-        {/* Content */}
+        <ThreeCards />      
       </section>
       {/* <ImagesContainer /> */}
       {/* <SimpleStage  /> */}
-      <ThreeCards />
 
 
       {/* <ColorfulBranding />

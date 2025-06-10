@@ -24,7 +24,7 @@ const MainGrid = () => {
       <TheCameraBarButton />
       <TheMemoryButton />
       <WhyNowButton />
-      {/* <PrintPackButton /> */}
+      <PrintPackButton />
       <ClassicsPackButton />
       <PremierePackButton />
       <DiamondPackButton />
