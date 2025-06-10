@@ -256,5 +256,10 @@
       height: auto;
       border-radius: 30px;
     }
+
+    .diamond-card {
+      width: 100%;
+      padding: 12px;
+    }
   }
   
