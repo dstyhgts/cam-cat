@@ -57,7 +57,7 @@ const DiamondPackButton = () => {
           </div>
 
         {/* Big Title */}
-        <h2 className="diamond-title">‘DIAMOND’ EXPERIENCE</h2>
+        <h2 className="diamond-title">‘DIAMOND’ ROLL OUT</h2>
 
         {/* Subtext */}
         <p className="diamond-subtext">
