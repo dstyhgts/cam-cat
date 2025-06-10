@@ -33,7 +33,6 @@ export default function RootLayout({ children }) {
       <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
         <WelcomeCamera />
         <ColorfulBranding />
-        <ColorfulBranding2 />
       </section>
       <section id="section2" style={{ height: '100%', scrollMarginTop: '80px' }}>
         {/* <ThreeCards /> */}
@@ -48,10 +47,12 @@ export default function RootLayout({ children }) {
         {/* Content */}
       </section>
       <section id="section6" style={{ height: '100vh', scrollMarginTop: '300px' }}>
-        <ThreeCards />      
+        {/* Content */}
       </section>
       {/* <ImagesContainer /> */}
       {/* <SimpleStage  /> */}
+      <ThreeCards />
+      <ColorfulBranding2 />
 
 
       {/* <ColorfulBranding />
