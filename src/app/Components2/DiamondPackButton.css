@@ -236,7 +236,7 @@
   }
 
   @media (min-width: 900px) {
-    .premiere-container {
+    .diamond-container {
       grid-column: 1 / 3;
       width: 1200px; /* or whatever max you prefer */
       height: auto;
@@ -249,7 +249,7 @@
     stacked => each card 100% width 
   */
   @media (max-width: 900px) {
-    .premiere-container {
+    .diamond-container {
       width: 92vw;
       height: auto;
       border-radius: 30px;
