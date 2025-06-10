@@ -53,7 +53,10 @@ h3
 
   @media (max-width: 900px) {
     .premiere-container {
-      grid-column: 1; /* or 1 / -1, so it just becomes a single column item */
+      grid-column: 1;
+      width: min(90vw, 512px);
+      height: auto;
+      margin: 0 auto; /* or 1 / -1, so it just becomes a single column item */
     }
   }
   
