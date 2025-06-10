@@ -33,7 +33,7 @@ const MainGrid = () => {
       <TestimonialMed />
       <TestimonialBig />
       <AboutCard />
-      <ThreeCards />
+      {/* <ThreeCards /> */}
     </div>
   );
 };

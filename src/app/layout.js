@@ -33,28 +33,25 @@ export default function RootLayout({ children }) {
       <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
         <WelcomeCamera />
         <ColorfulBranding />
-        <ColorfulBranding2 />
       </section>
       <section id="section2" style={{ height: '100%', scrollMarginTop: '80px' }}>
-        {/* <ThreeCards /> */}
       </section>
-      <section id="section3" style={{ height: '100vh', scrollMarginTop: '50px' }}>
+      <section id="section3" style={{ height: '100%', scrollMarginTop: '120px' }}>
         <BigSvg />
       </section>
-      <section id="section4" style={{ height: '100vh', scrollMarginTop: '200px' }}>
+      <section id="section4" style={{ height: '100%', scrollMarginTop: '200px' }}>
         {/* Content */}
       </section>
-      <section id="section5" style={{ height: '100vh', scrollMarginTop: '80px' }}>
+      <section id="section5" style={{ height: '100%', scrollMarginTop: '80px' }}>
         {/* Content */}
       </section>
-      <section id="section6" style={{ height: '100vh', scrollMarginTop: '300px' }}>
-        {/* Content */}
+      <section id="section6" style={{ height: '100%', scrollMarginTop: '300px' }}>
+        <ThreeCards />
+        <ColorfulBranding2 />
+
       </section>
       {/* <ImagesContainer /> */}
       {/* <SimpleStage  /> */}
-      {/* <ThreeCards /> */}
-
-
       {/* <ColorfulBranding />
       <ColorfulBranding2 /> */}
 

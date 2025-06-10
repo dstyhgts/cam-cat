@@ -23,7 +23,7 @@ const NewNavbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <h1 className="navbar-title">Camera Catering</h1>
+        <h1 className="navbar-title">CAMERA CATERING</h1>
       </div>
       <div className="navbar-right" ref={menuRef}>
         {/* Mobile/Small/Intermediate view: show menu icon */}
@@ -33,22 +33,22 @@ const NewNavbar = () => {
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <a href="#section1" onClick={handleMenuItemClick}>Get Started</a>
+            <a href="#section1" onClick={handleMenuItemClick}>START HERE</a>
           </li>
           <li>
-            <a href="#section2" onClick={handleMenuItemClick}>What is this?</a>
+            <a href="#section2" onClick={handleMenuItemClick}>CATERING</a>
           </li>
           <li>
-            <a href="#section3" onClick={handleMenuItemClick}>Catering</a>
+            <a href="#section3" onClick={handleMenuItemClick}>PACKAGES</a>
           </li>
           <li>
-            <a href="#section4" onClick={handleMenuItemClick}>Packages</a>
+            <a href="#section4" onClick={handleMenuItemClick}>TESTIMONIALS!</a>
           </li>
           <li>
-            <a href="#section5" onClick={handleMenuItemClick}>What Others Are Saying...</a>
+            <a href="#section5" onClick={handleMenuItemClick}>ABOUT</a>
           </li>
           <li>
-            <a href="#section6" onClick={handleMenuItemClick}>About</a>
+            <a href="#section6" onClick={handleMenuItemClick}>WHAT, WHY, HOW?</a>
           </li>
         </ul>
       </div>

@@ -11,8 +11,10 @@
     display: grid;
     /* default: 3 columns */
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto; /* first row for cards, second row for the button */
+    grid-template-rows: auto auto; /*
+   first row for cards, second row for the button */
     gap: 2rem;
+    height: 100%;  /* Changed from min-height: 100vh */
     padding: 2rem;
     box-sizing: border-box;
     background-color: #b94239; /* example background color */
