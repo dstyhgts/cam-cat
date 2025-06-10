@@ -1,6 +1,44 @@
 /* 
   ============ CONTAINER (512×256), no overflow clipping ============
 */
+
+h6
+{
+    font-size: 41.89px;
+    color: #FFFFFF;
+    margin: 0;
+    transition: opacity 300ms ease-in-out;
+}
+h5
+{
+    font-size: 25.89px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+p1
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5em;
+    line-height: 120%;
+}
+p
+{
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5em;
+}
+
+h3
+{
+    font-size: 67.77px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+
 .diamond-container {
     position: relative;
     grid-column: span 2;
@@ -235,6 +273,17 @@
   /* if .clicked is false => run springOut (quick revert) */
   .diamond-card:not(.clicked)[class*="springIn-"] {
     animation: springOut 0.4s;
+  }
+
+  /* Add color transition for subtext */
+  .diamond-card.clicked .diamond-subtext {
+    color: #fff;
+    transition: color 300ms ease-in-out;
+  }
+
+  .diamond-card:not(.clicked) .diamond-subtext {
+    color: #555;
+    transition: color 300ms ease-in-out;
   }
 
   @media (min-width: 900px) {
