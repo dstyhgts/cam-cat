@@ -234,4 +234,25 @@
   .diamond-card:not(.clicked)[class*="springIn-"] {
     animation: springOut 0.4s;
   }
+
+  @media (min-width: 900px) {
+    .premiere-container {
+      grid-column: 1 / 3;
+      width: 1200px; /* or whatever max you prefer */
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+  
+  /* 
+    ========== MOBILE (<900px) ==========
+    stacked => each card 100% width 
+  */
+  @media (max-width: 900px) {
+    .premiere-container {
+      width: 92vw;
+      height: auto;
+      border-radius: 30px;
+    }
+  }
   
