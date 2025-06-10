@@ -328,12 +328,9 @@ h3
   */
   @media (max-width: 900px) {
     .classics-container.expanded {
-      width: min(90vw, 512px);
+      width: 92vw;
       height: auto;
-      margin: 0 auto;
-      padding: 16px;
-      position: relative;
-      z-index: 100;
+      border-radius: 30px;
     }
     .classics-expanded-card {
       width: 100%;
