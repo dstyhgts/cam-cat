@@ -16,21 +16,33 @@
     padding: 2rem;
     box-sizing: border-box;
     background-color: #b94239; /* example background color */
+    position: relative; /* Ensure proper stacking context */
+    z-index: 1; /* Prevent overlap with other components */
+    min-height: fit-content; /* Ensure it takes up its own space */
+    overflow: visible; /* Allow content to be visible */
   }
   
-  /* 2 columns below 1200px */
+  /* Stack cards horizontally below 1200px */
   @media (max-width: 1200px) {
     .three-cards-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, auto) auto; /* 3 rows for cards, 1 for button */
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .three-card-item {
+      width: 100%;
+      max-width: 100%;
     }
   }
   
-  /* 1 column below 700px */
-  @media (max-width: 700px) {
+  /* Remove the 700px breakpoint since we want consistent horizontal stacking */
+  /* @media (max-width: 700px) {
     .three-cards-grid {
       grid-template-columns: 1fr;
     }
-  }
+  } */
   
   /******************************************************
     Card Item
@@ -48,6 +60,7 @@
     padding: 16px;
     box-sizing: border-box;
     transition: transform 0.3s ease;
+    height: fit-content; /* Allow height to adjust to content */
   }
   
   /* Hover effect: slight rotation & scale */
@@ -122,17 +135,12 @@
     - On 2 columns or 1 column, ensure the button is centered
   ******************************************************/
   @media (max-width: 1200px) {
-    /* With 2 columns, place button under the second column (still col 2). */
-    .three-cards-button {
-      grid-column: 2; /* middle column on large screens */
-      grid-row: 4; 
-    }
-  }
-  
-  @media (max-width: 700px) {
-    /* With 1 column, the button is on row 2, column 1 => full width */
     .three-cards-button {
       grid-column: 1;
+      grid-row: 4; /* Place button after the three cards */
+      width: 100%;
+      max-width: 300px; /* Limit button width for better appearance */
+      margin: 2rem auto;
     }
   }
   

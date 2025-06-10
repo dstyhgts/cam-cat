@@ -7,9 +7,12 @@
 ****************************************************/
 .about-card-container {
   width: min(90vw, 512px);
-  aspect-ratio: 1 / 1.2;
+  /* Remove or comment out aspect-ratio */
+  /* aspect-ratio: 1 / 1.2; */
   min-width: auto;
-  min-height: auto;
+  min-height: 350px; /* or whatever minimum you want */
+  /* overflow: visible; */ /* Consider changing this */
+  overflow: hidden; /* or auto */
   grid-column: 1;
   margin: 0 auto;
   background-color: transparent;
@@ -18,7 +21,6 @@
   box-sizing: border-box;
   position: relative;
   padding: 16px;
-  overflow: visible;
   font-family: Arial, sans-serif;
   z-index: 1;
 }
@@ -123,7 +125,8 @@
 @media (max-width: 900px) {
 .about-card-container {
   width: min(90vw, 512px);
-  aspect-ratio: 1 / 1.2;
+  /* Remove or comment out aspect-ratio */
+  /* aspect-ratio: 1 / 1.2; */
   margin: 0 auto;
   padding: 12px;
   position: relative;
