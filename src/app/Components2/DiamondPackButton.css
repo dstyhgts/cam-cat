@@ -244,6 +244,14 @@
       height: auto;
       margin: 0 auto;
     }
+
+    .diamond-card {
+      flex: 1 1 calc(50% - 12px); 
+    }
+
+    .diamond-bgframe {
+      flex: 1 1 calc(50% - 12px); 
+    }
   }
   
   /* 
@@ -258,6 +266,11 @@
     }
 
     .diamond-card {
+      width: 100%;
+      padding: 12px;
+    }
+
+    .diamond-bgframe {
       width: 100%;
       padding: 12px;
     }
