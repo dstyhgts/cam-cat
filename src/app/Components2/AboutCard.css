@@ -126,7 +126,7 @@
   aspect-ratio: 1 / 1.2;
   margin: 0 auto;
   padding: 12px;
-  position: absolute;
+  position: relative;
   z-index: 1;
 }
 
