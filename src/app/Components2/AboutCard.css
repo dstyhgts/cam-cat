@@ -134,7 +134,7 @@
 }
 
 .about-card-container.expanded {
-  position: relative;
+  position: absolute;
   z-index: 100;
 }
 

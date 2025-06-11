@@ -10,8 +10,8 @@
   padding: 32px;
   padding-left: 150px;
   padding-right: 150px;
-  height: 100vh;
-  overflow: visible;
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* Single column on narrower screens (<900px) */
@@ -20,7 +20,7 @@
     grid-template-columns: 256px;
     width: 15%;
     padding-left: 32px;
-    height: 100%;
+    min-height: 100%;
     padding-bottom: 150px;
   }
 }

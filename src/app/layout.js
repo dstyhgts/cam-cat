@@ -1,5 +1,3 @@
-
-
 // app/page.js
 "use client";
 import Footer from "./Components/Footer";
@@ -28,37 +26,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div>
-        <NewNavbar />
-        {/* <ImagesContainer /> */}
-      <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
-        <WelcomeCamera />
-        <ColorfulBranding />
-      </section>
-      <section id="section2" style={{ height: '100%', scrollMarginTop: '80px' }}>
-        {/* <ThreeCards /> */}
-      </section>
-      <section id="section3" style={{ height: '100vh', scrollMarginTop: '50px' }}>
-        <BigSvg />
-      </section>
-      <section id="section4" style={{ height: '100vh', scrollMarginTop: '200px' }}>
-        {/* Content */}
-      </section>
-      <section id="section5" style={{ height: '100vh', scrollMarginTop: '80px' }}>
-        {/* Content */}
-      </section>
-      <section id="section6" style={{ height: '100vh', scrollMarginTop: '300px' }}>
-        {/* Content */}
-      </section>
-      {/* <ImagesContainer /> */}
-      {/* <SimpleStage  /> */}
-      <ThreeCards />
-      <ColorfulBranding2 />
-
-
-      {/* <ColorfulBranding />
-      <ColorfulBranding2 /> */}
-
-        {/* <Footer /> */}
+          <NewNavbar />
+          {/* <ImagesContainer /> */}
+          <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+            <WelcomeCamera />
+            <ColorfulBranding />
+          </section>
+          <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+            <BigSvg />
+            <ThreeCards />
+            <ColorfulBranding2 />
+          </section>
+          {/* <ImagesContainer /> */}
+          {/* <SimpleStage  /> */}
+          {/* <ColorfulBranding />
+          <ColorfulBranding2 /> */}
+          {/* <Footer /> */}
         </div>
         <Sidebar />
       </body>

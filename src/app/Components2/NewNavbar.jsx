@@ -36,19 +36,19 @@ const NewNavbar = () => {
             <a href="#section1" onClick={handleMenuItemClick}>Get Started</a>
           </li>
           <li>
-            <a href="#section2" onClick={handleMenuItemClick}>What is this?</a>
+            <a href="#how-it-works" onClick={handleMenuItemClick}>Catering</a>
           </li>
           <li>
-            <a href="#section3" onClick={handleMenuItemClick}>Catering</a>
+            <a href="#print-package" onClick={handleMenuItemClick}>Packages</a>
           </li>
           <li>
-            <a href="#section4" onClick={handleMenuItemClick}>Packages</a>
+            <a href="#testimonials" onClick={handleMenuItemClick}>What Others Are Saying...</a>
           </li>
           <li>
-            <a href="#section5" onClick={handleMenuItemClick}>What Others Are Saying...</a>
+            <a href="#about-card" onClick={handleMenuItemClick}>About</a>
           </li>
           <li>
-            <a href="#section6" onClick={handleMenuItemClick}>About</a>
+            <a href="#threecards" onClick={handleMenuItemClick}>What is this?</a>
           </li>
         </ul>
       </div>

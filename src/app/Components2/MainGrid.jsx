@@ -19,19 +19,19 @@ const MainGrid = () => {
   return (
     <div className="main-grid">
       {/* Render multiple cards */}
-      <HowItWorksButton />
+      <div id="how-it-works"><HowItWorksButton /></div>
       <TheInstantButton />
       <TheCameraBarButton />
       <TheMemoryButton />
       <WhyNowButton />
-      <PrintPackButton />
+      <div id="print-package"><PrintPackButton /></div>
       <ClassicsPackButton />
       <PremierePackButton />
       <DiamondPackButton />
-      <TestimonialSmall />
+      <div id="testimonials"><TestimonialSmall /></div>
       <TestimonialMed />
       <TestimonialBig />
-      <AboutCard />
+      <div id="about-card"><AboutCard /></div>
     </div>
   );
 };

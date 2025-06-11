@@ -1046,5 +1046,13 @@ img {
   overflow: hidden;
 }
 
+#how-it-works,
+#print-package,
+#testimonials,
+#about-card,
+#threecards {
+  scroll-margin-top: 90px; /* Adjust to your navbar height */
+}
+
 
 
