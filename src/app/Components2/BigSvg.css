@@ -3,7 +3,7 @@
     flex-direction: row;
     /* Fill the full viewport height so the SVG can fill the remaining space */
     min-height: 100vh;
-    min-width: 100vw;
+    /* min-width: 100vw; */
     /* Use the red background color here */
     background-color: #b94239;
     z-index: 1000;
