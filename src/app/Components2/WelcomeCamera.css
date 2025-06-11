@@ -10,7 +10,7 @@
     align-items: stretch;        /* important to let columns match height */
     width: 100%;
     min-height: 100vh;           /* optional: fill at least full viewport */
-    background-color: transparent;
+    background: transparent;
     color: transparent; /* Optional: set a background color */
     margin: 0;
     padding: 6rem;
@@ -20,8 +20,12 @@
     font-weight: 900;
     color: #fff;
     text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .welcome-camera-container > * {
+    /* pointer-events: auto; */
   }
   
   /***************************************************
@@ -153,6 +157,7 @@
     padding: 1rem 2rem; /* More padding for a bigger button */
     cursor: pointer;
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
   }
   
   .order-button:hover {
@@ -173,7 +178,7 @@
   .camera-edge-svg {
     position: absolute;
   top: 0;
-  bottom: 0;               /* Let it span the container’s full height */
+  bottom: 0;               /* Let it span the container's full height */
   right: 0;
   transform: translateX(50%);
   z-index: 1;
@@ -261,4 +266,14 @@
         height: 100vh;
         z-index: 100;
   }
+}
+
+.landing-gallery-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }

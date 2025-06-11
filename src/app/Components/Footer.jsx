@@ -120,7 +120,7 @@ export default function Footer() {
           overflow: "visible",
           background: "#b94239",
           zIndex: 0,  // Move off-screen
-          opacity: 0.6,  // Initially hidden for animation
+          opacity: 1,  // Initially hidden for animation
         }}
       >
       </div>

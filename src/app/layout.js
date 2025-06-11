@@ -26,9 +26,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div>
+          {/* <NewNavbar /> */}
           <NewNavbar />
           {/* <ImagesContainer /> */}
           <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+            {/* <LandingGallery /> */}
             <WelcomeCamera />
             <ColorfulBranding />
           </section>
@@ -36,12 +38,15 @@ export default function RootLayout({ children }) {
             <BigSvg />
             <ThreeCards />
             <ColorfulBranding2 />
+            <Footer />
+
           </section>
           {/* <ImagesContainer /> */}
           {/* <SimpleStage  /> */}
           {/* <ColorfulBranding />
           <ColorfulBranding2 /> */}
           {/* <Footer /> */}
+          
         </div>
         <Sidebar />
       </body>
