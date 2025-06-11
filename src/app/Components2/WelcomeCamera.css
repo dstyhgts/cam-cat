@@ -14,6 +14,7 @@
     color: transparent; /* Optional: set a background color */
     margin: 0;
     padding: 6rem;
+    padding-bottom: 4rem;
   
     box-sizing: border-box;
     font-family: "Arial Black", Arial, sans-serif;
@@ -205,9 +206,11 @@
   @media (max-width: 900px) {
     .welcome-camera-container {
       flex-direction: column;
-      margin: 0;
+      width: 100vw;
+      min-height: 100vh;
       padding: 0;
-      padding-top: 50px;
+      padding-bottom: 4rem;
+      box-sizing: border-box;
     }
   
     .main-title {
@@ -217,6 +220,7 @@
     .right-content,
     .left-content {
       width: 100%;
+      padding: 2rem 1rem;
     }
 
     .new-description {
