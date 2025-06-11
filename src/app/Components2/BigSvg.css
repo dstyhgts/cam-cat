@@ -10,41 +10,64 @@
     
   }
   
-  /* You can adjust the left side to remain at "auto" width
-     (it will size to fit the grid content), or force a fixed width if desired. */
-  .layout-container > * {
-    /* Let each child "take up space" naturally */
-    flex: 0 0 0;
+  /* Removed the .layout-container > * { flex: 0 0 0; } rule */
+  
+  .layout-container > .main-grid {
+    flex: 0 0 600px; /* or adjust as needed */
+    max-width: 600px;
+    min-width: 400px;
   }
   
   /* The SVG wrapper flexes to fill the rest of the horizontal space. */
   .svg-wrapper {
-    flex: 1; 
+    flex: 1 1 0;
     display: flex;
     align-items: center;
     justify-content: center;
     /* Optional padding if you want some spacing around the SVG */
     padding: 1rem;
+    min-width: 0;
   }
   
   .large-svg {
     /* Make the SVG responsive. */
-    max-width: 100vw;
+    max-width: 100%;
     height: auto;
     /* If you need a minimum or maximum height, adjust accordingly. */
   }
 
   @media (max-width: 900px) {
-    .svg-wrapper {
-      flex: 1; 
-      height: 100%;
-      display: flex;
-      align-items: right;
-      justify-content: center;
-      /* Optional padding if you want some spacing around the SVG */
-      padding: 1rem;
+    .layout-container {
+      flex-direction: column;
+      position: relative;
     }
-
+    .layout-container > .main-grid {
+      max-width: 100vw;
+      min-width: 0;
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .svg-wrapper {
+      position: absolute;
+      top: 0;
+      left: 100px;
+      width: 100vw;
+      height: 100%;
+      max-width: 100vw;
+      min-width: 0;
+      padding-left: 3rem; /* adjust as needed for left padding */
+      padding-right: 0;
+      z-index: 1;
+      pointer-events: none;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .large-svg {
+      max-width: 100vw;
+      height: auto;
+      width: 100%;
+    }
   }
 
   
