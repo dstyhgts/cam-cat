@@ -311,9 +311,12 @@ h3
   @media (min-width: 900px) {
     .classics-container.expanded {
       grid-column: 1 / 3;
-      width: 1200px; /* or whatever max you prefer */
+      width: 100vw;
+      max-width: 100vw;
       height: auto;
       margin: 0 auto;
+      box-sizing: border-box;
+      overflow-x: auto;
     }
   
     .classics-expanded-card {

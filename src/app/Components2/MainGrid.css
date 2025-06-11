@@ -14,13 +14,40 @@
   width: 100%;
 }
 
+.small-buttons-row,
+.testimonial-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  grid-column: 1 / span 2;
+}
+
+.pack-button-row,
+.testimonial-big-row,
+.about-row {
+  grid-column: 1 / span 2;
+  width: 100%;
+}
+
 /* Single column on narrower screens (<900px) */
 @media (max-width: 900px) {
   .main-grid {
     grid-template-columns: 256px;
-    width: 15%;
+    width: 100%;
     padding-left: 32px;
+    padding-right: 32px;
     min-height: 100%;
     padding-bottom: 150px;
+    box-sizing: border-box;
+  }
+  .small-buttons-row,
+  .testimonial-row {
+    grid-template-columns: 1fr;
+  }
+  .pack-button-row,
+  .testimonial-big-row,
+  .about-row {
+    grid-column: 1;
   }
 }
