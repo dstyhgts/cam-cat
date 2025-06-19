@@ -4,14 +4,15 @@
     aspect-ratio: 1 / 1;
   
     /* Style */
-    background-color: #8ee4ec; /* same teal or any variation */
-    border: 5px solid #ffffff;
+    background-color: var(--testimonial-bg);
+    border: 5px solid var(--testimonial-border);
     border-radius: 30px;
     box-sizing: border-box;
     position: relative;
     padding: 1rem;
     overflow: hidden;
     font-family: Arial, sans-serif;
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
   
   /* Label at top-left */
@@ -21,9 +22,10 @@
     left: 0.75rem;
     font-size: 0.85rem;
     font-weight: bold;
-    color: #333333;
+    color: var(--testimonial-text-dark);
     opacity: 0.8;
     text-transform: uppercase;
+    transition: color 300ms ease-in-out;
   }
   
   /* Center the bigger quote text */
@@ -32,11 +34,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffffff;
+    color: var(--testimonial-text-light);
     font-size: 1.6rem;
     font-weight: 900;
     text-align: center;
     width: 80%;
+    transition: color 300ms ease-in-out;
   }
   
   /* Author at bottom-left */
@@ -45,7 +48,8 @@
     bottom: 0.75rem;
     left: 0.75rem;
     font-size: 0.9rem;
-    color: #333333;
+    color: var(--testimonial-text-dark);
     opacity: 0.9;
+    transition: color 300ms ease-in-out;
   }
   

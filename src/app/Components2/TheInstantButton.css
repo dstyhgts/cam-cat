@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   border-radius: 30px;
-  background-color: #FFD85D;
+  background-color: var(--button-yellow-bg);
   z-index: 0;
   opacity: 0;
   transform: translate(0, 0) rotate(0deg);
@@ -35,9 +35,9 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  border: 2px solid #FFFFFF;
-  background-color: #7492C2;
-  color: #FFFFFF;
+  border: 2px solid var(--button-white-border);
+  background-color: var(--instant-button-bg);
+  color: var(--button-white-text);
   border-radius: 30px;
   padding: 16px;
 
@@ -52,7 +52,8 @@
   transition:
     transform 300ms ease-in-out,
     background-color 300ms ease-in-out,
-    color 300ms ease-in-out;
+    color 300ms ease-in-out,
+    border-color 300ms ease-in-out;
 }
 
 /* Default Card Text */
@@ -138,20 +139,22 @@
 /* ========== OVERFLOW TITLE BOX ========== */
 .instant-overflow-title {
   position: relative;
-  background-color: #7492C2;
-  border: 2px solid #FFFFFF;
+  background-color: var(--instant-button-bg);
+  border: 2px solid var(--button-white-border);
   border-radius: 30px;
   padding: 24px;
   /* Negative margins => separate, overhanging shape */
   margin: -40px -40px 20px;
   text-align: center;
+  transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
 }
 .instant-overflow-title h2 {
   margin: 0;
   font-size: 1.3em; /* ~33.66px */
   line-height: 1.2;
-  color: #FFFFFF;
+  color: var(--button-white-text);
   white-space: nowrap;
+  transition: color 300ms ease-in-out;
 }
 
 /* ========== EXPANDED CONTENT ========== */
@@ -188,7 +191,8 @@
 }
 .placeholder-svg {
   font-size: 16px;
-  color: #fff;
+  color: var(--button-white-text);
+  transition: color 300ms ease-in-out;
 }
 
 /* Bullet list with emojis */
@@ -198,16 +202,19 @@
   padding: 0;
 }
 .instant-bullets li {
-  margin-bottom: 16px;
-  word-wrap: break-word;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 .emoji {
-  display: inline-block;
-  width: 1.2em;
-  margin-right: 0.3em;
+  font-size: 1.2em;
+  flex-shrink: 0;
 }
 .li-desc {
-  font-weight: normal;
+  flex: 1;
+  color: var(--button-white-text);
+  transition: color 300ms ease-in-out;
 }
 
 /* "THE INSTANT-PRINT EXPERIENCE" section */
@@ -216,9 +223,10 @@
 }
 .instant-experience h3 {
   margin-bottom: 8px;
-  font-size: 0.7em;
+  color: var(--button-white-text);
+  transition: color 300ms ease-in-out;
 }
 .instant-experience p {
-  word-wrap: break-word;
-  max-width: 90%;
+  color: var(--button-white-text);
+  transition: color 300ms ease-in-out;
 }

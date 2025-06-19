@@ -5,18 +5,206 @@
   box-sizing: border-box;
 }
 
+/* CSS Custom Properties for Theming */
+:root {
+  /* Light theme (default) - Current vibrant colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-color: #46bdc6;
+  --accent-color: #b94239;
+  --border-color: #dee2e6;
+  --bg-hover: #e9ecef;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --footer-bg: #b94239;
+  --container-bg: #E3E1AA;
+  
+  /* Component-specific colors for light mode */
+  --welcome-card-bg: #46bdc6;
+  --welcome-card-border: #ffffff;
+  --welcome-button-bg: #ffe600;
+  --welcome-button-text: #4b0082;
+  --welcome-button-border: #4b0082;
+  --welcome-button-hover-bg: #4b0082;
+  --welcome-button-hover-text: #ffffff;
+  --welcome-button-hover-border: #ffffff;
+  
+  --three-cards-bg: #b94239;
+  --three-card-border: #ffffff;
+  --three-card-interior: #006063;
+  --three-card-top-bg: #00a1a7;
+  --three-card-text: #ffffff;
+  --three-cards-button-bg: #ffe600;
+  --three-cards-button-text: #4b0082;
+  --three-cards-button-border: #4b0082;
+  
+  --about-card-border: #ffffff;
+  --about-card-image-bg: #46bdc6;
+  --about-card-text-color: #ffffff;
+  
+  --testimonial-bg: #8ee4ec;
+  --testimonial-border: #ffffff;
+  --testimonial-text-dark: #333333;
+  --testimonial-text-light: #ffffff;
+  
+  --navbar-title-color: #ffffff;
+  --navbar-menu-bg: #61397d;
+  --navbar-menu-border: #ffffff;
+  --navbar-hover-color: #ffd700;
+  
+  --button-yellow-bg: #FFD85D;
+  --button-white-border: #FFFFFF;
+  --button-white-text: #FFFFFF;
+  
+  /* Package button colors */
+  --print-pack-bg: #61397D;
+  --print-pack-dark-bg: #3F2452;
+  --print-pack-lighter-bg: #784289;
+  
+  --classics-pack-bg: #397D52;
+  --classics-pack-dark-bg: #1F442C;
+  
+  --premiere-pack-bg: #0E6E8D;
+  --premiere-pack-dark-bg: #08475C;
+  
+  --diamond-pack-bg: #000;
+  --diamond-pack-text: #555;
+  --diamond-pack-light-text: #aaa;
+  --diamond-pack-gray-text: #666;
+  
+  /* Button specific colors */
+  --instant-button-bg: #7492C2;
+  --memory-button-bg: #688739;
+  --how-it-works-button-bg: #66C4CC;
+  
+  --big-svg-bg: #b94239;
+  
+  /* Additional component colors */
+  --why-now-button-bg: #B94239;
+  --camera-bar-button-bg: #8C65C6;
+  
+  /* LandingGallery colors */
+  --landing-gallery-bg: #423c76;
+  --landing-gallery-item-bg: #b0b0b0;
+  
+  /* ColorfulBranding colors */
+  --colorful-branding-bg: #b94239;
+  --colorful-branding-text: #ffff;
+  
+  /* MainGrid colors */
+  --main-grid-bg: transparent;
+  
+  /* BigSvg colors */
+  --big-svg-layout-bg: #b94239;
+}
 
+[data-theme="dark"] {
+  /* Dark theme - Off-white backgrounds with black borders and text */
+  --bg-primary: #f8f8f8;
+  --bg-secondary: #f0f0f0;
+  --bg-tertiary: #e8e8e8;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --text-color: #000000;
+  --accent-color: #b94239;
+  --border-color: #000000;
+  --bg-hover: #e0e0e0;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --footer-bg: #f0f0f0;
+  --container-bg: #f8f8f8;
+  
+  /* Component-specific colors for dark mode (reversed) */
+  --welcome-card-bg: #f0f0f0;
+  --welcome-card-border: #000000;
+  --welcome-button-bg: #ffe600;
+  --welcome-button-text: #4b0082;
+  --welcome-button-border: #4b0082;
+  --welcome-button-hover-bg: #4b0082;
+  --welcome-button-hover-text: #ffffff;
+  --welcome-button-hover-border: #ffffff;
+  
+  --three-cards-bg: #f0f0f0;
+  --three-card-border: #000000;
+  --three-card-interior: #e8e8e8;
+  --three-card-top-bg: #e0e0e0;
+  --three-card-text: #000000;
+  --three-cards-button-bg: #ffe600;
+  --three-cards-button-text: #4b0082;
+  --three-cards-button-border: #4b0082;
+  
+  --about-card-border: #000000;
+  --about-card-image-bg: #e8e8e8;
+  --about-card-text-color: #000000;
+  
+  --testimonial-bg: #f0f0f0;
+  --testimonial-border: #000000;
+  --testimonial-text-dark: #000000;
+  --testimonial-text-light: #000000;
+  
+  --navbar-title-color: #000000;
+  --navbar-menu-bg: #f0f0f0;
+  --navbar-menu-border: #000000;
+  --navbar-hover-color: #ffd700;
+  
+  --button-yellow-bg: #FFD85D;
+  --button-white-border: #000000;
+  --button-white-text: #000000;
+  
+  /* Package button colors for dark mode (reversed) */
+  --print-pack-bg: #f0f0f0;
+  --print-pack-dark-bg: #e8e8e8;
+  --print-pack-lighter-bg: #e0e0e0;
+  
+  --classics-pack-bg: #f0f0f0;
+  --classics-pack-dark-bg: #e8e8e8;
+  
+  --premiere-pack-bg: #f0f0f0;
+  --premiere-pack-dark-bg: #e8e8e8;
+  
+  --diamond-pack-bg: #f0f0f0;
+  --diamond-pack-text: #000000;
+  --diamond-pack-light-text: #000000;
+  --diamond-pack-gray-text: #000000;
+  
+  /* Button specific colors for dark mode (white backgrounds, keep vibrant hover colors) */
+  --instant-button-bg: #ffffff;
+  --memory-button-bg: #ffffff;
+  --how-it-works-button-bg: #ffffff;
+  
+  --big-svg-bg: #f0f0f0;
+  
+  /* Additional component colors for dark mode (reversed) */
+  --why-now-button-bg: #f0f0f0;
+  --camera-bar-button-bg: #f0f0f0;
+  
+  /* LandingGallery colors for dark mode (reversed) */
+  --landing-gallery-bg: #f8f8f8;
+  --landing-gallery-item-bg: #e0e0e0;
+  
+  /* ColorfulBranding colors for dark mode (reversed) */
+  --colorful-branding-bg: #f0f0f0;
+  --colorful-branding-text: #000000;
+  
+  /* MainGrid colors for dark mode */
+  --main-grid-bg: transparent;
+  
+  /* BigSvg colors for dark mode (reversed) */
+  --big-svg-layout-bg: #f0f0f0;
+}
 
 /* html and body allow native scrolling on their own */
 html,
 body {
   width: 100%;
   height: 100%;
-  background: #b94239;
-  color: #46bdc6;
+  background: var(--footer-bg);
+  color: var(--text-color);
   font-family: "PP Neue Montreal", sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -28,8 +216,9 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #E3E1AA;
+  background: var(--container-bg);
   background-size: cover;
+  transition: background-color 0.3s ease;
 }
 
 /* Navigation and related elements */
@@ -123,10 +312,11 @@ i {
   justify-content: space-between;
   padding: 0 1em;
   background: transparent;
-  color: #46bdc6;
+  color: var(--text-color);
   z-index: 100; /* Lower than the sidebar and footer */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   font-size: 0.9rem;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
 }
 /* .left {
   flex: 1;
@@ -141,11 +331,13 @@ i {
   display: flex;
   justify-content: flex-end;
   gap: 1em;
-  color: #46bdc6;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 .right a {
   text-decoration: none;
-  color: #46bdc6;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 img {
   height: 40px;
@@ -185,7 +377,8 @@ h2 {
 .footer {
   position: absolute; /* instead of fixed or absolute */
   z-index: 100;      /* or a lower z-index */
-  background-color: #b94239;
+  background-color: var(--footer-bg);
+  transition: background-color 0.3s ease;
 }
 
 .footer-header {

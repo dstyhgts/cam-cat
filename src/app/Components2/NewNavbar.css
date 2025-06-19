@@ -20,7 +20,8 @@
 .navbar-title {
   font-size: 1rem;
   margin-top: 3px;
-  color: #fff;
+  color: var(--navbar-title-color);
+  transition: color 0.3s ease;
 }
 
 /* Ensure navbar-right items are always aligned to the right */
@@ -29,6 +30,15 @@
   display: flex;
   justify-content: flex-end;
   flex: 1;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Theme toggle container */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 /* Mobile view: Menu icon and dropdown menu */
@@ -48,14 +58,15 @@
     position: absolute;
     right: 20px; /* Ensure the dropdown is pinned to the right */
     top: 50px; /* Adjust as needed */
-    background: #61397d;
-    border: 5px solid #fff;
+    background: var(--navbar-menu-bg);
+    border: 5px solid var(--navbar-menu-border);
     border-radius: 30px;
     list-style: none;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
   
   .navbar-menu.open {
@@ -77,8 +88,9 @@
   
   .navbar-menu li a {
     text-decoration: none;
-    color: #fff;
+    color: var(--navbar-title-color);
     text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease;
   }
 }
 
@@ -89,7 +101,7 @@
 }
 
 .navbar-menu li a:hover {
-  color: #ffd700;
+  color: var(--navbar-hover-color);
   transition: color 0.3s ease;
 }
 

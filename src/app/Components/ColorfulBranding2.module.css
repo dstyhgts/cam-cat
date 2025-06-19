@@ -5,12 +5,13 @@
     padding-right: 50px;
     min-height: 100vh;
     /* background-color: #423c76; */
-    background-color: #b94239;
+    background-color: var(--colorful-branding-bg);
     margin: 0;
     bottom: 0px;
     padding: 10; /* no horizontal padding => edge to edge */
     box-sizing: border-box;
     overflow-x: hidden;
+    transition: background-color 300ms ease-in-out;
   }
   
   /* 
@@ -30,7 +31,8 @@
     */
     font-size: clamp(1.5rem, 6vw, 6rem);
     /* color: #bdc389; */
-    color: #ffff;
+    color: var(--colorful-branding-text);
+    transition: color 300ms ease-in-out;
   }
   
   /* 
@@ -94,12 +96,13 @@
       padding-right: 10px;
       min-height: 100vh;
       /* background-color: #423c76; */
-      background-color: #b94239;
+      background-color: var(--colorful-branding-bg);
       margin: 0;
       bottom: 0px;
       padding: 10; /* no horizontal padding => edge to edge */
       box-sizing: border-box;
       overflow-x: hidden;
+      transition: background-color 300ms ease-in-out;
       }
   }
   

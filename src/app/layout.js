@@ -16,39 +16,39 @@ import ThreeCards from "./Components2/ThreeCards";
 import ImagesContainer from "./Components2/ImageContainer";
 import NewNavbar from "./Components2/NewNavbar";
 import SimpleStage from "./Components2/SimpleStage";
+import { ThemeProvider } from "./Components/ThemeProvider";
 // import GlobalComponentsWrapper from "./Components/GlobalComponentsWrapper";
-
-
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div>
-          {/* <NewNavbar /> */}
-          <NewNavbar />
-          {/* <ImagesContainer /> */}
-          <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
-            {/* <LandingGallery /> */}
-            <WelcomeCamera />
-            <ColorfulBranding />
-          </section>
-          <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
-            <BigSvg />
-            <ThreeCards />
-            <ColorfulBranding2 />
-            <Footer />
+        <ThemeProvider>
+          <div>
+            {/* <NewNavbar /> */}
+            <NewNavbar />
+            {/* <ImagesContainer /> */}
+            <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+              {/* <LandingGallery /> */}
+              <WelcomeCamera />
+              <ColorfulBranding />
+            </section>
+            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+              <BigSvg />
+              <ThreeCards />
+              <ColorfulBranding2 />
+              <Footer />
 
-          </section>
-          {/* <ImagesContainer /> */}
-          {/* <SimpleStage  /> */}
-          {/* <ColorfulBranding />
-          <ColorfulBranding2 /> */}
-          {/* <Footer /> */}
-          
-        </div>
-        <Sidebar />
+            </section>
+            {/* <ImagesContainer /> */}
+            {/* <SimpleStage  /> */}
+            {/* <ColorfulBranding />
+            <ColorfulBranding2 /> */}
+            {/* <Footer /> */}
+            
+          </div>
+          <Sidebar />
+        </ThemeProvider>
       </body>
     </html>
   );

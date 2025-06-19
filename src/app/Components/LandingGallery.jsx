@@ -156,7 +156,8 @@ const LandingGallery = ({ className = "", ...props }) => {
           width: 100vw;
           height: 100vh;
           overflow: hidden;
-          background: #423c76;
+          background: var(--landing-gallery-bg);
+          transition: background 300ms ease-in-out;
         }
         .lg-gallery {
           position: absolute;
@@ -169,8 +170,9 @@ const LandingGallery = ({ className = "", ...props }) => {
           position: absolute;
           width: 175px;
           height: 250px;
-          background: #b0b0b0;
+          background: var(--landing-gallery-item-bg);
           overflow: hidden;
+          transition: background 300ms ease-in-out;
         }
         .lg-item img {
           width: 100%;

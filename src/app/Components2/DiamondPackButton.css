@@ -5,37 +5,41 @@
 h6
 {
     font-size: 41.89px;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin: 0;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out, color 300ms ease-in-out;
 }
 h5
 {
     font-size: 25.89px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
 }
 p1
 {
     font-size: 14px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin-bottom: 0.5em;
     line-height: 120%;
+    transition: color 300ms ease-in-out;
 }
 p
 {
     font-size: 16px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin-bottom: 0.5em;
+    transition: color 300ms ease-in-out;
 }
 
 h3
 {
     font-size: 67.77px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
 }
 
 
@@ -61,7 +65,7 @@ h3
       grid-column: 1;
       width: min(90vw, 512px);
       height: auto;
-      margin: 0 auto; /* or 1 / -1, so it just becomes a single column item */
+      margin: 0 auto;
     }
   }
   
@@ -75,10 +79,11 @@ h3
     left: 0;
     width: 512px;
     height: 256px;
-    background-color: #000;
-    border: 2px solid #fff;
+    background-color: var(--diamond-pack-bg);
+    border: 2px solid var(--button-white-border);
     border-radius: 30px;
     z-index: 0;
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
   
   /* 
@@ -90,10 +95,10 @@ h3
   .diamond-line2 {
     position: absolute;
     font-size: 9.89px;
-    color: #fff;
+    color: var(--button-white-text);
     opacity: 0;
     margin: 0;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out, color 300ms ease-in-out;
   }
   
   /* line1 => bottom center => show on container hover */
@@ -128,10 +133,10 @@ h3
     top: 0; left: 0;
     width: 512px;
     height: 256px;
-    background-color: #000;
-    border: 2px solid #fff;
+    background-color: var(--diamond-pack-bg);
+    border: 2px solid var(--button-white-border);
     border-radius: 30px;
-    color: #555; /* default text color => dark gray */
+    color: var(--diamond-pack-text);
     padding: 16px;
     box-sizing: border-box;
   
@@ -144,7 +149,7 @@ h3
     align-items: flex-start;
   
     /* On hover => top card lifts up ~20px (if not clicked) */
-    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out;
   }
   
   /* Container hover => top card moves up 20px if not clicked */
@@ -159,7 +164,7 @@ h3
   */
   .diamond-card.clicked {
     opacity: .9;
-    color: #fff;
+    color: var(--button-white-text);
     transform: translateY(-30px) rotate(-10deg);
     /* We keep a valid transition or none at all, but NOT "springIn 0.6s" */
     transition: color 300ms ease-in-out, transform 300ms ease-in-out;
@@ -170,8 +175,9 @@ h3
   */
   .diamond-topline {
     font-size: 0.6em;
-    color: #666;
+    color: var(--diamond-pack-gray-text);
     margin-bottom: 0.5em;
+    transition: color 300ms ease-in-out;
   }
   
   /* 
@@ -184,12 +190,13 @@ h3
     right: 10px;
     width: 60px;
     height: 60px;
-    border: 2px solid;
+    border: 2px solid var(--button-white-border);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
+    transition: border-color 300ms ease-in-out;
   }
   .diamond-ellipse p {
     position: absolute;
@@ -199,6 +206,8 @@ h3
     text-align: center;
     font-size: 0.5em;
     font-weight: bold;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
   }
   
   .diamond-ellipse2 p1 {
@@ -214,11 +223,13 @@ h3
     z-index: 2;
     font-size: 41.89px;
     font-weight: bold;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
   }
 
   /* On card hover => ellipse is white, text black */
   .diamond-card:not(.clicked):hover .diamond-ellipse  {
-    border-color: #ffffff;
+    border-color: var(--button-white-border);
     opacity: 300ms ease-in-out;
   }
   
@@ -243,19 +254,19 @@ h3
   @keyframes springIn {
     0% {
       transform: translateY(-30px) rotate(-10deg) scale(1) ease-in-out;
-      color: #555 ease-in-out;
+      color: var(--diamond-pack-text) ease-in-out;
     }
     30% {
       transform: translateY(-30px) rotate(-5deg) scale(1.1) ease-in-out;
-      color: #aaa ease-in-out;
+      color: var(--diamond-pack-light-text) ease-in-out;
     }
     60% {
       transform: translateY(-30px) rotate(-3deg) scale(0.9) ease-in-out;
-      color: #666 ease-in-out;
+      color: var(--diamond-pack-gray-text) ease-in-out;
     }
     100% {
       transform: translateY(-30px) rotate(-10deg) scale(1) ease-in-out;
-      color: #fff ease-in-out;
+      color: var(--button-white-text) ease-in-out;
     }
   }
   
@@ -263,11 +274,11 @@ h3
   @keyframes springOut {
     0% {
       transform: translateY(-30px) rotate(-10deg);
-      color: #fff;
+      color: var(--button-white-text);
     }
     100% {
       transform: translateY(0px) rotate(0deg);
-      color: #555;
+      color: var(--diamond-pack-text);
     }
   }
   
@@ -283,12 +294,12 @@ h3
 
   /* Add color transition for subtext */
   .diamond-card.clicked .diamond-subtext {
-    color: #fff;
+    color: var(--button-white-text);
     transition: color 300ms ease-in-out;
   }
 
   .diamond-card:not(.clicked) .diamond-subtext {
-    color: #555;
+    color: var(--diamond-pack-text);
     transition: color 300ms ease-in-out;
   }
 

@@ -1,6 +1,7 @@
 // NewNavbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './NewNavbar.css';
+import ThemeToggle from '../Components/ThemeToggle';
 
 const NewNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,6 +27,10 @@ const NewNavbar = () => {
         <h1 className="navbar-title">Camera Catering</h1>
       </div>
       <div className="navbar-right" ref={menuRef}>
+        {/* Theme Toggle */}
+        <div className="theme-toggle-container">
+          <ThemeToggle />
+        </div>
         {/* Mobile/Small/Intermediate view: show menu icon */}
         <div className="menu-icon" onClick={toggleMenu}>
           <img src="./assets/camera-icon13.png" alt="Menu Icon" />

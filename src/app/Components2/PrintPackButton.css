@@ -2,40 +2,43 @@
 h6
 {
     font-size: 41.89px;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin: 0;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out, color 300ms ease-in-out;
     line-height: .9em;
 }
 h5
 {
     font-size: 25.89px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
 }
 p1
 {
     font-size: 14px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin-bottom: 0.5em;
     line-height: 120%;
+    transition: color 300ms ease-in-out;
 }
 p
 {
     font-size: 16px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     margin-bottom: 0.5em;
+    transition: color 300ms ease-in-out;
 }
 
 h3
 {
     font-size: 67.77px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     line-height: .9em;
-
+    transition: color 300ms ease-in-out;
 }
 
 
@@ -70,14 +73,16 @@ h3
     width: 100%;
     height: 100%;
     border-radius: 30px;
-    background-color: #61397D;
-    border: 2px solid #FFFFFF;
+    background-color: var(--print-pack-bg);
+    border: 2px solid var(--button-white-border);
     z-index: 0;
     opacity: 0;
     transform: translate(0, 0) rotate(0deg);
     transition:
       opacity 300ms ease-in-out,
-      transform 300ms ease-in-out;
+      transform 300ms ease-in-out,
+      background-color 300ms ease-in-out,
+      border-color 300ms ease-in-out;
   }
   
   /* ============ CARD (Default) ============ */
@@ -86,9 +91,9 @@ h3
     z-index: 1;
     width: 100%;
     height: 100%;
-    border: 2px solid #FFFFFF;
-    background-color: #61397D;
-    color: #FFFFFF;
+    border: 2px solid var(--button-white-border);
+    background-color: var(--print-pack-bg);
+    color: var(--button-white-text);
     border-radius: 30px;
     padding: 16px;
   
@@ -108,13 +113,14 @@ h3
         right: 10px;
         width: 60px;
         height: 60px;
-        background-color: #61397D;
-        border: 2px solid #FFFFFF;
+        background-color: var(--print-pack-bg);
+        border: 2px solid var(--button-white-border);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 2;
+        transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
       }
       .printpack-ellipse p {
         position: absolute;
@@ -124,7 +130,8 @@ h3
         text-align: center;
         font-size: 0.5em;
         font-weight: bold;
-        color: #FFFFFF;
+        color: var(--button-white-text);
+        transition: color 300ms ease-in-out;
       }
       
       .printpack-ellipse2 p1 {
@@ -140,7 +147,8 @@ h3
         z-index: 2;
         font-size: 41.89px;
         font-weight: bold;
-        color: #FFFFFF;
+        color: var(--button-white-text);
+        transition: color 300ms ease-in-out;
       }
   
   
@@ -148,13 +156,15 @@ h3
       transform 300ms ease-in-out,
       background-color 300ms ease-in-out,
       color 300ms ease-in-out,
-      opacity 300ms ease-in-out;
+      opacity 300ms ease-in-out,
+      border-color 300ms ease-in-out;
   }
   
   .printpack-topline {
     font-size: 0.6em;
-    color: #ffffff;
+    color: var(--button-white-text);
     margin-bottom: 0.5em;
+    transition: color 300ms ease-in-out;
   }
 
   /* Default Title & subtext */
@@ -196,169 +206,143 @@ h3
     position: absolute;
     width: 24px;
     height: 24px;
-    background: #FFD85D no-repeat center center;
+    background: var(--button-yellow-bg) no-repeat center center;
     background-size: contain;
+    border-radius: 50%;
     opacity: 0;
-    transform: scale(0.5);
-    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-    z-index: 2;
+    transition: opacity 300ms ease-in-out;
   }
   .star1 { top: 20px; right: 40px; }
   .star2 { top: 70px; left: 100px; }
   .star3 { top: 150px; right: 80px; }
   .printpack-container:not(.expanded):hover .star {
     opacity: 1;
-    transform: scale(1);
   }
   
-  /* ============ EXPANDED STATE ============ */
+  /* ========== EXPANDED STATE ========== */
   .printpack-container.expanded {
     z-index: 10;
     width: auto;
     height: auto;
   }
+  
   .printpack-container.expanded .printpack-background {
-    display: none;
+    display: none; /* hide background in expanded mode */
   }
   
-  /* 
-    ========== LAYOUT FOR TWO CARDS (side by side or stacked)
-  */
+  .printpack-container.expanded .printpack-card {
+    transform: none;
+    padding: 16px 16px 40px;
+    overflow: visible; /* so the top rectangle can overhang */
+  }
+  
+  /* ========== EXPANDED LAYOUT ========== */
   .printpack-expanded-layout {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
   }
   
-  /* Each expanded card => own container with same base font size ~26px */
   .printpack-expanded-card {
-    background-color: #3F2452;
-    border: 2px solid #FFFFFF;
-    border-radius: 30px;
-    color: #FFFFFF;
-    padding: 16px;
-    box-sizing: border-box;
-  
-    /* 
-      Use the same base font size as the default card 
-      => paragraphs/headings at 0.6em, etc.
-    */
-    font-size: 25.89px; 
-    line-height: 1.2;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    background-color: var(--print-pack-dark-bg);
+    border: 2px solid var(--button-white-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    color: var(--button-white-text);
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out;
   }
   
-  /* Overhanging "Print-Pack" title in left card */
+  /* ========== OVERFLOW TITLE BOX ========== */
   .printpack-overflow-title {
     position: relative;
-    background-color: #61397D;
-    border: 2px solid #FFFFFF;
+    background-color: var(--print-pack-bg);
+    border: 2px solid var(--button-white-border);
     border-radius: 30px;
     padding: 24px;
-    margin: -40px -40px 20px; /* negative margins => overhang */
+    margin: -40px -40px 20px;
     text-align: center;
-    z-index: 2;
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
   .printpack-overflow-title h2 {
     margin: 0;
-    font-size: 2.8rem; /* ~33.66px */
+    font-size: 1.3em;
     line-height: 1.2;
-    color: #FFFFFF;
+    color: var(--button-white-text);
     white-space: nowrap;
+    transition: color 300ms ease-in-out;
   }
   
-  /* 
-    Inner frame => a slightly different color or border if you want.
-    But user asked for a smaller border around the text. 
-    We'll do the same color #784289 as an example.
-  */
+  /* ========== INNER FRAME ========== */
   .printpack-inner-frame {
-    background-color: #784289; /* or any slightly lighter color */
-    border: 2px solid #FFFFFF;
-    border-radius: 20px;
-    padding: 16px;
-    margin-top: 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-.right-card {
-    position: relative;
-    z-index: 1;
-    max-width: 384px;
-    height: 100%;
+    background-color: var(--print-pack-lighter-bg);
+    border: 2px solid var(--button-white-border);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 1rem;
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
   
-  /* Standard scaling for paragraphs, headings inside expanded cards */
+  .right-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
   .expanded-card p,
   .expanded-card h3,
-  .expanded-card h4,
-  .expanded-card ul,
-  .expanded-card li {
-    font-size: 0.6em; /* ~15.53px */
-    line-height: 1.3;
+  .expanded-card h4 {
+    margin: 0.5rem 0;
+    color: var(--button-white-text);
+    transition: color 300ms ease-in-out;
   }
   
-  /* 
-    ========== DESKTOP (≥900px) ========== 
-    side by side => each card ~50% 
-  */
+  /* ========== RESPONSIVE ========== */
   @media (min-width: 900px) {
     .printpack-container.expanded {
       grid-column: 1 / 3;
-      width: 1200px; /* or whatever max you prefer */
+      width: 900px;
       height: auto;
       margin: 0 auto;
     }
-  
+    
     .printpack-expanded-card {
-      flex: 1 1 calc(50% - 12px); 
-      /* half the container minus half the 24px gap => 12px */
+      min-height: 300px;
     }
   }
   
-  /* 
-    ========== MOBILE (<900px) ==========
-    stacked => each card 100% width 
-  */
   @media (max-width: 900px) {
     .printpack-container.expanded {
       width: 92vw;
       height: auto;
-      border-radius: 30px;
+      border-radius: 12px;
     }
+    
     .printpack-expanded-card {
-      width: 100%;
-      padding: 12px;
+      padding: 1rem;
     }
+    
     .printpack-expanded-layout {
-      flex-direction: column;
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
   
   @media (max-width: 1200px) {
     .printpack-container.expanded {
-      width: 92vw;
-      min-width: 0;
-      max-width: 100vw;
+      grid-column: 1;
     }
+    
     .printpack-expanded-layout {
-      flex-direction: column;
-      gap: 24px;
+      grid-template-columns: 1fr;
     }
+    
     .printpack-expanded-card.left-card {
-      min-width: 320px;
-      max-width: 700px;
-      width: 100%;
+      order: 1;
     }
+    
     .printpack-expanded-card.right-card {
-      max-width: 384px;
-      width: 100%;
+      order: 2;
     }
   }
   
