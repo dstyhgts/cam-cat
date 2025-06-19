@@ -19,15 +19,15 @@
   --bg-hover: #e9ecef;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --footer-bg: #b94239;
-  --container-bg: #E3E1AA;
+  --container-bg: #b94239;
   
   /* Component-specific colors for light mode */
   --welcome-card-bg: #46bdc6;
   --welcome-card-border: #ffffff;
-  --welcome-button-bg: #ffe600;
-  --welcome-button-text: #4b0082;
-  --welcome-button-border: #4b0082;
-  --welcome-button-hover-bg: #4b0082;
+  --welcome-button-bg: #FFD85D;
+  --welcome-button-text: #6c66c6;
+  --welcome-button-border: #6c66c6;
+  --welcome-button-hover-bg: #6c66c6;
   --welcome-button-hover-text: #ffffff;
   --welcome-button-hover-border: #ffffff;
   
@@ -36,9 +36,9 @@
   --three-card-interior: #006063;
   --three-card-top-bg: #00a1a7;
   --three-card-text: #ffffff;
-  --three-cards-button-bg: #ffe600;
-  --three-cards-button-text: #4b0082;
-  --three-cards-button-border: #4b0082;
+  --three-cards-button-bg: #FFD85D;
+  --three-cards-button-text: #6c66c6;
+  --three-cards-button-border: #6c66c6;
   
   --about-card-border: #ffffff;
   --about-card-image-bg: #46bdc6;
@@ -102,7 +102,7 @@
 
 [data-theme="dark"] {
   /* Dark theme - Off-white backgrounds with black borders and text */
-  --bg-primary: #f8f8f8;
+  --bg-primary: #ffffff;
   --bg-secondary: #f0f0f0;
   --bg-tertiary: #e8e8e8;
   --text-primary: #000000;
@@ -113,15 +113,15 @@
   --bg-hover: #e0e0e0;
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --footer-bg: #f0f0f0;
-  --container-bg: #f8f8f8;
+  --container-bg: #ffffff;
   
   /* Component-specific colors for dark mode (reversed) */
   --welcome-card-bg: #f0f0f0;
   --welcome-card-border: #000000;
-  --welcome-button-bg: #ffe600;
-  --welcome-button-text: #4b0082;
-  --welcome-button-border: #4b0082;
-  --welcome-button-hover-bg: #4b0082;
+  --welcome-button-bg: #FFD85D;
+  --welcome-button-text: #6c66c6;
+  --welcome-button-border: #6c66c6;
+  --welcome-button-hover-bg: #6c66c6;
   --welcome-button-hover-text: #ffffff;
   --welcome-button-hover-border: #ffffff;
   
@@ -130,9 +130,9 @@
   --three-card-interior: #e8e8e8;
   --three-card-top-bg: #e0e0e0;
   --three-card-text: #000000;
-  --three-cards-button-bg: #ffe600;
-  --three-cards-button-text: #4b0082;
-  --three-cards-button-border: #4b0082;
+  --three-cards-button-bg: #FFD85D;
+  --three-cards-button-text: #6c66c6;
+  --three-cards-button-border: #6c66c6;
   
   --about-card-border: #000000;
   --about-card-image-bg: #e8e8e8;
@@ -155,7 +155,7 @@
   /* Package button colors for dark mode (reversed) */
   --print-pack-bg: #f0f0f0;
   --print-pack-dark-bg: #e8e8e8;
-  --print-pack-lighter-bg: #e0e0e0;
+  --print-pack-lighter-bg: #f0f0f0;
   
   --classics-pack-bg: #f0f0f0;
   --classics-pack-dark-bg: #e8e8e8;
@@ -164,9 +164,9 @@
   --premiere-pack-dark-bg: #e8e8e8;
   
   --diamond-pack-bg: #f0f0f0;
-  --diamond-pack-text: #000000;
-  --diamond-pack-light-text: #000000;
-  --diamond-pack-gray-text: #000000;
+  --diamond-pack-text: #666666;
+  --diamond-pack-light-text: #999999;
+  --diamond-pack-gray-text: #cccccc;
   
   /* Button specific colors for dark mode (white backgrounds, keep vibrant hover colors) */
   --instant-button-bg: #ffffff;
@@ -180,7 +180,7 @@
   --camera-bar-button-bg: #f0f0f0;
   
   /* LandingGallery colors for dark mode (reversed) */
-  --landing-gallery-bg: #f8f8f8;
+  --landing-gallery-bg: #ffffff;
   --landing-gallery-item-bg: #e0e0e0;
   
   /* ColorfulBranding colors for dark mode (reversed) */

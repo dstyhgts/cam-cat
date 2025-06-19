@@ -24,30 +24,30 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeProvider>
-          <div>
-            {/* <NewNavbar /> */}
-            <NewNavbar />
-            {/* <ImagesContainer /> */}
-            <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
-              {/* <LandingGallery /> */}
-              <WelcomeCamera />
-              <ColorfulBranding />
-            </section>
-            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
-              <BigSvg />
-              <ThreeCards />
-              <ColorfulBranding2 />
-              <Footer />
+        <div>
+          {/* <NewNavbar /> */}
+          <NewNavbar />
+          {/* <ImagesContainer /> */}
+          <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+            {/* <LandingGallery /> */}
+            <WelcomeCamera />
+            <ColorfulBranding />
+          </section>
+          <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+            <BigSvg />
+            <ThreeCards />
+            <ColorfulBranding2 />
+            <Footer />
 
-            </section>
-            {/* <ImagesContainer /> */}
-            {/* <SimpleStage  /> */}
-            {/* <ColorfulBranding />
-            <ColorfulBranding2 /> */}
-            {/* <Footer /> */}
-            
-          </div>
-          <Sidebar />
+          </section>
+          {/* <ImagesContainer /> */}
+          {/* <SimpleStage  /> */}
+          {/* <ColorfulBranding />
+          <ColorfulBranding2 /> */}
+          {/* <Footer /> */}
+          
+        </div>
+        <Sidebar />
         </ThemeProvider>
       </body>
     </html>

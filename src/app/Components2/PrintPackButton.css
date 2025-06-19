@@ -185,11 +185,18 @@ h3
     bottom: 5px;
     left: 16px;
     z-index: 0;
+    width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-left: 7px;
+    padding-right: 7px;
   }
-  .bottom-arrows .arrow-down {
-    display: inline-block;
-    font-size: 1.2em;
-    margin-right: 8px;
+  .arrow-down.left {
+    margin-right: auto;
+  }
+  .arrow-down.right {
+    margin-left: auto;
   }
   
   /* Hover effect: slight translation + slight opacity change */
@@ -238,18 +245,23 @@ h3
   
   /* ========== EXPANDED LAYOUT ========== */
   .printpack-expanded-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px;
   }
   
   .printpack-expanded-card {
+    flex: 1 1 calc(50% - 12px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background-color: var(--print-pack-dark-bg);
     border: 2px solid var(--button-white-border);
-    border-radius: 20px;
-    padding: 1.5rem;
+    border-radius: 30px;
     color: var(--button-white-text);
+    padding: 16px;
+    box-sizing: border-box;
     transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out;
   }
   
@@ -259,18 +271,23 @@ h3
     background-color: var(--print-pack-bg);
     border: 2px solid var(--button-white-border);
     border-radius: 30px;
-    padding: 24px;
-    margin: -40px -40px 20px;
-    text-align: center;
+    padding: 24px 48px 24px 24px;
+    margin: -60px -40px 20px -40px;
+    text-align: left;
+    z-index: 2;
+    min-width: 320px;
+    max-width: 700px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
   .printpack-overflow-title h2 {
     margin: 0;
-    font-size: 1.3em;
+    font-size: 2.8rem;
     line-height: 1.2;
     color: var(--button-white-text);
     white-space: nowrap;
     transition: color 300ms ease-in-out;
+    text-align: left;
   }
   
   /* ========== INNER FRAME ========== */
@@ -307,7 +324,7 @@ h3
     }
     
     .printpack-expanded-card {
-      min-height: 300px;
+      /* min-height: 300px; */
     }
   }
   
@@ -344,5 +361,13 @@ h3
     .printpack-expanded-card.right-card {
       order: 2;
     }
+  }
+  
+  .printpack-expanded-card.left-card {
+    position: relative;
+    min-width: 320px;
+    max-width: 700px;
+    width: 100%;
+    padding-top: 40px;
   }
   

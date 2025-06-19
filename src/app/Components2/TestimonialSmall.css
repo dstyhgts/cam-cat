@@ -5,7 +5,7 @@
   
     /* Style */
     background-color: var(--testimonial-bg);
-    border: 5px solid var(--testimonial-border);
+    border: 2px solid var(--testimonial-border);
     border-radius: 30px;
     box-sizing: border-box;
     position: relative; /* so we can position label at top left, etc. */

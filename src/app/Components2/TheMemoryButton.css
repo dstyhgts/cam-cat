@@ -202,19 +202,28 @@
   padding: 0;
 }
 .memory-bullets li {
-  margin-bottom: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  display: block;
+  margin-bottom: 18px;
+  word-wrap: break-word;
+}
+.memory-bullets i {
+  font-style: italic;
+  font-weight: bold;
+  display: inline;
+  margin-left: 0.2em;
 }
 .emoji {
-  font-size: 1.2em;
-  flex-shrink: 0;
+  display: inline;
+  width: 1.2em;
+  margin-right: 0.3em;
+  margin-bottom: 0;
 }
 .li-desc {
-  flex: 1;
+  display: block;
+  font-weight: normal;
   color: var(--button-white-text);
   transition: color 300ms ease-in-out;
+  margin-top: 0.1em;
 }
 .memory-experience {
   margin-top: 20px;

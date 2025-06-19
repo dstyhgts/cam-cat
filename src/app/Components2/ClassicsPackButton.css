@@ -185,11 +185,18 @@ h3
     bottom: 5px;
     left: 16px;
     z-index: 0;
+    width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-left: 7px;
+    padding-right: 7px;
   }
-  .bottom-arrows .arrow-down {
-    display: inline-block;
-    font-size: 1.2em;
-    margin-right: 8px;
+  .arrow-down.left {
+    margin-right: auto;
+  }
+  .arrow-down.right {
+    margin-left: auto;
   }
   
   /* Hover effect: slight translation + slight opacity change */
