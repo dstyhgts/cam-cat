@@ -36,7 +36,7 @@
   width: 100%;
   height: 100%;
   border: 2px solid var(--button-white-border);
-  background-color: var(--camera-bar-button-bg);
+  background-color: var(--memory-button-bg);
   color: var(--button-white-text);
   border-radius: 30px;
   padding: 16px;
@@ -139,7 +139,7 @@
 /* ========== OVERFLOW TITLE BOX ========== */
 .camera-bar-overflow-title {
   position: relative;
-  background-color: var(--camera-bar-button-bg);
+  background-color: var(--memory-button-bg);
   border: 2px solid var(--button-white-border);
   border-radius: 30px;
   padding: 24px;
