@@ -1,9 +1,22 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Script from "next/script";
+import { useTheme } from "./ThemeProvider";
 
 export default function Footer() {
   const containerRef = useRef(null);
+  const { theme } = useTheme();
+
+  // Footer link style for inline use
+  const footerLinkStyle = {
+    fontSize: "109.66px",
+    fontWeight: 700,
+    color: "#fff",
+    textDecoration: "none",
+    letterSpacing: "0.03em",
+    lineHeight: 1,
+    transition: "color 0.2s",
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.p5 && window.Matter) {
@@ -13,6 +26,7 @@ export default function Footer() {
         let items = [];
         let lastMouseX = -1;
         let lastMouseY = -1;
+        let gyroForce = { x: 0, y: 0 };
 
         p.setup = function () {
           p.createCanvas(p.windowWidth, p.windowHeight);
@@ -20,13 +34,26 @@ export default function Footer() {
           engine.world.gravity.y = 0;
           addBoundaries();
 
-          // Create items
-          for (let i = 0; i < 10; i++) {
+          // Create items (4 on mobile, 10 on desktop)
+          const isMobile = window.innerWidth < 900;
+          const numItems = isMobile ? 4 : 10;
+          for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
             items.push(new Item(x, y, `/assets/img${i + 1}.jpg`));
           }
+          // Gyro support for mobile
+          if (isMobile && window.DeviceOrientationEvent) {
+            window.addEventListener("deviceorientation", handleGyro, true);
+          }
         };
+
+        function handleGyro(event) {
+          // event.beta (x axis: front-back tilt), event.gamma (y axis: left-right tilt)
+          // Normalize to [-1, 1] range for force
+          gyroForce.x = (event.gamma || 0) / 45; // [-1, 1] for -45 to 45 deg
+          gyroForce.y = (event.beta || 0) / 45;  // [-1, 1] for -45 to 45 deg
+        }
 
         function addBoundaries() {
           const thickness = 50;
@@ -44,6 +71,16 @@ export default function Footer() {
 
           Engine.update(engine);
           items.forEach((item) => item.update());
+          // On mobile, apply gyro force to all cards
+          if (window.innerWidth < 900 && (gyroForce.x !== 0 || gyroForce.y !== 0)) {
+            items.forEach((item) => {
+              Body.applyForce(
+                item.body,
+                { x: item.body.position.x, y: item.body.position.y },
+                { x: gyroForce.x * 0.01, y: gyroForce.y * 0.01 }
+              );
+            });
+          }
         };
 
         class Item {
@@ -97,9 +134,24 @@ export default function Footer() {
         p.windowResized = function () {
           p.resizeCanvas(p.windowWidth, p.windowHeight);
         };
+
+        // Clean up gyro event on unmount
+        p.remove = function () {
+          if (window.DeviceOrientationEvent) {
+            window.removeEventListener("deviceorientation", handleGyro, true);
+          }
+        };
       };
 
       new window.p5(sketch, containerRef.current);
+      // Clean up p5 and gyro event on unmount
+      return () => {
+        if (window.p5 && containerRef.current && containerRef.current.children.length > 0) {
+          // Remove the p5 instance
+          const p5Instance = containerRef.current.children[0].__p5instance;
+          if (p5Instance && p5Instance.remove) p5Instance.remove();
+        }
+      };
     }
   }, []);
 
@@ -111,7 +163,6 @@ export default function Footer() {
       <div
         ref={containerRef}
         style={{
-          // position: "absolute",
           position: "relative",
           top: 0,
           left: 0,
@@ -119,11 +170,138 @@ export default function Footer() {
           height: "0vh",  // Full viewport height
           overflow: "visible",
           background: "#b94239",
-          zIndex: 0,  // Move off-screen
+          zIndex: 2,  // Cards above footer content
+          pointerEvents: "none", // Make cards not block pointer events
           opacity: 1,  // Initially hidden for animation
         }}
       >
       </div>
+      {/* Footer Content is now below the interactive cards in the DOM and visually */}
+      <footer className="footer-outer">
+        <div className="footer-content">
+          <div
+            className="footer-center-text"
+            style={{ color: theme === "dark" ? "#fff" : "#000" }}
+          >
+            CAM-CAT
+          </div>
+          <div className="footer-links-row">
+            <div className="footer-links-col">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>INSTAGRAM</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>FACEBOOK</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YOUTUBE</a>
+              <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
+            </div>
+            <div className="footer-links-col">
+              <a href="/quote" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET QUOTE</a>
+              <a href="/contact" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET IN TOUCH</a>
+              <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
+              <a href="/schedule" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>SCHEDULE CONSULTATION</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <style jsx>{`
+        .footer-outer {
+          width: 100vw;
+          min-height: 40vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 0;
+          background: transparent;
+          margin-top: 0;
+        }
+        .footer-content {
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 0;
+          pointer-events: auto;
+          height: 100%;
+          min-height: 40vh;
+          padding-top: 12vh;
+          padding-bottom: 6vh;
+          margin-top: 32px;
+        }
+        .footer-links-row {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 6vw;
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
+          pointer-events: auto;
+        }
+        .footer-links-col.single {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2vh;
+          pointer-events: auto;
+          width: auto;
+        }
+        .footer-links-col {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5vh;
+          width: auto;
+        }
+        a.footer-link {
+          font-size: 67.77px;
+          font-weight: 700;
+          text-decoration: none;
+          letter-spacing: 0.03em;
+          line-height: 1;
+          transition: color 0.2s;
+          pointer-events: auto;
+          margin: 0;
+        }
+        a.footer-link:hover {
+          color: #ffd700 !important;
+        }
+        @media (max-width: 900px) {
+          .footer-links-row {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5vh;
+          }
+          .footer-links-col {
+            align-items: center;
+            width: 100%;
+          }
+          .footer-center-text {
+            font-size: 166.34px !important;
+            text-align: center;
+          }
+          a.footer-link {
+            font-size: 50.83px !important;
+            text-align: center;
+            width: 100%;
+          }
+        }
+        .footer-center-text {
+          font-weight: 900;
+          font-size: 221.78px;
+          letter-spacing: 0.05em;
+          color: #fff;
+          text-align: center;
+          line-height: 1;
+          margin-bottom: 0.5vh;
+          width: 100vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </>
   );
 }
