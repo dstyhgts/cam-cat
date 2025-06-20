@@ -31,11 +31,18 @@ export default function Footer() {
         p.setup = function () {
           p.createCanvas(p.windowWidth, p.windowHeight);
           engine = Engine.create();
-          engine.world.gravity.y = 0;
+          const isMobile = window.innerWidth < 900;
+          if (isMobile) {
+            // Default gravity for mobile if no gyro
+            engine.world.gravity.x = 0;
+            engine.world.gravity.y = 1;
+          } else {
+            engine.world.gravity.x = 0;
+            engine.world.gravity.y = 0;
+          }
           addBoundaries();
 
           // Create items (4 on mobile, 10 on desktop)
-          const isMobile = window.innerWidth < 900;
           const numItems = isMobile ? 4 : 10;
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
@@ -44,15 +51,17 @@ export default function Footer() {
           }
           // Gyro support for mobile
           if (isMobile && window.DeviceOrientationEvent) {
-            window.addEventListener("deviceorientation", handleGyro, true);
+            window.addEventListener("deviceorientation", handleGyroGravity, true);
           }
         };
 
-        function handleGyro(event) {
+        function handleGyroGravity(event) {
           // event.beta (x axis: front-back tilt), event.gamma (y axis: left-right tilt)
-          // Normalize to [-1, 1] range for force
-          gyroForce.x = (event.gamma || 0) / 45; // [-1, 1] for -45 to 45 deg
-          gyroForce.y = (event.beta || 0) / 45;  // [-1, 1] for -45 to 45 deg
+          // Normalize to [-1, 1] range for -45 to 45 deg
+          if (engine && engine.world && engine.world.gravity) {
+            engine.world.gravity.x = (event.gamma || 0) / 45; // [-1, 1]
+            engine.world.gravity.y = (event.beta || 0) / 45;  // [-1, 1]
+          }
         }
 
         function addBoundaries() {
@@ -71,16 +80,6 @@ export default function Footer() {
 
           Engine.update(engine);
           items.forEach((item) => item.update());
-          // On mobile, apply gyro force to all cards
-          if (window.innerWidth < 900 && (gyroForce.x !== 0 || gyroForce.y !== 0)) {
-            items.forEach((item) => {
-              Body.applyForce(
-                item.body,
-                { x: item.body.position.x, y: item.body.position.y },
-                { x: gyroForce.x * 0.01, y: gyroForce.y * 0.01 }
-              );
-            });
-          }
         };
 
         class Item {
@@ -138,7 +137,7 @@ export default function Footer() {
         // Clean up gyro event on unmount
         p.remove = function () {
           if (window.DeviceOrientationEvent) {
-            window.removeEventListener("deviceorientation", handleGyro, true);
+            window.removeEventListener("deviceorientation", handleGyroGravity, true);
           }
         };
       };
@@ -218,7 +217,7 @@ export default function Footer() {
           width: 100vw;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
           position: relative;
           z-index: 0;
@@ -228,11 +227,13 @@ export default function Footer() {
           padding-top: 12vh;
           padding-bottom: 6vh;
           margin-top: 32px;
+          padding-left: 50px;
+          box-sizing: border-box;
         }
         .footer-links-row {
           display: flex;
           flex-direction: row;
-          justify-content: center;
+          justify-content: flex-start;
           align-items: flex-start;
           gap: 6vw;
           width: 100%;
@@ -271,21 +272,24 @@ export default function Footer() {
         @media (max-width: 900px) {
           .footer-links-row {
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.5vh;
           }
           .footer-links-col {
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
           }
           .footer-center-text {
             font-size: 166.34px !important;
-            text-align: center;
+            text-align: left;
           }
           a.footer-link {
-            font-size: 50.83px !important;
-            text-align: center;
+            font-size: 38.12px !important;
+            text-align: left;
             width: 100%;
+          }
+          .footer-content {
+            padding-left: 10px;
           }
         }
         .footer-center-text {
@@ -293,13 +297,13 @@ export default function Footer() {
           font-size: 221.78px;
           letter-spacing: 0.05em;
           color: #fff;
-          text-align: center;
+          text-align: left;
           line-height: 1;
           margin-bottom: 0.5vh;
           width: 100vw;
           display: flex;
-          align-items: center;
-          justify-content: center;
+          align-items: flex-start;
+          justify-content: flex-start;
         }
       `}</style>
     </>
