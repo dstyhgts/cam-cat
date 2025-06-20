@@ -27,6 +27,11 @@ export default function Footer() {
         let lastMouseX = -1;
         let lastMouseY = -1;
         let gyroForce = { x: 0, y: 0 };
+        // Touch drag/toss state
+        let draggingItem = null;
+        let dragOffset = { x: 0, y: 0 };
+        let lastTouch = { x: 0, y: 0, t: 0 };
+        let lastVelocity = { x: 0, y: 0 };
 
         p.setup = function () {
           p.createCanvas(p.windowWidth, p.windowHeight);
@@ -52,6 +57,12 @@ export default function Footer() {
           // Gyro support for mobile
           if (isMobile && window.DeviceOrientationEvent) {
             window.addEventListener("deviceorientation", handleGyroGravity, true);
+          }
+          // Touch/toss support for mobile
+          if (isMobile) {
+            p.canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+            p.canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+            p.canvas.addEventListener('touchend', handleTouchEnd, { passive: false });
           }
         };
 
@@ -134,10 +145,74 @@ export default function Footer() {
           p.resizeCanvas(p.windowWidth, p.windowHeight);
         };
 
-        // Clean up gyro event on unmount
+        function getTouchItem(x, y) {
+          // Find the topmost item under the touch point
+          for (let i = items.length - 1; i >= 0; i--) {
+            const item = items[i];
+            const bx = item.body.position.x;
+            const by = item.body.position.y;
+            if (p.dist(x, y, bx, by) < 100) return item;
+          }
+          return null;
+        }
+
+        function handleTouchStart(e) {
+          if (e.touches.length !== 1) return;
+          const touch = e.touches[0];
+          const x = touch.clientX;
+          const y = touch.clientY;
+          draggingItem = getTouchItem(x, y);
+          if (draggingItem) {
+            dragOffset.x = draggingItem.body.position.x - x;
+            dragOffset.y = draggingItem.body.position.y - y;
+            lastTouch = { x, y, t: Date.now() };
+            lastVelocity = { x: 0, y: 0 };
+            e.preventDefault();
+          }
+        }
+
+        function handleTouchMove(e) {
+          if (!draggingItem || e.touches.length !== 1) return;
+          const touch = e.touches[0];
+          const x = touch.clientX;
+          const y = touch.clientY;
+          // Move the card with the finger
+          Matter.Body.setPosition(draggingItem.body, {
+            x: x + dragOffset.x,
+            y: y + dragOffset.y,
+          });
+          // Calculate velocity for toss
+          const now = Date.now();
+          const dt = (now - lastTouch.t) / 1000;
+          if (dt > 0) {
+            lastVelocity.x = (x - lastTouch.x) / dt;
+            lastVelocity.y = (y - lastTouch.y) / dt;
+          }
+          lastTouch = { x, y, t: now };
+          e.preventDefault();
+        }
+
+        function handleTouchEnd(e) {
+          if (draggingItem) {
+            // Apply toss velocity
+            Matter.Body.setVelocity(draggingItem.body, {
+              x: lastVelocity.x * 0.02,
+              y: lastVelocity.y * 0.02,
+            });
+            draggingItem = null;
+            e.preventDefault();
+          }
+        }
+
+        // Clean up gyro event and touch events on unmount
         p.remove = function () {
           if (window.DeviceOrientationEvent) {
             window.removeEventListener("deviceorientation", handleGyroGravity, true);
+          }
+          if (isMobile && p.canvas) {
+            p.canvas.removeEventListener('touchstart', handleTouchStart);
+            p.canvas.removeEventListener('touchmove', handleTouchMove);
+            p.canvas.removeEventListener('touchend', handleTouchEnd);
           }
         };
       };

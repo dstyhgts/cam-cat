@@ -136,8 +136,7 @@ export default function Sidebar() {
             <Link href="/contact">Welcome Packet</Link>
           </div>
           <div className="card-copy">
-            <p>Upon request for current-clients only; helps to engage <i>other </i>prospective clients
-              and make clear our services in a direct and client-specific manner.
+            <p>Coming Soon for a Client Near You.
             </p>
           </div>
         </div>
