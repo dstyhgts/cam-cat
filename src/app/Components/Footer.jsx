@@ -167,6 +167,7 @@ export default function Footer() {
           left: 0,
           width: "50vw",
           height: "0vh",  // Full viewport height
+          minHeight: typeof window !== 'undefined' && window.innerWidth < 900 ? '150vh' : undefined,
           overflow: "visible",
           background: "#b94239",
           zIndex: 2,  // Cards above footer content
@@ -223,7 +224,7 @@ export default function Footer() {
           z-index: 0;
           pointer-events: auto;
           height: 100%;
-          min-height: 40vh;
+          min-height: 0;
           padding-top: 12vh;
           padding-bottom: 6vh;
           margin-top: 32px;
@@ -279,17 +280,21 @@ export default function Footer() {
             align-items: flex-start;
             width: 100%;
           }
+          .footer-content {
+            padding-left: 10px;
+            min-height: 0;
+          }
           .footer-center-text {
             font-size: 166.34px !important;
             text-align: left;
+            line-height: 0.85 !important;
+            letter-spacing: 0.01em !important;
+            margin-bottom: 0 !important;
           }
           a.footer-link {
             font-size: 38.12px !important;
             text-align: left;
             width: 100%;
-          }
-          .footer-content {
-            padding-left: 10px;
           }
         }
         .footer-center-text {
