@@ -234,7 +234,7 @@ export default function Sidebar() {
         }
 
         /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           .sidebar {
             width: 70vw;
             padding: 0.5em;

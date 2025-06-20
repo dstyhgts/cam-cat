@@ -60,7 +60,7 @@ export default function Footer() {
           // Normalize to [-1, 1] range for -45 to 45 deg
           if (engine && engine.world && engine.world.gravity) {
             engine.world.gravity.x = (event.gamma || 0) / 45; // [-1, 1]
-            engine.world.gravity.y = (event.beta || 0) / 45;  // [-1, 1]
+            engine.world.gravity.y = -1 * ((event.beta || 0) / 45);  // Invert: [-1, 1] -> [1, -1]
           }
         }
 
