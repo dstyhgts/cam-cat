@@ -1,8 +1,10 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import Script from "next/script";
+import { PopupButton } from '@typeform/embed-react';
+import { useTheme } from "./ThemeProvider";
 
 export default function Sidebar() {
   useEffect(() => {
@@ -67,14 +69,6 @@ export default function Sidebar() {
       animateCardsIn();
     });
 
-    cards.forEach((card) => {
-      card.addEventListener("click", (e) => {
-        e.stopPropagation();
-        animateCardsOut();
-        sidebar.style.pointerEvents = "none";
-      });
-    });
-
     function handleClickOutside(e) {
       if (
         sidebar &&
@@ -86,10 +80,35 @@ export default function Sidebar() {
       }
     }
     document.addEventListener("click", handleClickOutside);
+
+    // Expose animateCardsOut and sidebar for use in event handlers
+    window.__sidebar_animateCardsOut = animateCardsOut;
+    window.__sidebar_ref = sidebar;
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      delete window.__sidebar_animateCardsOut;
+      delete window.__sidebar_ref;
     };
   }, []);
+
+  const popupBtnRef = useRef(null);
+  const { theme } = useTheme();
+  const [closeHover, setCloseHover] = useState(false);
+
+  function handleGetQuoteCardClick() {
+    if (window.__sidebar_animateCardsOut && window.__sidebar_ref) {
+      window.__sidebar_animateCardsOut();
+      window.__sidebar_ref.style.pointerEvents = "none";
+    }
+  }
+
+  function handleGetInTouchCardClick() {
+    if (window.__sidebar_animateCardsOut && window.__sidebar_ref) {
+      window.__sidebar_animateCardsOut();
+      window.__sidebar_ref.style.pointerEvents = "none";
+    }
+  }
 
   return (
     <>
@@ -110,11 +129,71 @@ export default function Sidebar() {
         </p>
       </div>
       <div className="sidebar preload">
-        <div className="card">
-          <div className="card-title">
+        <div className="card" style={{ position: 'relative' }} onClick={handleGetQuoteCardClick}>
+          {/* Overlayed PopupButton covers the card, but card structure is unchanged */}
+          <PopupButton
+            id="atnpwpHn"
+            className="get-quote-popup-btn-overlay"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              opacity: 0,
+              zIndex: 2,
+              cursor: 'pointer',
+              border: 'none',
+              background: 'none',
+              padding: 0,
+              margin: 0,
+            }}
+            size={80}
+            onClick={handleGetQuoteCardClick}
+          >
+            Get Quote
+          </PopupButton>
+          <div className="card-title" style={{ position: 'relative' }}>
             <Link href="/projects">Get Quote</Link>
-            <div className="close-btn">
-              <i className="ph-thin ph-x"></i>
+            <div
+              className="close-btn-hitbox"
+              onClick={e => {
+                e.stopPropagation();
+                if (window.__sidebar_animateCardsOut && window.__sidebar_ref) {
+                  window.__sidebar_animateCardsOut();
+                  window.__sidebar_ref.style.pointerEvents = 'none';
+                }
+              }}
+              onMouseEnter={() => setCloseHover(true)}
+              onMouseLeave={() => setCloseHover(false)}
+              style={{
+                position: 'absolute',
+                top: '-16px',
+                right: '-16px',
+                width: '60px',
+                height: '60px',
+                zIndex: 10,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'transparent',
+                borderRadius: '50%',
+              }}
+            >
+              <div
+                className="close-btn"
+                style={{
+                  fontSize: '60px',
+                  color: closeHover
+                    ? (theme === 'dark' ? '#000' : '#fff')
+                    : (theme === 'dark' ? '#fff' : '#000'),
+                  pointerEvents: 'none',
+                  transition: 'color 0.2s',
+                }}
+              >
+                <i className="ph-thin ph-x"></i>
+              </div>
             </div>
           </div>
           <div className="card-copy">
@@ -123,12 +202,35 @@ export default function Sidebar() {
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="card" style={{ position: 'relative' }} onClick={handleGetInTouchCardClick}>
+          {/* Overlayed PopupButton covers the card, but card structure is unchanged */}
+          <PopupButton
+            id="yyPNXkPK"
+            className="get-in-touch-popup-btn-overlay"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              opacity: 0,
+              zIndex: 2,
+              cursor: 'pointer',
+              border: 'none',
+              background: 'none',
+              padding: 0,
+              margin: 0,
+            }}
+            size={80}
+            onClick={handleGetInTouchCardClick}
+          >
+            Get In Touch
+          </PopupButton>
           <div className="card-title">
-            <Link href="/about">Schedule A Call</Link>
+            <Link href="/about">Get In Touch</Link>
           </div>
           <div className="card-copy">
-            <p>Schedule either online or over the phone.</p>
+            <p>Reach us at:<br/>(805)678-3444<br/>info@cameracatering.com<br/>Or click to have us reach out to you!</p>
           </div>
         </div>
         <div className="card">

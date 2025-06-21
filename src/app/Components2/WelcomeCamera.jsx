@@ -1,28 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './WelcomeCamera.css';
 import Footer from '../Components/Footer';
 import LandingGallery from '../Components/LandingGallery';
+import { PopupButton } from '@typeform/embed-react';
 
 const WelcomeCamera = () => {
-  const handleOrderNow = () => {
-    console.log('Order Now clicked');
-  };
-
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 1
-      }}>
+      {/* LandingGallery at the bottom layer */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1, pointerEvents: 'auto' }}>
         <LandingGallery />
       </div>
-      <div className="welcome-camera-container" style={{ position: 'relative', zIndex: 2 }}>
+      {/* Welcome content above, but pointer-events: none except for the button */}
+      <div className="welcome-camera-container" style={{ position: 'relative', zIndex: 2, pointerEvents: 'none' }}>
         {/* Left side: Title & text */}
-        <div className="left-content">
+        <div className="left-content" style={{ pointerEvents: 'none' }}>
           {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
           {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
           <h1 className="main-title">YOU'RE THE CONTENT CREATOR</h1>
@@ -47,8 +39,8 @@ const WelcomeCamera = () => {
         </div>
 
         {/* Right side: Multi-layered card + pinned SVG */}
-        <div className="right-content">
-          <div className="fancy-card">
+        <div className="right-content" style={{ pointerEvents: 'none' }}>
+          <div className="fancy-card" style={{ pointerEvents: 'none' }}>
             {/* Top Rectangle */}
             <div className="card-top-rectangle">
               <h2 className="card-title">Start here...</h2>
@@ -62,10 +54,15 @@ const WelcomeCamera = () => {
             </div>
 
             {/* Bottom Rectangle with ORDER NOW box */}
-            <div className="card-bottom-rectangle">
-              <button className="order-button" onClick={handleOrderNow}>
+            <div className="card-bottom-rectangle" style={{ pointerEvents: 'none' }}>
+              <PopupButton
+                id="yyPNXkPK"
+                className="order-button"
+                size={80}
+                style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto' }}
+              >
                 Get Started
-              </button>
+              </PopupButton>
             </div>
           </div>
 

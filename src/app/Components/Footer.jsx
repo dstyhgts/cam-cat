@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { useTheme } from "./ThemeProvider";
+import { PopupButton } from '@typeform/embed-react';
 
 export default function Footer() {
   const containerRef = useRef(null);
@@ -268,8 +269,20 @@ export default function Footer() {
               <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
             </div>
             <div className="footer-links-col">
-              <a href="/quote" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET QUOTE</a>
-              <a href="/contact" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET IN TOUCH</a>
+              <PopupButton
+                id="atnpwpHn"
+                className="footer-link"
+                size={80}
+              >
+                GET QUOTE
+              </PopupButton>
+              <PopupButton
+                id="yyPNXkPK"
+                className="footer-link"
+                size={80}
+              >
+                GET IN TOUCH
+              </PopupButton>
               <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
               <a href="/schedule" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>SCHEDULE CONSULTATION</a>
             </div>

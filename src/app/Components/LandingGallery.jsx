@@ -79,6 +79,10 @@ const LandingGallery = ({ className = "", ...props }) => {
 
     // Create gallery items and attach advanced hover listeners
     const createItems = () => {
+      // Remove any existing items to prevent duplicate listeners
+      while (gallery.firstChild) {
+        gallery.removeChild(gallery.firstChild);
+      }
       for (let i = 1; i <= itemsCount; i++) {
         const item = document.createElement("div");
         item.classList.add("lg-item");

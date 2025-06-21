@@ -1247,5 +1247,31 @@ img {
   scroll-margin-top: 90px; /* Adjust to your navbar height */
 }
 
+/* Make button.footer-link look like a.footer-link */
+button.footer-link {
+  background: none;
+  border: none;
+  color: #000;
+  font: inherit;
+  font-size: 67.77px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  transition: color 0.2s;
+  pointer-events: auto;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+[data-theme="dark"] button.footer-link {
+  color: #fff;
+}
+button.footer-link:hover {
+  color: #ffd700 !important;
+  text-decoration: none;
+}
+
 
 

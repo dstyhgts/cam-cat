@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
+    "@typeform/embed-react": "^4.6.0",
     "dat.gui": "^0.7.9",
     "gsap": "^3.12.7",
     "matter-js": "^0.20.0",

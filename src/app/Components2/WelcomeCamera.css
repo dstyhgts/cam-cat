@@ -22,7 +22,7 @@
     color: var(--text-color);
     text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
     z-index: 2;
-    pointer-events: none;
+    pointer-events: auto;
     transition: color 0.3s ease;
   }
   
@@ -82,6 +82,7 @@
     align-items: center;   /* center the card vertically */
     justify-content: center; /* center horizontally */
     box-sizing: border-box;
+    pointer-events: none;
   }
   
   /***************************************************
@@ -102,6 +103,7 @@
     box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
     rotate: 6deg;
     transition: border-color 0.3s ease, background-color 0.3s ease;
+    pointer-events: none;
   }
   
   /* Top Rectangle: 
@@ -165,6 +167,8 @@
     cursor: pointer;
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.5);
     pointer-events: auto;
+    z-index: 10;
+    position: relative;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
   
@@ -286,4 +290,14 @@
   height: 100%;
   z-index: 1;
   pointer-events: none;
+}
+
+.lg-container {
+  pointer-events: auto;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
