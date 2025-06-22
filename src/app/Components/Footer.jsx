@@ -7,6 +7,9 @@ import { PopupButton } from '@typeform/embed-react';
 export default function Footer() {
   const containerRef = useRef(null);
   const { theme } = useTheme();
+  const scheduleRef = useRef(); // Add ref for schedule consultation
+  const quoteRef = useRef(); // Add ref for get quote
+  const touchRef = useRef(); // Add ref for get in touch
 
   // Footer link style for inline use
   const footerLinkStyle = {
@@ -269,22 +272,48 @@ export default function Footer() {
               <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
             </div>
             <div className="footer-links-col">
-              <PopupButton
-                id="atnpwpHn"
-                className="footer-link"
-                size={80}
-              >
-                GET QUOTE
-              </PopupButton>
-              <PopupButton
-                id="yyPNXkPK"
-                className="footer-link"
-                size={80}
-              >
-                GET IN TOUCH
-              </PopupButton>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <PopupButton
+                  id="atnpwpHn"
+                  embedRef={quoteRef}
+                  style={{ display: "none" }}
+                />
+                <button
+                  className="footer-link"
+                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                  onClick={() => quoteRef.current.open()}
+                >
+                  GET QUOTE
+                </button>
+              </div>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <PopupButton
+                  id="yyPNXkPK"
+                  embedRef={touchRef}
+                  style={{ display: "none" }}
+                />
+                <button
+                  className="footer-link"
+                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                  onClick={() => touchRef.current.open()}
+                >
+                  GET IN TOUCH
+                </button>
+              </div>
               <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
-              <a href="/schedule" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>SCHEDULE CONSULTATION</a>
+              {/* Hidden PopupButton for SCHEDULE CONSULTATION */}
+              <PopupButton
+                id="wwvkhbUP"
+                embedRef={scheduleRef}
+                style={{ display: "none" }}
+              />
+              <button
+                className="footer-link"
+                style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                onClick={() => scheduleRef.current.open()}
+              >
+                SCHEDULE CONSULTATION
+              </button>
             </div>
           </div>
         </div>
@@ -343,17 +372,27 @@ export default function Footer() {
           flex-direction: column;
           align-items: flex-start;
           gap: 0.5vh;
+          text-align: left;
           width: auto;
         }
-        a.footer-link {
+        a.footer-link, .footer-link {
           font-size: 67.77px;
           font-weight: 700;
           text-decoration: none;
           letter-spacing: 0.03em;
           line-height: 1;
-          transition: color 0.2s;
+          text-align: left !important;
+          text-align-last: left !important;
+          display: block !important;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
           pointer-events: auto;
           margin: 0;
+        }
+        .footer-link > *, .footer-link button, .footer-link span, .footer-link div {
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          text-align: left !important;
         }
         a.footer-link:hover {
           color: #ffd700 !important;
@@ -379,7 +418,10 @@ export default function Footer() {
             letter-spacing: 0.01em !important;
             margin-bottom: 0 !important;
           }
-          a.footer-link {
+          a.footer-link,
+          .footer-link,
+          button.footer-link,
+          .footer-link button {
             font-size: 38.12px !important;
             text-align: left;
             width: 100%;
@@ -397,6 +439,18 @@ export default function Footer() {
           display: flex;
           align-items: flex-start;
           justify-content: flex-start;
+        }
+      `}</style>
+      <style jsx global>{`
+        .footer-link button,
+        .footer-link > button,
+        .footer-link .tf-v1-popup-button {
+          text-align: left !important;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          width: auto !important;
+          display: inline-flex !important;
+          padding-left: 0 !important;
         }
       `}</style>
     </>
