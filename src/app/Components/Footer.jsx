@@ -395,7 +395,7 @@ export default function Footer() {
         }
         @media (max-width: 900px) {
           .footer-card-container {
-            min-height: 150vh;
+            min-height: 0 !important;
           }
         }
       `}</style>
