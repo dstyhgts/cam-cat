@@ -17,7 +17,7 @@ const WelcomeCamera = () => {
         <div className="left-content" style={{ pointerEvents: 'none' }}>
           {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
           {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
-          <h1 className="main-title">YOU'RE THE CONTENT CREATOR</h1>
+          <h1 className="main-title">YOU HOLD THE CAMERA!</h1>
           {/* <p className="subtitle">
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
@@ -32,8 +32,8 @@ const WelcomeCamera = () => {
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
             </p>
             <p className="new-description">
-              The possibility for thousands of photographs and videos of your event, 
-              all on one roll of paper, from every angle.
+              With the possibility for thousands of photographs and videos of your event, 
+              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
             </p>
           </div>
         </div>

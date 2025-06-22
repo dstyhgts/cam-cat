@@ -240,18 +240,18 @@ export default function Footer() {
 
       <div
         ref={containerRef}
+        className="footer-card-container"
         style={{
           position: "relative",
           top: 0,
           left: 0,
           width: "50vw",
-          height: "0vh",  // Full viewport height
-          minHeight: typeof window !== 'undefined' && window.innerWidth < 900 ? '150vh' : undefined,
+          height: "0vh",
           overflow: "visible",
           background: "#b94239",
-          zIndex: 2,  // Cards above footer content
-          pointerEvents: "none", // Make cards not block pointer events
-          opacity: 1,  // Initially hidden for animation
+          zIndex: 2,
+          pointerEvents: "none",
+          opacity: 1,
         }}
       >
       </div>
@@ -272,48 +272,10 @@ export default function Footer() {
               <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
             </div>
             <div className="footer-links-col">
-              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                <PopupButton
-                  id="atnpwpHn"
-                  embedRef={quoteRef}
-                  style={{ display: "none" }}
-                />
-                <button
-                  className="footer-link"
-                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                  onClick={() => quoteRef.current.open()}
-                >
-                  GET QUOTE
-                </button>
-              </div>
-              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                <PopupButton
-                  id="yyPNXkPK"
-                  embedRef={touchRef}
-                  style={{ display: "none" }}
-                />
-                <button
-                  className="footer-link"
-                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                  onClick={() => touchRef.current.open()}
-                >
-                  GET IN TOUCH
-                </button>
-              </div>
+              <a href="/quote" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET QUOTE</a>
+              <a href="/contact" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET IN TOUCH</a>
               <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
-              {/* Hidden PopupButton for SCHEDULE CONSULTATION */}
-              <PopupButton
-                id="wwvkhbUP"
-                embedRef={scheduleRef}
-                style={{ display: "none" }}
-              />
-              <button
-                className="footer-link"
-                style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                onClick={() => scheduleRef.current.open()}
-              >
-                SCHEDULE CONSULTATION
-              </button>
+              <a href="/schedule" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>SCHEDULE CONSULTATION</a>
             </div>
           </div>
         </div>
@@ -375,24 +337,15 @@ export default function Footer() {
           text-align: left;
           width: auto;
         }
-        a.footer-link, .footer-link {
+        a.footer-link {
           font-size: 67.77px;
           font-weight: 700;
           text-decoration: none;
           letter-spacing: 0.03em;
           line-height: 1;
-          text-align: left !important;
-          text-align-last: left !important;
-          display: block !important;
-          justify-content: flex-start !important;
-          align-items: flex-start !important;
+          transition: color 0.2s;
           pointer-events: auto;
           margin: 0;
-        }
-        .footer-link > *, .footer-link button, .footer-link span, .footer-link div {
-          justify-content: flex-start !important;
-          align-items: flex-start !important;
-          text-align: left !important;
         }
         a.footer-link:hover {
           color: #ffd700 !important;
@@ -418,10 +371,7 @@ export default function Footer() {
             letter-spacing: 0.01em !important;
             margin-bottom: 0 !important;
           }
-          a.footer-link,
-          .footer-link,
-          button.footer-link,
-          .footer-link button {
+          a.footer-link {
             font-size: 38.12px !important;
             text-align: left;
             width: 100%;
@@ -440,17 +390,13 @@ export default function Footer() {
           align-items: flex-start;
           justify-content: flex-start;
         }
-      `}</style>
-      <style jsx global>{`
-        .footer-link button,
-        .footer-link > button,
-        .footer-link .tf-v1-popup-button {
-          text-align: left !important;
-          justify-content: flex-start !important;
-          align-items: flex-start !important;
-          width: auto !important;
-          display: inline-flex !important;
-          padding-left: 0 !important;
+        .footer-card-container {
+          min-height: 0;
+        }
+        @media (max-width: 900px) {
+          .footer-card-container {
+            min-height: 150vh;
+          }
         }
       `}</style>
     </>
