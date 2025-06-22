@@ -315,6 +315,12 @@ h3
     transition: color 300ms ease-in-out;
   }
   
+  .printpack-inner-frame ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
   /* ========== RESPONSIVE ========== */
   @media (min-width: 900px) {
     .printpack-container.expanded {

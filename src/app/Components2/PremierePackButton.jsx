@@ -61,8 +61,8 @@ const PrintPackButton = () => {
             <p className="printpack-topline">Learn about our...</p>
           <h2 className="printpack-title"><em>PREMIERE</em> PACKAGE</h2>
           <p className="printpack-subtext">
-          This is the full story - with two professional 
-          phototographer and filmmakers added to the fray.
+          This is the full story - with one professional 
+          phototographer and one filmmaker making sure the entire story gets told.
             <span className="emoji"></span>
           </p>
         <div className="premiere-ellipse">
@@ -81,8 +81,8 @@ const PrintPackButton = () => {
           <div className="premiere-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="premiere-overflow-title">
-              <h3><em> PREMIERE</em> </h3>
-              <p>The Whole Picture.</p>
+              <h3><em> THE PREMIERE.</em> </h3>
+              <p>The Whole Picture... Roll out the red carpet.</p>
             </div>
 
             {/* Inner frame for text content */}
@@ -90,11 +90,6 @@ const PrintPackButton = () => {
               {/* <h3 className="subcard-title">
                 "RAPID" PRINT <span className="emoji">🚀</span>
               </h3> */}
-              <h4> 1. 1000+ Guaranteed* High-Quality Photos Delivered
-              <br/>2. 45-Min Guaranteed* Home-Video Edit
-              <br/>3. Infinite Video Footage
-              <br/>4. Infinite Photos
-              <br/>5. Time Frame: Event Duration <br/><br/></h4>
               <p>
               If Classic is a time capsule, Premiere is the director’s cut, 
               from possibly hundreds of directors... The “Full Bar” package.
@@ -102,18 +97,24 @@ const PrintPackButton = () => {
               Every guest-driven moment, every handoff, every stolen-frame 
               snapshot—stitched into something that actually tells the full 
               story. This is when we bring professionals in to fill in the gaps.
+              <br/><br/>
               </p>
+              <h4> 1. 1000+ Guaranteed* High-Quality Photos Delivered
+              <br/>2. 45-Min Guaranteed* Home-Video Edit
+              <br/>3. Infinite Video Footage
+              <br/>4. Infinite Photos
+              <br/>5. Time Frame: Event Duration + Set Up/Tear Down <br/><br/></h4>
               <h3>DAY-OF:</h3>
               <ul>
-                <li>📸 65 Vintage Cams!
+                <li>📸 50 Vintage Cams!
                     <p>Documenting every side of the event, from first 
                        arrivals to final toasts.</p>
                 </li>
-                <li>📸 25 Novel© instant print cameras: 
+                {/* <li>📸 25 Novel© instant print cameras: 
                     <p>Small, simple, and made to be passed around. Every shot prints 
                       immediately, but every image is also stored digitally. </p>
-                </li>
-                <li>🎥 2 Cam-Tenders*: 
+                </li> */}
+                <li>🎥 3 Cam-Tenders*: 
                     <p>Facilitating, shooting, making sure no storyline is 
                       left unfinished.</p>
                 </li>
@@ -144,11 +145,11 @@ const PrintPackButton = () => {
                   <br /><br />
               </p>
               <br />
-              <h3>
+              <h2>
               “THIS ISN’T JUST
                   MORE...  .       IT’S
                     COMPLETE.”
-                    </h3>
+                    </h2>
             </div>
           </div>
 
@@ -158,20 +159,21 @@ const PrintPackButton = () => {
             <div className="premiere-inner-frame">
             <h2><em>INCLUDES:</em></h2>
               <h5>
-                <strong>Cams (15):</strong><br />
+                <strong>Cams (45):</strong><br />
                 </h5>
                 <p>Digicam:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
-                📸 📸 📸 📸 📸 <br /> 📸 📸 📸 <br /></h6>
+                📸 📸 📸 📸 📸 <br /> 📸 📸 📸 📸 📸 <br /></h6><br />
                 <p>'VHS' Camcorder:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸  <br /></h6>
+                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸  <br /></h6><br />
                 <p>Vintage Film:</p>
-                <h6>🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥<br /></h6>
-                <p>Rapid® Print:</p>
+                <h6>🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br /></h6>
+                {/* <p>Rapid® Print:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
                 📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
                 📸 📸 📸 📸 📸 <br /></h6>
-                <p> 
+                <p>  */}
+                <p>
                 <br />
               
                 <h3><strong>DAY-AFTER:</strong><br /></h3>

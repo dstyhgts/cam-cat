@@ -101,6 +101,12 @@ const NostalgiaPackButton = () => {
                     <p>Small, simple, and made to be passed      
                       around. The goal is a candid memory archive of the event. </p>
                 </li>
+                <li>🎥 1 Cam-Tender: 
+                    <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
+                      inclusive experience. They find the natural storytellers at your event,
+                      put the cameras in their hands. They make sure everyone has a good time and
+                      that nobody gets left out. </p>
+                </li>
                 <li>📼 Digital Archives + Real Memories: 
                     <p>No moment, no detail, and no person should go unphotographed.</p>
                 </li>
