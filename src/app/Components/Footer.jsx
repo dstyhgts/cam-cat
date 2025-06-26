@@ -418,6 +418,9 @@ export default function Footer() {
             text-align: left;
             width: 100%;
           }
+          .item {
+            opacity: 0.3 !important;
+          }
         }
         .footer-center-text {
           font-weight: 900;
@@ -435,7 +438,7 @@ export default function Footer() {
         .footer-card-container {
           min-height: 0;
         }
-        @media (min-width: 320px) and (max-width: 430px) {
+        @media (max-width: 375px) {
           .footer-card-container {
             min-height: 150vh;
           }
