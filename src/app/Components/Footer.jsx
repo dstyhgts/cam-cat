@@ -272,10 +272,48 @@ export default function Footer() {
               <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
             </div>
             <div className="footer-links-col">
-              <a href="/quote" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET QUOTE</a>
-              <a href="/contact" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET IN TOUCH</a>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <PopupButton
+                  id="atnpwpHn"
+                  embedRef={quoteRef}
+                  style={{ display: "none" }}
+                />
+                <button
+                  className="footer-link"
+                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                  onClick={() => quoteRef.current.open()}
+                >
+                  GET QUOTE
+                </button>
+              </div>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <PopupButton
+                  id="yyPNXkPK"
+                  embedRef={touchRef}
+                  style={{ display: "none" }}
+                />
+                <button
+                  className="footer-link"
+                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                  onClick={() => touchRef.current.open()}
+                >
+                  GET IN TOUCH
+                </button>
+              </div>
               <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
-              <a href="/schedule" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>SCHEDULE CONSULTATION</a>
+              {/* Hidden PopupButton for SCHEDULE CONSULTATION */}
+              <PopupButton
+                id="wwvkhbUP"
+                embedRef={scheduleRef}
+                style={{ display: "none" }}
+              />
+              <button
+                className="footer-link"
+                style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+                onClick={() => scheduleRef.current.open()}
+              >
+                SCHEDULE CONSULTATION
+              </button>
             </div>
           </div>
         </div>
@@ -337,8 +375,9 @@ export default function Footer() {
           text-align: left;
           width: auto;
         }
-        a.footer-link {
-          font-size: 67.77px;
+        a.footer-link,
+        button.footer-link {
+          font-size: 38.12px !important;
           font-weight: 700;
           text-decoration: none;
           letter-spacing: 0.03em;
@@ -371,7 +410,8 @@ export default function Footer() {
             letter-spacing: 0.01em !important;
             margin-bottom: 0 !important;
           }
-          a.footer-link {
+          a.footer-link,
+          button.footer-link {
             font-size: 38.12px !important;
             text-align: left;
             width: 100%;
@@ -393,9 +433,9 @@ export default function Footer() {
         .footer-card-container {
           min-height: 0;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 375px) {
           .footer-card-container {
-            min-height: 0 !important;
+            min-height: 150vh;
           }
         }
       `}</style>
