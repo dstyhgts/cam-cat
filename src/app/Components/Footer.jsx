@@ -377,7 +377,7 @@ export default function Footer() {
         }
         a.footer-link,
         button.footer-link {
-          font-size: 38.12px !important;
+          font-size: 67.77px;
           font-weight: 700;
           text-decoration: none;
           letter-spacing: 0.03em;
@@ -385,6 +385,8 @@ export default function Footer() {
           transition: color 0.2s;
           pointer-events: auto;
           margin: 0;
+          text-align: left;
+          width: 100%;
         }
         a.footer-link:hover {
           color: #ffd700 !important;
@@ -433,7 +435,7 @@ export default function Footer() {
         .footer-card-container {
           min-height: 0;
         }
-        @media (max-width: 375px) {
+        @media (min-width: 320px) and (max-width: 430px) {
           .footer-card-container {
             min-height: 150vh;
           }
