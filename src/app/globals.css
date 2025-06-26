@@ -1273,5 +1273,32 @@ button.footer-link:hover {
   text-decoration: none;
 }
 
+.footer-link {
+  font-size: 67.77px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  transition: color 0.2s;
+  pointer-events: auto;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.footer-link:hover {
+  color: #ffd700 !important;
+}
+@media (max-width: 900px) {
+  .footer-link {
+    font-size: 38.12px !important;
+    text-align: left;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
 
 

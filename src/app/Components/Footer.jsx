@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 import { useTheme } from "./ThemeProvider";
 import { PopupButton } from '@typeform/embed-react';
@@ -10,6 +10,9 @@ export default function Footer() {
   const scheduleRef = useRef(); // Add ref for schedule consultation
   const quoteRef = useRef(); // Add ref for get quote
   const touchRef = useRef(); // Add ref for get in touch
+  const [quoteHover, setQuoteHover] = useState(false);
+  const [touchHover, setTouchHover] = useState(false);
+  const [scheduleHover, setScheduleHover] = useState(false);
 
   // Footer link style for inline use
   const footerLinkStyle = {
@@ -41,43 +44,18 @@ export default function Footer() {
           p.createCanvas(p.windowWidth, p.windowHeight);
           engine = Engine.create();
           const isMobile = window.innerWidth < 900;
-          if (isMobile) {
-            // Default gravity for mobile if no gyro
-            engine.world.gravity.x = 0;
-            engine.world.gravity.y = 1;
-          } else {
-            engine.world.gravity.x = 0;
-            engine.world.gravity.y = 0;
-          }
+          engine.world.gravity.x = 0;
+          engine.world.gravity.y = 0;
           addBoundaries();
 
           // Create items (4 on mobile, 10 on desktop)
-          const numItems = isMobile ? 2 : 10;
+          const numItems = isMobile ? 4 : 10;
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
             items.push(new Item(x, y, `/assets/img${i + 1}.jpg`));
           }
-          // Gyro support for mobile
-          if (isMobile && window.DeviceOrientationEvent) {
-            window.addEventListener("deviceorientation", handleGyroGravity, true);
-          }
-          // Touch/toss support for mobile
-          if (isMobile) {
-            p.canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
-            p.canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
-            p.canvas.addEventListener('touchend', handleTouchEnd, { passive: false });
-          }
         };
-
-        function handleGyroGravity(event) {
-          // event.beta (x axis: front-back tilt), event.gamma (y axis: left-right tilt)
-          // Normalize to [-1, 1] range for -45 to 45 deg
-          if (engine && engine.world && engine.world.gravity) {
-            engine.world.gravity.x = (event.gamma || 0) / 45; // [-1, 1]
-            engine.world.gravity.y = -1 * ((event.beta || 0) / 45);  // Invert: [-1, 1] -> [1, -1]
-          }
-        }
 
         function addBoundaries() {
           const thickness = 50;
@@ -149,76 +127,8 @@ export default function Footer() {
           p.resizeCanvas(p.windowWidth, p.windowHeight);
         };
 
-        function getTouchItem(x, y) {
-          // Find the topmost item under the touch point
-          for (let i = items.length - 1; i >= 0; i--) {
-            const item = items[i];
-            const bx = item.body.position.x;
-            const by = item.body.position.y;
-            if (p.dist(x, y, bx, by) < 100) return item;
-          }
-          return null;
-        }
-
-        function handleTouchStart(e) {
-          if (e.touches.length !== 1) return;
-          const touch = e.touches[0];
-          const x = touch.clientX;
-          const y = touch.clientY;
-          draggingItem = getTouchItem(x, y);
-          if (draggingItem) {
-            dragOffset.x = draggingItem.body.position.x - x;
-            dragOffset.y = draggingItem.body.position.y - y;
-            lastTouch = { x, y, t: Date.now() };
-            lastVelocity = { x: 0, y: 0 };
-            e.preventDefault();
-          }
-        }
-
-        function handleTouchMove(e) {
-          if (!draggingItem || e.touches.length !== 1) return;
-          const touch = e.touches[0];
-          const x = touch.clientX;
-          const y = touch.clientY;
-          // Move the card with the finger
-          Matter.Body.setPosition(draggingItem.body, {
-            x: x + dragOffset.x,
-            y: y + dragOffset.y,
-          });
-          // Calculate velocity for toss
-          const now = Date.now();
-          const dt = (now - lastTouch.t) / 1000;
-          if (dt > 0) {
-            lastVelocity.x = (x - lastTouch.x) / dt;
-            lastVelocity.y = (y - lastTouch.y) / dt;
-          }
-          lastTouch = { x, y, t: now };
-          e.preventDefault();
-        }
-
-        function handleTouchEnd(e) {
-          if (draggingItem) {
-            // Apply toss velocity
-            Matter.Body.setVelocity(draggingItem.body, {
-              x: lastVelocity.x * 0.02,
-              y: lastVelocity.y * 0.02,
-            });
-            draggingItem = null;
-            e.preventDefault();
-          }
-        }
-
-        // Clean up gyro event and touch events on unmount
-        p.remove = function () {
-          if (window.DeviceOrientationEvent) {
-            window.removeEventListener("deviceorientation", handleGyroGravity, true);
-          }
-          if (isMobile && p.canvas) {
-            p.canvas.removeEventListener('touchstart', handleTouchStart);
-            p.canvas.removeEventListener('touchmove', handleTouchMove);
-            p.canvas.removeEventListener('touchend', handleTouchEnd);
-          }
-        };
+        // Clean up (no mobile-specific events)
+        p.remove = function () {};
       };
 
       new window.p5(sketch, containerRef.current);
@@ -275,45 +185,31 @@ export default function Footer() {
               <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                 <PopupButton
                   id="atnpwpHn"
-                  embedRef={quoteRef}
-                  style={{ display: "none" }}
-                />
-                <button
                   className="footer-link"
-                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                  onClick={() => quoteRef.current.open()}
+                  size={80}
                 >
                   GET QUOTE
-                </button>
+                </PopupButton>
               </div>
               <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                 <PopupButton
                   id="yyPNXkPK"
-                  embedRef={touchRef}
-                  style={{ display: "none" }}
-                />
-                <button
                   className="footer-link"
-                  style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                  onClick={() => touchRef.current.open()}
+                  size={80}
                 >
                   GET IN TOUCH
-                </button>
+                </PopupButton>
               </div>
               <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
-              {/* Hidden PopupButton for SCHEDULE CONSULTATION */}
-              <PopupButton
-                id="wwvkhbUP"
-                embedRef={scheduleRef}
-                style={{ display: "none" }}
-              />
-              <button
-                className="footer-link"
-                style={{ color: theme === "dark" ? "#fff" : "#000", background: "none", border: "none", padding: 0, cursor: "pointer" }}
-                onClick={() => scheduleRef.current.open()}
-              >
-                SCHEDULE CONSULTATION
-              </button>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                <PopupButton
+                  id="wwvkhbUP"
+                  className="footer-link"
+                  size={80}
+                >
+                  SCHEDULE CONSULTATION
+                </PopupButton>
+              </div>
             </div>
           </div>
         </div>
@@ -376,7 +272,7 @@ export default function Footer() {
           width: auto;
         }
         a.footer-link,
-        button.footer-link {
+        .footer-link {
           font-size: 67.77px;
           font-weight: 700;
           text-decoration: none;
@@ -387,8 +283,12 @@ export default function Footer() {
           margin: 0;
           text-align: left;
           width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
         }
-        a.footer-link:hover {
+        a.footer-link:hover,
+        .footer-link:hover {
           color: #ffd700 !important;
         }
         @media (max-width: 900px) {
@@ -413,13 +313,21 @@ export default function Footer() {
             margin-bottom: 0 !important;
           }
           a.footer-link,
-          button.footer-link {
+          .footer-link {
             font-size: 38.12px !important;
             text-align: left;
             width: 100%;
+            justify-content: flex-start;
           }
           .item {
             opacity: 0.3 !important;
+          }
+          .footer-card-container {
+            z-index: 0 !important;
+          }
+          .footer-content {
+            z-index: 1 !important;
+            position: relative;
           }
         }
         .footer-center-text {
