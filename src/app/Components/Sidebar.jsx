@@ -359,6 +359,23 @@ export default function Sidebar() {
             font-size: 12px;
           }
         }
+        @media (max-width: 900px) {
+          .card {
+            min-height: unset;
+            height: auto;
+            padding: 0.5em;
+          }
+          .card-copy {
+            font-size: 11px;
+            word-break: break-word;
+            padding-bottom: 0.5em;
+          }
+        }
+        @media (max-width: 600px) {
+          .card-copy {
+            font-size: 10px;
+          }
+        }
       `}</style>
     </>
   );
