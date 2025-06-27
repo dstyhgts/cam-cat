@@ -158,7 +158,9 @@ const LandingGallery = ({ className = "", ...props }) => {
         .lg-container {
           position: relative;
           width: 100vw;
-          height: 100vh;
+          min-height: 100vh;
+          padding-top: 60px;
+          box-sizing: border-box;
           overflow: hidden;
           background: var(--landing-gallery-bg);
           transition: background 300ms ease-in-out;
@@ -200,6 +202,10 @@ const LandingGallery = ({ className = "", ...props }) => {
           .lg-item {
             width: 100px;
             height: 150px;
+          }
+          .lg-container {
+            min-height: 100dvh;
+            padding-top: 60px;
           }
         }
       `}</style>
