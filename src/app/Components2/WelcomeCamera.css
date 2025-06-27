@@ -219,7 +219,8 @@
       width: 100vw;
       min-height: 100vh;
       padding: 0;
-      padding-bottom: 4rem;
+      padding-top: 64px;
+      padding-bottom: 64px;
       box-sizing: border-box;
     }
   
