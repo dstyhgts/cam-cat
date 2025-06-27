@@ -48,9 +48,16 @@ const WelcomeCamera = () => {
 
             {/* Middle Rectangle */}
             <div className="card-middle-rectangle">
-              <p>A new concept for event photography using vintage cameras put into the
-              hands of your guests.</p>
-              <p></p>
+              <video
+                src="/assets/videoloop1.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '12px', display: 'block' }}
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
 
             {/* Bottom Rectangle with ORDER NOW box */}

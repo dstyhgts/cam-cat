@@ -201,9 +201,6 @@ const LandingGallery = ({ className = "", ...props }) => {
             width: 100px;
             height: 150px;
           }
-          .lg-container {
-            margin-top: 64px;
-          }
         }
       `}</style>
     </>
