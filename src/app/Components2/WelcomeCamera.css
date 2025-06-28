@@ -331,6 +331,7 @@
     .card-bottom-rectangle {
       position: relative;
       margin-top: auto;
+      font-size: 16px;
       width: 100%;
       display: flex;
       justify-content: center;
