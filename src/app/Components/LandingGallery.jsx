@@ -77,7 +77,49 @@ const LandingGallery = ({ className = "", ...props }) => {
       });
     };
 
-    // Create gallery items and attach advanced hover listeners
+    // Drag-and-drop logic for cards
+    let draggingItem = null;
+    let dragOffset = { x: 0, y: 0 };
+    let dragStart = { x: 0, y: 0 };
+    let dragStartGallery = { x: 0, y: 0 };
+    let dragTimeout = null;
+    let isDragging = false;
+    let galleryBox = null;
+
+    const onMouseMove = (e) => {
+      if (!draggingItem) return;
+      const mouseX = e.touches ? e.touches[0].clientX : e.clientX;
+      const mouseY = e.touches ? e.touches[0].clientY : e.clientY;
+      // Position relative to gallery
+      const x = mouseX - galleryBox.left - dragOffset.x;
+      const y = mouseY - galleryBox.top - dragOffset.y;
+      draggingItem.style.left = `${x}px`;
+      draggingItem.style.top = `${y}px`;
+      if (!isDragging) {
+        // If user moved, start dragging immediately
+        isDragging = true;
+        draggingItem.classList.add('dragged');
+        draggingItem.style.transform = '';
+        draggingItem.style.zIndex = 1000;
+      }
+    };
+
+    const onMouseUp = (e) => {
+      if (!draggingItem) return;
+      if (isDragging) {
+        draggingItem.classList.remove('dragged');
+        draggingItem.style.zIndex = '';
+      }
+      draggingItem = null;
+      isDragging = false;
+      clearTimeout(dragTimeout);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('touchmove', onMouseMove);
+      document.removeEventListener('touchend', onMouseUp);
+    };
+
+    // Create gallery items and attach advanced hover & drag listeners
     const createItems = () => {
       // Remove any existing items to prevent duplicate listeners
       while (gallery.firstChild) {
@@ -85,21 +127,100 @@ const LandingGallery = ({ className = "", ...props }) => {
       }
       for (let i = 1; i <= itemsCount; i++) {
         const item = document.createElement("div");
-        item.classList.add("lg-item");
+        item.classList.add("item");
 
         const img = document.createElement("img");
-        // Ensure your images (img1.jpg … img30.jpg) are in public/assets/
         img.src = `/assets/img${i}.jpg`;
         img.alt = `Image ${i}`;
 
         item.appendChild(img);
         gallery.appendChild(item);
+
+        // Drag events
+        item.addEventListener('mousedown', (e) => {
+          galleryBox = gallery.getBoundingClientRect();
+          const rect = item.getBoundingClientRect();
+          dragOffset.x = e.clientX - rect.left;
+          dragOffset.y = e.clientY - rect.top;
+          dragStart.x = e.clientX;
+          dragStart.y = e.clientY;
+          dragStartGallery.x = rect.left - galleryBox.left;
+          dragStartGallery.y = rect.top - galleryBox.top;
+          draggingItem = item;
+          isDragging = false;
+          dragTimeout = setTimeout(() => {
+            if (draggingItem && !isDragging) {
+              isDragging = true;
+              item.classList.add('dragged');
+              item.style.transform = '';
+              item.style.position = 'absolute';
+              item.style.left = `${dragStartGallery.x}px`;
+              item.style.top = `${dragStartGallery.y}px`;
+              item.style.zIndex = 1000;
+            }
+          }, 120);
+          document.addEventListener('mousemove', onMouseMove);
+          document.addEventListener('mouseup', onMouseUp);
+        });
+        item.addEventListener('mousemove', (e) => {
+          if (!draggingItem || isDragging) return;
+          if (Math.abs(e.clientX - dragStart.x) > 3 || Math.abs(e.clientY - dragStart.y) > 3) {
+            clearTimeout(dragTimeout);
+            isDragging = true;
+            item.classList.add('dragged');
+            item.style.transform = '';
+            item.style.position = 'absolute';
+            item.style.left = `${dragStartGallery.x}px`;
+            item.style.top = `${dragStartGallery.y}px`;
+            item.style.zIndex = 1000;
+          }
+        });
+        item.addEventListener('touchstart', (e) => {
+          galleryBox = gallery.getBoundingClientRect();
+          const rect = item.getBoundingClientRect();
+          const touch = e.touches[0];
+          dragOffset.x = touch.clientX - rect.left;
+          dragOffset.y = touch.clientY - rect.top;
+          dragStart.x = touch.clientX;
+          dragStart.y = touch.clientY;
+          dragStartGallery.x = rect.left - galleryBox.left;
+          dragStartGallery.y = rect.top - galleryBox.top;
+          draggingItem = item;
+          isDragging = false;
+          dragTimeout = setTimeout(() => {
+            if (draggingItem && !isDragging) {
+              isDragging = true;
+              item.classList.add('dragged');
+              item.style.transform = '';
+              item.style.position = 'absolute';
+              item.style.left = `${dragStartGallery.x}px`;
+              item.style.top = `${dragStartGallery.y}px`;
+              item.style.zIndex = 1000;
+            }
+          }, 120);
+          document.addEventListener('touchmove', onMouseMove);
+          document.addEventListener('touchend', onMouseUp);
+        });
+        item.addEventListener('touchmove', (e) => {
+          if (!draggingItem || isDragging) return;
+          const touch = e.touches[0];
+          if (Math.abs(touch.clientX - dragStart.x) > 3 || Math.abs(touch.clientY - dragStart.y) > 3) {
+            clearTimeout(dragTimeout);
+            isDragging = true;
+            item.classList.add('dragged');
+            item.style.transform = '';
+            item.style.position = 'absolute';
+            item.style.left = `${dragStartGallery.x}px`;
+            item.style.top = `${dragStartGallery.y}px`;
+            item.style.zIndex = 1000;
+          }
+        });
       }
     };
 
     // Set circular layout for the items
     const setCircularLayout = () => {
-      const items = container.querySelectorAll(".lg-item");
+      const items = container.querySelectorAll(".item");
       if (!items.length) return;
       const width = container.offsetWidth;
       const height = container.offsetHeight;
@@ -170,19 +291,6 @@ const LandingGallery = ({ className = "", ...props }) => {
           width: 100%;
           height: 100%;
         }
-        .lg-item {
-          position: absolute;
-          width: 175px;
-          height: 250px;
-          background: var(--landing-gallery-item-bg);
-          overflow: hidden;
-          transition: background 300ms ease-in-out;
-        }
-        .lg-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
         /* Shared font style for Title and Loader */
         .title {
           position: absolute;
@@ -196,11 +304,12 @@ const LandingGallery = ({ className = "", ...props }) => {
           font-size: 2rem;
           font-weight: 900;
         }
+        .item.dragged {
+          box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 8px rgba(0,0,0,0.12);
+          cursor: grabbing !important;
+          pointer-events: auto !important;
+        }
         @media (max-width: 768px) {
-          .lg-item {
-            width: 100px;
-            height: 150px;
-          }
         }
       `}</style>
     </>

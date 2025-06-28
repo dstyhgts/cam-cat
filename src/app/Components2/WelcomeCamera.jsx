@@ -40,45 +40,42 @@ const WelcomeCamera = () => {
         </div>
 
         {/* Right side: Multi-layered card + pinned SVG */}
-        <div className="right-content" style={{ pointerEvents: 'none' }}>
-          <div className="fancy-card" style={{ pointerEvents: 'none' }}>
-            {/* Top Rectangle: Overhanging label */}
-            <div className="card-top-rectangle">
-              <span className="card-title">IMAGINE THIS...</span>
+        <div className="right-content card-stack-desktop" style={{ pointerEvents: 'none', position: 'relative', width: '60%', height: '625px', minHeight: '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          {/* Footer-style floating cards */}
+          <div style={{ position: 'relative', width: '525px', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* Card 1: Image */}
+            <div className="item" style={{ left: '0%', top: '20%', width: '250px', height: '281px', transform: 'rotate(-14deg)', zIndex: 1 }}>
+              <img src="/assets/img1.jpg" alt="Event 1" />
             </div>
-
-            {/* Middle Rectangle */}
-            <div className="card-middle-rectangle">
+            {/* Card 2: Video */}
+            <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <video
                 src="/assets/videoloop1.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: 'transparent' }}
               >
                 Your browser does not support the video tag.
               </video>
             </div>
-
-            {/* Bottom Rectangle with ORDER NOW box */}
-            <div className="card-bottom-rectangle" style={{ pointerEvents: 'none' }}>
-              <PopupButton
-                id="yyPNXkPK"
-                className="order-button"
-                size={80}
-                style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto' }}
-              >
-                GET CAMERAS!
-              </PopupButton>
+            {/* Card 3: Image */}
+            <div className="item" style={{ left: '62.5%', top: '25%', width: '250px', height: '281px', transform: 'rotate(13deg)', zIndex: 0 }}>
+              <img src="/assets/img2.jpg" alt="Event 2" />
             </div>
           </div>
-
-          {/* Pinned SVG - always on the far right */}
-          {/* <img
-            src='./assets/camera-icon117.svg'
-            alt="Camera Edge"
-            className="camera-edge-svg"
-          /> */}
+          {/* GET CAMERAS button, positioned lower for desktop */}
+          <div className="order-btn-desktop" style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10 }}>
+            <PopupButton
+              id="yyPNXkPK"
+              className="order-button"
+              size={80}
+              style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
+            >
+              GET CAMERAS!
+            </PopupButton>
+          </div>
         </div>
       </div>
     </div>
