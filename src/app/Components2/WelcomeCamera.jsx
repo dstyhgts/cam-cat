@@ -6,7 +6,7 @@ import { PopupButton } from '@typeform/embed-react';
 
 const WelcomeCamera = () => {
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width: '100vw' }}>
       {/* LandingGallery at the bottom layer */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1, pointerEvents: 'auto' }}>
         <LandingGallery />
@@ -41,9 +41,9 @@ const WelcomeCamera = () => {
         {/* Right side: Multi-layered card + pinned SVG */}
         <div className="right-content" style={{ pointerEvents: 'none' }}>
           <div className="fancy-card" style={{ pointerEvents: 'none' }}>
-            {/* Top Rectangle */}
+            {/* Top Rectangle: Overhanging label */}
             <div className="card-top-rectangle">
-              <h2 className="card-title">Start here...</h2>
+              <span className="card-title">Start here...</span>
             </div>
 
             {/* Middle Rectangle */}

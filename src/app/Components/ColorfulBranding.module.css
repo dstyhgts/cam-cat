@@ -3,7 +3,7 @@
   width: 100%;
   padding-left: 50px;
   padding-right: 50px;
-  min-height: 100vh;
+  /* min-height: 100vh; removed to prevent overlap */
   /* background-color: #423c76; */
   background-color: var(--colorful-branding-bg);
   margin: 0;

@@ -9,12 +9,13 @@
     /* Make the container's height driven by its content */
     align-items: stretch;        /* important to let columns match height */
     width: 100%;
-    min-height: 100vh;           /* optional: fill at least full viewport */
+    min-height: unset;
     background: transparent;
     color: transparent; /* Optional: set a background color */
     margin: 0;
     padding: 6rem;
     padding-bottom: 4rem;
+    margin-bottom: 48px;
   
     box-sizing: border-box;
     font-family: "Arial Black", Arial, sans-serif;
@@ -40,6 +41,8 @@
     justify-content: center;
     padding: 2rem 3rem;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
   }
   
   .main-title {
@@ -83,6 +86,7 @@
     justify-content: center; /* center horizontally */
     box-sizing: border-box;
     pointer-events: none;
+    z-index: 1;
   }
   
   /***************************************************
@@ -93,12 +97,17 @@
   ****************************************************/
   .fancy-card {
     position: relative;
-    width: 420px; /* Enough size for more text */
+    width: 90vw;
+    max-width: 420px;
+    padding: 18.4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
     /* Outer White Border & Rounded Corners */
     border: 10px solid var(--welcome-card-border);
     border-radius: 30px;
     background-color: var(--welcome-card-bg); /* Teal interior */
-    padding: 16px;
     box-sizing: border-box;
     box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
     rotate: 6deg;
@@ -109,21 +118,33 @@
   /* Top Rectangle: 
      Half the height => reduce padding so it's less tall */
   .card-top-rectangle {
-    border: 8px solid var(--welcome-card-border);
-    border-radius: 20px;
+    position: absolute;
+    top: -38px;
+    left: -32px; /* Overhang off the left side */
+    min-width: 180px;
+    max-width: 70%;
+    border: 6px solid var(--welcome-card-border);
+    border-radius: 18px;
     background-color: var(--welcome-card-bg);
-    margin-bottom: 1rem;
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    padding: 0.5rem; /* Reduced from 1rem to make it half the height */
+    text-align: left;
+    padding: 0.3rem 1.2rem;
+    font-size: 1.2rem;
+    z-index: 10;
+    margin-bottom: 0;
     transition: border-color 0.3s ease, background-color 0.3s ease;
   }
   
-  .card-title {
+  .fancy-card .card-title {
+    font-size: 1.3rem;
     margin: 0;
-    color: var(--welcome-card-border);
-    font-size: 32px;
-    transition: color 0.3s ease;
+    text-shadow: none;
+    color: #fff;
+  }
+  
+  /* Theme-aware card-title color */
+  [data-theme="dark"] .fancy-card .card-title {
+    color: #000;
   }
   
   /* Middle Rectangle: 
@@ -135,18 +156,23 @@
     margin-bottom: 1rem;
     text-align: left;
     padding: 0;
-    min-height: 220px;
+    width: 100%;
+    display: block;
     box-sizing: border-box;
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.5);
     transition: border-color 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
   }
   
   .card-middle-rectangle video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
     display: block;
+    margin: 0;
+    padding: 0;
+    background: transparent;
   }
   
   /* Bottom Rectangle (Order Button) */
@@ -225,8 +251,7 @@
     .welcome-camera-container {
       flex-direction: column;
       width: 100vw;
-      min-height: 100vh;
-      height: 100vh;
+      min-height: unset;
       padding: 0;
       padding-top: 64px;
       padding-bottom: 64px;
@@ -234,7 +259,7 @@
     }
   
     .main-title {
-      font-size: 5rem;
+      font-size: 6.3rem;
     }
 
     .right-content,
@@ -255,28 +280,52 @@
     }
 
     .card-top-rectangle {
-      transform: translateY(50px);
-      opacity: 0;
+      position: absolute;
+      top: -38px;
+      left: -32px;
+      min-width: 140px;
+      max-width: 80vw;
+      font-size: 1rem;
+      padding: 0.2rem 0.8rem;
     }
 
     .card-middle-rectangle {
-      transform: translateY(-400px) translateX(1000px) scaleY(2.4);
-      background-color: transparent;
-      /* opacity: 0; */
+      width: 100%;
+      display: block;
+    }
+    .card-middle-rectangle video {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+      display: block;
+      margin: 0;
+      padding: 0;
+      background: transparent;
     }
   
     .fancy-card {
-      margin-top: 1rem;
-      transform: translateY(-50px) translateX(-1000px) scaleY(.4);
+      width: 90vw;
+      max-width: 420px;
+      min-width: 0;
+      padding: 18.4px;
+      margin-left: auto;
+      margin-right: auto;
+      left: unset;
+      transform: rotate(6deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
     }
-
-
-    .card-bottom-rectangle  {
-      transform: translateY(-150px) translateX(1000px) scaleY(2.4) scale(1.1);
-      opacity: 1;
-      background-color: transparent;
-      border: transparent;
-  }
+    .card-bottom-rectangle {
+      position: relative;
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
     
     /* The SVG remains absolutely positioned, so it will scroll away */
     .camera-edge-svg {
@@ -310,4 +359,10 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+
+@media (max-width: 400px) {
+  .main-title {
+    font-size: 5.5rem;
+  }
 }

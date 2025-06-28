@@ -22,14 +22,18 @@ const MainGrid = () => {
       {/* Small buttons, two per row */}
       <div className="small-buttons-row">
         <div id="how-it-works"><HowItWorksButton /></div>
-        <TheInstantButton />
+        <TheMemoryButton />
+
+        {/* <TheInstantButton /> */}
       </div>
       <div className="small-buttons-row">
         <TheCameraBarButton />
-        <TheMemoryButton />
+        <WhyNowButton />
+
+        {/* <TheMemoryButton /> */}
       </div>
       <div className="small-buttons-row">
-        <WhyNowButton />
+        {/* <WhyNowButton /> */}
       </div>
       <div id="print-package"></div>
       {/* Pack buttons, one per row */}
