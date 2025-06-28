@@ -102,12 +102,12 @@
 
 [data-theme="dark"] {
   /* Dark theme - Off-white backgrounds with black borders and text */
-  --bg-primary: #ffffff;
+  --bg-primary: #f0f0f0;
   --bg-secondary: #f0f0f0;
   --bg-tertiary: #e8e8e8;
-  --text-primary: #000000;
-  --text-secondary: #000000;
-  --text-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --text-color: #ffffff;
   --accent-color: #b94239;
   --border-color: #000000;
   --bg-hover: #e0e0e0;
@@ -180,7 +180,7 @@
   --camera-bar-button-bg: #f0f0f0;
   
   /* LandingGallery colors for dark mode (reversed) */
-  --landing-gallery-bg: #ffffff;
+  --landing-gallery-bg: #f0f0f0;
   --landing-gallery-item-bg: #e0e0e0;
   
   /* ColorfulBranding colors for dark mode (reversed) */

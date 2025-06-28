@@ -8,7 +8,7 @@ const WelcomeCamera = () => {
   return (
     <div style={{ position: 'relative', width: '100vw' }}>
       {/* LandingGallery at the bottom layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 1, pointerEvents: 'auto' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'auto' }}>
         <LandingGallery />
       </div>
       {/* Welcome content above, but pointer-events: none except for the button */}
@@ -17,23 +17,24 @@ const WelcomeCamera = () => {
         <div className="left-content" style={{ pointerEvents: 'none' }}>
           {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
           {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
-          <h1 className="main-title">YOU HOLD THE CAMERA!</h1>
+          <h1 className="main-title">YOUR EVENT. YOUR STORY.</h1>
           {/* <p className="subtitle">
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle">
-            Every celebration is a story. Every Camera makes a storyteller.
+            FORGET THE PHOTOBOOTH, FORGET THE DISPOSABLES. <i>REMEMBER THE STORY.</i>
           </p>
 
           <div className="new-section">
-            <span className="new-badge">*NEW!</span>
+            <span className="new-badge">*ATTENTION!</span>
             <p className="new-description">
               {/* Rapid® Print cameras to take the user experience to the next level. 
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
+              We make everyone a content creator.
             </p>
             <p className="new-description">
-              With the possibility for thousands of photographs and videos of your event, 
-              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
+              <i>With the possibility for thousands of photographs and videos of your event, 
+              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.</i>
             </p>
           </div>
         </div>
@@ -43,7 +44,7 @@ const WelcomeCamera = () => {
           <div className="fancy-card" style={{ pointerEvents: 'none' }}>
             {/* Top Rectangle: Overhanging label */}
             <div className="card-top-rectangle">
-              <span className="card-title">Start here...</span>
+              <span className="card-title">IMAGINE THIS...</span>
             </div>
 
             {/* Middle Rectangle */}
@@ -54,7 +55,6 @@ const WelcomeCamera = () => {
                 loop
                 muted
                 playsInline
-                style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '12px', display: 'block' }}
               >
                 Your browser does not support the video tag.
               </video>
@@ -68,7 +68,7 @@ const WelcomeCamera = () => {
                 size={80}
                 style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto' }}
               >
-                Get Started
+                GET CAMERAS!
               </PopupButton>
             </div>
           </div>
