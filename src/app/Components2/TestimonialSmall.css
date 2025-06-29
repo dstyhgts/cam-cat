@@ -31,7 +31,7 @@
   /* Center the big quote text */
   .testimonial-small-quote {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--testimonial-text-light);

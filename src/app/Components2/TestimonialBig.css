@@ -105,9 +105,9 @@
 /* Big quote near the top center */
 .testimonial-big-quote {
   position: absolute;
-  top: 2.5rem;
-  left: 50%;
-  transform: translateX(-60%) translateY(150px);
+  bottom: 460px;
+  left: -230px;
+  transform: translateX(60%) translateY(150px);
   color: var(--testimonial-text-light);
   font-size: 1.6rem;
   font-weight: 900;
@@ -121,7 +121,7 @@
   position: absolute;
   top: 6rem;
   left: 50%;
-  transform: translateX(-60%) translateY(80%);
+  transform: translateX(-60%) translateY(70%);
   width: 80%;
   color: var(--testimonial-text-light);
   font-size: 1rem;
@@ -133,9 +133,8 @@
 /* Author bottom-left */
 .testimonial-big-author {
   position: absolute;
-  rotate: -90deg;
-  top: 16.9rem;
-  left: 27rem;
+  top: 1.9rem;
+  left: 1rem;
   font-size: 0.9rem;
   color: var(--testimonial-text-dark);
   opacity: 0.9;
@@ -145,9 +144,8 @@
 /* Date bottom-right */
 .testimonial-big-date {
   position: absolute;
-  rotate: -90deg;
-  top: 1.2rem;
-  left: 27.5rem;
+  top: 1.9rem;
+  left: 15.8rem;
   font-size: 0.9rem;
   color: var(--testimonial-text-dark);
   opacity: 0.9;

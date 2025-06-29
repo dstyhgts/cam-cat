@@ -13,7 +13,7 @@ const TestimonialBig = () => {
         playsInline
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
-      <div className="testimonial-big-label">TESTIMONIAL1</div>
+      {/* <div className="testimonial-big-label">TESTIMONIAL1</div> */}
       <div className="testimonial-big-quote">“GREAT VIBES ALL AROUND!”</div>
       {/* Larger text block in the center */}
       <div className="testimonial-big-body">
