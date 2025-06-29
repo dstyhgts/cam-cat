@@ -228,10 +228,10 @@ const LandingGallery = ({ className = "", ...props }) => {
       const numberOfItems = items.length;
       const angleIncrement = (2 * Math.PI) / numberOfItems;
       const radius = isMobile ? width * 0.35 : 210;
-      // Center for desktop, right-half overflow for mobile (minus 100px, and shift -80px for <=400px)
+      // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <=400px)
       let centerX;
       if (isMobile && width <= 400) {
-        centerX = width + radius / 2 - 100 - 80;
+        centerX = width * 1.8; // Center is offscreen to the right by 80% of viewport width
       } else if (isMobile) {
         centerX = width + radius / 2 - 100;
       } else {
