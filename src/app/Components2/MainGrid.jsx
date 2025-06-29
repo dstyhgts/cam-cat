@@ -43,7 +43,7 @@ const StackedPhotoCards = () => {
 
   if (!show) return null;
 
-  const images = Array.from({ length: cardCount }, (_, i) => `/assets/img${(i) + 10}.JPG`);
+  const images = Array.from({ length: cardCount }, (_, i) => `/assets/img${(i) + 10}.jpg`);
   // Use seeded random for consistent but lively variability
   let topSum = 0;
   const cards = images.map((src, i) => {
