@@ -6,7 +6,7 @@ const TestimonialBig = () => {
     <div className="testimonial-big-container" style={{ position: 'relative', overflow: 'hidden', color: '#fff' }}>
       <video
         className="testimonial-bg-video"
-        src="/assets/videoloop1.mp4"
+        src="/assets/WeddingBIG.mp4"
         autoPlay
         loop
         muted

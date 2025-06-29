@@ -22,7 +22,7 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle">
-            FORGET THE PHOTOBOOTH, FORGET THE DISPOSABLES. <i>REMEMBER THE STORY.</i>
+            FORGET THE PHOTOGRAPHER, TAKE THE MEMORIES INTO YOUR OWN HANDS.
           </p>
 
           <div className="new-section">
@@ -50,7 +50,7 @@ const WelcomeCamera = () => {
             {/* Card 2: Video */}
             <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <video
-                src="/assets/videoloop1.mp4"
+                src="/assets/BrookeBDAY2.mp4"
                 autoPlay
                 loop
                 muted

@@ -5,11 +5,28 @@ import './HowItWorksButton.css';
 const HowItWorksButton = () => {
   const [expanded, setExpanded] = useState(false);
   const cardRef = useRef(null);
+  const buttonRef = useRef(null);
+  const [prevScroll, setPrevScroll] = useState(0);
 
   // Toggle expanded on card click
   const handleToggle = (e) => {
     e.stopPropagation();
-    setExpanded(!expanded);
+    if (!expanded) {
+      setPrevScroll(window.scrollY);
+      setExpanded(true);
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 0);
+    } else {
+      setExpanded(false);
+      setTimeout(() => {
+        if (buttonRef.current) {
+          const rect = buttonRef.current.getBoundingClientRect();
+          const scrollTo = window.scrollY + rect.top - window.innerHeight / 2 + rect.height / 2;
+          window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+        }
+      }, 0);
+    }
   };
 
   // Close if user clicks outside the card
@@ -31,7 +48,7 @@ const HowItWorksButton = () => {
   return (
     <div
       className={`hiw-container ${expanded ? 'expanded' : ''}`}
-      ref={cardRef}
+      ref={buttonRef}
       onClick={handleToggle}
       aria-expanded={expanded}
     >
@@ -40,7 +57,7 @@ const HowItWorksButton = () => {
 
       {/* DEFAULT (256×256) */}
       {!expanded && (
-        <div className="hiw-card hiw-default">
+        <div className="hiw-card hiw-default" ref={cardRef}>
           <h6><i>HOW</i> IT* WORKS</h6>
           <p className="hiw-subtext">
             Every guest sees the night differently.<br />
@@ -52,7 +69,7 @@ const HowItWorksButton = () => {
 
       {/* EXPANDED */}
       {expanded && (
-        <div className="hiw-card hiw-expanded">
+        <div className="hiw-card hiw-expanded" ref={cardRef}>
           <div className="hiw-overflow-title">
             <h1><i>HOW</i> IT WORKS</h1>
           </div>

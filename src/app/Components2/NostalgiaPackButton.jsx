@@ -58,7 +58,10 @@ const NostalgiaPackButton = () => {
       {!expanded && (
         <div className="printpack-card printpack-default">
             <p className="printpack-topline">Learn about our...</p>
-          <h2 className="printpack-title"><em>NOSTALGIA</em> PACKAGE</h2>
+          <h2 className="printpack-title">
+            <span className="nostalgia-title-word"><em>NOSTALGIA</em></span><br />
+            <span className="package-title-word">PACKAGE</span>
+          </h2>
           <p className="printpack-subtext">
           Our entry-level product----15 indisposible cameras catered to the moment.
             <span className="emoji"></span>

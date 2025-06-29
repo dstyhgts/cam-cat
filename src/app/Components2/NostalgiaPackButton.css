@@ -378,4 +378,28 @@ h3
     padding-top: 40px;
   }
 
+  @media (max-width: 375px) {
+    .printpack-title {
+      display: block;
+      font-size: 32px;
+      line-height: 1.1;
+    }
+    .nostalgia-title-word,
+    .package-title-word {
+      display: block;
+      width: 100%;
+    }
+    .nostalgia-title-word {
+      font-size: 0.95em;
+      letter-spacing: -1px;
+      margin-bottom: 0.1em;
+      word-break: break-word;
+    }
+    .package-title-word {
+      font-size: 0.7em;
+      letter-spacing: 0.5px;
+      margin-top: 0.1em;
+      word-break: break-word;
+    }
+  }
   

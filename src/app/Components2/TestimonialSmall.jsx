@@ -6,7 +6,7 @@ const TestimonialSmall = () => {
     <div className="testimonial-small-container" style={{ position: 'relative', overflow: 'hidden', color: '#fff' }}>
       <video
         className="testimonial-bg-video"
-        src="/assets/videoloop1.mp4"
+        src="/assets/PiggyBackRide.mp4"
         autoPlay
         loop
         muted
