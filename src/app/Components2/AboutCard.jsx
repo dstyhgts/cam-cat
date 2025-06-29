@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import './AboutCard.css';
 
 const AboutCard = () => {
-  // Example images (all the same). Replace with real paths later.
-  const images = [
-    'camera-icon102.png',
-    'camera-icon102.png',
-    'camera-icon102.png',
-    'camera-icon102.png',
-  ];
-
+  // Remove the old images array and use a count for 5 images
+  const imageCount = 5;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleLeftClick = () => {
@@ -19,13 +13,13 @@ const AboutCard = () => {
   };
 
   const handleRightClick = () => {
-    if (currentIndex < images.length - 1) {
+    if (currentIndex < imageCount - 1) {
       setCurrentIndex((prev) => prev + 1);
     }
   };
 
   const leftArrowOpacity = currentIndex === 0 ? 0.5 : 1;
-  const rightArrowOpacity = currentIndex === images.length - 1 ? 0.5 : 1;
+  const rightArrowOpacity = currentIndex === imageCount - 1 ? 0.5 : 1;
 
   return (
     <div className="about-card-container">
@@ -37,9 +31,9 @@ const AboutCard = () => {
           className="about-card-carousel-inner"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((src, idx) => (
-            <div className="about-card-slide" key={idx}>
-              <img src='./assets/camera-icon102.png' alt={`Slide ${idx}`} />
+          {Array.from({ length: imageCount }).map((_, i) => (
+            <div className="about-card-slide" key={i}>
+              <img src={`/assets/about${i + 1}.JPG`} alt={`Slide ${i + 1}`} />
             </div>
           ))}
         </div>
@@ -72,8 +66,8 @@ const AboutCard = () => {
           gagging the life from my soul since I was a kid. Even when I was scared of them.
         </p>
         <p>
-          I’m not sure the Darkness personally, but she has blocked all communication
-          since I was a teen. But, it’s fine—this isn’t about cameras anymore. I promise.
+          I'm not sure the Darkness personally, but she has blocked all communication
+          since I was a teen. But, it's fine—this isn't about cameras anymore. I promise.
         </p>
       </div>
     </div>

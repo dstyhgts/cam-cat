@@ -45,7 +45,7 @@ const WelcomeCamera = () => {
           <div style={{ position: 'relative', width: '525px', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {/* Card 1: Image */}
             <div className="item" style={{ left: '0%', top: '20%', width: '250px', height: '281px', transform: 'rotate(-14deg)', zIndex: 1 }}>
-              <img src="/assets/img1.jpg" alt="Event 1" />
+              <img src="/assets/img27.JPG" alt="Event 1" />
             </div>
             {/* Card 2: Video */}
             <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -62,7 +62,7 @@ const WelcomeCamera = () => {
             </div>
             {/* Card 3: Image */}
             <div className="item" style={{ left: '62.5%', top: '25%', width: '250px', height: '281px', transform: 'rotate(13deg)', zIndex: 0 }}>
-              <img src="/assets/img2.jpg" alt="Event 2" />
+              <img src="/assets/img29.JPG" alt="Event 2" />
             </div>
           </div>
           {/* GET CAMERAS button, positioned lower for desktop */}

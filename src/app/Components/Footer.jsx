@@ -53,7 +53,7 @@ export default function Footer() {
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            items.push(new Item(x, y, `/assets/img${i + 1}.jpg`));
+            items.push(new Item(x, y, `/assets/img${i + 1}.JPG`));
           }
         };
 

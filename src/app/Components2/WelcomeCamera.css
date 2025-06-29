@@ -21,7 +21,7 @@
     font-family: "Arial Black", Arial, sans-serif;
     font-weight: 900;
     color: var(--text-color);
-    /* text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5); */
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
     z-index: 2;
     pointer-events: auto;
     transition: color 0.3s ease;
@@ -404,5 +404,72 @@
 @media (max-width: 400px) {
   .main-title {
     font-size: 5.5rem;
+  }
+}
+
+[data-theme="dark"] .welcome-camera-container {
+    text-shadow: 3px 6px 6px rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .welcome-camera-container {
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 500px) {
+  .card-stack-desktop {
+    height: auto !important;
+    min-height: unset !important;
+    width: 100vw !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+  }
+  .card-stack-desktop > div:first-child {
+    width: 100vw !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    position: static !important;
+    padding: 0 !important;
+  }
+  .card-stack-desktop .item {
+    position: static !important;
+    left: unset !important;
+    top: unset !important;
+    width: 100px !important;
+    height: 112px !important;
+    margin: 0 2px !important;
+    transform: none !important;
+    z-index: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #e3e3e3 !important;
+  }
+  .card-stack-desktop .item img,
+  .card-stack-desktop .item video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 0.3em !important;
+    background: transparent !important;
+  }
+  .order-btn-desktop {
+    position: static !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 90vw !important;
+    margin: 1.5rem auto 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 }

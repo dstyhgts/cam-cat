@@ -153,14 +153,14 @@
   --button-white-text: #000000;
   
   /* Package button colors for dark mode (reversed) */
-  --print-pack-bg: #f0f0f0;
+  --print-pack-bg: #ffffff;
   --print-pack-dark-bg: #e8e8e8;
   --print-pack-lighter-bg: #f0f0f0;
   
-  --classics-pack-bg: #f0f0f0;
+  --classics-pack-bg: #ffffff;
   --classics-pack-dark-bg: #e8e8e8;
   
-  --premiere-pack-bg: #f0f0f0;
+  --premiere-pack-bg: #ffffff;
   --premiere-pack-dark-bg: #e8e8e8;
   
   --diamond-pack-bg: #f0f0f0;
@@ -176,8 +176,8 @@
   --big-svg-bg: #f0f0f0;
   
   /* Additional component colors for dark mode (reversed) */
-  --why-now-button-bg: #f0f0f0;
-  --camera-bar-button-bg: #f0f0f0;
+  --why-now-button-bg: #ffffff;
+  --camera-bar-button-bg: #ffffff;
   
   /* LandingGallery colors for dark mode (reversed) */
   --landing-gallery-bg: #f0f0f0;

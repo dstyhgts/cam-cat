@@ -125,12 +125,12 @@ const LandingGallery = ({ className = "", ...props }) => {
       while (gallery.firstChild) {
         gallery.removeChild(gallery.firstChild);
       }
-      for (let i = 1; i <= itemsCount; i++) {
+      for (let i = 12; i <= itemsCount; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
 
         const img = document.createElement("img");
-        img.src = `/assets/img${i}.jpg`;
+        img.src = `/assets/img${i}.JPG`;
         img.alt = `Image ${i}`;
 
         item.appendChild(img);
