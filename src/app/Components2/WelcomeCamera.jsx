@@ -1,12 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './WelcomeCamera.css';
 import Footer from '../Components/Footer';
 import LandingGallery from '../Components/LandingGallery';
 import { PopupButton } from '@typeform/embed-react';
 
+// Responsive hook
+function useIsMobile(maxWidth = 400) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= maxWidth : false
+  );
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= maxWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [maxWidth]);
+  return isMobile;
+}
+
 const WelcomeCamera = () => {
-  // Responsive check for mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 400;
+  const isMobile = useIsMobile(400);
   return (
     <div style={{ position: 'relative', width: '100vw' }}>
       {/* LandingGallery at the bottom layer */}
