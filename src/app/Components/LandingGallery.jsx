@@ -228,15 +228,16 @@ const LandingGallery = ({ className = "", ...props }) => {
       const numberOfItems = items.length;
       const angleIncrement = (2 * Math.PI) / numberOfItems;
       const radius = isMobile ? width * 0.35 : 210;
-      // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <=400px)
+      // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <450px)
       let centerX;
-      if (isMobile && width <= 400) {
-        centerX = width * 1.8; // Center is offscreen to the right by 80% of viewport width
+      if (isMobile && width < 450) {
+        centerX = width * 3; // Force far to the right for debugging
       } else if (isMobile) {
         centerX = width + radius / 2 - 100;
       } else {
         centerX = width / 2;
       }
+      console.log('LandingGallery width:', width, 'centerX:', centerX);
       const centerY = height / 2;
       items.forEach((item, index) => {
         const angle = index * angleIncrement;
@@ -290,6 +291,7 @@ const LandingGallery = ({ className = "", ...props }) => {
           overflow: hidden;
           background: var(--landing-gallery-bg);
           transition: background 300ms ease-in-out;
+          border: 2px solid red; /* DEBUG: show container bounds */
         }
         .lg-gallery {
           position: absolute;
@@ -297,6 +299,7 @@ const LandingGallery = ({ className = "", ...props }) => {
           left: 0;
           width: 100%;
           height: 100%;
+          border: 2px solid blue; /* DEBUG: show gallery bounds */
         }
         /* Shared font style for Title and Loader */
         .title {
