@@ -35,14 +35,14 @@ YOUR LIFE FOR YOU.         */}
  *  - src, alt => image path & alt text
  */
 const imagesData = [
-    { wordIndex: 35,  float: "right",   size: "large", src: "/assets/camera-icon117-1.png" },
-    { wordIndex: 8, float: "left",  size: "large", src: "/assets/camera-icon101.png" },
-    { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon30.png" },
-    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon106.png" },
-    { wordIndex: 21, float: "right",   size: "small", src: "/assets/camera-icon10.png" },
-    { wordIndex: 18, float: "left", size: "small", src: "/assets/camera-icon12.png" },
-    { wordIndex: 20, float: "right",   size: "large", src: "/assets/camera-icon32.png" },
-    { wordIndex: 22, float: "left",  size: "small", src: "/assets/camera-icon13.png" },];
+    { wordIndex: 35,  float: "right",   size: "large", src: "/assets/camera-icon117-1.svg" },
+    { wordIndex: 8, float: "left",  size: "large", src: "/assets/camera-icon101.svg" },
+    { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon30.svg" },
+    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon106.svg" },
+    { wordIndex: 21, float: "right",   size: "small", src: "/assets/camera-icon10.svg" },
+    { wordIndex: 18, float: "left", size: "small", src: "/assets/camera-icon12.svg" },
+    { wordIndex: 20, float: "right",   size: "large", src: "/assets/camera-icon32.svg" },
+    { wordIndex: 22, float: "left",  size: "small", src: "/assets/camera-icon13.svg" },];
 
 /**
  * parseTextWithBr():

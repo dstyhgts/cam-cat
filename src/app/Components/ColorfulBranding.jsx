@@ -33,14 +33,14 @@ const fullText = `
  *  - src, alt => image path & alt text
  */
 const imagesData = [
-    { wordIndex: 25,  float: "right",   size: "large", src: "/assets/camera-icon112.png" },
-    { wordIndex: 6, float: "left",  size: "large", src: "/assets/camera-icon113.png" },
-    { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon111.png" },
-    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon100.png" },
-    { wordIndex: 21, float: "left",   size: "large", src: "/assets/camera-icon13.png" },
-    { wordIndex: 28, float: "left", size: "large", src: "/assets/camera-icon115.png" },
-    { wordIndex: 43, float: "right",   size: "large", src: "/assets/camera-icon23.png" },
-    { wordIndex: 40, float: "right",  size: "large", src: "/assets/camera-icon20.png" },
+    { wordIndex: 25,  float: "right",   size: "large", src: "/assets/camera-icon112.svg" },
+    { wordIndex: 6, float: "left",  size: "large", src: "/assets/camera-icon113.svg" },
+    { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon111.svg" },
+    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon100.svg" },
+    { wordIndex: 21, float: "left",   size: "large", src: "/assets/camera-icon13.svg" },
+    { wordIndex: 28, float: "left", size: "large", src: "/assets/camera-icon115.svg" },
+    { wordIndex: 43, float: "right",   size: "large", src: "/assets/camera-icon23.svg" },
+    { wordIndex: 40, float: "right",  size: "large", src: "/assets/camera-icon20.svg" },
 ];
 
 /**
