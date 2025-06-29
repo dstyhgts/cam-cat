@@ -61,9 +61,7 @@ const TheInstantButton = () => {
 
             <h6>OUR HANDHELD PHOTOBOOTH:</h6>
 
-            <div className="svg-container">
-              <span className="placeholder-svg">[SVG]</span>
-            </div>
+            <img className="instant-overflow-svg" src="/assets/camera-icon50.svg" alt="Camera Icon" />
 
             <ul className="instant-bullets">
               <li>

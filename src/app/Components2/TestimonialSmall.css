@@ -57,3 +57,12 @@
     color: #fff !important;
   }
   
+  @media (max-width: 900px) {
+    .testimonial-small-container {
+      width: 256px !important;
+      height: 256px !important;
+      margin: 0 0 16px 0 !important;
+      display: block !important;
+    }
+  }
+  

@@ -24,7 +24,10 @@ const NewNavbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <h1 className="navbar-title">Camera Catering</h1>
+        <a href="#section1" className="navbar-logo-link" onClick={() => { window.location.hash = '#section1'; }}>
+          <img src="./assets/camera-icon32-1.svg" alt="Camera Catering Logo" className="navbar-logo" />
+          <h1 className="navbar-title">CAMERA CATERING</h1>
+        </a>
       </div>
       <div className="navbar-right" ref={menuRef}>
         {/* Theme Toggle */}

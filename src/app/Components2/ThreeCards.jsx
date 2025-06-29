@@ -1,4 +1,5 @@
 import React from 'react';
+import { PopupButton } from '@typeform/embed-react';
 import './ThreeCards.css';
 
 const ThreeCards = () => {
@@ -85,15 +86,8 @@ const ThreeCards = () => {
     },
   ];
 
-  const handleOrderNow = () => {
-    console.log("ORDER NOW clicked");
-  };
-
   return (
     <div className="three-cards-grid" id="threecards">
-      <button className="three-cards-button" onClick={handleOrderNow}>
-        Get Cameras!
-      </button>
       {/* Render 3 cards in the first row */}
       {cardData.map((card, index) => (
         <div className="three-card-item" key={index}>
@@ -110,6 +104,16 @@ const ThreeCards = () => {
       ))}
 
       {/* Single button on second row, centered under the middle card */}
+      <div className="order-btn-desktop" style={{ position: 'relative', left: '50%', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10, margin: '2rem 0' }}>
+        <PopupButton
+          id="yyPNXkPK"
+          className="order-button"
+          size={80}
+          style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
+        >
+          GET CAMERAS!
+        </PopupButton>
+      </div>
     </div>
   );
 };

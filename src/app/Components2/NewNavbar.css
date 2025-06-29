@@ -116,3 +116,11 @@
 .section {
   scroll-margin-top: 80px;
 }
+
+.navbar-logo {
+  display: block;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  margin: 0 auto 0.25em auto;
+}

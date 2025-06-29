@@ -148,3 +148,29 @@
     }
   }
   
+  .order-btn-desktop {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: center;
+    align-self: start;
+    position: relative;
+    left: 0;
+    transform: rotate(3deg);
+    width: 320px;
+    pointer-events: auto;
+    z-index: 10;
+    margin: 2rem auto;
+  }
+
+  @media (max-width: 1200px) {
+    .order-btn-desktop {
+      grid-column: 1;
+      grid-row: 4;
+      width: 100%;
+      max-width: 300px;
+      margin: 2rem auto;
+      left: 50%;
+      transform: translateX(-50%) rotate(3deg);
+    }
+  }
+  

@@ -65,9 +65,7 @@ const TheMemoryButton = () => {
 
             <h6>We set the stage:</h6>
 
-            <div className="svg-container">
-              <span className="placeholder-svg">[SVG]</span>
-            </div>
+            <img className="memory-overflow-svg" src="/assets/camera-icon15.svg" alt="Camera Icon" />
 
             <ul className="memory-bullets">
               <li>
