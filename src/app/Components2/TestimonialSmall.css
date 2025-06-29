@@ -53,3 +53,7 @@
     transition: color 300ms ease-in-out;
   }
   
+  .testimonial-small-container, .testimonial-small-container * {
+    color: #fff !important;
+  }
+  

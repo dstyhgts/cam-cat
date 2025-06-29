@@ -53,3 +53,7 @@
     transition: color 300ms ease-in-out;
   }
   
+  .testimonial-med-container, .testimonial-med-container * {
+    color: #fff !important;
+  }
+  
