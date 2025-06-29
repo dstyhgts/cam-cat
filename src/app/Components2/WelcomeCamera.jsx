@@ -62,7 +62,7 @@ const WelcomeCamera = () => {
             </div>
             {/* Card 3: Image */}
             <div className="item" style={{ left: '62.5%', top: '25%', width: '250px', height: '281px', transform: 'rotate(13deg)', zIndex: 0 }}>
-              <img src="/assets/img29.JPG" alt="Event 2" />
+              <img src='/assets/img29.JPG' alt="Event 2" />
             </div>
           </div>
           {/* GET CAMERAS button, positioned lower for desktop */}
