@@ -33,7 +33,7 @@ const AboutCard = () => {
         >
           {Array.from({ length: imageCount }).map((_, i) => (
             <div className="about-card-slide" key={i}>
-              <img src={`/assets/about${i + 1}.jpg`} alt={`Slide ${i + 1}`} />
+              <img src={`/assets/about${i + 1}.JPG`} alt={`Slide ${i + 1}`} />
             </div>
           ))}
         </div>
