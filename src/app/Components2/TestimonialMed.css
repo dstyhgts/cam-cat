@@ -33,12 +33,13 @@
     position: absolute;
     top: 15%;
     left: 50%;
+
     transform: translate(-50%, -50%);
     color: var(--testimonial-text-light);
     font-size: 1.6rem;
     font-weight: 900;
-    text-align: center;
-    width: 80%;
+    text-align: right;
+    width: 90%;
     transition: color 300ms ease-in-out;
   }
   

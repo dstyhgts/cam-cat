@@ -78,6 +78,7 @@ const HowItWorksButton = () => {
             <p className="intro-paragraph">
             Every guest sees the 
             night differently. 
+            <br /><br />
             We make sure those 
             perspectives don't 
             get lost!

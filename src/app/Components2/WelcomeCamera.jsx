@@ -99,7 +99,7 @@ const WelcomeCamera = () => {
               </>
             )}
           </div>
-          {/* GET CAMERAS button, positioned lower for desktop */}
+          {/* GET CAMERAS button, original styling and class names */}
           <div className="order-btn-desktop" style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10 }}>
             <PopupButton
               id="yyPNXkPK"

@@ -104,7 +104,7 @@ const ThreeCards = () => {
       ))}
 
       {/* Single button on second row, centered under the middle card */}
-      <div className="order-btn-desktop" style={{ position: 'relative', left: '50%', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10, margin: '2rem 0' }}>
+      <div className="order-btn-desktop" style={{ position: 'relative', width: 'fit-content', pointerEvents: 'auto', zIndex: 10, margin: '2rem auto', transform: 'rotate(3deg)' }}>
         <PopupButton
           id="yyPNXkPK"
           className="order-button"

@@ -361,8 +361,12 @@
     top: -12px !important;
   }
   .order-btn-desktop {
-    bottom: -60px !important;
-    width: 220px !important;
+    position: relative !important;
+    left: unset !important;
+    bottom: unset !important;
+    margin: 0.5rem auto 0 auto !important;
+    transform: rotate(3deg) !important;
+    width: 320px !important;
   }
   .order-button {
     font-size: 1.2rem !important;
@@ -449,6 +453,7 @@
     transform: none !important;
     width: 90vw !important;
     max-width: 250px !important;
+    transform: rotate(3deg) !important;
     margin: 1.5rem auto 0 auto !important;
     display: flex !important;
     justify-content: center !important;

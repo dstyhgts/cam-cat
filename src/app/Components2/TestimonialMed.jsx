@@ -14,8 +14,8 @@ const TestimonialMed = () => {
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
       {/* <div className="testimonial-med-label">TESTIMONIAL1</div> */}
-      <div className="testimonial-med-quote">“GREAT VIBES ALL AROUND!”</div>
-      <div className="testimonial-med-author">Stan Walsterriyler, Los Angeles</div>
+      <div className="testimonial-med-quote">“BEST PART OF THE NIGHT!”</div>
+      <div className="testimonial-med-author">Mindy A. - Los Angeles, CA</div>
     </div>
   );
 };

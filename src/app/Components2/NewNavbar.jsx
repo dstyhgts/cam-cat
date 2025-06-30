@@ -36,7 +36,7 @@ const NewNavbar = () => {
         </div>
         {/* Mobile/Small/Intermediate view: show menu icon */}
         <div className="menu-icon" onClick={toggleMenu}>
-          <img src="./assets/camera-icon13.png" alt="Menu Icon" />
+          <img src="./assets/camera-icon13.svg" alt="Menu Icon" />
         </div>
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
