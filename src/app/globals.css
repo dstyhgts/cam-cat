@@ -13,7 +13,7 @@
   --bg-tertiary: #e9ecef;
   --text-primary: #212529;
   --text-secondary: #ffffff;
-  --text-color: #46bdc6;
+  --text-color: #8c84ff;
   --accent-color: #b94239;
   --border-color: #dee2e6;
   --bg-hover: #e9ecef;
@@ -25,9 +25,9 @@
   --welcome-card-bg: #46bdc6;
   --welcome-card-border: #ffffff;
   --welcome-button-bg: #FFD85D;
-  --welcome-button-text: #6c66c6;
-  --welcome-button-border: #6c66c6;
-  --welcome-button-hover-bg: #6c66c6;
+  --welcome-button-text: #8c84ff;
+  --welcome-button-border: #8c84ff;
+  --welcome-button-hover-bg: #8c84ff;
   --welcome-button-hover-text: #ffffff;
   --welcome-button-hover-border: #ffffff;
   
@@ -37,8 +37,8 @@
   --three-card-top-bg: #00a1a7;
   --three-card-text: #ffffff;
   --three-cards-button-bg: #FFD85D;
-  --three-cards-button-text: #6c66c6;
-  --three-cards-button-border: #6c66c6;
+  --three-cards-button-text: #8c84ff;
+  --three-cards-button-border: #8c84ff;
   
   --about-card-border: #ffffff;
   --about-card-image-bg: #46bdc6;
@@ -52,7 +52,7 @@
   --navbar-title-color: #ffffff;
   --navbar-menu-bg: #61397d;
   --navbar-menu-border: #ffffff;
-  --navbar-hover-color: #ffd700;
+  --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;
   --button-white-border: #FFFFFF;
@@ -106,8 +106,8 @@
   --bg-secondary: #f0f0f0;
   --bg-tertiary: #e8e8e8;
   --text-primary: #000000;
-  --text-secondary: #000000;
-  --text-color: #000000;
+  --text-secondary: #8c84ff;
+  --text-color: #151515;
   --accent-color: #ffffff;
   --border-color: #000000;
   --bg-hover: #e0e0e0;
@@ -119,9 +119,9 @@
   --welcome-card-bg: #f0f0f0;
   --welcome-card-border: #000000;
   --welcome-button-bg: #FFD85D;
-  --welcome-button-text: #6c66c6;
-  --welcome-button-border: #6c66c6;
-  --welcome-button-hover-bg: #6c66c6;
+  --welcome-button-text: #8c84ff;
+  --welcome-button-border: #8c84ff;
+  --welcome-button-hover-bg: #8c84ff;
   --welcome-button-hover-text: #ffffff;
   --welcome-button-hover-border: #ffffff;
   
@@ -131,8 +131,8 @@
   --three-card-top-bg: #ffffff;
   --three-card-text: #000000;
   --three-cards-button-bg: #FFD85D;
-  --three-cards-button-text: #6c66c6;
-  --three-cards-button-border: #6c66c6;
+  --three-cards-button-text: #8c84ff;
+  --three-cards-button-border: #8c84ff;
   
   --about-card-border: #000000;
   --about-card-image-bg: #e8e8e8;
@@ -146,7 +146,7 @@
   --navbar-title-color: #000000;
   --navbar-menu-bg: #f0f0f0;
   --navbar-menu-border: #000000;
-  --navbar-hover-color: #ffd700;
+  --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;
   --button-white-border: #000000;

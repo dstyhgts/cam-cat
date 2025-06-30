@@ -265,7 +265,7 @@ export default function Sidebar() {
           transition: background 0.3s, color 0.3s;
         }
         .overlay-toggle:hover {
-          background: #6c66c6;
+          background: #8c84ff;
           color: #fff;
         }
         .sidebar {
@@ -288,7 +288,7 @@ export default function Sidebar() {
           right: -110%;
           padding: 1em;
           flex: 1;
-          background: #6c66c6;
+          background: #8c84ff;
           color: #fff;
           border-radius: 0.5em;
           display: flex;
@@ -326,7 +326,7 @@ export default function Sidebar() {
           transition: transform 0.3s, opacity 0.3s;
         }
         .card:hover {
-          background: #7492C2;
+          background:rgb(117, 202, 233);
           color: #000;
         }
         .card:hover .card-copy {
@@ -374,6 +374,17 @@ export default function Sidebar() {
 
           }
         }
+        @media (max-width: 600px) {
+        .card-title {
+            font-size: 67.77px;
+            line-height: .7em;
+            padding-top: .4em;
+          }
+          .card-copy {
+            font-size: 10px;
+            line-height: .7em;
+            
+          }
         }
       `}</style>
     </>
