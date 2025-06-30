@@ -59,7 +59,7 @@ const NostalgiaPackButton = () => {
         <div className="printpack-card printpack-default">
             <p className="printpack-topline">Learn about our...</p>
           <h2 className="printpack-title">
-            <span className="nostalgia-title-word"><em>MEMORY</em></span><br />
+            <span className="nostalgia-title-word"><em>"MEMORY"</em></span><br />
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="printpack-subtext">
@@ -82,7 +82,7 @@ const NostalgiaPackButton = () => {
           <div className="printpack-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="printpack-overflow-title">
-              <h3>MEMORIES...</h3>
+              <h3><i>MEMORIES</i></h3>
               <p>Indisposible Nostalgia.</p>
             </div>
 
