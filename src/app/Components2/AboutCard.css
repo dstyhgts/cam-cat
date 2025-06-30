@@ -88,7 +88,7 @@
 ****************************************************/
 .about-card-arrow {
   position: absolute;
-  top: 128px;            /* half of 256px => center */
+  top: 25%;
   transform: translateY(-50%);
   color: var(--about-card-border);
   font-size: 2rem;
@@ -186,7 +186,7 @@
 }
 
 .about-card-arrow {
-  top: 50%;
+  top: 25%;
   transform: translateY(-50%);
   font-size: 1.5rem;
 }

@@ -34,7 +34,7 @@ const StackedPhotoCards = () => {
   // Generate image paths for the stacked photo cards
   const images = [];
   for (let i = 0; i < cardCount; i++) {
-    images.push(`/assets/img${i + 38}.jpg`);
+    images.push(`/assets/img${i + 38}.JPG`);
   }
 
   // Build the cards array with rotation, offset, and top position
