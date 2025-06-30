@@ -120,6 +120,7 @@
     margin: 0 auto;
     font-size: 32px;
     font-weight: bold;
+    align-items: center;
     background-color: var(--three-cards-button-bg); /* bright yellow */
     color: var(--three-cards-button-text); /* purple text */
     border: 4px solid var(--three-cards-button-border); /* purple border */
