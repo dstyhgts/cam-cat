@@ -110,6 +110,12 @@ const WelcomeCamera = () => {
               GET CAMERAS!
             </PopupButton>
           </div>
+          <style jsx global>{`
+            /* Ensure Typeform popup overlays are always above navbar/sidebar */
+            .tf-v1-popup, .tf-v1-widget, .tf-v1-modal, .tf-v1-iframe-container, .tf-v1-iframe, .tf-v1-widget-open {
+              z-index: 10000001 !important;
+            }
+          `}</style>
         </div>
       </div>
     </div>
