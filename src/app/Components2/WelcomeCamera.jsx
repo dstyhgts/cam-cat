@@ -77,7 +77,7 @@ const WelcomeCamera = () => {
               <>
                 {/* Card 1: Image */}
                 <div className="item" style={{ left: '0%', top: '20%', width: '250px', height: '281px', transform: 'rotate(-14deg)', zIndex: 1 }}>
-                  <img src="/assets/img27.jpg" alt="Event 1" />
+                  <img src="/assets/img57.jpg" alt="Event 1" />
                 </div>
                 {/* Card 2: Video */}
                 <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

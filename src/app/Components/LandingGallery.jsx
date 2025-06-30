@@ -125,7 +125,7 @@ const LandingGallery = ({ className = "", ...props }) => {
       while (gallery.firstChild) {
         gallery.removeChild(gallery.firstChild);
       }
-      for (let i = 12; i <= itemsCount; i++) {
+      for (let i = 8; i <= itemsCount; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
 
