@@ -39,7 +39,7 @@
     padding-left: 24px;
     padding-right: 32px;
     min-height: 100%;
-    padding-bottom: 150px;
+    padding-bottom: 24px;
     box-sizing: border-box;
   }
   .small-buttons-row,
@@ -74,21 +74,4 @@
 .stacked-photo-card:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 8px rgba(0,0,0,0.12);
   z-index: 100 !important;
-}
-@media (max-width: 1200px) {
-  .stacked-photo-card {
-    width: 140px;
-    height: 160px;
-  }
-}
-@media (max-width: 900px) {
-  .stacked-photo-cards {
-    width: 100%;
-    margin-top: 24px;
-    align-items: center;
-  }
-  .stacked-photo-card {
-    width: 100px !important;
-    height: 112px !important;
-  }
 }

@@ -24,24 +24,12 @@ function seededRandom(seed) {
 
 // New stacked photo cards component
 const StackedPhotoCards = () => {
-  const [show, setShow] = useState(false);
   const stackRef = useRef(null);
 
   const cardWidth = 300;
   const cardHeight = 337;
   const leftPad = 80;
   const cardCount = 10;
-
-  useEffect(() => {
-    const updateShow = () => {
-      setShow(window.innerWidth > 1200);
-    };
-    updateShow();
-    window.addEventListener('resize', updateShow);
-    return () => window.removeEventListener('resize', updateShow);
-  }, []);
-
-  if (!show) return null;
 
   const images = Array.from({ length: cardCount }, (_, i) => `/assets/img${(i) + 38}.jpg`);
   // Use seeded random for consistent but lively variability
@@ -112,8 +100,8 @@ const MainGrid = () => {
       <div className="testimonial-big-row"><TestimonialBig /></div>
       {/* About card, full width */}
       <div className="about-row" id="about-card"><AboutCard /></div>
-      {/* Stacked photo cards at the very bottom of MainGrid */}
-      <StackedPhotoCards />
+      {/* Photo stack in its own left column cell */}
+      <div className="photo-stack-col" style={{ gridColumn: 1 }}><StackedPhotoCards /></div>
     </div>
   );
 };
