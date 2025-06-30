@@ -67,14 +67,14 @@ const AboutCard = () => {
         <p>
           I've worked in the film industry for over 10 years, and I've seen firsthand how much images mean to people. 
           I've also spent half that time working private events, weddings, parties, and all the other moments that make life special.
-          Camera Catering is a way to bring those two worlds together and to spread the love for cameras, their history, and the people who use them.
+          Camera Catering is a way to bring those two worlds together and to spread the love for cameras, their history, their stories and the people who hold them.
           <br /> <br />
           Beyond that, the core philosophy behind our services is a concept I attribute to filmmaker William Greaves, director of
           Symbiopsychotaxiplasm (Yes that's the name of the film), who believed that the intersection between people, cameras, and those who use them,
           could be a powerful force for good, for connection, and is the exact source of the magic that makes movies in particular so special.
         </p>
         <div className="about-card-signature">
-          Duncan Bielman, Lead Photographer/Owner
+          Duncan Bielman, Photographer/Owner
         </div>
       </div>
     </div>
