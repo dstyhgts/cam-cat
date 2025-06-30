@@ -231,7 +231,7 @@ const LandingGallery = ({ className = "", ...props }) => {
       // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <450px)
       let centerX;
       if (isMobile && width < 450) {
-        centerX = width * 3; // Force far to the right for debugging
+        centerX = width * 1.25; // Only 1/4 of the leftmost side is visible
       } else if (isMobile) {
         centerX = width + radius / 2 - 100;
       } else {
@@ -291,7 +291,6 @@ const LandingGallery = ({ className = "", ...props }) => {
           overflow: hidden;
           background: var(--landing-gallery-bg);
           transition: background 300ms ease-in-out;
-          border: 2px solid red; /* DEBUG: show container bounds */
         }
         .lg-gallery {
           position: absolute;
@@ -299,7 +298,6 @@ const LandingGallery = ({ className = "", ...props }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          border: 2px solid blue; /* DEBUG: show gallery bounds */
         }
         /* Shared font style for Title and Loader */
         .title {
