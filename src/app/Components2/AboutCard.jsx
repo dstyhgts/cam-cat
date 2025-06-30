@@ -71,7 +71,7 @@ const AboutCard = () => {
           <br /> 
         </p>
         <div className="about-card-signature">
-          Duncan Bielman, Founder
+          Duncan Bielman, Lead Photographer/Owner
         </div>
       </div>
     </div>
