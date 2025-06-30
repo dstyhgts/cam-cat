@@ -98,10 +98,10 @@ const MainGrid = () => {
         <TestimonialMed />
       </div>
       <div className="testimonial-big-row"><TestimonialBig /></div>
-      {/* About card, full width */}
-      <div className="about-row" id="about-card"><AboutCard /></div>
       {/* Photo stack in its own left column cell */}
       <div className="photo-stack-col" style={{ gridColumn: 1 }}><StackedPhotoCards /></div>
+      {/* About card, full width */}
+      <div className="about-row" id="about-card"><AboutCard /></div>
     </div>
   );
 };
