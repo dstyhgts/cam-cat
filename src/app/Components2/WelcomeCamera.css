@@ -470,14 +470,8 @@
     padding: 0 !important;
   }
   .card-stack-desktop > div[style*="position: relative"] {
-    left: 0 !important;
-    margin: 0 auto !important;
-    width: 100vw !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
+    left: -72px !important;
+    position: relative !important;
   }
   .card-stack-desktop .item {
     margin: 0 0.5rem !important;
