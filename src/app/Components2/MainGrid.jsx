@@ -31,8 +31,13 @@ const StackedPhotoCards = () => {
   const leftPad = 80;
   const cardCount = 10;
 
-  const images = Array.from({ length: cardCount }, (_, i) => `/assets/img${(i) + 38}.jpg`);
-  // Use seeded random for consistent but lively variability
+  // Generate image paths for the stacked photo cards
+  const images = [];
+  for (let i = 0; i < cardCount; i++) {
+    images.push(`/assets/img${i + 38}.jpg`);
+  }
+
+  // Build the cards array with rotation, offset, and top position
   let topSum = 0;
   const cards = images.map((src, i) => {
     const rot = seededRandom(i + 1) * 48 - 24; // -24 to 24 deg
