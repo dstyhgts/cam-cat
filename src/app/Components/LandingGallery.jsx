@@ -125,6 +125,7 @@ const LandingGallery = ({ className = "", ...props }) => {
       while (gallery.firstChild) {
         gallery.removeChild(gallery.firstChild);
       }
+      const isVerySmallScreen = window.innerWidth <= 450;
       for (let i = 8; i <= itemsCount; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
@@ -136,20 +137,37 @@ const LandingGallery = ({ className = "", ...props }) => {
         item.appendChild(img);
         gallery.appendChild(item);
 
-        // Drag events
-        item.addEventListener('mousedown', (e) => {
-          galleryBox = gallery.getBoundingClientRect();
-          const rect = item.getBoundingClientRect();
-          dragOffset.x = e.clientX - rect.left;
-          dragOffset.y = e.clientY - rect.top;
-          dragStart.x = e.clientX;
-          dragStart.y = e.clientY;
-          dragStartGallery.x = rect.left - galleryBox.left;
-          dragStartGallery.y = rect.top - galleryBox.top;
-          draggingItem = item;
-          isDragging = false;
-          dragTimeout = setTimeout(() => {
-            if (draggingItem && !isDragging) {
+        if (!isVerySmallScreen) {
+          // Drag events
+          item.addEventListener('mousedown', (e) => {
+            galleryBox = gallery.getBoundingClientRect();
+            const rect = item.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            dragStart.x = e.clientX;
+            dragStart.y = e.clientY;
+            dragStartGallery.x = rect.left - galleryBox.left;
+            dragStartGallery.y = rect.top - galleryBox.top;
+            draggingItem = item;
+            isDragging = false;
+            dragTimeout = setTimeout(() => {
+              if (draggingItem && !isDragging) {
+                isDragging = true;
+                item.classList.add('dragged');
+                item.style.transform = '';
+                item.style.position = 'absolute';
+                item.style.left = `${dragStartGallery.x}px`;
+                item.style.top = `${dragStartGallery.y}px`;
+                item.style.zIndex = 1000;
+              }
+            }, 120);
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+          });
+          item.addEventListener('mousemove', (e) => {
+            if (!draggingItem || isDragging) return;
+            if (Math.abs(e.clientX - dragStart.x) > 3 || Math.abs(e.clientY - dragStart.y) > 3) {
+              clearTimeout(dragTimeout);
               isDragging = true;
               item.classList.add('dragged');
               item.style.transform = '';
@@ -158,37 +176,38 @@ const LandingGallery = ({ className = "", ...props }) => {
               item.style.top = `${dragStartGallery.y}px`;
               item.style.zIndex = 1000;
             }
-          }, 120);
-          document.addEventListener('mousemove', onMouseMove);
-          document.addEventListener('mouseup', onMouseUp);
-        });
-        item.addEventListener('mousemove', (e) => {
-          if (!draggingItem || isDragging) return;
-          if (Math.abs(e.clientX - dragStart.x) > 3 || Math.abs(e.clientY - dragStart.y) > 3) {
-            clearTimeout(dragTimeout);
-            isDragging = true;
-            item.classList.add('dragged');
-            item.style.transform = '';
-            item.style.position = 'absolute';
-            item.style.left = `${dragStartGallery.x}px`;
-            item.style.top = `${dragStartGallery.y}px`;
-            item.style.zIndex = 1000;
-          }
-        });
-        item.addEventListener('touchstart', (e) => {
-          galleryBox = gallery.getBoundingClientRect();
-          const rect = item.getBoundingClientRect();
-          const touch = e.touches[0];
-          dragOffset.x = touch.clientX - rect.left;
-          dragOffset.y = touch.clientY - rect.top;
-          dragStart.x = touch.clientX;
-          dragStart.y = touch.clientY;
-          dragStartGallery.x = rect.left - galleryBox.left;
-          dragStartGallery.y = rect.top - galleryBox.top;
-          draggingItem = item;
-          isDragging = false;
-          dragTimeout = setTimeout(() => {
-            if (draggingItem && !isDragging) {
+          });
+          item.addEventListener('touchstart', (e) => {
+            galleryBox = gallery.getBoundingClientRect();
+            const rect = item.getBoundingClientRect();
+            const touch = e.touches[0];
+            dragOffset.x = touch.clientX - rect.left;
+            dragOffset.y = touch.clientY - rect.top;
+            dragStart.x = touch.clientX;
+            dragStart.y = touch.clientY;
+            dragStartGallery.x = rect.left - galleryBox.left;
+            dragStartGallery.y = rect.top - galleryBox.top;
+            draggingItem = item;
+            isDragging = false;
+            dragTimeout = setTimeout(() => {
+              if (draggingItem && !isDragging) {
+                isDragging = true;
+                item.classList.add('dragged');
+                item.style.transform = '';
+                item.style.position = 'absolute';
+                item.style.left = `${dragStartGallery.x}px`;
+                item.style.top = `${dragStartGallery.y}px`;
+                item.style.zIndex = 1000;
+              }
+            }, 120);
+            document.addEventListener('touchmove', onMouseMove);
+            document.addEventListener('touchend', onMouseUp);
+          });
+          item.addEventListener('touchmove', (e) => {
+            if (!draggingItem || isDragging) return;
+            const touch = e.touches[0];
+            if (Math.abs(touch.clientX - dragStart.x) > 3 || Math.abs(touch.clientY - dragStart.y) > 3) {
+              clearTimeout(dragTimeout);
               isDragging = true;
               item.classList.add('dragged');
               item.style.transform = '';
@@ -197,24 +216,8 @@ const LandingGallery = ({ className = "", ...props }) => {
               item.style.top = `${dragStartGallery.y}px`;
               item.style.zIndex = 1000;
             }
-          }, 120);
-          document.addEventListener('touchmove', onMouseMove);
-          document.addEventListener('touchend', onMouseUp);
-        });
-        item.addEventListener('touchmove', (e) => {
-          if (!draggingItem || isDragging) return;
-          const touch = e.touches[0];
-          if (Math.abs(touch.clientX - dragStart.x) > 3 || Math.abs(touch.clientY - dragStart.y) > 3) {
-            clearTimeout(dragTimeout);
-            isDragging = true;
-            item.classList.add('dragged');
-            item.style.transform = '';
-            item.style.position = 'absolute';
-            item.style.left = `${dragStartGallery.x}px`;
-            item.style.top = `${dragStartGallery.y}px`;
-            item.style.zIndex = 1000;
-          }
-        });
+          });
+        }
       }
     };
 
@@ -255,10 +258,12 @@ const LandingGallery = ({ className = "", ...props }) => {
         item.dataset.originalRotation = (angle * 180) / Math.PI + 90;
       });
       // Attach advanced hover listeners
-      items.forEach((item) => {
-        item.addEventListener("mouseenter", (e) => advancedMouseEnter(e, items));
-        item.addEventListener("mouseleave", (e) => advancedMouseLeave(e, items));
-      });
+      if (window.innerWidth > 450) {
+        items.forEach((item) => {
+          item.addEventListener("mouseenter", (e) => advancedMouseEnter(e, items));
+          item.addEventListener("mouseleave", (e) => advancedMouseLeave(e, items));
+        });
+      }
     };
 
     // Initialize gallery immediately in circular layout
