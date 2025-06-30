@@ -62,12 +62,14 @@ const AboutCard = () => {
       <div className="about-card-text">
         <h2>Camera Catering</h2>
         <p>
-          Camera Catering helped me quite drinking and tie up the sutures that have been
-          gagging the life from my soul since I was a kid. Even when I was scared of them.
+          Camera Catering is a project built from a passion for digital cameras and the people who use them.
         </p>
         <p>
-          I'm not sure the Darkness personally, but she has blocked all communication
-          since I was a teen. But, it's fine—this isn't about cameras anymore. I promise.
+          I've worked in the film industry for over 10 years, and I've seen firsthand how much images mean to people. 
+          I've also spent half that time working private events, weddings, parties, and all the other moments that make life special.
+          Camera Catering is a way to bring those two worlds together and to spread the love for cameras, their history, and the people who use them.
+          <br />
+          --------------------------------------------------- Duncan Bielman, Founder
         </p>
       </div>
     </div>

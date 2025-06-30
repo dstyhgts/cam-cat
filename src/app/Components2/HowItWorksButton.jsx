@@ -85,7 +85,7 @@ const HowItWorksButton = () => {
 
             <h6>We set the stage:</h6>
 
-            <img className="hiw-overflow-svg" src="/assets/camera-icon50.svg" alt="Camera Icon" />
+            <img className="hiw-overflow-svg" src="/assets/camera-icon16.svg" alt="Camera Icon" />
 
             <ul className="hiw-bullets">
               <li>
