@@ -246,13 +246,13 @@ const LandingGallery = ({ className = "", ...props }) => {
         gsap.set(item, {
           left: `${x}px`,
           top: `${y}px`,
-          rotation: (angle * 180) / Math.PI - 90,
+          rotation: (angle * 180) / Math.PI + 90,
           transform: "translateY(0%)",
           x: 0,
           y: 0,
           scale: 1,
         });
-        item.dataset.originalRotation = (angle * 180) / Math.PI - 90;
+        item.dataset.originalRotation = (angle * 180) / Math.PI + 90;
       });
       // Attach advanced hover listeners
       items.forEach((item) => {
