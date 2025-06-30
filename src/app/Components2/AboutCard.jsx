@@ -68,9 +68,11 @@ const AboutCard = () => {
           I've worked in the film industry for over 10 years, and I've seen firsthand how much images mean to people. 
           I've also spent half that time working private events, weddings, parties, and all the other moments that make life special.
           Camera Catering is a way to bring those two worlds together and to spread the love for cameras, their history, and the people who use them.
-          <br /> <br />
-          --------------------------------------------------- Duncan Bielman, Founder
+          <br /> 
         </p>
+        <div className="about-card-signature">
+          Duncan Bielman, Founder
+        </div>
       </div>
     </div>
   );

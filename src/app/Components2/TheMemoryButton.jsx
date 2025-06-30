@@ -43,7 +43,7 @@ const TheMemoryButton = () => {
         <div className="memory-card memory-default">
           <h6>WHAT <i>YOU</i> GET...</h6>
           <p className="memory-subtext">
-          You get:<br/>
+          You get:<br/><br /><br />
           <i> The Complete Story.</i> 
           </p>
           <span className="arrow">→</span>

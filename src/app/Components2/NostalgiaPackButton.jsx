@@ -29,13 +29,13 @@ const NostalgiaPackButton = () => {
 
   return (
     <div
-      className={`printpack-container ${expanded ? 'expanded' : ''}`}
+      className={`nostpack-container ${expanded ? 'expanded' : ''}`}
       ref={cardRef}
       onClick={handleToggle}
       aria-expanded={expanded}
     >
       {/* Background for hover tilt (hidden when expanded) */}
-      {!expanded && <div className="printpack-background" />}
+      {!expanded && <div className="nostpack-background" />}
 
       {/* 3 stars animate in on hover (only if not expanded) */}
       {!expanded && (
@@ -56,20 +56,20 @@ const NostalgiaPackButton = () => {
 
       {/* ========== DEFAULT / HOVER (512×256) ========== */}
       {!expanded && (
-        <div className="printpack-card printpack-default">
-            <p className="printpack-topline">Learn about our...</p>
-          <h2 className="printpack-title">
+        <div className="nostpack-card nostpack-default">
+            <p className="nostpack-topline">Learn about our...</p>
+          <h2 className="nostpack-title">
             <span className="nostalgia-title-word"><em>'MEMORY'</em></span><br />
             <span className="package-title-word">PACKAGE</span>
           </h2>
-          <p className="printpack-subtext">
+          <p className="nostpack-subtext">
           Our entry-level product----15 <i>"indisposible"</i> cameras catered to the moment.
             <span className="emoji"></span>
           </p>
-        <div className="printpack-ellipse">
+        <div className="nostpack-ellipse">
         <p>Pack</p>
       </div>
-      <div className="printpack-ellipse2">
+      <div className="nostpack-ellipse2">
             <p1>★</p1>
           </div>
       </div>
@@ -77,17 +77,17 @@ const NostalgiaPackButton = () => {
 
       {/* ========== EXPANDED STATE ========== */}
       {expanded && (
-        <div className="printpack-expanded-layout">
+        <div className="nostpack-expanded-layout">
           {/* LEFT CARD (with overhanging rectangle) */}
-          <div className="printpack-expanded-card left-card">
+          <div className="nostpack-expanded-card left-card">
             {/* Overhanging title box */}
-            <div className="printpack-overflow-title">
+            <div className="nostpack-overflow-title">
               <h3><i>MEMORY.</i></h3>
               <p>Truly <i>"Indisposible"</i> Nostalgia.</p>
             </div>
 
             {/* Inner frame for text content */}
-            <div className="printpack-inner-frame">
+            <div className="nostpack-inner-frame">
               {/* <h3 className="subcard-title">
                 "RAPID" PRINT <span className="emoji">🚀</span>
               </h3> */}
@@ -104,7 +104,7 @@ const NostalgiaPackButton = () => {
                     <p>Small, simple, and made to be passed      
                       around. The goal is a candid memory archive of the event. </p>
                 </li>
-                <li>🎥 1 Cam-Tender: 
+                <li>🎥 1 Cam-Tender (Add-On): 
                     <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
                       inclusive experience. They find the natural storytellers at your event,
                       put the cameras in their hands. They make sure everyone has a good time and
@@ -113,7 +113,7 @@ const NostalgiaPackButton = () => {
                 <li>📼 Digital Archives + Real Memories: 
                     <p>No moment, no detail, and no person should go unphotographed.</p>
                 </li>
-                <li>📤 Delivery in 12 hours: 
+                <li>📤 Delivery in 24 hours: 
                     <p>You get every digital file, plus a fully   
                     preserved archive of the night. <br /><br /></p>
                 </li>
@@ -126,9 +126,9 @@ const NostalgiaPackButton = () => {
           </div>
 
           {/* RIGHT CARD (simpler) */}
-          <div className="printpack-expanded-card right-card">
+          <div className="nostpack-expanded-card right-card">
             {/* Inner frame for text content */}
-            <div className="printpack-inner-frame">
+            <div className="nostpack-inner-frame">
             <h2><em>INCLUDES:</em></h2>
               <h5>
               <strong>Cams (15):</strong><br />

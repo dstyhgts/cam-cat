@@ -43,6 +43,7 @@ const TheCameraBarButton = () => {
         <div className="camera-bar-card camera-bar-default">
             <h6>THE CAMERA*</h6> <h3> BAR</h3> 
           <p className="camera-bar-subtext">
+          <br />
           Somewhere in the room, there's a bar. But not the kind you're thinking of...
           </p>
           <span className="arrow">→</span>

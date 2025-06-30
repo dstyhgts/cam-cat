@@ -128,6 +128,15 @@
   margin: 0.5rem 0;
 }
 
+.about-card-signature {
+  text-align: right;
+  margin-top: 1.5rem;
+  color: var(--about-card-text-color);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
 @media (max-width: 900px) {
 .about-card-container {
   width: min(90vw, 512px);

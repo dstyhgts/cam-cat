@@ -60,6 +60,7 @@ const HowItWorksButton = () => {
         <div className="hiw-card hiw-default" ref={cardRef}>
           <h6><i>HOW</i> IT* WORKS</h6>
           <p className="hiw-subtext">
+          <br /><br />
             Every guest sees the night differently.<br />
             We make sure those perspectives don't get lost!
           </p>
@@ -78,7 +79,6 @@ const HowItWorksButton = () => {
             <p className="intro-paragraph">
             Every guest sees the 
             night differently. 
-            <br /><br />
             We make sure those 
             perspectives don't 
             get lost!

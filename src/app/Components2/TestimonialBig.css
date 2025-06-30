@@ -14,7 +14,7 @@
   box-sizing: border-box;
   position: relative;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial Black', Arial, sans-serif;
   z-index: 1;
   transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
 }
@@ -119,6 +119,7 @@
   width: auto;
   transition: color 300ms ease-in-out;
   z-index: 2;
+  line-height: 0.8;
 }
 
 /* Author bottom-left */
@@ -152,12 +153,12 @@
 .testimonial-big-body {
   position: absolute;
   left: 50%;
-  bottom: 2rem;
+  bottom: 1rem;
   transform: translateX(-50%);
-  width: 85%;
+  width: 90%;
   color: var(--testimonial-text-light);
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: .9;
   text-align: left;
   transition: color 300ms ease-in-out;
   z-index: 2;

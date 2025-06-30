@@ -35,7 +35,7 @@ p
 
 h3
 {
-    font-size: 67.77px;
+    font-size: 25.89px;
     font-weight: bold;
     color: var(--button-white-text);
     line-height: .9em;
@@ -43,7 +43,7 @@ h3
 }
 
 
-.printpack-container {
+.nostpack-container {
     font-family: "Arial Black", sans-serif;
     grid-column: span 2;
     position: relative;
@@ -59,7 +59,7 @@ h3
   }
 
   @media (max-width: 900px) {
-    .printpack-container {
+    .nostpack-container {
       grid-column: 1;
       width: min(90vw, 512px);
       height: auto;
@@ -68,7 +68,7 @@ h3
   }
   
   /* ============ BACKGROUND (Hover Tilt) ============ */
-  .printpack-background {
+  .nostpack-background {
     position: absolute;
     top: 0; left: 0;
     width: 100%;
@@ -87,7 +87,7 @@ h3
   }
   
   /* ============ CARD (Default) ============ */
-  .printpack-card {
+  .nostpack-card {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -107,7 +107,7 @@ h3
     align-items: flex-start;
 
     /* Ellipse inside the card, top-right corner */
-    .printpack-ellipse {
+    .nostpack-ellipse {
         position: absolute;
         rotate: 0deg;
         top: 10px; 
@@ -123,7 +123,7 @@ h3
         z-index: 2;
         transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
       }
-      .printpack-ellipse p {
+      .nostpack-ellipse p {
         position: absolute;
         top: 8px; 
         right: 0px;
@@ -135,7 +135,7 @@ h3
         transition: color 300ms ease-in-out;
       }
       
-      .printpack-ellipse2 p1 {
+      .nostpack-ellipse2 p1 {
         position: absolute;
         rotate: 1deg;
         top: 18px; 
@@ -161,7 +161,7 @@ h3
       border-color 300ms ease-in-out;
   }
   
-  .printpack-topline {
+  .nostpack-topline {
     font-size: 0.6em;
     color: var(--button-white-text);
     margin-bottom: 0.5em;
@@ -169,12 +169,12 @@ h3
   }
 
   /* Default Title & subtext */
-  .printpack-title {
+  .nostpack-title {
     font-size: 67.77px; /* ~26px */
     line-height: .8;
     margin-bottom: 0.2em;
   }
-  .printpack-subtext {
+  .nostpack-subtext {
     font-size: 0.6em; /* ~15.53px */
     line-height: 1.3;
     max-width: 420px;
@@ -201,11 +201,11 @@ h3
   }
   
   /* Hover effect: slight translation + slight opacity change */
-  .printpack-container:not(.expanded):hover .printpack-card {
+  .nostpack-container:not(.expanded):hover .nostpack-card {
     opacity: 0.9;
     transform: translate(0px, -30px);
   }
-  .printpack-container:not(.expanded):hover .printpack-background {
+  .nostpack-container:not(.expanded):hover .nostpack-background {
     opacity: 1;
   }
   
@@ -223,36 +223,36 @@ h3
   .star1 { top: 20px; right: 40px; }
   .star2 { top: 70px; left: 100px; }
   .star3 { top: 150px; right: 80px; }
-  .printpack-container:not(.expanded):hover .star {
+  .nostpack-container:not(.expanded):hover .star {
     opacity: 1;
   }
   
   /* ========== EXPANDED STATE ========== */
-  .printpack-container.expanded {
+  .nostpack-container.expanded {
     z-index: 10;
     width: auto;
     height: auto;
   }
   
-  .printpack-container.expanded .printpack-background {
+  .nostpack-container.expanded .nostpack-background {
     display: none; /* hide background in expanded mode */
   }
   
-  .printpack-container.expanded .printpack-card {
+  .nostpack-container.expanded .nostpack-card {
     transform: none;
     padding: 16px 16px 40px;
     overflow: visible; /* so the top rectangle can overhang */
   }
   
   /* ========== EXPANDED LAYOUT ========== */
-  .printpack-expanded-layout {
+  .nostpack-expanded-layout {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 24px;
   }
   
-  .printpack-expanded-card {
+  .nostpack-expanded-card {
     flex: 1 1 calc(50% - 12px);
     display: flex;
     flex-direction: column;
@@ -267,7 +267,7 @@ h3
   }
   
   /* ========== OVERFLOW TITLE BOX ========== */
-  .printpack-overflow-title {
+  .nostpack-overflow-title {
     position: relative;
     background-color: var(--print-pack-bg);
     border: 2px solid var(--button-white-border);
@@ -281,7 +281,7 @@ h3
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
   }
-  .printpack-overflow-title h2 {
+  .nostpack-overflow-title h2 {
     margin: 0;
     font-size: 2.8rem;
     line-height: 1.2;
@@ -292,7 +292,7 @@ h3
   }
   
   /* ========== INNER FRAME ========== */
-  .printpack-inner-frame {
+  .nostpack-inner-frame {
     background-color: var(--print-pack-lighter-bg);
     border: 2px solid var(--button-white-border);
     border-radius: 15px;
@@ -315,62 +315,78 @@ h3
     transition: color 300ms ease-in-out;
   }
   
-  .printpack-inner-frame ul {
+  .nostpack-inner-frame ul {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
   }
   
+  .nostpack-inner-frame li > strong,
+  .nostpack-inner-frame li > span {
+    font-size: 25.89px;
+    font-weight: bold;
+    color: var(--button-white-text);
+    display: inline-block;
+    margin-bottom: 0.2em;
+  }
+  
+  .nostpack-inner-frame ul > li {
+    font-size: 25.89px;
+    font-weight: bold;
+    color: var(--button-white-text);
+    margin-bottom: 0.2em;
+  }
+  
   /* ========== RESPONSIVE ========== */
   @media (min-width: 900px) {
-    .printpack-container.expanded {
+    .nostpack-container.expanded {
       grid-column: 1 / 3;
       width: 900px;
       height: auto;
       margin: 0 auto;
     }
     
-    .printpack-expanded-card {
+    .nostpack-expanded-card {
       /* min-height: 300px; */
     }
   }
   
   @media (max-width: 900px) {
-    .printpack-container.expanded {
+    .nostpack-container.expanded {
       width: 92vw;
       height: auto;
       border-radius: 12px;
     }
     
-    .printpack-expanded-card {
+    .nostpack-expanded-card {
       padding: 1rem;
     }
     
-    .printpack-expanded-layout {
+    .nostpack-expanded-layout {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
   }
   
   @media (max-width: 1200px) {
-    .printpack-container.expanded {
+    .nostpack-container.expanded {
       grid-column: 1;
     }
     
-    .printpack-expanded-layout {
+    .nostpack-expanded-layout {
       grid-template-columns: 1fr;
     }
     
-    .printpack-expanded-card.left-card {
+    .nostpack-expanded-card.left-card {
       order: 1;
     }
     
-    .printpack-expanded-card.right-card {
+    .nostpack-expanded-card.right-card {
       order: 2;
     }
   }
   
-  .printpack-expanded-card.left-card {
+  .nostpack-expanded-card.left-card {
     position: relative;
     min-width: 320px;
     max-width: 700px;
@@ -379,7 +395,7 @@ h3
   }
 
   @media (max-width: 375px) {
-    .printpack-title {
+    .nostpack-title {
       display: block;
       font-size: clamp(18px, 8vw, 32px);
       line-height: 1.05;
