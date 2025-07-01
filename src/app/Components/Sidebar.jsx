@@ -377,12 +377,12 @@ export default function Sidebar() {
         @media (max-width: 600px) {
         .card-title {
             font-size: 67.77px;
-            line-height: .7em;
+            line-height: .8em;
             padding-top: .4em;
           }
           .card-copy {
             font-size: 10px;
-            line-height: .7em;
+            line-height: .8em;
             
           }
         }

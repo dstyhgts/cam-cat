@@ -21,6 +21,25 @@ function useIsMobile(maxWidth = 400) {
 
 const WelcomeCamera = () => {
   const isMobile = useIsMobile(400);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  // Simple spinner component
+  const Spinner = () => (
+    <div style={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 20,
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <div className="video-spinner" />
+    </div>
+  );
+
   return (
     <div style={{ position: 'relative', width: '100vw' }}>
       {/* LandingGallery at the bottom layer */}
@@ -61,7 +80,8 @@ const WelcomeCamera = () => {
           <div style={{ position: 'relative', width: isMobile ? '100vw' : '525px', height: isMobile ? 'auto' : '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {isMobile ? (
               // Only show the video card on mobile
-              <div className="item" style={{ width: '90vw', maxWidth: 250, height: 'auto', margin: '0 auto', background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="item" style={{ width: '90vw', maxWidth: 250, height: 'auto', margin: '0 auto', background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                {videoLoading && <Spinner />}
                 <video
                   src="/assets/BrookeBDAY2.mp4"
                   autoPlay
@@ -69,6 +89,7 @@ const WelcomeCamera = () => {
                   muted
                   playsInline
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: 'transparent' }}
+                  onLoadedData={() => setVideoLoading(false)}
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -80,7 +101,8 @@ const WelcomeCamera = () => {
                   <img src="/assets/img57.JPG" alt="Event 1" />
                 </div>
                 {/* Card 2: Video */}
-                <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>
+                  {videoLoading && <Spinner />}
                   <video
                     src="/assets/BrookeBDAY2.mp4"
                     autoPlay
@@ -88,6 +110,7 @@ const WelcomeCamera = () => {
                     muted
                     playsInline
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: 'transparent' }}
+                    onLoadedData={() => setVideoLoading(false)}
                   >
                     Your browser does not support the video tag.
                   </video>
@@ -114,6 +137,18 @@ const WelcomeCamera = () => {
             /* Ensure Typeform popup overlays are always above navbar/sidebar */
             .tf-v1-popup, .tf-v1-widget, .tf-v1-modal, .tf-v1-iframe-container, .tf-v1-iframe, .tf-v1-widget-open {
               z-index: 10000001 !important;
+            }
+            .video-spinner {
+              border: 6px solid #f3f3f3;
+              border-top: 6px solid #555;
+              border-radius: 50%;
+              width: 48px;
+              height: 48px;
+              animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
             }
           `}</style>
         </div>

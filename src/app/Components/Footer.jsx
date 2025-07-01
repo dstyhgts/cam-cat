@@ -158,7 +158,7 @@ export default function Footer() {
           width: "50vw",
           height: "0vh",
           overflow: "visible",
-          background: "#b94239",
+          background: "var(--footer-bg)",
           zIndex: 2,
           pointerEvents: "none",
           opacity: 1,
@@ -176,10 +176,12 @@ export default function Footer() {
           </div>
           <div className="footer-links-row">
             <div className="footer-links-col">
+            <a  target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>REACH US: </a>
+            <br />
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>INSTAGRAM</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>FACEBOOK</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YOUTUBE</a>
-              <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a>
+              <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>(805)678-3444</a>
+              <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>info@camera<br/>catering.com</a><br />
+              {/* <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a> */}
             </div>
             <div className="footer-links-col">
               <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
@@ -200,7 +202,10 @@ export default function Footer() {
                   GET IN TOUCH
                 </PopupButton>
               </div>
-              <a href="/welcomepacket" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>GET WELCOME PACKET</a>
+              <a target="_blank" rel="noopener noreferrer" className="footer-link welcome-packet-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>
+                <span className="welcome-packet-main">GET WELCOME PACKET</span>
+                <span className="coming-soon">(COMING SOON)</span>
+              </a>
               <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                 <PopupButton
                   id="wwvkhbUP"
@@ -349,6 +354,31 @@ export default function Footer() {
         @media (max-width: 375px) {
           .footer-card-container {
             min-height: 150vh;
+          }
+        }
+        .welcome-packet-link {
+          display: inline-block !important;
+          line-height: 1.05;
+        }
+        .welcome-packet-main {
+          display: block;
+        }
+        .welcome-packet-link .coming-soon {
+          display: none;
+          font-size: 12px;
+          margin-left: 0;
+          white-space: nowrap;
+          line-height: 1.05;
+        }
+        .welcome-packet-link:hover .coming-soon {
+          display: block;
+        }
+        .footer-contact {
+          /* No change for mobile, inherits default size */
+        }
+        @media (min-width: 901px) {
+          .footer-contact {
+            font-size: 57.6px !important; /* 15% smaller than 67.77px */
           }
         }
       `}</style>
