@@ -123,8 +123,8 @@ export default function Sidebar() {
 
       {/* Overlay toggle and sidebar cards */}
       <div className="overlay-toggle preload">
-        <p>Ready for The Next Steps?</p>
-        <p>
+        <p className="overlay-toggle-text">Ready for The Next Steps?</p>
+        <p className="overlay-toggle-arrow">
           <i className="ph ph-arrow-right"></i>
         </p>
       </div>
@@ -266,7 +266,7 @@ export default function Sidebar() {
         }
         .overlay-toggle:hover {
           background: #8c84ff;
-          color: #fff;
+          color: #000 !important;
         }
         .sidebar {
           position: fixed;
@@ -382,9 +382,15 @@ export default function Sidebar() {
           }
           .card-copy {
             font-size: 10px;
-            line-height: 1em;
+            line-height: 1.1em;
             
           }
+        }
+        .overlay-toggle-text, .overlay-toggle-arrow {
+          color: #111 !important;
+        }
+        .overlay-toggle:hover, .overlay-toggle:active {
+          background: #8c84ff;
         }
       `}</style>
     </>
