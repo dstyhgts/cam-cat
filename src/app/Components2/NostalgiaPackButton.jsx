@@ -70,7 +70,7 @@ const NostalgiaPackButton = () => {
         <p>Pack</p>
       </div>
       <div className="nostpack-ellipse2">
-            <p1>★</p1>
+            <p1>1</p1>
           </div>
       </div>
       )}

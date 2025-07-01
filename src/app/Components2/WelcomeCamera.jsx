@@ -57,7 +57,7 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle">
-            FORGET THE PHOTOGRAPHER, TAKE THE MEMORIES INTO YOUR OWN HANDS.
+            WE BRING THE CAMERAS, YOU TAKE THE MEMORIES INTO YOUR OWN HANDS.
           </p>
 
           <div className="new-section">

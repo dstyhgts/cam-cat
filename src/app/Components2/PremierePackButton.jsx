@@ -69,7 +69,7 @@ const PrintPackButton = () => {
         <p>Pack</p>
       </div>
       <div className="premiere-ellipse2">
-            <p1>2</p1>
+            <p1>3</p1>
           </div>
       </div>
       )}
