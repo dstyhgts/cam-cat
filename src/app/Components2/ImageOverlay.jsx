@@ -9,6 +9,7 @@ const ImageOverlay = ({ src, alt, style, className = '' }) => {
       alt={alt}
       className={`image-overlay ${className}`}
       style={style}
+      loading="lazy"
     />
   );
 };

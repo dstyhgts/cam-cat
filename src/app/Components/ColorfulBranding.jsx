@@ -14,9 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
  */
 const fullText = `
   CAMERAS HELP <br/> HUMANS TELL STORIES AND CONNECTS EACH OF US TO THE PAST
-  WITH IMMEDIATE WARMTH. <br/> <br/> <br/> <br/>Photography has always been about quality. But memories? They’re about feeling.
+  WITH IMMEDIATE WARMTH. <br/> <br/> <br/> <br/>Photography has always been about quality. But memories? They're about feeling.
   <br/> <br/>  At Camera Catering, we believe memories have an aesthetic. 
-   <br/> <br/>  That’s why we bring a camera bar to your event—stocked with vintage cameras, instant print cameras, and the tools of nostalgia.
+   <br/> <br/>  That's why we bring a camera bar to your event—stocked with vintage cameras, instant print cameras, and the tools of nostalgia.
  
 `;
 //OLD TEXT
@@ -106,6 +106,7 @@ function parseTextWithBr(fullText, images) {
               alt={img.alt}
               fill
               style={{ objectFit: "contain" }}
+              loading="lazy"
             />
           </span>
         );

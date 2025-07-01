@@ -94,6 +94,7 @@ export default function Footer() {
 
             const img = document.createElement("img");
             img.src = imagePath;
+            img.loading = "lazy";
             this.div.appendChild(img);
 
             containerRef.current.appendChild(this.div);

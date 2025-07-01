@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import MainGrid from './MainGrid';
 import './BigSvg.css';
@@ -14,7 +12,7 @@ const BigSvg = () => {
 
       {/* Right: The large SVG */}
       <div className="svg-wrapper">
-        <img src= './assets/camera-icon117.svg' alt="Large decorative SVG" className="large-svg" />
+        <img src= './assets/camera-icon117.svg' alt="Large decorative SVG" className="large-svg" loading="lazy" />
       </div>
     </div>
   );

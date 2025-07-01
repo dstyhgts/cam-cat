@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const fullText = `
 <br/>TAKING PHOTOS AT YOUR EVENT SHOULDN'T FEEL LIKE SOMEONE IS ALWAYS WATCHING YOU.
 <br/> <br/> No photographers telling people where to stand. <br/> <br/>  No stiff posing. <br/> <br/>  Just real moments, captured by the people living them.
- <br/> <br/> Because when you <br/>give someone a camera, you don’t just get photos— <br/>you get their story.
+ <br/> <br/> Because when you <br/>give someone a camera, you don't just get photos— <br/>you get their story.
                                            
 `;
 
@@ -107,6 +107,7 @@ function parseTextWithBr(fullText, images) {
               alt={img.alt}
               fill
               style={{ objectFit: "contain" }}
+              loading="lazy"
             />
           </span>
         );

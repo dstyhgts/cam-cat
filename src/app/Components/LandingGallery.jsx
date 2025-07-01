@@ -133,6 +133,7 @@ const LandingGallery = ({ className = "", ...props }) => {
         const img = document.createElement("img");
         img.src = `/assets/img${i}.jpg`;
         img.alt = `Image ${i}`;
+        img.loading = "lazy";
 
         item.appendChild(img);
         gallery.appendChild(item);

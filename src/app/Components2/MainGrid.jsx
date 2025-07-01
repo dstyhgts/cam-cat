@@ -69,7 +69,7 @@ const StackedPhotoCards = () => {
             userSelect: 'none',
           }}
         >
-          <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} />
+          <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} loading="lazy" />
         </div>
       ))}
     </div>
