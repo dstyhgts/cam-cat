@@ -1,7 +1,7 @@
 // NewNavbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './NewNavbar.css';
-import ThemeToggle from '../Components/ThemeToggle';
+import ThemeToggle from './ThemeToggle';
 
 const NewNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

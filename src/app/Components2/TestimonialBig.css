@@ -14,7 +14,7 @@
   box-sizing: border-box;
   position: relative;
   padding: 0;
-  font-family: 'Arial Black', Arial, sans-serif;
+  font-family: 'Arial Bold', Arial, sans-serif;
   z-index: 1;
   transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out;
 }
