@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../Components2/ThemeProvider";
 import { PopupButton } from '@typeform/embed-react';
 
 export default function Footer() {

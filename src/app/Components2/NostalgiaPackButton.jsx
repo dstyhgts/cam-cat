@@ -37,12 +37,12 @@ const NostalgiaPackButton = () => {
       {/* Background for hover tilt (hidden when expanded) */}
       {!expanded && <div className="nostpack-background" />}
 
-      {/* 3 stars animate in on hover (only if not expanded) */}
+      {/* 3 icons animate in on hover (only if not expanded) */}
       {!expanded && (
         <>
-          <div className="star star1" />
-          <div className="star star2" />
-          <div className="star star3" />
+          <img className="star star1" src="/assets/camera-icon10.svg" alt="Camera Icon 11" style={{ width: '96px', height: '96px' }} />
+          <img className="star star2" src="/assets/camera-icon12.svg" alt="Camera Icon 12" style={{ width: '96px', height: '96px' }} />
+          <img className="star star3" src="/assets/camera-icon13.svg" alt="Camera Icon 13" style={{ width: '96px', height: '96px' }} />
         </>
       )}
 
@@ -59,7 +59,7 @@ const NostalgiaPackButton = () => {
         <div className="nostpack-card nostpack-default">
             <p className="nostpack-topline">Learn about our...</p>
           <h2 className="nostpack-title">
-            <span className="nostalgia-title-word"><em>'MEMORY'</em></span><br />
+            <span className="nostalgia-title-word"><em>CAMERAS.</em></span><br />
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="nostpack-subtext">
@@ -82,8 +82,8 @@ const NostalgiaPackButton = () => {
           <div className="nostpack-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="nostpack-overflow-title">
-              <h3><i>MEMORY.</i></h3>
-              <p>Truly <i>"Indisposible"</i> Nostalgia.</p>
+              <h3><i>CAMERAS.</i></h3>
+              <p>Only <i>"Indisposible"</i> Nostalgia.</p>
             </div>
 
             {/* Inner frame for text content */}

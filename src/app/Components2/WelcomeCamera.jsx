@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './WelcomeCamera.css';
-import Footer from '../Components/Footer';
-import LandingGallery from '../Components/LandingGallery';
+import Footer from '../Components2/Footer';
+import LandingGallery from '../Components2/LandingGallery';
 import { PopupButton } from '@typeform/embed-react';
+import { useTheme } from "../Components2/ThemeProvider";
 
 // Responsive hook
 function useIsMobile(maxWidth = 400) {

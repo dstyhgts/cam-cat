@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './PrintPackButton.css';
 import './ClassicsPackButton.css';
 
@@ -28,6 +28,15 @@ const PrintPackButton = () => {
     };
   }, [expanded]);
 
+  // SVGs for the stars (adjustable)
+  const starSvgs = [
+    '/assets/camera-icon10.svg',
+    '/assets/camera-icon20.svg',
+    '/assets/camera-icon20.svg',
+  ];
+  // Randomize order on each render
+  const randomizedStars = useMemo(() => starSvgs.sort(() => Math.random() - 0.5), []);
+
   return (
     <div
       className={`classics-container ${expanded ? 'expanded' : ''}`}
@@ -38,12 +47,12 @@ const PrintPackButton = () => {
       {/* Background for hover tilt (hidden when expanded) */}
       {!expanded && <div className="classics-background" />}
 
-      {/* 3 stars animate in on hover (only if not expanded) */}
+      {/* 3 icons animate in on hover (only if not expanded) */}
       {!expanded && (
         <>
-          <div className="star star1" />
-          <div className="star star2" />
-          <div className="star star3" />
+          <img className="star star1" src={randomizedStars[0]} alt="Camera Icon 1" style={{ width: '96px', height: '96px' }} />
+          {/* <img className="star star2" src={randomizedStars[1]} alt="Camera Icon 2" style={{ width: '96px', height: '96px' }} /> */}
+          <img className="star star3" src={randomizedStars[2]} alt="Camera Icon 3" style={{ width: '96px', height: '96px' }} />
         </>
       )}
 
@@ -91,17 +100,17 @@ const PrintPackButton = () => {
                 "RAPID" PRINT <span className="emoji">🚀</span>
               </h3> */}
               <p>
-              Somewhere in the room, there’s a bar. But not the kind you’re thinking of.
+              Somewhere in the room, there's a bar. But not the kind you're thinking of.
               The Camera Bar is a curiosity—a beacon for the ones who get it. Stocked 
-              with vintage cameras and strange little props, it’s an invitation to step 
-              outside of time. No selfie filters, no posing for the ‘gram—just real 
+              with vintage cameras and strange little props, it's an invitation to step 
+              outside of time. No selfie filters, no posing for the 'gram—just real 
               people, real memories, caught the way they should be.
               </p>
               <h3>DAY-OF:</h3>
               <ul>
                 <li>🗝 The Camera Bar:
                     <p>Both acting as an event spectacle and community center. 
-                      This is more than just the house of cameras—it’s a hub 
+                      This is more than just the house of cameras—it's a hub 
                       for all things props, costumes, and adventure. </p>
                 </li>
                 <li>📸 25 vintage cameras:
@@ -117,7 +126,7 @@ const PrintPackButton = () => {
                 
                 <li>📤 Delivery in 36 hours:
                     <p>Sent directly to guests via email & text, so the best 
-                      shots don’t get lost in someone’s camera roll.</p>
+                      shots don't get lost in someone's camera roll.</p>
                 </li>
               </ul>
               <p>
@@ -125,9 +134,9 @@ const PrintPackButton = () => {
               (full content available on request); because nothing is 
               worse than thousands of photos where nowhere to put them.
                   <br /><br />
-              More structured than “Nostalgia”, but still effortless. 
-              If you’ve got a photographer, this slides right in alongside 
-              them. If you don’t, it might make you wonder if you even needed 
+              More structured than "Nostalgia", but still effortless. 
+              If you've got a photographer, this slides right in alongside 
+              them. If you don't, it might make you wonder if you even needed 
               one.'
               </p>
             </div>
@@ -160,7 +169,7 @@ const PrintPackButton = () => {
                 <br />🎥 Trimmed Version: 10 minutes of refined unedited footage
                 <br />🎥 3-minute highlight edit—quick, fun, no revisions. A thank-you for letting us in.
                 <br />🎞 Every image and video is reviewed before delivery (removing unusable content)
-                <br />📤 Edits are Delivered in 36 hours—because nostalgia hits best 12-36 hours later. We’re right on the line.
+                <br />📤 Edits are Delivered in 36 hours—because nostalgia hits best 12-36 hours later. We're right on the line.
               </p>
               {/* <p><br />
                 <em>Add a Cam-Tender ($150/hr)—<br />for when 

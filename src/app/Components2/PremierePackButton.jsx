@@ -1,10 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './PrintPackButton.css';
 import './PremierePackButton.css';
 
 const PrintPackButton = () => {
   const [expanded, setExpanded] = useState(false);
   const cardRef = useRef(null);
+
+  // SVGs for the stars (adjustable)
+  const starSvgs = [
+    '/assets/camera-icon20.svg',
+    '/assets/camera-icon21.svg',
+    '/assets/camera-icon23.svg',
+  ];
+  // Randomize order on each render
+  const randomizedStars = useMemo(() => starSvgs.sort(() => Math.random() - 0.5), []);
 
   // Toggle expanded on card click
   const handleToggle = (e) => {
@@ -38,12 +47,12 @@ const PrintPackButton = () => {
       {/* Background for hover tilt (hidden when expanded) */}
       {!expanded && <div className="premiere-background" />}
 
-      {/* 3 stars animate in on hover (only if not expanded) */}
+      {/* 3 icons animate in on hover (only if not expanded) */}
       {!expanded && (
         <>
-          <div className="star star1" />
-          <div className="star star2" />
-          <div className="star star3" />
+          <img className="star star1" src={randomizedStars[0]} alt="Camera Icon 1" style={{ width: '96px', height: '96px' }} />
+          <img className="star star2" src={randomizedStars[1]} alt="Camera Icon 2" style={{ width: '96px', height: '96px' }} />
+          <img className="star star3" src={randomizedStars[2]} alt="Camera Icon 3" style={{ width: '96px', height: '96px' }} />
         </>
       )}
 
@@ -91,8 +100,8 @@ const PrintPackButton = () => {
                 "RAPID" PRINT <span className="emoji">🚀</span>
               </h3> */}
               <p>
-              If Classic is a time capsule, Premiere is the director’s cut, 
-              from possibly hundreds of directors... The “Full Bar” package.
+              If Classic is a time capsule, Premiere is the director's cut, 
+              from possibly hundreds of directors... The "Full Bar" package.
               <br/><br/>
               Every guest-driven moment, every handoff, every stolen-frame 
               snapshot—stitched into something that actually tells the full 
@@ -120,11 +129,11 @@ const PrintPackButton = () => {
                 </li>
                 <li>🗝 Fully Loaded Camera Bar:
                     <p>Both acting as an event spectacle and community center. 
-                      This is more than just the house of cameras—it’s a hub 
+                      This is more than just the house of cameras—it's a hub 
                       for all things props, costumes, and adventure. </p>
                 </li>
                 <li>📷 +1 Pro-Photographer: 
-                    <p>They’re there solely to capture the best stills of the 
+                    <p>They're there solely to capture the best stills of the 
                       night.</p>
                 </li>
                 <li>🎥 +1 Pro-Filmmaker: 
@@ -134,7 +143,7 @@ const PrintPackButton = () => {
                 <li>🎭 Vintage Props & Fashion :
                     <p>A substantially enticing mix of vintage props and 
                       consume accessories - designed to bring some personal 
-                      touch to your guests and whatever stories they’re 
+                      touch to your guests and whatever stories they're 
                       telling. </p>
                 </li>
               </ul>
@@ -146,9 +155,9 @@ const PrintPackButton = () => {
               </p>
               <br />
               <h2>
-              “THIS ISN’T JUST
-                  MORE...  .       IT’S
-                    COMPLETE.”
+              "THIS ISN'T JUST
+                  MORE...  .       IT'S
+                    COMPLETE."
                     </h2>
             </div>
           </div>
@@ -183,9 +192,9 @@ const PrintPackButton = () => {
                 <br /> 📼 Total Video Captured: Up to 12 hour
                 <br />🎥 Trimmed Version: 30 minutes of refined unedited footage
                 <br /> 🎞 5 Polished + Edited Social Posts (with 1 revision rounds) 
-                <br />🎞 30 Min nostalgia Home-Video edit that captures the night like it’s already a childhood memory.
+                <br />🎞 30 Min nostalgia Home-Video edit that captures the night like it's already a childhood memory.
                 <br />🎞 Every image and video is reviewed before delivery (removing unusable content)
-                <br />📤 Everything Delivered in 72 hours: from the edits to the raw images, everything will be fully available 72 hours after the event’s end. Becuase time moves fast, and we want you to slow down and look around.
+                <br />📤 Everything Delivered in 72 hours: from the edits to the raw images, everything will be fully available 72 hours after the event's end. Becuase time moves fast, and we want you to slow down and look around.
               </p>
               {/* <p><br />
                 <em>Add a Cam-Tender ($150/hr)—<br />for when 
