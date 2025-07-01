@@ -382,7 +382,7 @@ export default function Sidebar() {
           }
           .card-copy {
             font-size: 10px;
-            line-height: .8em;
+            line-height: 1em;
             
           }
         }

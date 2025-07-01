@@ -90,8 +90,8 @@ const PrintPackButton = () => {
           <div className="classics-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="classics-overflow-title">
-              <h3>THE HITS*</h3>
-              <p>A hollywood-worthy story.</p>
+              <h3>THE BAR*</h3>
+              <p>Raise <i>The Bar</i> to a hollywood-worthy story.</p>
             </div>
 
             {/* Inner frame for text content */}

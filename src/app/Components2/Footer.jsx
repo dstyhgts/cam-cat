@@ -49,7 +49,7 @@ export default function Footer() {
           addBoundaries();
 
           // Create items (4 on mobile, 10 on desktop)
-          const numItems = isMobile ? 4 : 10;
+          const numItems = isMobile ? 4 : 9;
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);

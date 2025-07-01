@@ -3,7 +3,7 @@
 import Footer from "./Components2/Footer";
 import LandingGallery from "./Components2/LandingGallery";
 import Navbar from "./Components/Navbar";
-import Sidebar from "./Components/Sidebar";
+import Sidebar from "./Components2/Sidebar";
 import ColorfulBranding from "./Components2/ColorfulBranding";
 import "./globals.css";
 import ZoomScroll from "./Components/ZoomScroll";

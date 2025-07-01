@@ -82,8 +82,8 @@ const NostalgiaPackButton = () => {
           <div className="nostpack-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="nostpack-overflow-title">
-              <h3><i>CAMERAS.</i></h3>
-              <p>Only <i>"Indisposible"</i> Nostalgia.</p>
+              <h3><u>CAMERAS</u></h3>
+              <p><i>"Indisposible"</i> Nostalgia. Infinite Possibilities.</p>
             </div>
 
             {/* Inner frame for text content */}

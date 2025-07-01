@@ -68,7 +68,7 @@ const PrintPackButton = () => {
       {!expanded && (
         <div className="premiere-card printpack-default">
             <p className="printpack-topline">Learn about our...</p>
-          <h2 className="printpack-title"><em>PREMIERE</em> PACKAGE</h2>
+          <h2 className="printpack-title"><em><u>PREMIERE</u></em> PACKAGE</h2>
           <p className="printpack-subtext">
           This is the full story - with one professional 
           phototographer and one filmmaker making sure the entire story gets told.
