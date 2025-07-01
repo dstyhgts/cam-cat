@@ -59,7 +59,7 @@ const NostalgiaPackButton = () => {
         <div className="nostpack-card nostpack-default">
             <p className="nostpack-topline">Learn about our...</p>
           <h2 className="nostpack-title">
-            <span className="nostalgia-title-word"><em>CAMERAS.</em></span><br />
+            <span className="nostalgia-title-word"><em>CAMERA.</em></span><br />
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="nostpack-subtext">

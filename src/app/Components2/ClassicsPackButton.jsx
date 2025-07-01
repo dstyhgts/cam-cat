@@ -68,7 +68,7 @@ const PrintPackButton = () => {
       {!expanded && (
         <div className="classics-card classics-default">
             <p className="classics-topline">Learn about our...</p>
-          <h2 className="classics-title">CLASSICS* PACKAGE</h2>
+          <h2 className="classics-title">CLASSIC* PACKAGE</h2>
           <p className="classics-subtext">
            Welcome The Camera Bar to your event. <br />
             This package makes the party one to remember.
