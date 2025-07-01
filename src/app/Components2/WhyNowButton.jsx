@@ -44,6 +44,7 @@ const WhyNowButton = () => {
           <h3>WHY NOW?</h3>
           <p className="why-now-subtext">
           Things are changing...
+          
           <br/><br/><i> Everybody's a photographer now.</i>
           </p>
           <span className="arrow">→</span>
