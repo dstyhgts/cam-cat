@@ -107,7 +107,6 @@ function parseTextWithBr(fullText, images) {
               alt={img.alt}
               fill
               style={{ objectFit: "contain" }}
-              loading="lazy"
             />
           </span>
         );
