@@ -1,1 +1,60 @@
- 
+.toggleSwitch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.toggleTrack {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.toggleThumb {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--bg-primary);
+}
+
+.toggleThumb.light {
+  transform: translateX(0);
+}
+
+.toggleThumb.dark {
+  transform: translateX(26px);
+}
+
+.toggleSwitch:hover .toggleTrack {
+  background-color: var(--bg-hover);
+  border-color: var(--accent-color);
+}
+
+.toggleSwitch:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
+
+.toggleThumb svg {
+  transition: transform 0.3s ease;
+}
+
+.toggleSwitch:hover .toggleThumb svg {
+  transform: rotate(15deg);
+} 
