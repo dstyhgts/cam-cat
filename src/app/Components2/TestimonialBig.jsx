@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TestimonialBig.css';
 
 const TestimonialBig = () => {
+  const [videoLoading, setVideoLoading] = useState(true);
+  const Spinner = () => (
+    <div style={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 2,
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <div className="video-spinner" />
+    </div>
+  );
   return (
     <div className="testimonial-big-container" style={{ position: 'relative', overflow: 'hidden', color: '#fff' }}>
+      {videoLoading && <Spinner />}
       <video
         className="testimonial-bg-video"
         src="/assets/WeddingBIG.mp4"
@@ -12,6 +29,8 @@ const TestimonialBig = () => {
         muted
         playsInline
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+        onLoadStart={() => setVideoLoading(true)}
+        onPlay={() => setVideoLoading(false)}
       />
       {/* <div className="testimonial-big-label">TESTIMONIAL1</div> */}
       <div className="testimonial-big-quote">“GREAT VIBES ALL AROUND!”</div>
@@ -32,6 +51,20 @@ const TestimonialBig = () => {
       <div className="testimonial-big-date">
         February 26th, 2025
       </div>
+      <style jsx global>{`
+        .video-spinner {
+          border: 6px solid #f3f3f3;
+          border-top: 6px solid #555;
+          border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };
