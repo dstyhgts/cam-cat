@@ -89,7 +89,8 @@ const WelcomeCamera = () => {
                   muted
                   playsInline
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: 'transparent' }}
-                  onLoadedData={() => setVideoLoading(false)}
+                  onLoadStart={() => setVideoLoading(true)}
+                  onPlay={() => setVideoLoading(false)}
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -110,7 +111,8 @@ const WelcomeCamera = () => {
                     muted
                     playsInline
                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: 'transparent' }}
-                    onLoadedData={() => setVideoLoading(false)}
+                    onLoadStart={() => setVideoLoading(true)}
+                    onPlay={() => setVideoLoading(false)}
                   >
                     Your browser does not support the video tag.
                   </video>
