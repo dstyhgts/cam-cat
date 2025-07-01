@@ -12,7 +12,7 @@ const BigSvg = () => {
 
       {/* Right: The large SVG */}
       <div className="svg-wrapper">
-        <img src= './assets/camera-icon117.svg' alt="Large decorative SVG" className="large-svg" loading="lazy" />
+        <img src= './assets/camera-icon117.svg' alt="Large decorative SVG" className="large-svg" />
       </div>
     </div>
   );
