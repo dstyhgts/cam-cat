@@ -70,8 +70,8 @@ const PrintPackButton = () => {
             <p className="printpack-topline">Learn about our...</p>
           <h2 className="printpack-title"><em><u>PREMIERE</u></em> PACKAGE</h2>
           <p className="printpack-subtext">
-          This is the full story - with one professional 
-          phototographer and one filmmaker making sure the entire story gets told.
+          This is the full story - with <u>one professional 
+          phototographer and one filmmaker</u> making sure the entire story gets told... <i>this is the package worthy of a film <u>premiere.</u></i>
             <span className="emoji"></span>
           </p>
         <div className="premiere-ellipse">
@@ -108,16 +108,12 @@ const PrintPackButton = () => {
               story. This is when we bring professionals in to fill in the gaps.
               <br/><br/>
               </p>
-              <h4> 1. 1000+ Guaranteed* High-Quality Photos Delivered
-              <br/>2. 45-Min Guaranteed* Home-Video Edit
-              <br/>3. Infinite Video Footage
-              <br/>4. Infinite Photos
-              <br/>5. Time Frame: Event Duration + Set Up/Tear Down <br/><br/></h4>
               <h3>DAY-OF:</h3>
               <ul>
                 <li>📸 50 Vintage Cams!
                     <p>Documenting every side of the event, from first 
-                       arrivals to final toasts.</p>
+                       arrivals to final toasts. Including more vintage film photography cameras, more VHS Camcorders, and more instant-print cameras 
+                       than any other package- it's a full-on camera compendium.</p>
                 </li>
                 {/* <li>📸 25 Novel© instant print cameras: 
                     <p>Small, simple, and made to be passed around. Every shot prints 
@@ -125,35 +121,42 @@ const PrintPackButton = () => {
                 </li> */}
                 <li>🎥 3 Cam-Tenders*: 
                     <p>Facilitating, shooting, making sure no storyline is 
-                      left unfinished.</p>
+                      left unfinished. They're there to make sure that every guest has a camera in their hands, and that every inch of the event is captured and no storyline is left unfinished.</p>
                 </li>
                 <li>🗝 Fully Loaded Camera Bar:
-                    <p>Both acting as an event spectacle and community center. 
-                      This is more than just the house of cameras—it's a hub 
-                      for all things props, costumes, and adventure. </p>
+                    <p>This bar is bigger an better. Fully custom-made for your event and your guests, fully stocked with more props, costumes, and adventure than anyone knows what to do with.
+                      This is the place to come together, to be fully creative, and to be yourself- 
+                      under the guidance of our Cam-Tenders. </p>
                 </li>
                 <li>📷 +1 Pro-Photographer: 
                     <p>They're there solely to capture the best stills of the 
-                      night.</p>
+                      night. They act as a second set of eyes, and a second set of hands, to make sure that even if the Cam-Tenders are busy, 
+                      no moment is left uncaptured and no story is left unfinished.. (Garunteeing a ton of photos.) </p>
                 </li>
                 <li>🎥 +1 Pro-Filmmaker: 
                     <p>Focused entirely on moving images, ensuring the night 
-                      flows seamlessly on screen. </p>
+                      flows seamlessly on screen. They're there to make sure that everything blends together into a cohesive story. (Garunteeing a ton of video.)</p>
                 </li>
                 <li>🎭 Vintage Props & Fashion :
                     <p>A substantially enticing mix of vintage props and 
                       consume accessories - designed to bring some personal 
                       touch to your guests and whatever stories they're 
-                      telling. </p>
+                      telling. <br /><br /></p>
                 </li>
               </ul>
-              <p>
+              {/* <p>
               🔹 Raw video categorized by the person who filmed it 
               (full content available on request); because nothing is 
               worse than thousands of photos where nowhere to put them.
                   <br /><br />
-              </p>
-              <br />
+              </p> */}
+
+              <h4> 1. 1000+ Guaranteed* <u>High-Quality Photos</u> Delivered
+              <br/>2. 45-Min Guaranteed* Home-Video Edit
+              <br/>3. Infinite Video Footage
+              <br/>4. Infinite Photos
+              <br/>5. Time Frame: Event Duration + <u>Set Up/Tear Down</u> <br/><br/></h4>
+
               <h2>
               "THIS ISN'T JUST
                   MORE...  .       IT'S
@@ -168,15 +171,17 @@ const PrintPackButton = () => {
             <div className="premiere-inner-frame">
             <h2><em>INCLUDES:</em></h2>
               <h5>
-                <strong>Cams (45):</strong><br />
+                <strong>Cameras (50!):</strong><br />
                 </h5>
                 <p>Digicam:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
-                📸 📸 📸 📸 📸 <br /> 📸 📸 📸 📸 📸 <br /></h6><br />
+                📸 📸 📸 📸 📸 <br /> 📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6><br />
                 <p>'VHS' Camcorder:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸  <br /></h6><br />
+                <h6>📹 📹 📹 📹 📹<br />📹 📹 📹 📹 📹  <br /></h6><br />
                 <p>Vintage Film:</p>
-                <h6>🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br /></h6>
+                <h6>🎥 🎥 🎥 🎥 🎥 <br />🎥 🎥 🎥 🎥 🎥 <br /></h6><br />
+                <p>Instant-Print:</p>
+                <h6>🖨️ 🖨️ 🖨️ 🖨️ 🖨️ <br /></h6>
                 {/* <p>Rapid® Print:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
                 📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />
@@ -185,16 +190,17 @@ const PrintPackButton = () => {
                 <p>
                 <br />
               
-                <h3><strong>DAY-AFTER:</strong><br /></h3>
+                <h3><strong>DAYS-AFTER:</strong><br /></h3>
                 <h5>(Deliverables)</h5>
-                <br />📸 Total Images Delivered: 1000+
-                <br />📸 Professionally Edited Photos: 100
-                <br /> 📼 Total Video Captured: Up to 12 hour
-                <br />🎥 Trimmed Version: 30 minutes of refined unedited footage
-                <br /> 🎞 5 Polished + Edited Social Posts (with 1 revision rounds) 
-                <br />🎞 30 Min nostalgia Home-Video edit that captures the night like it's already a childhood memory.
+                <br />📸 Total Images Delivered: <u>ALL and then some.</u>
+                <br />📸 Professionally Edited Photos: <u>100</u>
+                <br /> 📼 Total Video Captured: <u>Up to 12 hours</u>
+                <br /> 📼 Professionally Captured Video: <u>Up to 2 hours</u>
+                <br />🎥 Trimmed Video: <u>30 minutes</u> of refined recap footage
+                <br /> 🎞 <u>5 Polished + Edited Social Posts </u>(with 1 revision rounds) 
+                <br />🎞 <u>30 Min</u> nostalgia Home-Video edit that captures the night like it's already a childhood memory.
                 <br />🎞 Every image and video is reviewed before delivery (removing unusable content)
-                <br />📤 Everything Delivered in 72 hours: from the edits to the raw images, everything will be fully available 72 hours after the event's end. Becuase time moves fast, and we want you to slow down and look around.
+                <br />📤 Everything Delivered in <u>72 hours</u>: from the edits to the raw images, everything will be fully available 72 hours after the event's end. Becuase time moves fast, and we want you to slow down and <u>look at what you've created.</u>
               </p>
               {/* <p><br />
                 <em>Add a Cam-Tender ($150/hr)—<br />for when 

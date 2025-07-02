@@ -300,7 +300,7 @@ h3
   
   /* ========== INNER FRAME ========== */
   .nostpack-inner-frame {
-    background-color: var(--print-pack-lighter-bg);
+    background-color: var(--print-pack-bg);
     border: 2px solid var(--button-white-border);
     border-radius: 15px;
     padding: 1rem;
