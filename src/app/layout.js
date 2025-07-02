@@ -22,6 +22,16 @@ import { ThemeProvider } from "./Components2/ThemeProvider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/assets/camera-icon112.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon113.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon111.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon100.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon13.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon115.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon23.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/assets/camera-icon20.svg" as="image" type="image/svg+xml" />
+      </head>
       <body>
         <ThemeProvider>
         <div>

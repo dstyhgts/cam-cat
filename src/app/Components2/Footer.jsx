@@ -176,46 +176,47 @@ export default function Footer() {
           </div>
           <div className="footer-links-row">
             <div className="footer-links-col">
-            <a  target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>REACH US: </a>
-            <br />
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>INSTAGRAM</a>
-              <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>(805)678-3444</a>
-              <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>info@camera<br/>catering.com</a><br />
-              {/* <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a> */}
+            <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+              <PopupButton
+                id="atnpwpHn"
+                className="footer-link"
+                size={80}
+              >
+                GET QUOTE
+              </PopupButton>
             </div>
-            <div className="footer-links-col">
-              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                <PopupButton
-                  id="atnpwpHn"
-                  className="footer-link"
-                  size={80}
-                >
-                  GET QUOTE
-                </PopupButton>
-              </div>
-              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                <PopupButton
-                  id="yyPNXkPK"
-                  className="footer-link"
-                  size={80}
-                >
-                  GET IN TOUCH
-                </PopupButton>
-              </div>
-              <a target="_blank" rel="noopener noreferrer" className="footer-link welcome-packet-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>
-                <span className="welcome-packet-main">GET WELCOME PACKET</span>
-                <span className="coming-soon">(COMING SOON)</span>
-              </a>
-              <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                <PopupButton
-                  id="wwvkhbUP"
-                  className="footer-link"
-                  size={80}
-                >
-                  SCHEDULE CONSULTATION
-                </PopupButton>
-              </div>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+              <PopupButton
+                id="yyPNXkPK"
+                className="footer-link"
+                size={80}
+              >
+                GET IN TOUCH
+              </PopupButton>
             </div>
+            <a target="_blank" rel="noopener noreferrer" className="footer-link welcome-packet-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>
+              <span className="welcome-packet-main">GET WELCOME PACKET</span>
+              <span className="coming-soon">(COMING SOON)</span>
+            </a>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+              <PopupButton
+                id="wwvkhbUP"
+                className="footer-link"
+                size={80}
+              >
+                SCHEDULE CONSULTATION
+              </PopupButton>
+            </div>
+          </div>
+          <div className="footer-links-col">
+          {/* <br />          <br />
+          <a  target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>REACH US: </a>
+          <br /> */}
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>INSTAGRAM</a>
+            <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>(805)678-3444</a>
+            <a target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>info@camera<br/>catering.com</a><br />
+            {/* <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a> */}
+          </div>
           </div>
         </div>
       </footer>
