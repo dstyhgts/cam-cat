@@ -3,6 +3,7 @@ h6
 {
     font-size: 41.89px;
     color: var(--button-white-text);
+    font-family: "Arial Black", sans-serif;
     margin: 0;
     transition: opacity 300ms ease-in-out, color 300ms ease-in-out;
     line-height: .9em;
@@ -11,6 +12,7 @@ h5
 {
     font-size: 25.89px;
     font-weight: bold;
+    font-family: "Arial Black", sans-serif;
     color: var(--button-white-text);
     transition: color 300ms ease-in-out;
 }
@@ -18,6 +20,7 @@ p1
 {
     font-size: 14px;
     font-weight: bold;
+    font-family: "Arial Black", sans-serif;
     color: var(--button-white-text);
     margin-bottom: 0.5em;
     line-height: 120%;
@@ -26,6 +29,7 @@ p1
 p
 {
     font-size: 16px;
+    font-family: "Arial Black", sans-serif;
     font-weight: bold;
     color: var(--button-white-text);
     margin-bottom: 0.5em;
@@ -35,6 +39,7 @@ p
 h3
 {
     font-size: 67.77px;
+    font-family: "Arial Black", sans-serif;
     font-weight: bold;
     color: var(--button-white-text);
     line-height: .9em;

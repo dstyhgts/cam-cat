@@ -63,7 +63,7 @@ const NostalgiaPackButton = () => {
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="nostpack-subtext">
-          Our entry-level product----15 <i>"indisposible"</i> cameras catered to the moment.
+          Our entry-level product----18 <i>"indisposible"</i> cameras catered to the moment.
           <p className="price-right"><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>

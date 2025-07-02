@@ -70,8 +70,7 @@ const PrintPackButton = () => {
             <p className="classics-topline">Learn about our...</p>
           <h2 className="classics-title">*CLASSIC PACKAGE</h2>
           <p className="classics-subtext">
-           Welcome The Camera Bar to your event. <br />
-            <u>Make your party unlike any other...</u> one to never forget.
+           Our Classic Package welcomes The Camera Bar to your event. <u>Make your party unlike any other...</u> one to <i>never forget.</i>
             <p className="price-right"><i>Pricing Begins at $4,500</i></p>
 
             <span className="emoji"></span>
@@ -120,7 +119,7 @@ const PrintPackButton = () => {
                       under the guidance of our Cam-Tenders.</p>
                 </li>
                 <li>📸 36 vintage cameras:
-                    <p>Here we introduce your guests to VHS camcorders, film cameras, and instant-print cameras. Small, simple, and made to be passed around. Left out, handed off, 
+                    <p>Here we introduce your guests to VHS camcorders & film photography cameras. Small, simple, and made to be passed around. Left out, handed off, 
                       capturing the event from every possible angle, for both a photographic and video archive. </p>
                 </li>
                 <li>🎥 2 Cam-Tenders*: 
@@ -153,10 +152,10 @@ const PrintPackButton = () => {
             <div className="classics-inner-frame">
               <h2><em>INCLUDES:</em></h2>
               <h5>
-                <strong>Cameras (36):</strong><br />
+                <strong>Cameras (30):</strong><br />
                 </h5>
                 <p>Digicam:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6>
+                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6>
                 <p>'VHS' Camcorder:</p>
                 <h6>📹 📹 📹 📹 📹<br />📹 <br /></h6>
                 <p>Vintage Film:</p>

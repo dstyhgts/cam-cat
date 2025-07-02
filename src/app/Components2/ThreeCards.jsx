@@ -15,13 +15,14 @@ const ThreeCards = () => {
           We provide a <strong>complete,</strong> <em>immersive record</em> of your event—captured 
           entirely by the people experiencing it. <br />
           </p>
-          <p1>🔹 25-100 vintage photo & video cameras in play, including camcorders, point-and-shoots, and instant print cameras.
+          <p1>🔹 25-100 vintage photo & video cameras in play, including camcorders, digital point-and-shoots, film photography, and instant print cameras.
              <br/> 🔹 A fully interactive memory-making experience where guests don't just pose for photos—they create them.
-             <br/> 🔹 A rapid-printing camera experience—a new kind of nostalgia that's tactile, shareable, and completely unique.
+             <br/> 🔹 A hands-on camera rental experience—a new, one of a kind of nostalgia making experience that's tactile, shareable, and completely unique.
+             {/* <br/> 🔹 A rapid-printing camera experience—a new kind of nostalgia that's tactile, shareable, and completely unique. */}
              <br/> 🔹 A complete archive of the event, curated and uploaded for both the host and every guest to relive.<br/><br/></p1>
           <p>It's not about megapixels—it's about perspective. Instead of getting 
           one polished highlight reel, you get a real, multi-angle, guest-driven 
-          record of the night.
+          story of the night.
           <em><br/><br/>Your event isn't just photographed—it's experienced, captured, and remembered.</em></p>
         </>
       ),
@@ -42,13 +43,13 @@ const ThreeCards = () => {
           memory.
           </p>
           <p1>
-                ✅ A full-scale photography, video, and print experience—without hiring a single photographer or videographer.
+                ✅ A full-scale photography, video, and digital experience—<i>without hiring a single photographer or videographer.</i>
           <br/>✅ A guest-driven archive of real, personal moments—POV shots, behind-the-scenes chaos, and everything in between.
           <br/>✅ A fully interactive, hands-on experience that guests love.
           </p1>
-          <p><br/>Instead of a few polished images, you get hundreds, sometimes thousands of 
+          <p><br/>Instead of a few polished images, you get hundreds (usually thousands) of 
             pieces of content—raw, real, and unforgettable.
-            <em><br/><br/>You're not just capturing moments—you're creating the entire story.</em></p>
+            <em><br/><br/>You're not just capturing moments—you're creating them one piece at a time.</em></p>
         </>
       ),
     },
@@ -65,15 +66,15 @@ const ThreeCards = () => {
           <br/>✅Guests take the lead—snapping, passing, filming, and recording every possible perspective.
           <br/>✅Cam-Tenders keep things moving, capturing their own shots and making sure the cameras stay in circulation.</p1>
         
-          <h2>The Content</h2>
+          {/* <h2>The Content</h2>
           <p1>(Infinite Possibilities)     <br/></p1>
           <p1>🔹Instant print cameras deliver real-time black & white photos, printed and shared instantly.
           <br/>🔹Every digital and video camera captures a rolling record of the night—grainy, cinematic, and deeply personal.
           <br/><i>🔹 Truly a limitless amount if images and videos.</i>
-          </p1>
+          </p1> */}
 
           <h2>The Delivery</h2>
-          <p1>-✅Everything is reviewed, refined, and uploaded—we sift through the footage, remove the unusable shots, and make sure everything is of quality.
+          <p1> ✅Everything is reviewed, refined, and uploaded—we sift through the footage, remove the unusable shots, and make sure everything is of quality.
           <br/>✅All content is delivered on a private event website—shared not just with the host, but with every guest.
           <br/>✅Photos & videos are auto-tagged by the guest who took them, the camera used, and the people in them.
           <br/>✅Privacy controls allow guests to blur themselves across any images or videos.
