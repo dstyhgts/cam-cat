@@ -7,10 +7,10 @@ const ThreeCards = () => {
   // Instead of a "body" string, we have a "content" prop that is a React node.
   const cardData = [
     {
-      title: "WHAT?",
+      title: <i>"WHAT?"</i>,
       content: (
         <>
-          <h2><i>Our Complete Content Solution:</i></h2>
+          <h2><i><u>Our Complete Content Solution:</u></i></h2>
           <p>
           We provide a <strong>complete,</strong> <em>immersive record</em> of your event—captured 
           entirely by the people experiencing it. <br />
@@ -28,10 +28,10 @@ const ThreeCards = () => {
       ),
     },
     {
-      title: "WHY?",
+      title: <i>"WHY?"</i>,
       content: (
         <>
-          <h2><i>Event photography is missing something.</i>
+          <h2><i><u>Event photography is missing something...</u></i>
           </h2>
           <p1>
           A single photographer captures one perspective. A videographer follows one 
@@ -54,18 +54,18 @@ const ThreeCards = () => {
       ),
     },
     {
-      title: "HOW?",
+      title: <i>"HOW?"</i>,
       content: (
         <>
-        <h2><i>We set the stage.</i></h2>
+        <h2><i><u>We set the stage.</u></i></h2>
         <p>We don't just drop cameras and disappear. We facilitate, capture, and deliver immediate content creation.
         </p>
-          <h2>The Event</h2>
+          <h2><u>The Event</u></h2>
 
           <p1>✅We set up a Camera Bar with 25-100 vintage cameras—handing them off, rotating them, making sure they get used.
           <br/>✅Guests take the lead—snapping, passing, filming, and recording every possible perspective.
-          <br/>✅Cam-Tenders keep things moving, capturing their own shots and making sure the cameras stay in circulation.</p1>
-        
+          <br/>✅Cam-Tenders keep things moving, capturing their own shots and making sure the cameras stay in circulation. </p1> <br/><br/>
+          {/* <br/>✅Every digital and video camera captures a rolling record of the night—grainy, cinematic, and deeply personal with a <i>truly a limitless amount if images and videos.</i></p1> */}
           {/* <h2>The Content</h2>
           <p1>(Infinite Possibilities)     <br/></p1>
           <p1>🔹Instant print cameras deliver real-time black & white photos, printed and shared instantly.
@@ -73,7 +73,7 @@ const ThreeCards = () => {
           <br/><i>🔹 Truly a limitless amount if images and videos.</i>
           </p1> */}
 
-          <h2>The Delivery</h2>
+          <h2><u>The Delivery</u></h2>
           <p1> ✅Everything is reviewed, refined, and uploaded—we sift through the footage, remove the unusable shots, and make sure everything is of quality.
           <br/>✅All content is delivered on a private event website—shared not just with the host, but with every guest.
           <br/>✅Photos & videos are auto-tagged by the guest who took them, the camera used, and the people in them.
