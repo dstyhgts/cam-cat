@@ -64,6 +64,7 @@ const NostalgiaPackButton = () => {
           </h2>
           <p className="nostpack-subtext">
           Our entry-level product----15 <i>"indisposible"</i> cameras catered to the moment.
+          <p className="price-right"><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
         <div className="nostpack-ellipse">

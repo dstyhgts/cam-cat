@@ -70,8 +70,8 @@ const PrintPackButton = () => {
             <p className="printpack-topline">Learn about our...</p>
           <h2 className="printpack-title"><em><u>PREMIERE</u></em> PACKAGE</h2>
           <p className="printpack-subtext">
-          This is the full story - with <u>one professional 
-          phototographer and one filmmaker</u> making sure the entire story gets told... <i>this is the package worthy of a film <u>premiere.</u></i>
+         This package garuntees the entire story gets told... <i>a story more than worthy of a red card film <u>premiere.</u></i>
+          <p className="price-right"><i>Pricing Begins at $9,700</i></p>
             <span className="emoji"></span>
           </p>
         <div className="premiere-ellipse">

@@ -72,6 +72,8 @@ const PrintPackButton = () => {
           <p className="classics-subtext">
            Welcome The Camera Bar to your event. <br />
             <u>Make your party unlike any other...</u> one to never forget.
+            <p className="price-right"><i>Pricing Begins at $4,500</i></p>
+
             <span className="emoji"></span>
           </p>
         <div className="classics-ellipse">
