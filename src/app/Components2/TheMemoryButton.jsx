@@ -73,23 +73,24 @@ const TheMemoryButton = () => {
                 <i>A (Literally) Infinite Number of Moments </i><br />
                 <span className="li-desc">
                   <p1>With dozens of cameras in play, every pocket of the event gets documented, 
-                  from the dance floor chaos to the whispered side conversations.</p1>
+                  from the dance floor chaos to the whispered side conversations. Details matter, and now you can capture them with no limits.
+                  We never cap the number of photos or videos, so you can capture every moment, every angle, every interaction.</p1>
                 </span>
               </li>
-              <li>
+              {/* <li>
                 <span className="emoji">🖨️</span>
                 <i>Physical Prints in Hand, Digital Archive Forever </i><br />
                 <span className="li-desc">
                 <p1>Instant print cameras give guests real, tangible memories to take home, while 
                 every single shot—printed or not—is preserved digitally for the host and guests.</p1>
                 </span>
-              </li>
+              </li> */}
               <li>
                 <span className="emoji">📤</span>
                 <i>Rapid Delivery (Nostalgia Hits Quick) </i><br />
                 <span className="li-desc">
-                <p1>Every photo and video, sorted, refined, and sent out within 36 hours—not just to 
-                the host, but directly to the guests who lived it.</p1>
+                <p1>Every photo and video, gets sorted, refined, and sent out within 12-36 hours—not just to 
+                the host, but directly to the guests who lived it. </p1>
                 </span>
               </li>
               <li>
@@ -97,17 +98,18 @@ const TheMemoryButton = () => {
                 <i>A Fully Curated Recap </i><br />
                 <span className="li-desc">
                 <p1> Each package comes with a cinematic nostalgia edit, because sometimes, the 
-                    best way to relive a night is to see it like it's already a memory.
+                    best way to relive a night is to see it like it's already a throwback.
                     </p1>
                 </span>
               </li>
             </ul>
 
             <div className="memory-experience">
-              <p>A mix of unedited, behind-the-lens footage and professionally curated content, delivered in full. 
-                  Every photo and video is reviewed, cleaned up, and sent back—so you don't just get a data dump, 
-                  you get a story. This isn't a highlight reel of the night. It's everything. Every perspective, every 
-                  interaction, every forgotten moment—captured, printed, saved. You get <i>the complete story.</i>
+              <p> With a mix of unedited, behind-the-scenes footage and professionally curated content, delivered in full, your
+                  event becomes a story. 
+                  Every photo and video is reviewed, cleaned up, and sent off—so you don't just get a data dump, 
+                  you get the fully curated timeline without any missing pieces. When you invite Camera Catering to your event, you don't just get a highlight reel of the night, you get <i><u>everything.</u></i> Every perspective, every 
+                  interaction, every forgotten moment—captured, relived, and saved. You get <i><u>the complete story.</u></i>
                   </p>
               
             </div>

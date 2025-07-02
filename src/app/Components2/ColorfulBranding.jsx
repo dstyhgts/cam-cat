@@ -13,10 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
  * Adjust or add more <br/> as you like.
  */
 const fullText = `
-  CAMERAS HELP <br/> HUMANS TELL STORIES AND CONNECTS EACH OF US TO THE PAST
-  WITH IMMEDIATE WARMTH. <br/> <br/> <br/> <br/>Photography has always been about quality. But memories? They're about feeling.
+  CAMERAS HELP <br/> PEOPLE TELL STORIES AND CONNECT US TO THE PAST
+  WITH IMMEDIATE WARMTH. <br/> <br/> <br/>Photography has always been about quality. But memories...? They're about feeling.
   <br/> <br/>  At Camera Catering, we believe memories have an aesthetic. 
-   <br/> <br/>  That's why we bring a camera bar to your event—stocked with vintage cameras, instant print cameras, and the tools of nostalgia.
+   <br/> <br/>  That's why we bring a camera bar to your event... stocked with vintage cameras, VHS Camcorders, Instant <br/>Print Cameras, and all the tools of nostalgia.
  
 `;
 //OLD TEXT

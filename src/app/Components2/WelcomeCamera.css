@@ -82,13 +82,14 @@
     display: inline-block;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     text-shadow: none !important;
     box-shadow: none !important;
   }
   
   .new-description {
     margin: .8rem 0;
+    color: var(--text-secondary);
     text-shadow: none !important;
     box-shadow: none !important;
   }

@@ -66,11 +66,12 @@ const WelcomeCamera = () => {
             <p className="new-description">
               {/* Rapid® Print cameras to take the user experience to the next level. 
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
-              We make everyone a content creator.
+              <i>We make everyone a content creator.</i>
             </p>
             <p className="new-description">
               <i>With the possibility for thousands of photographs and videos of your event, 
-              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.</i>
+              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
+              With anywhere fom 20 to 100+ digital cameras, we can capture the whole event, and then some, making sure you guests are the ones who get the memories.</i>
             </p>
           </div>
         </div>

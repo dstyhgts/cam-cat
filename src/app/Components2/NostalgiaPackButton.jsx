@@ -93,29 +93,35 @@ const NostalgiaPackButton = () => {
               </h3> */}
               <p>
               Some moments are meant to be disposable—but that doesn't 
-              mean they should be photographed on disposable cameras. Our signature package brings only what is neccessary, 
-              reusable, vintage, and tactile cameras, with an emphasis on the fun of the moment and the joys of photography. No camera bar, no spectacle—just "indisposible" cameras, 
-              handed off to the guests who matter most. This package is for the events who need cameras in the moment, 
-              not on the sidelines. Included is one Cam-Tender to help guide guests to the best moments.
+              mean they should be photographed on disposable cameras. 
+              <br/><br/>Our signature package brings only what is neccessary, 
+              reusable, vintage, and tactile <u>digital</u> cameras, with an emphasis on the fun of the moment and the joys of photography. 
+              <br/><br/>This package has no camera bar, no spectacle—just "indisposible" cameras 
+              handed off to the guests who get it. It's for the events that need cameras in the moment, 
+              not on the sidelines, in a more traditional way- on tables, spread out, and only for those who find them. <br/><br/>We reccommend including 
+              one Cam-Tender to help guide guests to the best moments, to teach how to use them, and to get the photos and video they imagine.
               </p>
               <h3>DAY-OF:</h3>
               <ul>
-                <li>📸 15 Digital Cameras: 
+                <li>📸 18 Digital Cameras: 
                     <p>Small, simple, and made to be passed      
-                      around. The goal is a candid memory archive of the event. </p>
+                      around. The goal is a candid memory archive of the event. Guests find them, pick the up, 
+                      and use them to capture what they want like any disposable camera would allow - only no limits here... </p>
+                </li>
+                <li>📼 Interactive Memories: 
+                    <p>No moment, no detail, and no person should go unphotographed. We make sure that every guest has a camera in their hands, 
+                      and that they are able to capture the moment they want to capture.</p>
+                </li>
+                <li>📤 Delivery in 12 hours: 
+                    <p>You get every digital files, plus a fully   
+                    preserved archive of the night sent to you within 12 hours of the events conclusion. 
+                    If agreed upon, we can send the files to the guests who captured the night as well; <i>making the night a little more interactive and ready to post.</i></p>
                 </li>
                 <li>🎥 1 Cam-Tender (Add-On): 
                     <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
-                      inclusive experience. They find the natural storytellers at your event,
-                      put the cameras in their hands. They make sure everyone has a good time and
-                      that nobody gets left out. </p>
-                </li>
-                <li>📼 Digital Archives + Real Memories: 
-                    <p>No moment, no detail, and no person should go unphotographed.</p>
-                </li>
-                <li>📤 Delivery in 24 hours: 
-                    <p>You get every digital file, plus a fully   
-                    preserved archive of the night. <br /><br /></p>
+                      inclusive experience. They are all talented photograohers that can garuntee a lot of photos on their own.
+                      Beyond that they look for the natural storytellers at your event, put the cameras in their hands and make sure 
+                      everyone has a good time and that nobody gets left out. <br /><br /> </p>
                 </li>
               </ul>
               <p1>
@@ -131,31 +137,28 @@ const NostalgiaPackButton = () => {
             <div className="nostpack-inner-frame">
             <h2><em>INCLUDES:</em></h2>
               <h5>
-              <strong>Cams (15):</strong><br />
+              <strong>Cameras (18):</strong><br />
                 </h5>
                 <br />
                 <p>Digicam:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6>
+                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 <br /></h6>
                 <br />
-                <p>'VHS' Camcorder:</p>
-                <h6>📸 📸 📸 📸 📸 <br /> </h6>
-                <br />
+                {/* <p>'VHS' Camcorder:</p>
+                <h6>📸 📸 📸 <br /> </h6> */}
               
-              
+            
                 <strong>What You Get:</strong><br />
-                  1. One Cam-Tender; to guide and inspire. <br />
-                  2. Back-Up batteries <br />
-                  3. 3x Fast Charging
-                     kits for when any
-                     camera isn't any        
-                     life at any party.
+                  1. 20 Digital Cameras <br />
+                  2. 1 Set of Back-Up batteries for each camera; labeled and ready to shoot <br />
+                  3. An inviting "tag"to help guests find and understand the intricacies of the cameras.
 
               <p><br />
-                <em>Add another Cam-Tender ($150/hr)<br />for when 
-                  guests need a little more direction. <br /><br />
+              🔹 <em>Add on our <u>Cam-Tender</u> for $500 (+$150/hr) for when 
+                  guests need a little more direction and <u>to make sure you get a ton of photos.</u> <br /><br />
                   
                   Want a little more?<br />
-                  Add +10 more Cams for $800.</em>
+                  🔹 Add +5 more Cams ($600).<br />
+                  🔹 Add +3 Video Camcorders ($800.)</em>
               </p>
             </div>
           </div>

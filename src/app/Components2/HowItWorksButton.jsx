@@ -89,28 +89,36 @@ const HowItWorksButton = () => {
             <img className="hiw-overflow-svg" src="/assets/camera-icon12.svg" alt="Camera Icon" />
 
             <ul className="hiw-bullets">
-              <li>
+              {/* <li>
                 <span className="emoji">🔥</span>
                 <i>Instant Print Cameras</i><br />
                 <span className="li-desc">
                   <p1>Guests can snap, print, and share their images instantly. No apps,
                   no filters—just tangible, real-time memories in their hands.</p1>
                 </span>
-              </li>
+              </li> */}
               <li>
                 <span className="emoji">🤩</span>
-                <i>Vintage Video &amp; Photo Cameras</i><br />
+                <i>Vintage Video &amp; Digital Cameras</i><br />
                 <span className="li-desc">
-                <p1>The Full Experience: Our "Cam-Tenders" distribute and rotate a variety of retro camcorders, 
-                digital point-and-shoots, and film cameras for a full spectrum of event coverage.</p1>
+                <p1>Guests can snap candid, staged, story-driven shots from every angle. No phones,
+                no filters-just tangible, real-time memories in their hands with absolute control and absolutley no limits.</p1>
                 </span>
               </li>
               <li>
                 <span className="emoji">📷</span>
                 <i>Cam-Tenders as Facilitators</i><br />
                 <span className="li-desc">
-                <p1>We aren't just dropping off gear; we're igniting the energy, breaking the ice, and keeping the 
+                <p1>The Full Experience: Our "Cam-Tenders" distribute and rotate a variety of retro camcorders, 
+                digital point-and-shoots, and film cameras for a full spectrum of event coverage. We aren't just dropping off gear; we're igniting the energy, breaking the ice, and keeping the 
                 cameras in circulation.</p1>
+                </span>
+              </li>
+              <li>
+                <span className="emoji">☎️</span>
+                <i>Get Into Character</i><br />
+                <span className="li-desc">
+                <p1>Everyone loves playing with props. We bring a variety of props, accessories, and costumes to help guests tell their story and make it their own.</p1>
                 </span>
               </li>
             </ul>
@@ -120,7 +128,7 @@ const HowItWorksButton = () => {
                   from inside the action, not watching from the sidelines.
                   <br/><br/>
                   After the event, we digitize everything, giving hosts and guests a full archive of the night. 
-                  The physical prints? Those stay with the people who made them.</p>
+                  We make sure those memories stay with the people who made them, not just the host.</p>
               
             </div>
           </div>
