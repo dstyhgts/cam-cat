@@ -104,7 +104,7 @@ const NostalgiaPackButton = () => {
               </p>
               <h3>DAY-OF:</h3>
               <ul>
-                <li>📸 18 Digital Cameras: 
+                <li>📸 15 Digital Cameras: 
                     <p>Small, simple, and made to be passed      
                       around. The goal is a candid memory archive of the event. Guests find them, pick the up, 
                       and use them to capture what they want like any disposable camera would allow - only no limits here... </p>
@@ -118,7 +118,7 @@ const NostalgiaPackButton = () => {
                     preserved archive of the night sent to you within 12 hours of the events conclusion. 
                     If agreed upon, we can send the files to the guests who captured the night as well; <i>making the night a little more interactive and ready to post.</i></p>
                 </li>
-                <li>🎥 1 Cam-Tender (Add-On): 
+                <li>🎥 1 Cam-Tender (+$150/hr): 
                     <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
                       inclusive experience. They are all talented photograohers that can garuntee a lot of photos on their own.
                       Beyond that they look for the natural storytellers at your event, put the cameras in their hands and make sure 
@@ -138,20 +138,21 @@ const NostalgiaPackButton = () => {
             <div className="nostpack-inner-frame">
             <h2><em>INCLUDES:</em></h2>
               <h5>
-              <strong>Cameras (18):</strong><br />
+              <strong>Cameras (15):</strong><br />
                 </h5>
                 <br />
                 <p>Digicam:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 <br /></h6>
+                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸  <br /></h6>
                 <br />
-                {/* <p>'VHS' Camcorder:</p>
-                <h6>📸 📸 📸 <br /> </h6> */}
+                <p>'VHS' Camcorder:</p>
+                <h6>📸 📸 <br /> </h6>
               
             
                 <strong>What You Get:</strong><br />
                   1. 20 Digital Cameras <br />
                   2. 1 Set of Back-Up batteries for each camera; labeled and ready to shoot <br />
                   3. An inviting "tag"to help guests find and understand the intricacies of the cameras.
+                  4. Built-in insurance for each camera.
 
               <p><br />
               🔹 <em>Add on our <u>Cam-Tender</u> for $500 (+$150/hr) for when 

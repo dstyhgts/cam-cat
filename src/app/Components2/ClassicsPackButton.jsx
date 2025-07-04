@@ -126,7 +126,9 @@ const PrintPackButton = () => {
                     <p>Two Camera-Men or Woman guide guests into the world of 
                       analog nostalgia, and make sure the cameras get into the hands of your guests. Our Cam-tenders inspire
                       capturing cadid moments, finding the natural storytellers at your event, and guiding 
-                      each person to find their own story worth telling. They also teach how to use the cameras, and curate each guest's experience with the cameras best suited for them. </p>
+                      each person to find their own story worth telling. They also teach how to use the cameras, and curate each guest's 
+                      experience with the cameras best suited for them. 
+                      (*Up to 4 Hours; billed at $150/hr thereafter)</p>
                 </li>
                 
                 <li>📤 Delivery in 36 hours:
