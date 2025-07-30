@@ -6,8 +6,19 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   // Helper to get time-based theme
   const getTimeBasedTheme = () => {
-    const hour = new Date().getHours();
-    return hour >= 1 && hour < 13 ? "light" : "dark";
+    // Get current time in Pacific Time (PST/PDT)
+    const now = new Date();
+    // Convert to Pacific Time (handles DST)
+    const pacificTime = new Date(
+      now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })
+    );
+    const hour = pacificTime.getHours();
+    // Dark mode: 2am <= hour < 8am
+    if (hour >= 2 && hour < 8) {
+      return "dark";
+    }
+    // Light mode: 8am <= hour < 2am (next day)
+    return "light";
   };
 
   const [theme, setTheme] = useState(() => {
