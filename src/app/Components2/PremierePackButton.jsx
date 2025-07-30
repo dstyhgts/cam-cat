@@ -48,13 +48,13 @@ const PrintPackButton = () => {
       {!expanded && <div className="premiere-background" />}
 
       {/* 3 icons animate in on hover (only if not expanded) */}
-      {!expanded && (
+      {/* {!expanded && (
         <>
           <img className="star star1" src={randomizedStars[0]} alt="Camera Icon 1" style={{ width: '96px', height: '96px' }} />
           <img className="star star2" src={randomizedStars[1]} alt="Camera Icon 2" style={{ width: '96px', height: '96px' }} />
           <img className="star star3" src={randomizedStars[2]} alt="Camera Icon 3" style={{ width: '96px', height: '96px' }} />
         </>
-      )}
+      )} */}
 
       {/* Two arrows at bottom (behind the card) */}
       {!expanded && (

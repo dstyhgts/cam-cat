@@ -85,7 +85,7 @@ const WelcomeCamera = () => {
               <div className="item" style={{ width: '90vw', maxWidth: 250, height: 'auto', margin: '0 auto', background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                 {videoLoading && <Spinner />}
                 <video
-                  src="/assets/BrookeBDAY2.mp4"
+                  src="/assets/UNCLE-OFFICIATES-COMPRESSED.mp4"
                   autoPlay
                   loop
                   muted
@@ -107,7 +107,7 @@ const WelcomeCamera = () => {
                 <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>
                   {videoLoading && <Spinner />}
                   <video
-                    src="/assets/BrookeBDAY2.mp4"
+                    src="/assets/UNCLE-OFFICIATES-COMPRESSED.mp4"
                     autoPlay
                     loop
                     muted
@@ -121,7 +121,7 @@ const WelcomeCamera = () => {
                 </div>
                 {/* Card 3: Image */}
                 <div className="item" style={{ left: '62.5%', top: '25%', width: '250px', height: '281px', transform: 'rotate(13deg)', zIndex: 0 }}>
-                  <img src='/assets/img29.jpg' alt="Event 2" />
+                  <img src='/assets/img16.jpg' alt="Event 2" />
                 </div>
               </>
             )}

@@ -48,13 +48,13 @@ const PrintPackButton = () => {
       {!expanded && <div className="classics-background" />}
 
       {/* 3 icons animate in on hover (only if not expanded) */}
-      {!expanded && (
+      {/* {!expanded && (
         <>
           <img className="star star1" src={randomizedStars[0]} alt="Camera Icon 1" style={{ width: '96px', height: '96px' }} />
-          {/* <img className="star star2" src={randomizedStars[1]} alt="Camera Icon 2" style={{ width: '96px', height: '96px' }} /> */}
+          <img className="star star2" src={randomizedStars[1]} alt="Camera Icon 2" style={{ width: '96px', height: '96px' }} />
           <img className="star star3" src={randomizedStars[2]} alt="Camera Icon 3" style={{ width: '96px', height: '96px' }} />
         </>
-      )}
+      )} */}
 
       {/* Two arrows at bottom (behind the card) */}
       {!expanded && (
@@ -118,7 +118,7 @@ const PrintPackButton = () => {
                       for all things props, costumes, and adventure. It's place to come together, to be creative, and to be yourself- 
                       under the guidance of our Cam-Tenders.</p>
                 </li>
-                <li>📸 36 vintage cameras:
+                <li>📸 30 vintage cameras:
                     <p>Here we introduce your guests to VHS camcorders & film photography cameras. Small, simple, and made to be passed around. Left out, handed off, 
                       capturing the event from every possible angle, for both a photographic and video archive. </p>
                 </li>
