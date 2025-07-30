@@ -23,7 +23,7 @@ const TestimonialBig = () => {
       {videoLoading && <Spinner />}
       <video
         className="testimonial-bg-video"
-        src="/assets/WeddingBIG.mp4"
+        src="/assets/The Cousins_1.mp4"
         autoPlay
         loop
         muted
@@ -33,7 +33,7 @@ const TestimonialBig = () => {
         onPlay={() => setVideoLoading(false)}
       />
       {/* <div className="testimonial-big-label">TESTIMONIAL1</div> */}
-      <div className="testimonial-big-quote">“WHAT A FUN IDEA! I CAN DEF SEE THE APPEAL”</div>
+      {/* <div className="testimonial-big-quote">“WHAT A FUN IDEA! I CAN DEF SEE THE APPEAL”</div> */}
       {/* Larger text block in the center */}
       {/* <div className="testimonial-big-body">
         Camera Catering helped me quite drinking and tie up the sutures 
@@ -44,13 +44,13 @@ const TestimonialBig = () => {
         But—it's this isn't about cameras anymore. I promise.
       </div> */}
       {/* Author at the bottom-left */}
-      <div className="testimonial-big-author">
+      {/* <div className="testimonial-big-author">
         Jared Renard, San Diego
-      </div>
+      </div> */}
       {/* Date at the bottom-right */}
-      <div className="testimonial-big-date">
+      {/* <div className="testimonial-big-date">
         June 21st, 2025
-      </div>
+      </div> */}
       <style jsx global>{`
         .video-spinner {
           border: 6px solid #f3f3f3;
