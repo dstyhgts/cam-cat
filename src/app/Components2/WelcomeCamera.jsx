@@ -104,10 +104,10 @@ const WelcomeCamera = () => {
                   <img src="/assets/img57.JPG" alt="Event 1" />
                 </div>
                 {/* Card 2: Video */}
-                <div className="item" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>
+                <div className="item video-card-centered" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>
                   {videoLoading && <Spinner />}
                   <video
-                    src="/assets/UNCLE-OFFICIATES-COMPRESSED.mp4"
+                    src="/assets/UNCLE-JERRY-WEBSITE.mp4"
                     autoPlay
                     loop
                     muted
