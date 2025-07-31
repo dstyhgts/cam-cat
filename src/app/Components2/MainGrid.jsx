@@ -150,6 +150,7 @@ const MainGrid = () => {
           z-index: 1;
           display: block;
         }
+      
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
@@ -175,15 +176,6 @@ const MainGrid = () => {
           }
           
         }
-        .imagine-this-overlay {
-          position: absolute;
-          right: auto;
-          left: auto;
-          padding-left: 300px;
-          top: 0;
-          z-index: 20;
-          pointer-events: none;
-        }
         @media (max-width: 420px) {
           .imagine-this-overlay {
             right: 0;
@@ -191,6 +183,9 @@ const MainGrid = () => {
             padding-left: 0;
             width: 120px;
             top: 0;
+          }
+          .order-btn-photo-stack {
+            display: none !important;
           }
         }
       `}</style>
