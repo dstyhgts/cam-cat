@@ -118,8 +118,14 @@ const MainGrid = () => {
         <TestimonialMed />
       </div>
       <div className="testimonial-big-row"><TestimonialBig /></div>
+      {/* IMAGINE-THIS SVG overlayed at the start of the photo cards stack */}
       {/* Photo stack in its own left column cell */}
-      <div className="photo-stack-col" style={{ gridColumn: 1 }}><StackedPhotoCards /></div>
+      <div className="photo-stack-col" style={{ gridColumn: 1, position: 'relative' }}>
+        <div className="imagine-this-overlay">
+          <img src="/assets/IMAGINE-THIS.svg" alt="Imagine this" style={{ width: '180px', height: 'auto' }} />
+        </div>
+        <StackedPhotoCards />
+      </div>
       {/* About card, full width */}
       <div className="about-row" id="about-card"><AboutCard /></div>
       <style jsx>{`
@@ -133,11 +139,20 @@ const MainGrid = () => {
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
-            right: 320px;
+            right: 260px;
             transform: translateX(-50%);
             top: 0;
             z-index: 1;
           }
+        }
+        .imagine-this-overlay {
+          position: absolute;
+          right: auto;
+          left: auto;
+          padding-left: 300px;
+          top: 0;
+          z-index: 20;
+          pointer-events: none;
         }
       `}</style>
     </div>
