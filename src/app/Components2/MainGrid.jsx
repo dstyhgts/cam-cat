@@ -89,7 +89,11 @@ const StackedPhotoCards = () => {
 
 const MainGrid = () => {
   return (
-    <div className="main-grid">
+    <div className="main-grid" style={{ position: 'relative' }}>
+      {/* OPEN-ME SVG, top right corner, desktop only */}
+      <div className="open-me-top-right">
+        <img src="/assets/OPEN-ME2.svg" alt="Open me" style={{ width: '120px', height: 'auto' }} />
+      </div>
       {/* Small buttons, two per row */}
       <div className="small-buttons-row">
         <div id="how-it-works"><HowItWorksButton /></div>
@@ -118,6 +122,24 @@ const MainGrid = () => {
       <div className="photo-stack-col" style={{ gridColumn: 1 }}><StackedPhotoCards /></div>
       {/* About card, full width */}
       <div className="about-row" id="about-card"><AboutCard /></div>
+      <style jsx>{`
+        .open-me-top-right {
+          position: absolute;
+          top: 0;
+          right: -200px;
+          z-index: 1;
+          display: block;
+        }
+        @media (max-width: 900px) {
+          .open-me-top-right {
+            left: 50%;
+            right: 260px;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 };

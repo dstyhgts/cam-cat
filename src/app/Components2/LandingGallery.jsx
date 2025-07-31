@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import CustomEase from "gsap/CustomEase";
 // import Navbar from "./Navbar"; // our landing-page navbar
@@ -12,6 +12,8 @@ const LandingGallery = ({ className = "", ...props }) => {
   const galleryRef = useRef(null);
   const titleRef = useRef(null);
   const subTitleRef = useRef(null); // subheading ref
+  const dragMeRef = useRef(null); // ref for the SVG
+  const clickMeRef = useRef(null); // ref for the CLICK-ME SVG
 
   useEffect(() => {
     CustomEase.create(
@@ -289,7 +291,71 @@ const LandingGallery = ({ className = "", ...props }) => {
       setCircularLayout();
     };
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    // After setCircularLayout, position the drag-me SVG
+    const positionDragMe = () => {
+      if (!galleryRef.current || !dragMeRef.current) return;
+      const container = containerRef.current;
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+      const isMobile = width < 900;
+      if (isMobile) {
+        dragMeRef.current.style.display = 'none';
+        return;
+      } else {
+        dragMeRef.current.style.display = 'block';
+      }
+      // Use the same logic as setCircularLayout
+      const items = container.querySelectorAll('.item');
+      if (!items.length) return;
+      const numberOfItems = items.length;
+      const radius = width < 900 ? width * 0.35 : 210;
+      let centerX;
+      if (width < 900 && width < 450) {
+        centerX = width * 1.25;
+      } else if (width < 900) {
+        centerX = width + radius / 2 - 100;
+      } else {
+        centerX = width / 2;
+      }
+      const centerY = height / 2;
+      // Place SVG just outside the circle's bottom right
+      const offset = 90; // px outside the circle, increased for red space
+      const svg = dragMeRef.current;
+      // Calculate a point more to the right (60deg)
+      const angle = Math.PI / 3; // 60deg for more right
+      const svgX = centerX + radius * Math.cos(angle) + offset + 40; // manually move 75px right
+      const svgY = centerY + radius * Math.sin(angle) + offset;
+      svg.style.position = 'absolute';
+      svg.style.left = `${svgX}px`;
+      svg.style.top = `${svgY}px`;
+      svg.style.zIndex = 30;
+      svg.style.transform = 'rotate(30deg)';
+    };
+    // After layout, position the SVG
+    setTimeout(positionDragMe, 0);
+    window.addEventListener('resize', positionDragMe);
+
+    // Dynamically position the CLICK-ME SVG below the theme toggle
+    const positionClickMe = () => {
+      const svg = clickMeRef.current;
+      const toggle = document.getElementById('theme-toggle');
+      if (!svg || !toggle) return;
+      const toggleRect = toggle.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      // Calculate position relative to the landing gallery container
+      const left = toggleRect.left - containerRect.left + toggleRect.width / 2 - 60;
+      const top = toggleRect.bottom - containerRect.top + 10; // 10px below toggle
+      svg.style.position = 'absolute';
+      svg.style.left = `${left}px`;
+      svg.style.top = `${top}px`;
+      svg.style.transform = 'translateX(-50%)';
+      svg.style.zIndex = 40;
+      svg.style.display = 'block';
+    };
+    positionClickMe();
+    window.addEventListener('resize', positionClickMe);
+    return () => window.removeEventListener('resize', positionClickMe);
   }, []);
 
   return (
@@ -300,7 +366,17 @@ const LandingGallery = ({ className = "", ...props }) => {
         {/* <div className="title" ref={titleRef}>CAMERA CATERING</div> */}
         {/* Subheading element (initially hidden) */}
         {/* <div className="sub-title" ref={subTitleRef}>Invite cameras to your next event.</div> */}
-        <div className="lg-gallery" ref={galleryRef}></div>
+        {/* CLICK-ME SVG, dynamically positioned below the theme toggle */}
+        <div ref={clickMeRef} style={{width:'140px', height:'auto', display:'block', pointerEvents:'none', position:'absolute'}}>
+          <img src="/assets/CLICK-ME3.svg" alt="Click me" style={{ width: '100%', height: 'auto' }} />
+        </div>
+        <div className="lg-gallery-wrapper" style={{position:'relative', width:'100%', height:'100%'}}>
+          <div className="lg-gallery" ref={galleryRef}></div>
+          {/* DRAG-ME SVG, desktop only, positioned dynamically */}
+          <div ref={dragMeRef} style={{width:'90px', height:'auto', display:'none', pointerEvents:'none'}}>
+            <img src="/assets/DRAG-ME.svg" alt="Drag me" style={{ width: '100%', height: 'auto' }} />
+          </div>
+        </div>
       </div>
       <style jsx>{`
         .lg-container {
@@ -311,10 +387,28 @@ const LandingGallery = ({ className = "", ...props }) => {
           background: var(--landing-gallery-bg);
           transition: background 300ms ease-in-out;
         }
+        .click-me-below-toggle {
+          position: absolute;
+          left: 50%;
+          top: 60px;
+          transform: translateX(-50%);
+          z-index: 40;
+          display: block;
+        }
+        @media (max-width: 900px) {
+          .click-me-below-toggle {
+            display: none;
+          }
+        }
         .lg-gallery {
           position: absolute;
           top: 0;
           left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .lg-gallery-wrapper {
+          position: relative;
           width: 100%;
           height: 100%;
         }
@@ -335,6 +429,11 @@ const LandingGallery = ({ className = "", ...props }) => {
           box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 8px rgba(0,0,0,0.12);
           cursor: grabbing !important;
           pointer-events: auto !important;
+        }
+        @media (max-width: 900px) {
+          .drag-me-desktop {
+            display: none;
+          }
         }
         @media (max-width: 768px) {
         }
