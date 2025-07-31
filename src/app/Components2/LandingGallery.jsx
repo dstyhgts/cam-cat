@@ -19,7 +19,13 @@ const LandingGallery = ({ className = "", ...props }) => {
       "M0,0 C0.053,0.604 0.157,0.72 0.293,0.837 0.435,0.959 0.633,1 1,1"
     );
 
-    const itemsCount = 30;
+    // Determine item count based on screen width
+    const getItemsCount = () => {
+      const width = window.innerWidth;
+      if (width < 900) return 10; // mobile: half of desktop
+      return 20; // desktop: reduced by 3 from original
+    };
+    let itemsCount = getItemsCount();
     const container = containerRef.current;
     const gallery = galleryRef.current;
 
@@ -125,8 +131,10 @@ const LandingGallery = ({ className = "", ...props }) => {
       while (gallery.firstChild) {
         gallery.removeChild(gallery.firstChild);
       }
+      // Recalculate itemsCount in case of resize
+      itemsCount = getItemsCount();
       const isVerySmallScreen = window.innerWidth <= 450;
-      for (let i = 8; i <= itemsCount; i++) {
+      for (let i = 8; i < 8 + itemsCount; i++) {
         const item = document.createElement("div");
         item.classList.add("item");
 
@@ -229,6 +237,7 @@ const LandingGallery = ({ className = "", ...props }) => {
       const width = container.offsetWidth;
       const height = container.offsetHeight;
       const isMobile = width < 900;
+      // No change to radius logic, just more of each card is visible
       const numberOfItems = items.length;
       const angleIncrement = (2 * Math.PI) / numberOfItems;
       const radius = isMobile ? width * 0.35 : 210;
@@ -274,9 +283,13 @@ const LandingGallery = ({ className = "", ...props }) => {
     };
 
     initGallery();
-    // Re-center on resize
-    window.addEventListener('resize', setCircularLayout);
-    return () => window.removeEventListener('resize', setCircularLayout);
+    // Re-center and re-create items on resize
+    const handleResize = () => {
+      createItems();
+      setCircularLayout();
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
