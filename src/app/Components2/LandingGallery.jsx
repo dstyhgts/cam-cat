@@ -392,7 +392,7 @@ const LandingGallery = ({ className = "", ...props }) => {
           left: 50%;
           top: 60px;
           transform: translateX(-50%);
-          z-index: 40;
+          z-index: 40000;
           display: block;
         }
         @media (max-width: 900px) {

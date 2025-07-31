@@ -15,6 +15,7 @@ import TestimonialMed from './TestimonialMed';
 import TestimonialBig from './TestimonialBig';
 import AboutCard from './AboutCard';
 import ImagesContainer from './ImageContainer';
+import { PopupButton } from '@typeform/embed-react';
 
 // Helper: seeded random for consistent variability
 function seededRandom(seed) {
@@ -52,7 +53,7 @@ const StackedPhotoCards = () => {
   let topSum = 0;
   const cards = images.map((src, i) => {
     const rot = Math.random() * 48 - 24; // -24 to 24 deg
-    const hOffset = Math.random() * 240 - 120; // -120 to 120 px
+    const hOffset = i === 0 ? -120 : Math.random() * 240 - 120; // first image always leftmost
     const vOffset = 140 + Math.random() * 100; // 140 to 240 px
     const top = topSum;
     topSum += vOffset;
@@ -124,7 +125,20 @@ const MainGrid = () => {
         <div className="imagine-this-overlay">
           <img src="/assets/IMAGINE-THIS.svg" alt="Imagine this" style={{ width: '180px', height: 'auto' }} />
         </div>
-        <StackedPhotoCards />
+        <div style={{ position: 'relative' }}>
+          <StackedPhotoCards />
+          {/* GET CAMERAS button at the bottom of the photo stack, overlapping last photo */}
+          <div className="order-btn-photo-stack" style={{ position: 'absolute', left: '50%', bottom: '-30px', transform: 'translateX(-50%) rotate(3deg)', zIndex: 100, width: 'max-content', pointerEvents: 'auto' }}>
+            <PopupButton
+              id="yyPNXkPK"
+              className="order-button"
+              size={80}
+              style={{ width: '100%', zIndex: 100, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
+            >
+              GET CAMERAS!
+            </PopupButton>
+          </div>
+        </div>
       </div>
       {/* About card, full width */}
       <div className="about-row" id="about-card"><AboutCard /></div>
@@ -144,14 +158,22 @@ const MainGrid = () => {
             top: 0;
             z-index: 1;
           }
-            @media (max-width: 420px) {
+          @media (max-width: 420px) {
           .open-me-top-right {
             left: 70%;
-            right: 260px;
+            right: auto;
             transform: translateX(-50%);
             top: 0;
             z-index: 1;
           }
+          .order-btn-photo-stack {
+            left: 50% !important;
+            right: auto !important;
+            transform: translateX(-50%) rotate(3deg) !important;
+            width: max-content !important;
+            margin: 2rem 0 0 0 !important;
+          }
+          
         }
         .imagine-this-overlay {
           position: absolute;
@@ -161,7 +183,6 @@ const MainGrid = () => {
           top: 0;
           z-index: 20;
           pointer-events: none;
-        }
       `}</style>
     </div>
   );
