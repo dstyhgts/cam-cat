@@ -30,19 +30,30 @@ const StackedPhotoCards = () => {
   const cardHeight = 337;
   const leftPad = 80;
   const cardCount = 10;
+  const totalImages = 47; // img1.JPG to img47.JPG
 
-  // Generate image paths for the stacked photo cards
-  const images = [];
-  for (let i = 0; i < cardCount; i++) {
-    images.push(`/assets/img${i + 38}.JPG`);
+  // Generate the full pool of image paths
+  const allImages = [];
+  for (let i = 1; i <= totalImages; i++) {
+    allImages.push(`/assets/img${i}.JPG`);
   }
+
+  // Shuffle the pool and pick the first 10 unique images
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  const images = shuffle([...allImages]).slice(0, cardCount);
 
   // Build the cards array with rotation, offset, and top position
   let topSum = 0;
   const cards = images.map((src, i) => {
-    const rot = seededRandom(i + 1) * 48 - 24; // -24 to 24 deg
-    const hOffset = seededRandom(i + 100) * 240 - 120; // -120 to 120 px
-    const vOffset = 140 + seededRandom(i + 200) * 100; // 140 to 240 px
+    const rot = Math.random() * 48 - 24; // -24 to 24 deg
+    const hOffset = Math.random() * 240 - 120; // -120 to 120 px
+    const vOffset = 140 + Math.random() * 100; // 140 to 240 px
     const top = topSum;
     topSum += vOffset;
     return { src, rot, hOffset, top };
