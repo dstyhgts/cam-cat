@@ -183,6 +183,16 @@ const MainGrid = () => {
           top: 0;
           z-index: 20;
           pointer-events: none;
+        }
+        @media (max-width: 420px) {
+          .imagine-this-overlay {
+            right: 0;
+            left: auto;
+            padding-left: 0;
+            width: 120px;
+            top: 0;
+          }
+        }
       `}</style>
     </div>
   );
