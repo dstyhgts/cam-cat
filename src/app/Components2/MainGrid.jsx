@@ -144,6 +144,14 @@ const MainGrid = () => {
             top: 0;
             z-index: 1;
           }
+            @media (max-width: 420px) {
+          .open-me-top-right {
+            left: 70%;
+            right: 260px;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 1;
+          }
         }
         .imagine-this-overlay {
           position: absolute;
