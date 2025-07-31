@@ -133,7 +133,7 @@ const MainGrid = () => {
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
-            right: 260px;
+            right: 320px;
             transform: translateX(-50%);
             top: 0;
             z-index: 1;

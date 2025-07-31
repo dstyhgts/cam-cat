@@ -351,7 +351,7 @@ const LandingGallery = ({ className = "", ...props }) => {
       svg.style.top = `${top}px`;
       svg.style.transform = 'translateX(-50%)';
       svg.style.zIndex = 40;
-      svg.style.display = 'block';
+      svg.style.display = window.innerWidth > 900 ? 'block' : 'none';
     };
     positionClickMe();
     window.addEventListener('resize', positionClickMe);
