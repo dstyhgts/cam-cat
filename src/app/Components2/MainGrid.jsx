@@ -188,7 +188,7 @@ const MainGrid = () => {
             z-index: 1;
           }
           .imagine-this-overlay {
-            right: 0;
+            right: -24px;
             left: auto;
             padding-left: 0;
             width: 120px;
