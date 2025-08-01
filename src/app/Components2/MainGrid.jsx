@@ -191,9 +191,9 @@ const MainGrid = () => {
           }
           .imagine-this-overlay {
             position: absolute;
-            left: 50%;
-            right: auto;
-            transform: translateX(-50%);
+            right: 0;
+            left: auto;
+            transform: none;
             width: 60vw;
             max-width: 120px;
             min-width: 60px;
