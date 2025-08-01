@@ -150,6 +150,17 @@ const MainGrid = () => {
           z-index: 200;
           display: block;
         }
+
+        .imagine-this-overlay {
+          position: absolute;
+          right: auto;
+          left: auto;
+          padding-left: 300px;
+          top: 0;
+          z-index: 20;
+          pointer-events: none;
+        }
+          
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
@@ -167,15 +178,6 @@ const MainGrid = () => {
           }
           
 
-        }
-        .imagine-this-overlay {
-          position: absolute;
-          right: auto;
-          left: auto;
-          padding-left: 300px;
-          top: 0;
-          z-index: 20;
-          pointer-events: none;
         }
 
         
