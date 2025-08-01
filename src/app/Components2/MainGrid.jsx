@@ -147,7 +147,7 @@ const MainGrid = () => {
           position: absolute;
           top: 0;
           right: -200px;
-          z-index: 1;
+          z-index: 200;
           display: block;
         }
         @media (max-width: 900px) {
@@ -156,7 +156,7 @@ const MainGrid = () => {
             right: 260px;
             transform: translateX(-50%);
             top: 0;
-            z-index: 1;
+            z-index: 200;
           }
           .order-btn-photo-stack {
             left: 50% !important;
@@ -185,7 +185,7 @@ const MainGrid = () => {
             right: 10px;
             top: 80px;
             transform: none;
-            z-index: 100;
+            z-index: 200;
           }
           .imagine-this-overlay {
             position: absolute;
@@ -198,7 +198,6 @@ const MainGrid = () => {
             top: 0;
             z-index: 100;
             padding-left: 0;
-            margin-left: -50px;
           }
         }
       `}</style>
