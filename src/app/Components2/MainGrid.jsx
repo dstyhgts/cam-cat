@@ -188,13 +188,15 @@ const MainGrid = () => {
             z-index: 2;
           }
           .imagine-this-overlay {
+            position: fixed;
             right: 0;
             left: auto;
-            padding-left: 0;
-            width: 90vw;
+            width: 40vw;
             max-width: 120px;
             min-width: 60px;
-            top: 0;
+            top: 80px;
+            z-index: 100;
+            padding-left: 0;
           }
         }
       `}</style>
