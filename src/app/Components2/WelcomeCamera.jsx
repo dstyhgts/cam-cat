@@ -53,7 +53,7 @@ const WelcomeCamera = () => {
         <div className="left-content" style={{ pointerEvents: 'none' }}>
           {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
           {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
-          <h1 className="main-title" style={{ marginTop: '15px' }}>YOUR EVENT. YOUR STORY.</h1>
+          <h1 className="main-title" style={{ marginTop: '10px' }}>YOUR EVENT. YOUR STORY.</h1>
           {/* <p className="subtitle">
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}

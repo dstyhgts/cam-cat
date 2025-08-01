@@ -166,6 +166,7 @@ const MainGrid = () => {
             margin: 2rem 0 0 0 !important;
           }
           
+
         }
         .imagine-this-overlay {
           position: absolute;
@@ -176,10 +177,12 @@ const MainGrid = () => {
           z-index: 20;
           pointer-events: none;
         }
+
+        
         @media (max-width: 420px) {
           .open-me-top-right {
             left: 50%;
-            right: auto;
+            right: -36px;
             transform: translateX(-50%);
             top: 0;
             z-index: 1;
