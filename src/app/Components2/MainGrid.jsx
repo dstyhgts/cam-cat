@@ -145,18 +145,18 @@ const MainGrid = () => {
       <style jsx>{`
         .open-me-top-right {
           position: absolute;
-          top: 80px;
-          right: 320px;
-          z-index: 2;
+          top: 0;
+          right: -200px;
+          z-index: 1;
           display: block;
         }
         @media (max-width: 900px) {
           .open-me-top-right {
-            left: auto;
-            right: 120px;
-            top: 80px;
-            transform: none;
-            z-index: 2;
+            left: 50%;
+            right: 260px;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 1;
           }
           .order-btn-photo-stack {
             left: 50% !important;
