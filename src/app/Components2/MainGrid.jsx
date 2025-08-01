@@ -81,7 +81,7 @@ const StackedPhotoCards = () => {
             userSelect: 'none',
           }}
         >
-          <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} />
+          <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} loading="lazy" />
         </div>
       ))}
     </div>
@@ -182,14 +182,13 @@ const MainGrid = () => {
         @media (max-width: 420px) {
           .open-me-top-right {
             left: auto;
-            right: auto;
-            transform: translateX(50px);
+            right: 0;
             transform: none;
             top: 0;
             z-index: 1;
           }
           .imagine-this-overlay {
-            right: auto;
+            right: 0;
             left: auto;
             padding-left: 0;
             width: 120px;
