@@ -150,19 +150,10 @@ const MainGrid = () => {
           z-index: 1;
           display: block;
         }
-      
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
             right: 260px;
-            transform: translateX(-50%);
-            top: 0;
-            z-index: 1;
-          }
-          @media (max-width: 420px) {
-          .open-me-top-right {
-            left: 70%;
-            right: auto;
             transform: translateX(-50%);
             top: 0;
             z-index: 1;
@@ -176,16 +167,29 @@ const MainGrid = () => {
           }
           
         }
+        .imagine-this-overlay {
+          position: absolute;
+          right: auto;
+          left: auto;
+          padding-left: 300px;
+          top: 0;
+          z-index: 20;
+          pointer-events: none;
+        }
         @media (max-width: 420px) {
+          .open-me-top-right {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 1;
+          }
           .imagine-this-overlay {
             right: 0;
             left: auto;
             padding-left: 0;
             width: 120px;
             top: 0;
-          }
-          .order-btn-photo-stack {
-            display: none !important;
           }
         }
       `}</style>
