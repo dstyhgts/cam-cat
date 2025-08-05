@@ -153,12 +153,10 @@ const MainGrid = () => {
 
         .imagine-this-overlay {
           position: absolute;
-          right: auto;
-          left: auto;
-          padding-left: 300px;
           top: 0;
-          z-index: 20;
-          pointer-events: none;
+          right: -200px;
+          z-index: 200;
+          display: block;
         }
           
         @media (max-width: 900px) {
@@ -190,7 +188,11 @@ const MainGrid = () => {
             z-index: 200;
           }
           .imagine-this-overlay {
-            display: none !important;
+            left: auto;
+            right: 10px;
+            top: 80px;
+            transform: none;
+            z-index: 200;
           }
         }
       `}</style>
