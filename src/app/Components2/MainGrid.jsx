@@ -195,10 +195,10 @@ const MainGrid = () => {
             z-index: 200;
           }
           .imagine-this-overlay {
-            left: auto;
-            right: 10px;
+            left: 50%;
+            right: 200px;
             top: 80px;
-            transform: translateX(30px);
+            transform: translateX(31px);
             z-index: 200;
           }
         }
