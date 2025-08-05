@@ -123,7 +123,7 @@ const MainGrid = () => {
       {/* Photo stack in its own left column cell */}
       <div className="photo-stack-col" style={{ gridColumn: 1, position: 'relative' }}>
         <div className="imagine-this-overlay">
-          <img src="/assets/IMAGINE-THIS.svg" alt="Imagine this" style={{ width: '180px', height: 'auto' }} />
+          <img src="/assets/IMAGINE-THIS.svg" alt="Imagine this" style={{ width: '120px', height: 'auto' }} />
         </div>
         <div style={{ position: 'relative' }}>
           <StackedPhotoCards />
