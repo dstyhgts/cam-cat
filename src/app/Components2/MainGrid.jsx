@@ -167,6 +167,13 @@ const MainGrid = () => {
             top: 0;
             z-index: 200;
           }
+             .imagine-this-overlay {
+            left: 50%;
+            right: 260px;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 200;
+          }
           .order-btn-photo-stack {
             left: 50% !important;
             right: auto !important;
