@@ -31,7 +31,7 @@ const StackedPhotoCards = () => {
   const cardHeight = 337;
   const leftPad = 80;
   const cardCount = 10;
-  const totalImages = 47; // img1.JPG to img47.JPG
+  const totalImages = 58; // img1.JPG to img58.JPG
 
   // Generate the full pool of image paths
   const allImages = [];
