@@ -198,7 +198,7 @@ const MainGrid = () => {
             left: auto;
             right: 10px;
             top: 80px;
-            transform: translateX(64px);
+            transform: translateX(30px);
             z-index: 200;
           }
         }
