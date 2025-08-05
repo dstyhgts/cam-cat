@@ -31,11 +31,11 @@ const StackedPhotoCards = () => {
   const cardHeight = 337;
   const leftPad = 80;
   const cardCount = 10;
-  const totalImages = 58; // img1.JPG to img58.JPG
+  const totalImages = 58; // img31.JPG to img58.JPG
 
-  // Generate the full pool of image paths
+  // Generate the pool of image paths for 31-58 only
   const allImages = [];
-  for (let i = 1; i <= totalImages; i++) {
+  for (let i = 31; i <= totalImages; i++) {
     allImages.push(`/assets/img${i}.JPG`);
   }
 
@@ -196,7 +196,7 @@ const MainGrid = () => {
           }
           .imagine-this-overlay {
             left: 50%;
-            right: 200px;
+            right: 100px;
             top: 80px;
             transform: translateX(31px);
             z-index: 200;
