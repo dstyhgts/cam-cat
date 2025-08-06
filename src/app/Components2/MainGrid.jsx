@@ -166,7 +166,7 @@ const MainGrid = () => {
             left: 50%;
             right: 300px;
             transform: translateX(-50%);
-            top: -20px;
+            top: 0;
             z-index: 200;
           }
              .imagine-this-overlay {
