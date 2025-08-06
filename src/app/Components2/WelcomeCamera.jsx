@@ -71,7 +71,8 @@ const WelcomeCamera = () => {
             <p className="new-description">
               <i>With the possibility for thousands of photographs and videos of your event, 
               Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
-              With anywhere fom 15 to 100+ vintage cameras, we can capture the whole event, and then some, making sure you guests are the ones who get the memories.</i>
+              With anywhere fom 15 to 100+ vintage cameras, we can capture the whole event, and then some, all while making 
+              sure your guests are the ones who keep the memories.</i>
             </p>
           </div>
         </div>
