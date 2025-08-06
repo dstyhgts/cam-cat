@@ -164,9 +164,9 @@ const MainGrid = () => {
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
-            right: 200px;
+            right: 300px;
             transform: translateX(-50%);
-            top: 0;
+            top: -20px;
             z-index: 200;
           }
              .imagine-this-overlay {
