@@ -63,7 +63,7 @@ const TheMemoryButton = () => {
             archive of the night, built in real time and delivered while the energy is still fresh.
             </p>
 
-            <h6>We set the stage:</h6>
+            <h6>YOU CAN EXPECT:</h6>
 
             <img className="memory-overflow-svg" src="/assets/camera-icon15.svg" alt="Camera Icon" />
 
