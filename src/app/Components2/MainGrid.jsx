@@ -164,7 +164,7 @@ const MainGrid = () => {
         @media (max-width: 900px) {
           .open-me-top-right {
             left: 50%;
-            right: 300px;
+            right: 150px;
             transform: translateX(-50%);
             top: 0;
             z-index: 200;
@@ -188,22 +188,22 @@ const MainGrid = () => {
         }
 
         
-        @media (max-width: 450px) {
-          .open-me-top-right {
-            left: auto;
-            right: 10px;
-            top: 80px;
-            transform: none;
-            z-index: 200;
-          }
-          .imagine-this-overlay {
-            left: 50%;
-            right: 200px;
-            transform: translateX(120px);
-            top: 0;
-            z-index: 200;
-          }
-        }
+        // @media (max-width: 450px) {
+        //   .open-me-top-right {
+        //     left: auto;
+        //     right: 10px;
+        //     top: 80px;
+        //     transform: none;
+        //     z-index: 200;
+        //   }
+        //   .imagine-this-overlay {
+        //     left: 50%;
+        //     right: 200px;
+        //     transform: translateX(120px);
+        //     top: 0;
+        //     z-index: 200;
+        //   }
+        // }
       `}</style>
     </div>
   );
