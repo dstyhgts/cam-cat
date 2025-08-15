@@ -58,7 +58,7 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle" style={{ marginTop: '24px' }}>
-            <i>DITCH</i> THE DISPOSABLES, GET <i>NOSTALGIC,</i> AND <i><u>GO VINTAGE!</u></i>
+            <i>DITCH</i> THE DISPOSABLES, GET <i>NOSTALGIC,</i> AND <i>GO <u>DIGITAL!</u></i>
           </p>
 
           <div className="new-section">
