@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ColorfulBranding.module.css";
+import parse from "html-react-parser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,13 +13,14 @@ gsap.registerPlugin(ScrollTrigger);
  * Example text containing <br/> for manual line breaks.
  * Adjust or add more <br/> as you like.
  */
-const fullText = `
-  CAMERAS HELP <br/> PEOPLE TELL STORIES AND CONNECT US TO THE PAST
-  WITH IMMEDIATE WARMTH. <br/> <br/> <br/>Photography has always been about quality. But memories...? They're about feeling.
-  <br/> <br/>  At Camera Catering, we believe memories have an aesthetic. 
-   <br/> <br/>  That's why we bring a camera bar to your event... stocked with vintage cameras, VHS Camcorders, Instant <br/>Print Cameras, and all the tools of nostalgia.
- 
-`;
+const fullText = `<u>Camera Catering</u> is your <i>one-stop shop</i> for event photo/video—anything camera-related, fully custom 
+and creative, capturing what phones can’t. <br/> <br/> We bring <i>dozens</i> of <i>digital cameras & camcorders</i>: placed around your venue 
+or as a full "Camera Bar" with <i>props, costumes, and on-site teachers</i>. <br/> <br/>  <i>We digitize everything, cut social posts, 
+and deliver within 72 hours. </i><br/> <br/> A-la-carte options include photo booths, "confessional"-video booths, 16mm film, Polaroid, 
+and instant-print cameras.<br/> <br/> Need paparazzi for a brand activation?
+Faux security-cam footage of your wedding? POV sunglasses? Done, easy. <br/> <br/> Our <i>directors, editors, photographers, and 
+cinematographers elevate weddings, baby showers, birthdays, brand activations, pop-ups, fashion shows, and 
+bar/bat mitzvahs—making your night a movie. <br/> <br/> Stop juggling vendors—invite Camera Catering and <i>NEVER look back</i>; <u> ALWAYS REMEMBER.`;
 //OLD TEXT
   // CAMERAS HELP <br/> HUMANS TELL STORIES AND CONNECT EACH OF US TO THE PAST
   // WITH IMMEDIATE WARMTH. <br/> <br/> <br/> <br/>OUR CHILDREN <br/> WILL THANK US FOR <br/> BEING THE ONES <br/> BEHIND THE CAMERA! <br/> <br/><br/>WE ARE <br/> EACH THE <br/>ORATORS OF <br/> OUR OWN <br/> STORIES.
@@ -33,14 +35,22 @@ const fullText = `
  *  - src, alt => image path & alt text
  */
 const imagesData = [
-    { wordIndex: 25,  float: "right",   size: "large", src: "/assets/camera-icon112.svg" },
-    { wordIndex: 6, float: "left",  size: "large", src: "/assets/camera-icon113.svg" },
     { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon111.svg" },
-    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon100.svg" },
-    { wordIndex: 21, float: "left",   size: "large", src: "/assets/camera-icon13.svg" },
-    { wordIndex: 28, float: "left", size: "large", src: "/assets/camera-icon115.svg" },
-    { wordIndex: 43, float: "right",   size: "large", src: "/assets/camera-icon23.svg" },
-    { wordIndex: 40, float: "right",  size: "large", src: "/assets/camera-icon20.svg" },
+    { wordIndex: 6, float: "left",  size: "large", src: "/assets/camera-icon113.svg" },
+    { wordIndex: 13,  float: "right",   size: "large", src: "/assets/camera-icon112.svg" },
+    { wordIndex: 20, float: "left",  size: "large", src: "/assets/camera-icon100.svg" },
+    { wordIndex: 27, float: "right", size: "large", src: "/assets/camera-icon13.svg" },
+    { wordIndex: 34, float: "left",  size: "large", src: "/assets/camera-icon115.svg" },
+    { wordIndex: 41, float: "right",   size: "large", src: "/assets/camera-icon23.svg" },
+    { wordIndex: 48, float: "left",  size: "large", src: "/assets/camera-icon20.svg" },
+    { wordIndex: 55, float: "right",  size: "large", src: "/assets/camera-icon12.svg" },
+    { wordIndex: 62, float: "left", size: "large", src: "/assets/camera-icon21.svg" },
+    { wordIndex: 69, float: "right",   size: "large", src: "/assets/camera-icon22.svg" },
+    { wordIndex: 76, float: "left",  size: "large", src: "/assets/camera-icon24.svg" },
+    { wordIndex: 83, float: "right", size: "large", src: "/assets/camera-icon30.svg" },
+    { wordIndex: 90, float: "left",   size: "large", src: "/assets/camera-icon32.svg" },
+    { wordIndex: 98, float: "right",  size: "large", src: "/assets/camera-icon50.svg" },
+    { wordIndex: 108, float: "left",  size: "large", src: "/assets/camera-icon51.svg" }, // last word
 ];
 
 /**
@@ -60,26 +70,31 @@ function parseTextWithBr(fullText, images) {
   const tokens = fullText.split(/(<br\s*\/?>|\s+)/).filter(Boolean);
 
   let wordCount = 0; // increment for real words only
-  const output = [];
+  let output = "";
+  const reactElements = [];
 
   tokens.forEach((token, i) => {
     // If it's exactly "<br/>" => push a real <br />
     if (token.match(/^<br\s*\/?>$/i)) {
-      output.push(<br key={`br-${i}`} />);
+      output += "<br />";
     }
     // If it's purely whitespace => push a single space or do nothing
     else if (token.match(/^\s+$/)) {
-      output.push(" ");
+      output += " ";
     }
     else {
       // It's a real "word" token
-      output.push(token + " ");
+      output += token + " ";
       wordCount++;
 
       // If there's an image after this word index...
       if (imageMap[wordCount]) {
+        // Push the text so far (parsed)
+        if (output.trim()) {
+          reactElements.push(parse(output));
+          output = "";
+        }
         const img = imageMap[wordCount];
-
         // Build class list for "center" hack + size
         let classList = [];
         if (img.float === "center") {
@@ -90,8 +105,7 @@ function parseTextWithBr(fullText, images) {
         } else {
           classList.push(styles.floatImageSmall);
         }
-
-        output.push(
+        reactElements.push(
           <span
             key={`img-${i}`}
             className={classList.join(" ")}
@@ -112,8 +126,11 @@ function parseTextWithBr(fullText, images) {
       }
     }
   });
-
-  return output;
+  // Push any remaining text
+  if (output.trim()) {
+    reactElements.push(parse(output));
+  }
+  return reactElements;
 }
 
 export default function ColorfulBranding() {
