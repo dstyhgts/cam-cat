@@ -162,6 +162,9 @@ const PrintPackButton = () => {
                   MORE...  .       IT'S
                     COMPLETE."
                     </h2>
+                    <p1>
+                    (Pricing is based on a standard 4-hour event. Client will be billed $500/hr thereafter.)
+                    </p1>
             </div>
           </div>
 

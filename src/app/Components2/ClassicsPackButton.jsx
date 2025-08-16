@@ -71,7 +71,7 @@ const PrintPackButton = () => {
           <h2 className="classics-title">*CLASSIC PACKAGE</h2>
           <p className="classics-subtext">
            Our Classic Package welcomes The Camera Bar to your event. <u>Make your party unlike any other...</u> one to <i>never forget.</i>
-            <p className="price-right"><i>Pricing Begins at $4,500</i></p>
+            <p className="price-right"><i>Pricing Begins at $4,100</i></p>
 
             <span className="emoji"></span>
           </p>
@@ -145,6 +145,10 @@ const PrintPackButton = () => {
               them. If you don't, it might make you wonder if you even needed 
               one...'
               </p>
+              <p1>
+              <br />
+              (Pricing is based on a standard 4-hour event. Client will be billed $250/hr thereafter.)
+              </p1>
             </div>
           </div>
 

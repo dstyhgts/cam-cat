@@ -63,7 +63,7 @@ const NostalgiaPackButton = () => {
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="nostpack-subtext">
-          Our entry-level product----18 <i>"indisposible"</i> cameras catered to the moment.
+          Our entry-level product----15 <i>"indisposible"</i> cameras catered to the moment.
           <p className="price-right"><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
@@ -113,7 +113,7 @@ const NostalgiaPackButton = () => {
                     <p>No moment, no detail, and no person should go unphotographed. We make sure that every guest has a camera in their hands, 
                       and that they are able to capture the moment they want to capture.</p>
                 </li>
-                <li>📤 Delivery in 12 hours: 
+                <li>📤 Delivery in 36 hours: 
                     <p>You get every digital files, plus a fully   
                     preserved archive of the night sent to you within 12 hours of the events conclusion. 
                     If agreed upon, we can send the files to the guests who captured the night as well; <i>making the night a little more interactive and ready to post.</i></p>
@@ -125,9 +125,13 @@ const NostalgiaPackButton = () => {
                       everyone has a good time and that nobody gets left out. <br /><br /> </p>
                 </li>
               </ul>
-              <p1>
+              <ul>
               No production, no planning, no pressure. 
               Just real moments, instantly preserved.'
+              </ul>
+              <p1>
+              <br /><br />
+              (Pricing is based on a standard 4-hour event. Client will be billed $250/hr thereafter.)
               </p1>
             </div>
           </div>

@@ -101,11 +101,11 @@ const MainGrid = () => {
       <div className="small-buttons-row">
         <div id="how-it-works"><HowItWorksButton /></div>
         <TheMemoryButton />
-        {/* <TheInstantButton /> */}
       </div>
       <div className="small-buttons-row">
         <TheCameraBarButton />
         <WhyNowButton />
+        <TheInstantButton />
         {/* <TheMemoryButton /> */}
       </div>
       <div className="small-buttons-row">{/* <WhyNowButton /> */}</div>
@@ -114,6 +114,7 @@ const MainGrid = () => {
       <div className="pack-button-row"><NostalgiaPackButton /></div>
       <div className="pack-button-row"><ClassicsPackButton /></div>
       <div className="pack-button-row"><PremierePackButton /></div>
+      {/* <div className="pack-button-row"><PrintPackButton /></div> */}
       <div className="pack-button-row"><DiamondPackButton /></div>
       {/* Testimonials: small and med two per row, big spans two columns */}
       <div className="testimonial-row">
