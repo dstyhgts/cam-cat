@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ColorfulBranding2.module.css";
+import parse from "html-react-parser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,9 +14,12 @@ gsap.registerPlugin(ScrollTrigger);
  * Adjust or add more <br/> as you like.
  */
 const fullText = `
-<br/>TAKING PHOTOS AT YOUR EVENT SHOULDN'T FEEL LIKE SOMEONE IS ALWAYS WATCHING YOU.
-<br/> <br/> No photographers telling people where to stand. <br/> <br/>  No stiff posing. <br/> <br/>  Just real moments, captured by the people living them.
- <br/> <br/> Because when you <br/>give someone a camera, you don't just get photos— <br/>you get their story.
+A-la-carte options include photo booths, "confessional"-video booths, 16mm film, Polaroid, 
+and instant-print cameras.<br/> <br/> Need paparazzi for a brand activation?
+Faux security-cam footage of your wedding? POV sunglasses? Done, easy. <br/> <br/> Our <i>directors, editors, photographers, and 
+cinematographers elevate weddings, baby showers, birthdays, brand activations, pop-ups, fashion shows, and 
+bar/bat mitzvahs—making your night a movie.
+ <br/> <br/> We know cameras. <br/> We also know that when you give someone a camera, you don't just get photos— <br/>you get their story.
                                            
 `;
 
@@ -35,14 +39,19 @@ YOUR LIFE FOR YOU.         */}
  *  - src, alt => image path & alt text
  */
 const imagesData = [
-    { wordIndex: 35,  float: "right",   size: "large", src: "/assets/camera-icon117-1.svg" },
-    { wordIndex: 8, float: "left",  size: "large", src: "/assets/camera-icon101.svg" },
-    { wordIndex: 2, float: "right", size: "large", src: "/assets/camera-icon30.svg" },
-    { wordIndex: 15, float: "left",  size: "large", src: "/assets/camera-icon106.svg" },
-    { wordIndex: 21, float: "right",   size: "small", src: "/assets/camera-icon10.svg" },
-    { wordIndex: 18, float: "left", size: "small", src: "/assets/camera-icon12.svg" },
-    { wordIndex: 20, float: "right",   size: "large", src: "/assets/camera-icon32.svg" },
-    { wordIndex: 22, float: "left",  size: "small", src: "/assets/camera-icon13.svg" },];
+    { wordIndex: 3, float: "right", size: "large", src: "/assets/camera-icon101.svg" },
+    { wordIndex: 10, float: "left", size: "large", src: "/assets/camera-icon103.svg" },
+    { wordIndex: 17, float: "right", size: "small", src: "/assets/camera-icon106.svg" },
+    { wordIndex: 24, float: "left", size: "large", src: "/assets/camera-icon111.svg" },
+    { wordIndex: 28, float: "right", size: "large", src: "/assets/camera-icon32.svg" },
+    { wordIndex: 39, float: "left", size: "small", src: "/assets/camera-icon113.svg" },
+    { wordIndex: 45, float: "right", size: "large", src: "/assets/camera-icon114.svg" },
+    { wordIndex: 52, float: "left", size: "large", src: "/assets/camera-icon115.svg" },
+    { wordIndex: 59, float: "right", size: "small", src: "/assets/camera-icon116.svg" },
+    { wordIndex: 66, float: "left", size: "large", src: "/assets/camera-icon117-1.svg" },
+    { wordIndex: 73, float: "right", size: "large", src: "/assets/camera-icon12.svg" },
+    { wordIndex: 80, float: "left", size: "large", src: "/assets/camera-icon15.svg" },
+];
 
 /**
  * parseTextWithBr():
@@ -61,26 +70,31 @@ function parseTextWithBr(fullText, images) {
   const tokens = fullText.split(/(<br\s*\/?>|\s+)/).filter(Boolean);
 
   let wordCount = 0; // increment for real words only
-  const output = [];
+  let output = "";
+  const reactElements = [];
 
   tokens.forEach((token, i) => {
     // If it's exactly "<br/>" => push a real <br />
     if (token.match(/^<br\s*\/?>$/i)) {
-      output.push(<br key={`br-${i}`} />);
+      output += "<br />";
     }
     // If it's purely whitespace => push a single space or do nothing
     else if (token.match(/^\s+$/)) {
-      output.push(" ");
+      output += " ";
     }
     else {
       // It's a real "word" token
-      output.push(token + " ");
+      output += token + " ";
       wordCount++;
 
       // If there's an image after this word index...
       if (imageMap[wordCount]) {
+        // Push the text so far (parsed)
+        if (output.trim()) {
+          reactElements.push(parse(output));
+          output = "";
+        }
         const img = imageMap[wordCount];
-
         // Build class list for "center" hack + size
         let classList = [];
         if (img.float === "center") {
@@ -91,8 +105,7 @@ function parseTextWithBr(fullText, images) {
         } else {
           classList.push(styles.floatImageSmall);
         }
-
-        output.push(
+        reactElements.push(
           <span
             key={`img-${i}`}
             className={classList.join(" ")}
@@ -113,8 +126,11 @@ function parseTextWithBr(fullText, images) {
       }
     }
   });
-
-  return output;
+  // Push any remaining text
+  if (output.trim()) {
+    reactElements.push(parse(output));
+  }
+  return reactElements;
 }
 
 export default function ColorfulBranding2() {

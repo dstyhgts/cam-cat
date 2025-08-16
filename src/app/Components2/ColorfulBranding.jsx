@@ -16,11 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 const fullText = `<u>Camera Catering</u> is your <i>one-stop shop</i> for event photo/video—anything camera-related, fully custom 
 and creative, capturing what phones can’t. <br/> <br/> We bring <i>dozens</i> of <i>digital cameras & camcorders</i>: placed around your venue 
 or as a full "Camera Bar" with <i>props, costumes, and on-site teachers</i>. <br/> <br/>  <i>We digitize everything, cut social posts, 
-and deliver within 72 hours. </i><br/> <br/> A-la-carte options include photo booths, "confessional"-video booths, 16mm film, Polaroid, 
-and instant-print cameras.<br/> <br/> Need paparazzi for a brand activation?
-Faux security-cam footage of your wedding? POV sunglasses? Done, easy. <br/> <br/> Our <i>directors, editors, photographers, and 
-cinematographers elevate weddings, baby showers, birthdays, brand activations, pop-ups, fashion shows, and 
-bar/bat mitzvahs—making your night a movie. <br/> <br/> Stop juggling vendors—invite Camera Catering and <i>NEVER look back</i>; <u> ALWAYS REMEMBER.`;
+and deliver within 72 hours. </i> <br/> <br/> Stop juggling vendors—invite Camera Catering and <i>NEVER look back</i>; <u> ALWAYS REMEMBER.`;
 //OLD TEXT
   // CAMERAS HELP <br/> HUMANS TELL STORIES AND CONNECT EACH OF US TO THE PAST
   // WITH IMMEDIATE WARMTH. <br/> <br/> <br/> <br/>OUR CHILDREN <br/> WILL THANK US FOR <br/> BEING THE ONES <br/> BEHIND THE CAMERA! <br/> <br/><br/>WE ARE <br/> EACH THE <br/>ORATORS OF <br/> OUR OWN <br/> STORIES.
@@ -43,14 +39,14 @@ const imagesData = [
     { wordIndex: 34, float: "left",  size: "large", src: "/assets/camera-icon115.svg" },
     { wordIndex: 41, float: "right",   size: "large", src: "/assets/camera-icon23.svg" },
     { wordIndex: 48, float: "left",  size: "large", src: "/assets/camera-icon20.svg" },
-    { wordIndex: 55, float: "right",  size: "large", src: "/assets/camera-icon12.svg" },
-    { wordIndex: 62, float: "left", size: "large", src: "/assets/camera-icon21.svg" },
-    { wordIndex: 69, float: "right",   size: "large", src: "/assets/camera-icon22.svg" },
-    { wordIndex: 76, float: "left",  size: "large", src: "/assets/camera-icon24.svg" },
-    { wordIndex: 83, float: "right", size: "large", src: "/assets/camera-icon30.svg" },
-    { wordIndex: 90, float: "left",   size: "large", src: "/assets/camera-icon32.svg" },
-    { wordIndex: 98, float: "right",  size: "large", src: "/assets/camera-icon50.svg" },
-    { wordIndex: 108, float: "left",  size: "large", src: "/assets/camera-icon51.svg" }, // last word
+    { wordIndex: 55, float: "right",  size: "large", src: "/assets/camera-icon51.svg" },
+    { wordIndex: 64, float: "left", size: "large", src: "/assets/camera-icon21.svg" },
+    // { wordIndex: 69, float: "right",   size: "large", src: "/assets/camera-icon22.svg" },
+    // { wordIndex: 76, float: "left",  size: "large", src: "/assets/camera-icon24.svg" },
+    // { wordIndex: 83, float: "right", size: "large", src: "/assets/camera-icon30.svg" },
+    // { wordIndex: 90, float: "left",   size: "large", src: "/assets/camera-icon32.svg" },
+    // { wordIndex: 98, float: "right",  size: "large", src: "/assets/camera-icon50.svg" },
+    // { wordIndex: 108, float: "left",  size: "large", src: "/assets/camera-icon51.svg" }, // last word
 ];
 
 /**
