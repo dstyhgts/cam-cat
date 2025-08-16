@@ -45,8 +45,10 @@ export default function RootLayout({ children }) {
           </section>
           <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
             <BigSvg />
-            <ThreeCards />
+            {/* <ThreeCards /> */}
             <ColorfulBranding2 />
+            </section>
+            <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
             <Footer />
 
           </section>

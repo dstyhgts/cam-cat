@@ -56,8 +56,18 @@ const NewNavbar = () => {
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>
           </li>
           <li>
-            <a href="#threecards" onClick={handleMenuItemClick}>What? Why? How?</a>
+            <a href="#footer" onClick={e => {
+              e.preventDefault();
+              handleMenuItemClick();
+              const footer = document.getElementById('footer');
+              if (footer) {
+                footer.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Connect</a>
           </li>
+          {/* <li>
+            <a href="#threecards" onClick={handleMenuItemClick}>What? Why? How?</a>
+          </li> */}
         </ul>
       </div>
     </nav>
