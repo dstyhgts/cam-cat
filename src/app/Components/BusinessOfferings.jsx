@@ -1174,9 +1174,18 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             aspect-ratio: 1 / 1 !important;
             margin: 8px 0 !important;
             display: flex !important;
-            align-items: center !important;
+            align-items: stretch !important;
             justify-content: center !important;
             padding: 0 !important;
+          }
+          .hiw-card {
+            font-size: 12px;
+            text-align: center;
+            padding: 0 !important;
+            height: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
           }
           .small-buttons-row {
             display: flex !important;
@@ -1186,6 +1195,12 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             gap: 8px !important;
             width: 100vw !important;
             margin: 0 auto 0 auto !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .small-buttons-row:last-child {
+            justify-content: flex-start !important;
+            margin-left: calc(50vw - 140px - 4px) !important;
           }
           .your-package-sidebar {
             order: 2 !important;
@@ -1224,9 +1239,29 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             width: 100px !important;
             height: 100px !important;
             aspect-ratio: 1 / 1 !important;
+            margin: 8px 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: stretch !important;
+            justify-content: center !important;
+          }
+          .hiw-card {
+            font-size: 10.8px !important;
+            padding: 0 !important;
+            height: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
           }
           .hiw-card .hiw-subtext:last-child {
             font-size: 90% !important;
+          }
+          .small-buttons-row {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .small-buttons-row:last-child {
+            margin-left: calc(50vw - 100px - 4px) !important;
           }
         }
       `}</style>
