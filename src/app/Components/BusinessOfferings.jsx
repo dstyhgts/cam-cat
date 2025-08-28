@@ -1171,10 +1171,12 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
           .hiw-container {
             width: 140px !important;
             height: 140px !important;
+            aspect-ratio: 1 / 1 !important;
             margin: 8px 0 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
+            padding: 0 !important;
           }
           .small-buttons-row {
             display: flex !important;
@@ -1195,13 +1197,6 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             padding: 1rem !important;
             margin: 24px 0 0 0 !important;
             box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
-          }
-          .offerings-buttons-grid {
-            width: 100vw !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
           }
           .main-grid {
             width: 100vw !important;
@@ -1224,39 +1219,14 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             text-align: center !important;
           }
         }
-        .hiw-container {
-          width: 150px;
-          height: 150px;
-          margin: 8px auto;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .hiw-card {
-          font-size: 12px;
-          text-align: center;
-        }
-        .your-package-sidebar {
-          width: 90%;
-          max-width: 400px;
-          margin-top: 16px;
-          padding: 1rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        @media (max-width: 720px) {
+        @media (max-width: 450px) {
           .hiw-container {
-            width: 150px;
-            height: 150px;
-            margin: 4px auto;
+            width: 100px !important;
+            height: 100px !important;
+            aspect-ratio: 1 / 1 !important;
           }
-          .hiw-card {
-            font-size: 10px;
-          }
-          .your-package-sidebar {
-            width: 95%;
-            padding: 0.5rem;
+          .hiw-card .hiw-subtext:last-child {
+            font-size: 90% !important;
           }
         }
       `}</style>
