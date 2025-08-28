@@ -805,33 +805,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
 
   return (
     <section className="business-offerings-flex" style={{ width: '100%', padding: '2rem 0', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'center', minHeight: '60vh' }}>
-      {/* Left: Service Buttons */}
-      <div style={{ flex: 1, maxWidth: 600, minWidth: 320, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
-            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
-          </div>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
-            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
-          </div>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[4]} selected={selected.includes(SERVICES[4].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[4].key} />
-          </div>
-        </div>
-        <button className="bundlesToggle" style={{ margin: '1rem 0 0 0', padding: '0.7em 2em', borderRadius: 20, border: 'none', background: 'var(--button-yellow-bg, #FFE066)', color: '#222', fontWeight: 'bold', fontSize: '1.1em', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} onClick={() => setShowBundles((prev) => !prev)}>
-        {showBundles ? 'Hide Bundles' : 'Show Bundles'}
-      </button>
-      {showBundles && (
-          <div className="bundlesSection" style={{ marginTop: '1rem', background: 'var(--how-it-works-button-bg, #66C4CC)', borderRadius: 20, padding: '1.5em 2em', boxShadow: '0 2px 12px rgba(0,0,0,0.08)', color: 'var(--button-white-text, #fff)', width: '100%', maxWidth: 600, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          {bundles.map((bundle, index) => (
-              <p key={index} className="bundleItem" style={{ marginBottom: '0.7em', fontSize: '1.1em', fontWeight: 500 }}>{bundle}</p>
-          ))}
-        </div>
-      )}
-      </div>
-      {/* Right: Your Package Sidebar */}
+      {/* Move Your Package Sidebar above the buttons for all views */}
       <aside className="your-package-sidebar" style={{ flex: 1, minWidth: 320, maxWidth: 400, marginLeft: 48, background: 'rgba(255,255,255,0.95)', borderRadius: 24, boxShadow: '0 2px 16px rgba(0,0,0,0.08)', padding: '2rem 2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'sticky', top: 32, height: 'fit-content' }}>
         <h2 style={{ fontWeight: 900, fontSize: '2rem', marginBottom: '0.5rem', color: '#222' }}>Your Package</h2>
         {selectedServices.length === 0 ? (
@@ -1135,6 +1109,22 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
           </>
         )}
       </aside>
+      {/* Buttons grid wrapper for mobile layout */}
+      <div className="offerings-buttons-grid">
+        <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
+            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
+          </div>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
+            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
+          </div>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[4]} selected={selected.includes(SERVICES[4].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[4].key} />
+          </div>
+        </div>
+      </div>
       <style jsx>{`
         .price-anim {
           animation: priceFadeMove 1.2s cubic-bezier(0.4,0,0.2,1);
@@ -1168,51 +1158,92 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
           align-items: flex-start;
           justify-content: center;
           min-height: 60vh;
+          width: 100%;
+        }
+        @media (max-width: 720px) {
+          .business-offerings-flex {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            width: 100vw !important;
+            padding: 0 !important;
+          }
+          .hiw-container {
+            width: 140px !important;
+            height: 140px !important;
+            margin: 8px 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          .small-buttons-row {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: 100vw !important;
+            margin: 0 auto 0 auto !important;
+          }
+          .your-package-sidebar {
+            order: -1 !important;
+            width: 95vw !important;
+            max-width: 500px !important;
+            min-width: 0 !important;
+            align-items: center !important;
+            position: static !important;
+            padding: 1rem !important;
+            margin: 24px 0 0 0 !important;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
+          }
+          .offerings-buttons-grid {
+            width: 100vw !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          .main-grid {
+            width: 100vw !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
         }
         .hiw-container {
-          position: relative;
-          margin-bottom: 0;
-          min-height: 120px;
-          cursor: pointer;
-          width: 100%;
-          max-width: 256px;
+          width: 150px;
+          height: 150px;
+          margin: 8px auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
-        @media (max-width: 900px) {
-          .business-offerings-flex {
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100vw;
-            padding: 0;
-          }
+        .hiw-card {
+          font-size: 12px;
+          text-align: center;
+        }
+        .your-package-sidebar {
+          width: 90%;
+          max-width: 400px;
+          margin-top: 16px;
+          padding: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        @media (max-width: 720px) {
           .hiw-container {
             width: 150px;
             height: 150px;
-            max-width: none;
-            min-width: 0;
-            margin: 8px;
+            margin: 4px auto;
           }
           .hiw-card {
-            font-size: 14px;
+            font-size: 10px;
           }
           .your-package-sidebar {
-            width: 90vw;
-            max-width: none;
-            min-width: 0;
-            align-items: flex-start;
-            position: static;
-            padding: 1rem;
-            margin-top: 16px;
-          }
-          .main-grid {
-            width: 50vw !important;
-            min-width: 0 !important;
-            max-width: none !important;
-            justify-content: flex-end !important;
-            padding: 1.2rem clamp(16px, 6vw, 32px) 1.2rem clamp(16px, 6vw, 32px) !important;
-          }
-          .small-buttons-row {
-            gap: 10px !important;
+            width: 95%;
+            padding: 0.5rem;
           }
         }
       `}</style>
