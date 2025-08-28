@@ -805,7 +805,23 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
 
   return (
     <section className="business-offerings-flex" style={{ width: '100%', padding: '2rem 0', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'center', minHeight: '60vh' }}>
-      {/* Move Your Package Sidebar above the buttons for all views */}
+      {/* Buttons grid wrapper for mobile layout */}
+      <div className="offerings-buttons-grid">
+        <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
+            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
+          </div>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
+            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
+          </div>
+          <div className="small-buttons-row">
+            <ServiceButton service={SERVICES[4]} selected={selected.includes(SERVICES[4].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[4].key} />
+          </div>
+        </div>
+      </div>
+      {/* Your Package Sidebar below the buttons */}
       <aside className="your-package-sidebar" style={{ flex: 1, minWidth: 320, maxWidth: 400, marginLeft: 48, background: 'rgba(255,255,255,0.95)', borderRadius: 24, boxShadow: '0 2px 16px rgba(0,0,0,0.08)', padding: '2rem 2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'sticky', top: 32, height: 'fit-content' }}>
         <h2 style={{ fontWeight: 900, fontSize: '2rem', marginBottom: '0.5rem', color: '#222' }}>Your Package</h2>
         {selectedServices.length === 0 ? (
@@ -1109,22 +1125,6 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
           </>
         )}
       </aside>
-      {/* Buttons grid wrapper for mobile layout */}
-      <div className="offerings-buttons-grid">
-        <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
-            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
-          </div>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
-            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
-          </div>
-          <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[4]} selected={selected.includes(SERVICES[4].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[4].key} />
-          </div>
-        </div>
-      </div>
       <style jsx>{`
         .price-anim {
           animation: priceFadeMove 1.2s cubic-bezier(0.4,0,0.2,1);
@@ -1186,7 +1186,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             margin: 0 auto 0 auto !important;
           }
           .your-package-sidebar {
-            order: -1 !important;
+            order: 2 !important;
             width: 95vw !important;
             max-width: 500px !important;
             min-width: 0 !important;
@@ -1209,6 +1209,19 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
+          }
+          /* Hide descriptions, show only price on mobile */
+          .hiw-card h6,
+          .hiw-card .hiw-subtext:not(:last-child) {
+            display: none !important;
+          }
+          .hiw-card .hiw-subtext:last-child {
+            display: block !important;
+            font-size: clamp(10px, 2vw, 13px) !important;
+            font-weight: 700 !important;
+            color: #FFE066 !important;
+            margin: 0 auto !important;
+            text-align: center !important;
           }
         }
         .hiw-container {
