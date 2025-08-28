@@ -1173,19 +1173,28 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             height: 140px !important;
             aspect-ratio: 1 / 1 !important;
             margin: 8px 0 !important;
+            padding: 0 !important;
+            min-height: 0 !important;
             display: flex !important;
             align-items: stretch !important;
             justify-content: center !important;
-            padding: 0 !important;
+            box-sizing: border-box !important;
           }
           .hiw-card {
-            font-size: 12px;
-            text-align: center;
-            padding: 0 !important;
+            width: 100% !important;
             height: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
             display: flex !important;
             flex-direction: column !important;
+            align-items: center !important;
             justify-content: center !important;
+            box-sizing: border-box !important;
+            background: none !important;
+          }
+          .hiw-card > * {
+            margin: 0 !important;
+            padding: 0 !important;
           }
           .small-buttons-row {
             display: flex !important;
@@ -1241,17 +1250,28 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             aspect-ratio: 1 / 1 !important;
             margin: 8px 0 !important;
             padding: 0 !important;
+            min-height: 0 !important;
             display: flex !important;
             align-items: stretch !important;
             justify-content: center !important;
+            box-sizing: border-box !important;
           }
           .hiw-card {
+            width: 100% !important;
+            height: 100% !important;
             font-size: 10.8px !important;
             padding: 0 !important;
-            height: 100% !important;
+            margin: 0 !important;
             display: flex !important;
             flex-direction: column !important;
+            align-items: center !important;
             justify-content: center !important;
+            box-sizing: border-box !important;
+            background: none !important;
+          }
+          .hiw-card > * {
+            margin: 0 !important;
+            padding: 0 !important;
           }
           .hiw-card .hiw-subtext:last-child {
             font-size: 90% !important;
