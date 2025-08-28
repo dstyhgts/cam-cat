@@ -17,6 +17,7 @@ import ImagesContainer from "./Components2/ImageContainer";
 import NewNavbar from "./Components2/NewNavbar";
 import SimpleStage from "./Components2/SimpleStage";
 import { ThemeProvider } from "./Components2/ThemeProvider";
+import BusinessOfferings from "./Components/BusinessOfferings";
 // import GlobalComponentsWrapper from "./Components/GlobalComponentsWrapper";
 
 export default function RootLayout({ children }) {
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
             {/* <LandingGallery /> */}
             <WelcomeCamera />
+            <BusinessOfferings />
             <ColorfulBranding />
           </section>
           <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
