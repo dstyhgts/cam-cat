@@ -1345,10 +1345,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             padding-left: 16px !important;
             padding-right: 16px !important;
           }
-          .small-buttons-row:last-child {
-            justify-content: flex-start !important;
-            margin-left: calc(50vw - 140px - 4px) !important;
-          }
+          /* Remove margin-left override for .small-buttons-row:last-child */
           .your-package-sidebar {
             order: 2 !important;
             width: 95vw !important;
@@ -1418,9 +1415,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             padding-left: 16px !important;
             padding-right: 16px !important;
           }
-          .small-buttons-row:last-child {
-            margin-left: calc(50vw - 100px - 4px) !important;
-          }
+          /* Remove margin-left override for .small-buttons-row:last-child */
         }
       `}</style>
     </section>
