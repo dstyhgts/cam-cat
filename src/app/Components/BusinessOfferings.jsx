@@ -20,29 +20,12 @@ const SERVICES = [
     priceLabel: 'Starts at $3050',
   },
   {
-    key: 'photo_booth',
-      title: 'Photo Booths',
-    description: 'Props, costumes, instant prints, AI-edited images.',
-    price: 350 * 2, // 2 hour minimum
-    addOns: [
-      { key: 'props', label: 'Props & costumes', price: 350 },
-      { key: 'prints', label: 'Instant prints', price: 350 },
-      { key: 'backdrop', label: 'Custom backdrop design', price: 350 },
-      { key: 'ai', label: 'AI-edited images on the spot', price: 350 },
-    ],
-    priceLabel: '$350/hr – 2 hour minimum',
-  },
-  {
-    key: 'video_booth',
-      title: 'Video Booths',
-    description: 'Confessional booth, edited videos, 3-min highlight reel.',
-    price: 350 * 2, // 2 hour minimum
-    addOns: [
-      { key: 'confessional', label: 'Private confessional booth', price: 350 },
-      { key: 'edited', label: 'Edited videos (no dead space)', price: 350 },
-      { key: 'highlight', label: '3-minute highlight reel', price: 350 },
-    ],
-    priceLabel: '$350/hr – 2 hour minimum',
+    key: 'booths',
+    title: 'BOOTHS!',
+    description: 'Photo Booths, Confessional Video Booths, and Phone Booths.',
+    price: 0, // Calculated dynamically
+    addOns: [], // Handled in sidebar logic
+    priceLabel: 'See booth options',
   },
   {
     key: 'camera_rentals',
@@ -69,19 +52,6 @@ const SERVICES = [
       { key: 'delivery', label: 'Full delivery of edited files', price: 1000 },
     ],
     priceLabel: 'Price starts at $2500',
-    },
-  {
-    key: 'bundles',
-    title: 'Bundles',
-    description: 'Save more with curated packages.',
-    price: 0,
-    addOns: [
-      { key: 'booth_bundle', label: 'Booth Bundle (Photo + Video Booths, 8% off)', bundleType: 'booth', discount: 0.08 },
-      { key: 'full_service', label: 'Full-Service (All non-booth, 10% off)', bundleType: 'full', discount: 0.10 },
-      { key: 'content_creator', label: 'Content Creator (Everything, 15% off)', bundleType: 'all', discount: 0.15 },
-    ],
-    priceLabel: 'See bundle options',
-    isBundle: true,
     },
   ];
 
@@ -251,7 +221,7 @@ export default function BusinessOfferings() {
   const contentEditingFullItems = [
     { key: 'verticals', label: '3 Vertical Videos (15-60 Seconds)' },
     { key: 'carousels', label: '2 Viral Carousel Posts (6-12 Slides)' },
-    { key: 'shortfilm', label: '2-5 minute “Short Film” (Horizontal)' },
+    { key: 'shortfilm', label: '2-5 minute "Short Film" (Horizontal)' },
     { key: 'photos', label: '100x Edited Photos' },
     { key: 'branding', label: 'Custom Partial-Branding' },
   ];
@@ -274,7 +244,7 @@ export default function BusinessOfferings() {
     { key: 'bar', label: 'The Camera Bar' },
     { key: 'cam_tender', label: '1 Cam-Tender' },
     { key: 'photos500', label: '500 Edited photos.' },
-    { key: 'vintage', label: '“Home-Video" Recap”' },
+    { key: 'vintage', label: '"Home-Video" Recap"' },
     { key: 'recap', label: '"Photo-Dump" Video' },
     { key: 'delivery72', label: '72 Hour Delivery' },
   ];
@@ -338,6 +308,20 @@ export default function BusinessOfferings() {
   // Add state for photo booth and video booth add-ons
   const [photoBoothAddOnsState, setPhotoBoothAddOnsState] = useState({ photo_magnet_prints: false });
   const [videoBoothAddOnsState, setVideoBoothAddOnsState] = useState({ instant_download: false, branded_microphones: false });
+
+  // 2. Add state for Booths toggles and add-ons
+  const defaultBoothState = {
+    photo: true,
+    video: false,
+    phone: false,
+    photoAddOns: { photo_magnet_prints: false, rotary: false },
+    videoAddOns: { instant_download: false, branded_microphones: false, rotary: false },
+    phoneAddOns: { rotary: false, second: false },
+    showPhotoAddOns: false,
+    showVideoAddOns: false,
+    showPhoneAddOns: false,
+  };
+  const [boothState, setBoothState] = useState(defaultBoothState);
 
   // --- Fix for 2 & 3: Always reset add-ons to 0 when toggling to Basic, and always animate the full price difference including add-ons when switching between Full and Basic ---
   const handleCameraRentalPackageToggle = (isFull) => {
@@ -451,6 +435,21 @@ export default function BusinessOfferings() {
         const service = SERVICES.find((s) => s.key === key);
         const prevTotal = getServiceTotal(service, addOnState[key]?.addOns, 0);
         showAnim(-prevTotal);
+      }
+      return;
+    }
+    if (key === 'booths') {
+      if (selected.includes('booths')) {
+        setSelected(selected.filter((k) => k !== 'booths'));
+      } else {
+        setSelected([...selected, 'booths']);
+        // Force recalculation by resetting boothState (even if already default)
+        setBoothState(state => ({ ...defaultBoothState }));
+        // Animate the price add for initial state
+        setTimeout(() => {
+          const priceToAdd = getServiceTotal(SERVICES.find(s => s.key === 'booths'), defaultBoothState);
+          showAnim(priceToAdd);
+        }, 0);
       }
       return;
     }
@@ -641,15 +640,23 @@ export default function BusinessOfferings() {
       });
       return { total, subtotal };
     }
-    if (service.key === 'photo_booth') {
-      let total = 350 * 3;
-      if (photoBoothAddOnsState.photo_magnet_prints) total += 750;
-      return total;
-    }
-    if (service.key === 'video_booth') {
-      let total = 350 * 3;
-      if (videoBoothAddOnsState.instant_download) total += 540;
-      if (videoBoothAddOnsState.branded_microphones) total += 330;
+    if (service.key === 'booths') {
+      const state = addOnsOverride || {};
+      let total = 0;
+      // Each booth is 3 hours flat
+      if (state.photo) total += 310 * 3;
+      if (state.video) total += 310 * 3;
+      if (state.phone) total += 400 * 3;
+      // Add-ons: flat rate except rotary, which is hourly (3hr)
+      if (state.photo && state.photoAddOns?.photo_magnet_prints) total += 750;
+      if (state.photo && state.photoAddOns?.rotary) total += 150 * 3;
+      if (state.video && state.videoAddOns?.instant_download) total += 540;
+      if (state.video && state.videoAddOns?.branded_microphones) total += 330;
+      if (state.video && state.videoAddOns?.rotary) total += 150 * 3;
+      if (state.phone && state.phoneAddOns?.rotary) total += 150 * 3;
+      if (state.phone && state.phoneAddOns?.second) total += 600 * 3;
+      // Debug log
+      console.log('[BOOTH TOTAL DEBUG]', { boothState: state, total });
       return total;
     }
     if (service.key === 'photo_video') {
@@ -751,6 +758,10 @@ export default function BusinessOfferings() {
       }
       return { total, subtotal, discount };
     }
+    if (s.key === 'booths') {
+      const boothTotal = getServiceTotal(s, boothState);
+      return { total: boothTotal, subtotal: boothTotal };
+    }
     return { total: getServiceTotal(s, addOnState[s.key]?.addOns), subtotal: getServiceTotal(s, addOnState[s.key]?.addOns) };
   });
   const subtotal = serviceTotals.reduce((sum, t) => sum + (t.subtotal || 0), 0);
@@ -803,21 +814,74 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
 
   const finalTotal = total - multiItemDiscount;
 
+  // 2. Helper for animated price change for booth add-ons
+  function handleBoothAddOnToggle(booth, addOnKey, price, perHour = true) {
+    setBoothState(prev => {
+      const checked = booth === 'photo' ? prev.photoAddOns[addOnKey] : booth === 'video' ? prev.videoAddOns[addOnKey] : prev.phoneAddOns[addOnKey];
+      const newChecked = !checked;
+      const delta = (newChecked ? 1 : -1) * price * 2; // always 2hr min
+      showAnim(delta);
+      if (booth === 'photo') {
+        return { ...prev, photoAddOns: { ...prev.photoAddOns, [addOnKey]: newChecked } };
+      } else if (booth === 'video') {
+        return { ...prev, videoAddOns: { ...prev.videoAddOns, [addOnKey]: newChecked } };
+      } else {
+        return { ...prev, phoneAddOns: { ...prev.phoneAddOns, [addOnKey]: newChecked } };
+      }
+    });
+  }
+
+  // Refactor handleMainBoothToggle to update both boothState and selected together
+  function handleMainBoothToggle(boothKey) {
+    setBoothState(prev => {
+      const newState = { ...prev, [boothKey]: !prev[boothKey] };
+      // If turning off phone, also close its add-ons
+      if (boothKey === 'phone' && prev.phone) {
+        newState.showPhoneAddOns = false;
+      }
+      // If turning off video, also turn off phone
+      if (boothKey === 'video' && prev.video && prev.phone) {
+        newState.phone = false;
+        newState.showPhoneAddOns = false;
+      }
+      // If turning off photo, also close its add-ons
+      if (boothKey === 'photo' && prev.photo) {
+        newState.showPhotoAddOns = false;
+      }
+      // If turning off video, also close its add-ons
+      if (boothKey === 'video' && prev.video) {
+        newState.showVideoAddOns = false;
+      }
+      // Always keep 'booths' in selected if any booth is on
+      const anyOn = newState.photo || newState.video || newState.phone;
+      setSelected(sel => {
+        if (anyOn && !sel.includes('booths')) {
+          return [...sel, 'booths'];
+        } else if (!anyOn && sel.includes('booths')) {
+          return sel.filter(k => k !== 'booths');
+        }
+        return sel;
+      });
+      // Animate price
+      const prevTotal = getServiceTotal(SERVICES.find(s => s.key === 'booths'), prev);
+      const newTotal = getServiceTotal(SERVICES.find(s => s.key === 'booths'), newState);
+      showAnim(newTotal - prevTotal);
+      return newState;
+    });
+  }
+
   return (
     <section className="business-offerings-flex" style={{ width: '100%', padding: '2rem 0', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'center', minHeight: '60vh' }}>
       {/* Buttons grid wrapper for mobile layout */}
       <div className="offerings-buttons-grid">
         <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
           <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
             <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
-          </div>
-          <div className="small-buttons-row">
             <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
-            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
           </div>
           <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[4]} selected={selected.includes(SERVICES[4].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[4].key} />
+            <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
+            <ServiceButton service={SERVICES[3]} selected={selected.includes(SERVICES[3].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[3].key} />
           </div>
         </div>
       </div>
@@ -924,45 +988,119 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
   );
 })}
                       </>
-                    ) : ['photo_booth', 'video_booth'].includes(s.key) ? (
+                    ) : s.key === 'booths' ? (
                       <>
-                        <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Package Includes:</div>
-                        <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
-                          {s.addOns.map((a) => <li key={a.key}>{a.label}</li>)}
-                        </ul>
-                        <div style={{ color: '#888', fontSize: 13, marginTop: 6 }}>Total Pricing shown based on 3/hr event</div>
-                        {/* Add-On Toggle Section */}
-                        <div style={{ fontWeight: 600, color: '#222', margin: '16px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-                          onClick={() => s.key === 'photo_booth' ? setShowPhotoAddOns(!showPhotoAddOns) : setShowVideoAddOns(!showVideoAddOns)}
-                          onMouseEnter={(e) => e.currentTarget.querySelector('span').style.transform = 'rotate(90deg)'}
-                          onMouseLeave={(e) => e.currentTarget.querySelector('span').style.transform = (s.key === 'photo_booth' ? showPhotoAddOns : showVideoAddOns) ? 'rotate(90deg)' : 'rotate(0deg)'}
-                        >
-                          Add-Ons:
-                          <span style={{
-                            transform: (s.key === 'photo_booth' ? showPhotoAddOns : showVideoAddOns) ? 'rotate(90deg)' : 'rotate(0deg)',
-                            transition: 'transform 0.3s, color 0.3s',
-                            marginLeft: 8,
-                            color: (s.key === 'photo_booth' ? showPhotoAddOns : showVideoAddOns) ? '#66C4CC' : '#222',
-                          }}>▶</span>
-                        </div>
-                        {(s.key === 'photo_booth' ? showPhotoAddOns : showVideoAddOns) && (s.key === 'photo_booth' ? photoBoothAddOns : videoBoothAddOns).map((item) => (
-                          <div key={item.key} style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
-                            <div style={{ cursor: 'pointer' }} onClick={() => {
-  const newState = s.key === 'photo_booth' ? { ...photoBoothAddOnsState, [item.key]: !photoBoothAddOnsState[item.key] } : { ...videoBoothAddOnsState, [item.key]: !videoBoothAddOnsState[item.key] };
-  if (s.key === 'photo_booth') {
-    setPhotoBoothAddOnsState(newState);
-  } else {
-    setVideoBoothAddOnsState(newState);
-  }
-  const priceChange = newState[item.key] ? item.price : -item.price;
-  showAnim(priceChange);
-}}>
-  <ToggleCircle checked={s.key === 'photo_booth' ? photoBoothAddOnsState[item.key] : videoBoothAddOnsState[item.key]} />
-</div>
-                            <span style={{ fontSize: 15, color: '#222' }}>{item.label}</span>
-                            <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>${item.price}</span>
+                        {/* Booth toggles */}
+                        <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Select Booths:</div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 12 }}>
+                          {/* Photo Booth Toggle */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }} onClick={() => handleMainBoothToggle('photo')}>
+                            <ToggleCircle checked={boothState.photo} />
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Photo Booth</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$310/hr (2hr min)</span>
                           </div>
-                        ))}
+                          {boothState.photo && (
+                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
+                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Photo Booth Includes:</div>
+                              <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
+                                <li>Props, costumes, signs</li>
+                                <li>Unlimited Instant Prints</li>
+                                <li>Luxury Backdrop</li>
+                                <li>Images instantly available for download</li>
+                              </ul>
+                              <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showPhotoAddOns: !prev.showPhotoAddOns }))}>
+                                Add-Ons:
+                                <span style={{ transform: boothState.showPhotoAddOns ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s, color 0.3s', marginLeft: 8, color: boothState.showPhotoAddOns ? '#66C4CC' : '#222' }}>▶</span>
+                              </div>
+                              {boothState.showPhotoAddOns && (
+                                <>
+                                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
+                                    <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('photo', 'photo_magnet_prints', 750, false)}>
+                                      <ToggleCircle checked={boothState.photoAddOns.photo_magnet_prints} />
+                                    </div>
+                                    <span style={{ fontSize: 15, color: '#222' }}>Photo-Magnet Prints</span>
+                                    <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>$750</span>
+                                  </div>
+                                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
+                                    <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('photo', 'rotary', 150)}>
+                                      <ToggleCircle checked={boothState.photoAddOns.rotary} />
+                                    </div>
+                                    <span style={{ fontSize: 15, color: '#222' }}>Standalone Rotary phone</span>
+                                    <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>$150/hr</span>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          )}
+                          {/* Video Booth Toggle */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }} onClick={() => handleMainBoothToggle('video')}>
+                            <ToggleCircle checked={boothState.video} />
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Video Booth</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$310/hr (2hr min)</span>
+                          </div>
+                          {boothState.video && (
+                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
+                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Video Booth Includes:</div>
+                              <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
+                                <li>Confessional Booth</li>
+                                <li>Filming 24/7 to capture all the confessionals</li>
+                                <li>Freestanding "room", behind four walls or curtains</li>
+                                <li>All video is edited to cut out dead space</li>
+                              </ul>
+                              <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showVideoAddOns: !prev.showVideoAddOns }))}>
+                                Add-Ons:
+                                <span style={{ transform: boothState.showVideoAddOns ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s, color 0.3s', marginLeft: 8, color: boothState.showVideoAddOns ? '#66C4CC' : '#222' }}>▶</span>
+                              </div>
+                              {boothState.showVideoAddOns && [
+                                { key: 'instant_download', label: 'Instant Download', price: 540 },
+                                { key: 'branded_microphones', label: 'Branded Microphones', price: 330 },
+                                { key: 'rotary', label: 'Standalone Rotary phone', price: 150 },
+                              ].map((item) => (
+                                <div key={item.key} style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
+                                  <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('video', item.key, item.price)}>
+                                    <ToggleCircle checked={boothState.videoAddOns[item.key]} />
+                                  </div>
+                                  <span style={{ fontSize: 15, color: '#222' }}>{item.label}</span>
+                                  <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>{item.key === 'rotary' ? '$150/hr' : `$${item.price}`}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {/* Phone Booth Toggle (only enabled if Video Booth is on) */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: boothState.video ? 'pointer' : 'not-allowed', opacity: boothState.video ? 1 : 0.5 }} onClick={() => boothState.video && handleMainBoothToggle('phone')}>
+                            <ToggleCircle checked={boothState.phone} />
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Phone Booth</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$400/hr (add-on)</span>
+                          </div>
+                          {boothState.phone && boothState.video && (
+                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
+                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Phone Booth Includes:</div>
+                              <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
+                                <li>Phone Booth as the confessional booth</li>
+                                <li>Ringing phone every 5 minutes</li>
+                                <li>All audio is recorded</li>
+                                <li>All visuals are recorded from 3 perspectives</li>
+                                <li>Edited and delivered as a film</li>
+                              </ul>
+                              <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showPhoneAddOns: !prev.showPhoneAddOns }))}>
+                                Add-Ons:
+                                <span style={{ transform: boothState.showPhoneAddOns ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s, color 0.3s', marginLeft: 8, color: boothState.showPhoneAddOns ? '#66C4CC' : '#222' }}>▶</span>
+                              </div>
+                              {boothState.showPhoneAddOns && [
+                                { key: 'rotary', label: 'Standalone Rotary phone', price: 150 },
+                                { key: 'second', label: 'Second phone booth', price: 600 },
+                              ].map((item) => (
+                                <div key={item.key} style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
+                                  <div style={{ cursor: 'pointer' }} onClick={() => setBoothState(prev => ({ ...prev, phoneAddOns: { ...prev.phoneAddOns, [item.key]: !prev.phoneAddOns[item.key] } }))}>
+                                    <ToggleCircle checked={boothState.phoneAddOns[item.key]} />
+                                  </div>
+                                  <span style={{ fontSize: 15, color: '#222' }}>{item.label}</span>
+                                  <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>${item.price}/hr</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </>
                     ) : s.key === 'photo_video' ? (
                       <>
