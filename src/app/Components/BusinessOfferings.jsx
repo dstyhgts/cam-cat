@@ -12,20 +12,20 @@ const SERVICES = [
     description: 'High-quality & vintage styles. 400+ edited photos, highlight reel, short film.',
     price: 6450,
     addOns: [
-      { key: 'photos', label: '400+ edited photos (digital + vintage)', price: 1800 },
-      { key: 'highlight', label: 'Highlight reel (3-5 min)', price: 1800 },
-      { key: 'shortfilm', label: 'Short film (10-15 min)', price: 1800 },
+      { key: 'photos', label: '800+ edited photos (digital + vintage)', price: 1800 },
+      { key: 'highlight', label: 'Highlight reel (3-5 min)', price: 700 },
+      { key: 'shortfilm', label: 'Short film (10-15 min)', price: 2800 },
       { key: 'raw', label: 'All raw footage delivered', price: 1050 },
     ],
-    priceLabel: 'Starts at $3050',
+    priceLabel: 'Starts at $2050',
   },
   {
     key: 'booths',
-    title: 'BOOTHS!',
+    title: 'Booths!',
     description: 'Photo Booths, Confessional Video Booths, and Phone Booths.',
     price: 0, // Calculated dynamically
     addOns: [], // Handled in sidebar logic
-    priceLabel: 'See booth options',
+    priceLabel: 'Explore booth options...',
   },
   {
     key: 'camera_rentals',
@@ -55,11 +55,6 @@ const SERVICES = [
     },
   ];
 
-  const bundles = [
-    'Book both booths together and save $100/hr',
-    'Add content editing to your full coverage and get a $500 discount',
-    'Camera rentals + booth + pro coverage = total guest POV + cinematic output',
-  ];
 
 function ServiceButton({ service, selected, onToggle, onHover, hover }) {
   return (
@@ -438,6 +433,30 @@ export default function BusinessOfferings() {
       }
       return;
     }
+    if (key === 'camera_rentals') {
+      const service = SERVICES.find((s) => s.key === 'camera_rentals');
+      const isSelected = selected.includes('camera_rentals');
+      if (isSelected) {
+        const { total: currentTotal } = getServiceTotal(service, addOnState.camera_rentals || { full: cameraRentalBasicOn }, 0);
+        showAnim(-currentTotal);
+        setSelected(selected.filter((k) => k !== 'camera_rentals'));
+        setAddOnState((prev) => {
+          const next = { ...prev };
+          delete next.camera_rentals;
+          return next;
+        });
+        setCameraRentalBasicOn(true);
+        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+      } else {
+        const { total: addPrice } = getServiceTotal(service, { full: false }, 0);
+        showAnim(addPrice);
+        setSelected([...selected, 'camera_rentals']);
+        setAddOnState((prev) => ({ ...prev, camera_rentals: { full: false } }));
+        setCameraRentalBasicOn(true);
+        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+      }
+      return;
+    }
     if (key === 'booths') {
       if (selected.includes('booths')) {
         setSelected(selected.filter((k) => k !== 'booths'));
@@ -591,8 +610,12 @@ export default function BusinessOfferings() {
 
   // Update getServiceTotal to accept the full addOnState object for Content Editing
   function getServiceTotal(service, addOnsOverride, bundleDiscount = 0) {
-    if (!addOnsOverride) return Math.round(service.price * (1 - bundleDiscount));
-    if (service.addOns && service.addOns.every((a) => addOnsOverride[a.key])) return Math.round(service.price * (1 - bundleDiscount));
+    // Skip generic fallbacks for services with custom pricing logic
+    const isCustomPriced = ['camera_rentals', 'booths', 'photo_video', 'content_editing'].includes(service.key);
+    if (!isCustomPriced) {
+      if (!addOnsOverride) return Math.round(service.price * (1 - bundleDiscount));
+      if (service.addOns && service.addOns.length > 0 && service.addOns.every((a) => addOnsOverride[a.key])) return Math.round(service.price * (1 - bundleDiscount));
+    }
     if (service.key === 'camera_rentals') {
       let total = 0;
       let subtotal = 0;
@@ -662,12 +685,12 @@ export default function BusinessOfferings() {
     if (service.key === 'photo_video') {
       // Photographer and Videographer are always required
       let total = 0;
-      // Always 8 hours at $250/hr per person, $500/hr thereafter (no slider, just 8 hours)
+      // Base pricing uses a 4-hour event duration standard
       if (addOnsOverride['photographer']) {
-        total += 8 * 250;
+        total += 4 * 250;
       }
       if (addOnsOverride['videographer']) {
-        total += 8 * 250;
+        total += 4 * 250;
       }
       // Add All Raw Footage and Photos if selected
       if (addOnsOverride['raw']) {
@@ -716,10 +739,25 @@ export default function BusinessOfferings() {
 
   // Calculate total and discount
   const selectedServices = SERVICES.filter((s) => selected.includes(s.key));
-  const serviceTotals = selectedServices.map((s) => {
+  // Compute totals for all services EXCEPT booths; we'll add booths explicitly to avoid any state sync issues
+  const serviceTotals = selectedServices.filter(s => s.key !== 'booths').map((s) => {
     if (s.key === 'camera_rentals') {
       const { total: t, subtotal: st } = getServiceTotal(s, addOnState[s.key], 0);
       return { total: t, subtotal: st };
+    }
+    if (s.key === 'photo_video') {
+      const isFull = addOnState[s.key]?.full;
+      if (isFull) {
+        // Subtotal equals a-la-carte sum of all items for a 4-hour event
+        const staffSubtotal = 4 * 250 * 2; // photographer + videographer
+        const addOnSubtotal = (s.addOns || []).reduce((sum, a) => sum + (a.price || 0), 0);
+        const subtotal = staffSubtotal + addOnSubtotal;
+        const total = 6450;
+        const pvDiscount = subtotal > total ? subtotal - total : 0;
+        return { total, subtotal, pvDiscount };
+      }
+      const nonFullTotal = getServiceTotal(s, addOnState[s.key]?.addOns);
+      return { total: nonFullTotal, subtotal: nonFullTotal };
     }
     if (s.key === 'content_editing') {
       const isFull = addOnState[s.key]?.full;
@@ -758,19 +796,26 @@ export default function BusinessOfferings() {
       }
       return { total, subtotal, discount };
     }
-    if (s.key === 'booths') {
-      const boothTotal = getServiceTotal(s, boothState);
-      return { total: boothTotal, subtotal: boothTotal };
-    }
+    // booths handled separately below
     return { total: getServiceTotal(s, addOnState[s.key]?.addOns), subtotal: getServiceTotal(s, addOnState[s.key]?.addOns) };
   });
-  const subtotal = serviceTotals.reduce((sum, t) => sum + (t.subtotal || 0), 0);
-  const total = serviceTotals.reduce((sum, t) => sum + (t.total || 0), 0);
+  // Add booths total separately (3-hr event-time baked into getServiceTotal)
+  const boothTotalForCalc = selected.includes('booths')
+    ? getServiceTotal(SERVICES.find(s => s.key === 'booths'), boothState)
+    : 0;
+  const subtotal = serviceTotals.reduce((sum, t) => sum + (t.subtotal || 0), 0) + boothTotalForCalc;
+  const total = serviceTotals.reduce((sum, t) => sum + (t.total || 0), 0) + boothTotalForCalc;
   const contentEditingDiscount = serviceTotals.find(t => t.discount)?.discount || 0;
+  const photoVideoDiscount = serviceTotals.find(t => t.pvDiscount)?.pvDiscount || 0;
 const discount = selectedServices.some(s => s.key === 'camera_rentals' && addOnState[s.key]?.full) ? subtotal - total : (selectedServices.length >= 2 ? Math.round(subtotal * 0.05) : 0);
 
 // Update discount calculation to ensure both discounts are shown if applicable
-const fullPackageSavings = selectedServices.some(s => s.key === 'camera_rentals' && addOnState[s.key]?.full) ? subtotal - total : 0;
+let fullPackageSavings = 0;
+if (selected.includes('camera_rentals') && addOnState['camera_rentals']?.full) {
+  const camService = SERVICES.find(s => s.key === 'camera_rentals');
+  const { total: camTotal, subtotal: camSubtotal } = getServiceTotal(camService, addOnState['camera_rentals'], 0);
+  fullPackageSavings = Math.max(0, (camSubtotal || 0) - (camTotal || 0));
+}
 const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05) : 0;
 
   // 1. Add state for opening/closing Content Editing add-on section
@@ -819,7 +864,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     setBoothState(prev => {
       const checked = booth === 'photo' ? prev.photoAddOns[addOnKey] : booth === 'video' ? prev.videoAddOns[addOnKey] : prev.phoneAddOns[addOnKey];
       const newChecked = !checked;
-      const delta = (newChecked ? 1 : -1) * price * 2; // always 2hr min
+      const delta = (newChecked ? 1 : -1) * price * (perHour ? 3 : 1); // use 3hr event-time
       showAnim(delta);
       if (booth === 'photo') {
         return { ...prev, photoAddOns: { ...prev.photoAddOns, [addOnKey]: newChecked } };
@@ -870,14 +915,53 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     });
   }
 
+  // Remove entire service with animated price delta
+  function handleRemoveService(serviceKey) {
+    const service = SERVICES.find((s) => s.key === serviceKey);
+    if (!service) return;
+    let removeAmount = 0;
+    if (serviceKey === 'camera_rentals') {
+      const result = getServiceTotal(service, addOnState.camera_rentals, 0);
+      removeAmount = typeof result === 'number' ? result : (result?.total || 0);
+      setCameraRentalBasicOn(true);
+      setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+      setAddOnState((prev) => {
+        const next = { ...prev };
+        delete next.camera_rentals;
+        return next;
+      });
+    } else if (serviceKey === 'booths') {
+      removeAmount = getServiceTotal(service, boothState) || 0;
+      setBoothState({ ...defaultBoothState });
+    } else if (serviceKey === 'content_editing') {
+      const result = getServiceTotal(service, addOnState.content_editing, 0);
+      removeAmount = typeof result === 'number' ? result : (result?.total || 0);
+      setAddOnState((prev) => {
+        const next = { ...prev };
+        delete next.content_editing;
+        return next;
+      });
+    } else {
+      const result = getServiceTotal(service, addOnState[serviceKey]?.addOns);
+      removeAmount = typeof result === 'number' ? result : (result?.total || 0);
+      setAddOnState((prev) => {
+        const next = { ...prev };
+        delete next[serviceKey];
+        return next;
+      });
+    }
+    showAnim(-removeAmount);
+    setSelected((prev) => prev.filter((k) => k !== serviceKey));
+  }
+
   return (
     <section className="business-offerings-flex" style={{ width: '100%', padding: '2rem 0', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'center', minHeight: '60vh' }}>
       {/* Buttons grid wrapper for mobile layout */}
       <div className="offerings-buttons-grid">
         <div className="main-grid" style={{ width: '100%', justifyContent: 'start', padding: 0, background: 'none', minHeight: 0 }}>
           <div className="small-buttons-row">
-            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
             <ServiceButton service={SERVICES[2]} selected={selected.includes(SERVICES[2].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[2].key} />
+            <ServiceButton service={SERVICES[1]} selected={selected.includes(SERVICES[1].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[1].key} />
           </div>
           <div className="small-buttons-row">
             <ServiceButton service={SERVICES[0]} selected={selected.includes(SERVICES[0].key)} onToggle={handleToggle} onHover={setHovered} hover={hovered === SERVICES[0].key} />
@@ -896,8 +980,16 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
           <>
             <ul style={{ padding: 0, margin: 0, width: '100%' }}>
               {selectedServices.map((s) => (
-                <li key={s.key} style={{ marginBottom: 18, listStyle: 'none', borderBottom: '1px solid #eee', paddingBottom: 12 }}>
-                  <div style={{ fontWeight: 700, fontSize: 18, color: '#222' }}>{s.title}</div>
+                <li key={s.key} style={{ marginBottom: 18, listStyle: 'none', borderBottom: '1px solid #eee', paddingBottom: 12, position: 'relative' }}>
+                  {/* Remove service button */}
+                  <button
+                    aria-label={`Remove ${s.title}`}
+                    onClick={() => handleRemoveService(s.key)}
+                    style={{ position: 'absolute', top: 0, right: 0, border: 'none', background: 'transparent', cursor: 'pointer', padding: 4 }}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#E74C3C"/><path d="M8 8l8 8M16 8l-8 8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
+                  </button>
+                  <div style={{ fontWeight: 700, fontSize: 18, color: '#222', paddingRight: 28 }}>{s.title}</div>
                   <div style={{ color: '#666', fontSize: 15, margin: '2px 0 6px 0' }}>{
                     s.key === 'camera_rentals' ? (addOnState[s.key]?.full ? 'Full Package $4500' : 'Basic Package $2500') : s.priceLabel
                   }</div>
@@ -987,6 +1079,12 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     </div>
   );
 })}
+                        {/* Pricing reminder for Camera Catering */}
+                        <div style={{ marginTop: 8 }}>
+                          <span className="hiw-subtext" style={{ color: '#888', fontSize: 13 }}>
+                            Pricing shown based on 4 hour event duration.
+                          </span>
+                        </div>
                       </>
                     ) : s.key === 'booths' ? (
                       <>
@@ -1057,7 +1155,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                                 { key: 'rotary', label: 'Standalone Rotary phone', price: 150 },
                               ].map((item) => (
                                 <div key={item.key} style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
-                                  <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('video', item.key, item.price)}>
+                                  <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('video', item.key, item.price, item.key === 'rotary')}>
                                     <ToggleCircle checked={boothState.videoAddOns[item.key]} />
                                   </div>
                                   <span style={{ fontSize: 15, color: '#222' }}>{item.label}</span>
@@ -1070,7 +1168,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: boothState.video ? 'pointer' : 'not-allowed', opacity: boothState.video ? 1 : 0.5 }} onClick={() => boothState.video && handleMainBoothToggle('phone')}>
                             <ToggleCircle checked={boothState.phone} />
                             <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Phone Booth</span>
-                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$400/hr (add-on)</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$400/hr (2hr min add-on)</span>
                           </div>
                           {boothState.phone && boothState.video && (
                             <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
@@ -1091,7 +1189,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                                 { key: 'second', label: 'Second phone booth', price: 600 },
                               ].map((item) => (
                                 <div key={item.key} style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8 }}>
-                                  <div style={{ cursor: 'pointer' }} onClick={() => setBoothState(prev => ({ ...prev, phoneAddOns: { ...prev.phoneAddOns, [item.key]: !prev.phoneAddOns[item.key] } }))}>
+                                  <div style={{ cursor: 'pointer' }} onClick={() => handleBoothAddOnToggle('phone', item.key, item.price, true)}>
                                     <ToggleCircle checked={boothState.phoneAddOns[item.key]} />
                                   </div>
                                   <span style={{ fontSize: 15, color: '#222' }}>{item.label}</span>
@@ -1100,6 +1198,12 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                               ))}
                             </div>
                           )}
+                        </div>
+                        {/* Pricing reminder */}
+                        <div style={{ marginTop: 8 }}>
+                          <span className="hiw-subtext" style={{ color: '#888', fontSize: 13 }}>
+                            Pricing shown based on 3 hour event duration.
+                          </span>
                         </div>
                       </>
                     ) : s.key === 'photo_video' ? (
@@ -1151,6 +1255,12 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                             perHour={a.perHour}
                           />
                         ))}
+                        {/* Pricing reminder for Photography + Videography */}
+                        <div style={{ marginTop: 8 }}>
+                          <span className="hiw-subtext" style={{ color: '#888', fontSize: 13 }}>
+                            Pricing shown based on 4 hour event duration.
+                          </span>
+                        </div>
                       </>
                     ) : s.key === 'content_editing' ? (
                       <>
@@ -1252,6 +1362,9 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
               Subtotal: ${subtotal.toLocaleString()}
               {contentEditingDiscount > 0 && (
                 <span style={{ color: '#27ae60' }}> - ${contentEditingDiscount.toLocaleString()} (Full Package Discount)</span>
+              )}
+              {photoVideoDiscount > 0 && (
+                <span style={{ color: '#27ae60' }}> - ${photoVideoDiscount.toLocaleString()} (Full Package Discount)</span>
               )}
               {fullPackageSavings > 0 && (
                 <span style={{ color: '#27ae60' }}> - ${fullPackageSavings.toLocaleString()} (Full Package Savings)</span>
