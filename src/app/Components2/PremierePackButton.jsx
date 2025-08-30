@@ -70,8 +70,8 @@ const PrintPackButton = () => {
             <p className="printpack-topline">Learn about our...</p>
           <h2 className="printpack-title"><em><u>PREMIERE</u></em> PACKAGE</h2>
           <p className="printpack-subtext">
-         This package garuntees the entire story gets told... <i>a story more than worthy of a red card film <u>premiere.</u></i>
-          <p className="price-right"><i>Pricing Begins at $9,700</i></p>
+         This package garuntees the entire story gets told... comeplete with photographers, filmmakers, and more.
+          <p className="price-right"><i>Inquire for Pricing!</i></p>
             <span className="emoji"></span>
           </p>
         <div className="premiere-ellipse">
@@ -119,7 +119,7 @@ const PrintPackButton = () => {
                     <p>Small, simple, and made to be passed around. Every shot prints 
                       immediately, but every image is also stored digitally. </p>
                 </li> */}
-                <li>🎥 3 Cam-Tenders*: 
+                <li>🎥 2 Cam-Tenders*: 
                     <p>Facilitating, shooting, making sure no storyline is 
                       left unfinished. They're there to make sure that every guest has a camera in their hands, and that every inch of the event is captured and no storyline is left unfinished.</p>
                 </li>
@@ -196,7 +196,7 @@ const PrintPackButton = () => {
                 <h3><strong>DAYS-AFTER:</strong><br /></h3>
                 <h5>(Deliverables)</h5>
                 <br />📸 Total Images Delivered: <u>ALL and then some.</u>
-                <br />📸 Professionally Edited Photos: <u>100</u>
+                <br />📸 Professionally Edited Photos: <u>1000+</u>
                 <br /> 📼 Total Video Captured: <u>Up to 12 hours</u>
                 <br /> 📼 Professionally Captured Video: <u>Up to 2 hours</u>
                 <br />🎥 Trimmed Video: <u>30 minutes</u> of refined recap footage

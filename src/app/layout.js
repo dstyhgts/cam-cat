@@ -18,6 +18,7 @@ import NewNavbar from "./Components2/NewNavbar";
 import SimpleStage from "./Components2/SimpleStage";
 import { ThemeProvider } from "./Components2/ThemeProvider";
 import BusinessOfferings from "./Components/BusinessOfferings";
+import WelcomePopup from "./Components2/WelcomePopup";
 // import GlobalComponentsWrapper from "./Components/GlobalComponentsWrapper";
 
 export default function RootLayout({ children }) {
@@ -42,7 +43,11 @@ export default function RootLayout({ children }) {
           <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
             {/* <LandingGallery /> */}
             <WelcomeCamera />
+          </section>
+          <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
             <BusinessOfferings />
+          </section>
+          <section style={{ scrollMarginTop: '80px' }}>
             <ColorfulBranding />
           </section>
           <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
@@ -62,6 +67,7 @@ export default function RootLayout({ children }) {
           
         </div>
         <Sidebar />
+        <WelcomePopup delay={5000} />
         </ThemeProvider>
       </body>
     </html>

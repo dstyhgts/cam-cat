@@ -44,10 +44,10 @@ const NewNavbar = () => {
             <a href="#section1" onClick={handleMenuItemClick}>Get Started</a>
           </li>
           <li>
-            <a href="#how-it-works" onClick={handleMenuItemClick}>Catering</a>
+            <a href="#business-offerings" onClick={handleMenuItemClick}>Services & Pricing</a>
           </li>
           <li>
-            <a href="#print-package" onClick={handleMenuItemClick}>Packages</a>
+            <a href="#how-it-works" onClick={handleMenuItemClick}>"Camera Catering"</a>
           </li>
           <li>
             <a href="#testimonials" onClick={handleMenuItemClick}>Testimonials</a>

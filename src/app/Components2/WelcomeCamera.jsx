@@ -58,7 +58,8 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle" style={{ marginTop: '24px' }}>
-            <i>DITCH</i> THE DISPOSABLES, GET <i>NOSTALGIC,</i> AND <i>GO <u>DIGITAL!</u></i>
+            YOUR <i>ONE-STOP-SHOP</i> FOR ALL THINGS <i><u>EVENT PHOTOGRAPHY.</u></i>
+            {/* <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i> */}
           </p>
 
           <div className="new-section">
@@ -66,10 +67,10 @@ const WelcomeCamera = () => {
             <p className="new-description">
               {/* Rapid® Print cameras to take the user experience to the next level. 
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
-              <i>Your event will be remmebered by every guest... by their own hand.</i>
+              <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i>
             </p>
             <p className="new-description">
-              <i>With the possibility for thousands of photographs and videos of your event, 
+              <i>We <u>pioneered</u> Digital Camera Rental's for events. <br/> With the possibility for thousands of photographs and videos of your event, 
               Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
               With anywhere fom 15 to 100+ vintage cameras, we can capture the whole event, and then some, all while making 
               sure your guests are the ones who keep the memories.</i>

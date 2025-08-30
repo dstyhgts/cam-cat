@@ -2,14 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../Components2/MainGrid.css';
 import '../Components2/HowItWorksButton.css';
 import '../Components2/PrintPackButton.css';
+import { PopupButton } from '@typeform/embed-react';
 
 const EVENT_HOURS = 4; // Default event duration for calculations
 
 const SERVICES = [
     {
     key: 'photo_video',
-      title: 'Photography + Videography',
-    description: 'High-quality & vintage styles. 400+ edited photos, highlight reel, short film.',
+      title: 'PHOTOGRAPHY + VIDEOGRAPHY',
+    description: 'High-quality + vintage styles... 800+ edited photos, video highlights, short film...',
     price: 6450,
     addOns: [
       { key: 'photos', label: '800+ edited photos (digital + vintage)', price: 1800 },
@@ -17,20 +18,20 @@ const SERVICES = [
       { key: 'shortfilm', label: 'Short film (10-15 min)', price: 2800 },
       { key: 'raw', label: 'All raw footage delivered', price: 1050 },
     ],
-    priceLabel: 'Starts at $2050',
+    priceLabel: 'Starts at $2250',
   },
   {
     key: 'booths',
-    title: 'Booths!',
-    description: 'Photo Booths, Confessional Video Booths, and Phone Booths.',
+    title: 'BOOTHS!',
+    description: 'Photo Booths... Video Booths... and Phone Booths...',
     price: 0, // Calculated dynamically
     addOns: [], // Handled in sidebar logic
-    priceLabel: 'Explore booth options...',
+    priceLabel: 'Explore our Booth options.',
   },
   {
     key: 'camera_rentals',
-      title: 'Camera Catering*',
-    description: 'Our signature service. Ditch the disposable cameras, rent digicams and camcorders instead.',
+      title: 'CAMERA CATERING*',
+    description: 'Our one-of-a-kind service. Ditch the disposable cameras, rent digicams and camcorders instead.',
     price: 4500,
     addOns: [
       { key: 'cameras', label: '+10 cameras', price: 800 },
@@ -43,8 +44,8 @@ const SERVICES = [
   },
   {
     key: 'content_editing',
-      title: 'Content Editing',
-    description: 'Premium editing for all captured and vendor content.',
+      title: 'CONTENT EDITING',
+    description: 'Premium content editing for all Cam-Catering content and Other Vendor content.',
     price: 4100,
     addOns: [
       { key: 'captured', label: 'All captured content edited', price: 2000 },
@@ -77,7 +78,7 @@ function ServiceButton({ service, selected, onToggle, onHover, hover }) {
         <img
           src="/assets/CLICK-ME.svg"
           alt="Click me"
-          style={{ position: 'absolute', top: 6, right: 6, width: 120, height: 'auto', pointerEvents: 'none', zIndex: 30 }}
+          style={{ position: 'absolute', top: 6, right: -8, width: 130, height: 'auto', pointerEvents: 'none', zIndex: 30 }}
         />
       )}
       {(hover || selected) && (
@@ -216,25 +217,25 @@ export default function BusinessOfferings() {
 
   // 2. Define included items for Basic and Full
   const contentEditingBasicItems = [
-    { key: 'verticals', label: '2 Vertical Videos' },
-    { key: 'carousels', label: '1 Carousel' },
-    { key: 'photos', label: '150 Edited Photos' },
+    { key: 'verticals', label: '2x Vertical Videos' },
+    { key: 'carousels', label: '1x Carousel' },
+    { key: 'photos', label: '100x Edited Photos' },
   ];
   const contentEditingFullItems = [
-    { key: 'verticals', label: '3 Vertical Videos (15-60 Seconds)' },
-    { key: 'carousels', label: '2 Viral Carousel Posts (6-12 Slides)' },
+    { key: 'verticals', label: '6x Vertical Videos (15-60 Seconds)' },
+    { key: 'carousels', label: '2x Viral Carousel Posts (6-12 Slides)' },
     { key: 'shortfilm', label: '2-5 minute "Short Film" (Horizontal)' },
-    { key: 'photos', label: '100x Edited Photos' },
+    { key: 'photos', label: '500x Edited Photos' },
     { key: 'branding', label: 'Custom Partial-Branding' },
   ];
 
   // Content Editing a-la-carte items
   const contentEditingAlaCarteItems = [
-    { key: 'photo25', label: '25x Photo Edits', price: 200 },
+    { key: 'photo25', label: '25x Photo Edits', price: 150 },
     { key: 'photo100', label: '100x Photo Edits', price: 650 },
-    { key: 'shortfilm', label: 'Short Film/Recap Video (2-5 Minutes)', price: 1250 },
     { key: 'vertical', label: 'Vertical Video Reel/TikTok (15-60 Seconds)', price: 350 },
     { key: 'carousel', label: 'Carousel Post (6-12 Slides)', price: 350 },
+    { key: 'shortfilm', label: 'Short Film/Recap Video (2-5 Minutes)', price: 1250 },
     { key: 'branding', label: 'Custom Branding', price: 1100 },
   ];
 
@@ -243,9 +244,9 @@ export default function BusinessOfferings() {
     { key: 'cameras25', label: '25 Total Cameras' },
     { key: 'polaroid5', label: '5x Polaroid Cameras' },
     { key: 'film5', label: '5x Film Cameras' },
-    { key: 'bar', label: 'The Camera Bar' },
-    { key: 'cam_tender', label: '1 Cam-Tender' },
-    { key: 'photos500', label: '500 Edited photos.' },
+    { key: 'bar', label: '+ The Camera Bar' },
+    { key: 'cam_tender', label: '+ Cam-Tender' },
+    { key: 'photos500', label: 'Up to 500 Edited photos.' },
     { key: 'vintage', label: '"Home-Video" Recap"' },
     { key: 'recap', label: '"Photo-Dump" Video' },
     { key: 'delivery72', label: '72 Hour Delivery' },
@@ -253,9 +254,9 @@ export default function BusinessOfferings() {
   // Camera Rental basic package items
   const cameraRentalBasicItems = [
     { label: '15 Cameras.' },
-    { label: '250 Edited photos.' },
-    { label: '"Home-Video" Recap' },
-    { label: '"Photo-Dump" Recap' },
+    // { label: '250 Edited photos.' },
+    // { label: '"Home-Video" Recap' },
+    { label: '"Photo-Dump" Recap Video' },
     { label: 'All Raw Video + Photos' },
     { label: '36 Hour Delivery' },
   ];
@@ -674,8 +675,8 @@ export default function BusinessOfferings() {
       const state = addOnsOverride || {};
       let total = 0;
       // Each booth is 3 hours flat
-      if (state.photo) total += 310 * 3;
-      if (state.video) total += 310 * 3;
+      if (state.photo) total += 350 * 3;
+      if (state.video) total += 350 * 3;
       if (state.phone) total += 400 * 3;
       // Add-ons: flat rate except rotary, which is hourly (3hr)
       if (state.photo && state.photoAddOns?.photo_magnet_prints) total += 750;
@@ -694,10 +695,10 @@ export default function BusinessOfferings() {
       let total = 0;
       // Base pricing uses a 4-hour event duration standard
       if (addOnsOverride['photographer']) {
-        total += 4 * 250;
+        total += 4 * 300;
       }
       if (addOnsOverride['videographer']) {
-        total += 4 * 250;
+        total += 4 * 300;
       }
       // Add All Raw Footage and Photos if selected
       if (addOnsOverride['raw']) {
@@ -718,15 +719,15 @@ export default function BusinessOfferings() {
       const isFullObj = addOnsOverride && typeof addOnsOverride === 'object' && 'full' in addOnsOverride && 'addOns' in addOnsOverride;
       const full = isFullObj ? addOnsOverride.full : false;
       const included = full
-        ? { photo25: 0, photo100: 1, shortfilm: 1, vertical: 3, carousel: 2, branding: 1 }
-        : { photo25: 0, photo100: 1, shortfilm: 0, vertical: 2, carousel: 1, branding: 0 };
+        ? { photo25: 0, photo100: 5, shortfilm: 1, vertical: 6, carousel: 3, branding: 1 }
+        : { photo25: 0, photo100: 5, shortfilm: 0, vertical: 6, carousel: 3, branding: 0 };
       if (full) {
-        total += 4100;
+        total += 4500;
       } else {
         total += 1500;
       }
       // Only charge for add-ons above included
-      total += Math.max(0, contentEditingAlaCarte.photo25 - (included.photo25 || 0)) * 200;
+      total += Math.max(0, contentEditingAlaCarte.photo25 - (included.photo25 || 0)) * 150;
       total += Math.max(0, contentEditingAlaCarte.photo100 - (included.photo100 || 0)) * 650;
       total += Math.max(0, contentEditingAlaCarte.shortfilm - (included.shortfilm || 0)) * 1250;
       total += Math.max(0, contentEditingAlaCarte.vertical - (included.vertical || 0)) * 350;
@@ -770,9 +771,9 @@ export default function BusinessOfferings() {
       const isFull = addOnState[s.key]?.full;
       // Define included quantities and a-la-carte prices
       const included = isFull
-        ? { photo25: 0, photo100: 1, shortfilm: 1, vertical: 3, carousel: 2, branding: 1 }
+        ? { photo25: 0, photo100: 5, shortfilm: 1, vertical: 6, carousel: 2, branding: 1 }
         : { photo25: 0, photo100: 1, shortfilm: 0, vertical: 2, carousel: 1, branding: 0 };
-      const prices = { photo25: 200, photo100: 650, shortfilm: 1250, vertical: 350, carousel: 350, branding: 1100 };
+      const prices = { photo25: 150, photo100: 650, shortfilm: 1250, vertical: 350, carousel: 350, branding: 1100 };
       let subtotal = 0;
       let total = 0;
       let discount = 0;
@@ -785,12 +786,12 @@ export default function BusinessOfferings() {
           subtotal += Math.max(0, contentEditingAlaCarte[key] - (included[key] || 0)) * prices[key];
         });
         // Discount and total logic for Full
-        discount = subtotal > 4100 ? subtotal - 4100 : 0;
         let extras = 0;
         Object.keys(contentEditingAlaCarte).forEach(key => {
           extras += Math.max(0, contentEditingAlaCarte[key] - (included[key] || 0)) * prices[key];
         });
-        total = 4100 + extras;
+        total = 4500 + extras; // Full package fixed price + extras above included
+        discount = 3900; // Display fixed savings for full package
       } else {
         // For Basic, total is $1500 + extras above included
         let extras = 0;
@@ -831,7 +832,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
   // 2. Define included quantities for each package
   const contentEditingIncluded = contentEditingBasicOn
     ? { photo25: 0, photo100: 1, shortfilm: 0, vertical: 2, carousel: 1, branding: 0 }
-    : { photo25: 0, photo100: 1, shortfilm: 1, vertical: 3, carousel: 2, branding: 1 };
+    : { photo25: 0, photo100: 5, shortfilm: 1, vertical: 6, carousel: 2, branding: 1 };
 
   // 2 & 3. When toggling between Basic and Full, reset all add-on quantities to the included amount and animate the price difference
   const handleContentEditingPackageToggle = (isFull) => {
@@ -843,9 +844,9 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     );
     // Set new included quantities
     const included = isFull
-      ? { photo25: 0, photo100: 1, shortfilm: 1, vertical: 3, carousel: 2, branding: 1 }
-      : { photo25: 0, photo100: 1, shortfilm: 0, vertical: 2, carousel: 1, branding: 0 };
-    setContentEditingAlaCarte(included);
+      ? { photo25: 0, photo100: 5, shortfilm: 1, vertical: 6, carousel: 2, branding: 1 }
+      : { photo25: 0, photo100: 1, shortfilm: 0, vertical: 2, carousel: 1, branding: 0 }
+      setContentEditingAlaCarte(included);
     setAddOnState((prev) => ({
       ...prev,
       content_editing: {
@@ -998,7 +999,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                   </button>
                   <div style={{ fontWeight: 700, fontSize: 18, color: '#222', paddingRight: 28 }}>{s.title}</div>
                   <div style={{ color: '#666', fontSize: 15, margin: '2px 0 6px 0' }}>{
-                    s.key === 'camera_rentals' ? (addOnState[s.key]?.full ? 'Full Package $4500' : 'Basic Package $2500') : s.priceLabel
+                    s.key === 'camera_rentals' ? (addOnState[s.key]?.full ? '*CLASSIC Package @ $4500' : '"CAMERA." Package @ $2500') : s.priceLabel
                   }</div>
                   <div style={{ margin: '8px 0 0 0' }}>
                     {s.key === 'camera_rentals' ? (
@@ -1102,16 +1103,17 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }} onClick={() => handleMainBoothToggle('photo')}>
                             <ToggleCircle checked={boothState.photo} />
                             <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Photo Booth</span>
-                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$310/hr (2hr min)</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$350/hr (2hr min)</span>
                           </div>
                           {boothState.photo && (
-                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
-                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Photo Booth Includes:</div>
+                            <div style={{ marginLeft: 32, marginTop: -8, marginBottom: 8 }}>
+                              {/* <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Photo Booth Includes:</div> */}
                               <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
-                                <li>Props, costumes, signs</li>
+                                <li>Props, costumes, signs...</li>
                                 <li>Unlimited Instant Prints</li>
-                                <li>Luxury Backdrop</li>
-                                <li>Images instantly available for download</li>
+                                <li>1x Dedicated Operator</li>
+                                <li>Luxury Backdrop of your choice</li>
+                                <li>Images available for instant download!</li>
                               </ul>
                               <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showPhotoAddOns: !prev.showPhotoAddOns }))}>
                                 Add-Ons:
@@ -1141,15 +1143,17 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                           <div style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }} onClick={() => handleMainBoothToggle('video')}>
                             <ToggleCircle checked={boothState.video} />
                             <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Video Booth</span>
-                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$310/hr (2hr min)</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$350/hr (2hr min)</span>
                           </div>
                           {boothState.video && (
-                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
-                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Video Booth Includes:</div>
+                            <div style={{ marginLeft: 32, marginTop: -8, marginBottom: 8 }}>
+                              {/* <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Video Booth Includes:</div> */}
                               <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
-                                <li>Confessional Booth</li>
+                                <li>Confessional Video Booth</li>
                                 <li>Filming 24/7 to capture all the confessionals</li>
-                                <li>Freestanding "room", behind four walls or curtains</li>
+                                <li>1x Dedicated Operator</li>
+                                <li>2x Camera Angles</li>
+                                <li>Private, freestanding "room", behind four walls/curtains</li>
                                 <li>All video is edited to cut out dead space</li>
                               </ul>
                               <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showVideoAddOns: !prev.showVideoAddOns }))}>
@@ -1178,13 +1182,13 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                             <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$400/hr (2hr min add-on)</span>
                           </div>
                           {boothState.phone && boothState.video && (
-                            <div style={{ marginLeft: 32, marginTop: 8, marginBottom: 8 }}>
-                              <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Phone Booth Includes:</div>
+                            <div style={{ marginLeft: 32, marginTop: -8, marginBottom: 8 }}>
+                              {/* <div style={{ fontWeight: 600, color: '#222', marginBottom: 4 }}>Phone Booth Includes:</div> */}
                               <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15 }}>
                                 <li>Phone Booth as the confessional booth</li>
+                                <li>Three different camera angles</li>
                                 <li>Ringing phone every 5 minutes</li>
                                 <li>All audio is recorded</li>
-                                <li>All visuals are recorded from 3 perspectives</li>
                                 <li>Edited and delivered as a film</li>
                               </ul>
                               <div style={{ fontWeight: 600, color: '#222', margin: '8px 0 4px 0', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setBoothState(prev => ({ ...prev, showPhoneAddOns: !prev.showPhoneAddOns }))}>
@@ -1217,7 +1221,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                       <>
                         {/* Note about coverage and hourly logic */}
                         <div style={{ color: '#888', fontSize: 13, margin: '8px 0 12px 0' }}>
-                          Entire Event Coverage (up to 8 hours at $250/hr per person, $500/hr thereafter)
+                          Pricing reflects up to 8 hours of coverageand and is subject to change based on the event type (Weddings and other large-scale events).
                         </div>
                         {/* Full Package toggle */}
                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8, cursor: 'pointer' }} onClick={() => handleFullToggle(s.key)}>
@@ -1246,7 +1250,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     >
       <ToggleCircle checked={addOnState[s.key]?.full || addOnState[s.key]?.addOns[key]} />
       <span style={{ fontSize: 15, color: '#222' }}>{key === 'photographer' ? 'Photographer' : 'Videographer'}</span>
-      <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>$250/hr</span>
+      <span style={{ fontSize: 14, color: '#66C4CC', marginLeft: 6 }}>$300/hr</span>
     </div>
   )
 ))}
@@ -1290,7 +1294,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8, cursor: 'pointer' }} onClick={() => handleContentEditingPackageToggle(true)}>
                           <ToggleCircle checked={!contentEditingBasicOn} />
                           <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Full Editing Package</span>
-                          <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$4100</span>
+                          <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$4500</span>
                         </div>
                         {!contentEditingBasicOn && (
                           <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15, marginBottom: 8 }}>
@@ -1379,6 +1383,36 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
               {multiItemDiscount > 0 && (
                 <span style={{ color: '#27ae60' }}> - ${multiItemDiscount.toLocaleString()} (5% off for 2+ items)</span>
               )}
+            </div>
+            {/* Disclaimer text and consultation button beneath subtotal */}
+            <div style={{ marginTop: 12, display: 'flex', alignItems: 'stretch', justifyContent: 'space-between', gap: 12 }}>
+              <div style={{ color: '#888', fontSize: 13, fontStyle: 'italic', flex: 1 }}>
+                Total Pricing is only an estimation. Please schedule a call for more information + booking.
+              </div>
+              <PopupButton
+                id="wwvkhbUP"
+                size={80}
+                className="consultation-button"
+                style={{
+                  backgroundColor: 'var(--welcome-button-bg)',
+                  color: 'var(--welcome-button-text)',
+                  border: '4px solid var(--welcome-button-border)',
+                  borderRadius: '12px',
+                  padding: '8px 16px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  transition: 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 100ms ease-in-out 100ms',
+                  alignSelf: 'stretch',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  willChange: 'transform',
+                }}
+              >
+                Schedule Consultation
+              </PopupButton>
             </div>
           </>
         )}
@@ -1536,6 +1570,23 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             padding-right: 16px !important;
           }
           /* Remove margin-left override for .small-buttons-row:last-child */
+        }
+        @media (max-width: 600px) {
+          .your-package-sidebar {
+            padding: 1.5rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .your-package-sidebar {
+            padding: 1rem !important;
+          }
+        }
+        :global(.consultation-button:hover),
+        :global(.consultation-button .tf-v1-widget-button:hover) {
+          background-color: var(--welcome-button-hover-bg) !important;
+          color: var(--welcome-button-hover-text) !important;
+          border-color: var(--welcome-button-hover-border) !important;
+          transform: scale(1.1) rotate(-6deg);
         }
       `}</style>
     </section>

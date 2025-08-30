@@ -60,6 +60,7 @@
 .hiw-title {
   font-size: 1em; /* ~26px */
   margin-bottom: 0.5em;
+  line-height: .3;
 }
 .hiw-subtext {
   font-size: 0.6em; /* ~15.53px */

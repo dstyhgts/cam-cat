@@ -170,7 +170,7 @@ export default function Footer() {
         <div className="footer-content">
           <div
             className="footer-center-text"
-            style={{ color: theme === "dark" ? "#fff" : "#000" }}
+            style={{ color: "var(--text-secondary)" }}
           >
             CAM-CAT
           </div>
@@ -181,6 +181,7 @@ export default function Footer() {
                 id="atnpwpHn"
                 className="footer-link"
                 size={80}
+                style={{ color: "var(--text-secondary)" }}
               >
                 GET QUOTE
               </PopupButton>
@@ -190,11 +191,12 @@ export default function Footer() {
                 id="yyPNXkPK"
                 className="footer-link"
                 size={80}
+                style={{ color: "var(--text-secondary)" }}
               >
                 GET IN TOUCH
               </PopupButton>
             </div>
-            <a target="_blank" rel="noopener noreferrer" className="footer-link welcome-packet-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>
+            <a target="_blank" rel="noopener noreferrer" className="footer-link welcome-packet-link" style={{ color: "var(--text-secondary)" }}>
               <span className="welcome-packet-main">GET WELCOME PACKET</span>
               <span className="coming-soon">(COMING SOON)</span>
             </a>
@@ -203,6 +205,7 @@ export default function Footer() {
                 id="wwvkhbUP"
                 className="footer-link"
                 size={80}
+                style={{ color: "var(--text-secondary)" }}
               >
                 SCHEDULE CONSULTATION
               </PopupButton>
@@ -212,9 +215,9 @@ export default function Footer() {
           {/* <br />          <br />
           <a  target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>REACH US: </a>
           <br /> */}
-            <a href="https://instagram.com/camera.catering" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>INSTAGRAM</a>
-            <a href="tel:8056783444" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>(805)678-3444</a>
-            <a href="mailto:info@cameracatering.com?subject=Interested%20in%20Camera%20Catering!" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: theme === "dark" ? "#fff" : "#000" }}>info@camera<br/>catering.com</a><br />
+            <a href="https://instagram.com/camera.catering" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: "var(--text-secondary)" }}>INSTAGRAM</a>
+            <a href="tel:8056783444" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: "var(--text-secondary)" }}>(805)678-3444</a>
+            <a href="mailto:info@cameracatering.com?subject=Interested%20in%20Camera%20Catering!" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: "var(--text-secondary)" }}>info@camera<br/>catering.com</a><br />
             {/* <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a> */}
           </div>
           </div>
@@ -292,10 +295,16 @@ export default function Footer() {
           display: flex;
           align-items: flex-start;
           justify-content: flex-start;
+          color: var(--text-secondary);
         }
         a.footer-link:hover,
         .footer-link:hover {
           color: #ffd700 !important;
+        }
+        
+        /* Ensure PopupButton components use the correct theme color */
+        .footer-link[data-tf-popup] {
+          color: var(--text-secondary) !important;
         }
         @media (max-width: 900px) {
           .footer-links-row {
