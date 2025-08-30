@@ -73,6 +73,13 @@ function ServiceButton({ service, selected, onToggle, onHover, hover }) {
         <p className="hiw-subtext" style={{ fontSize: 15, margin: '8px 0 0 0' }}>{service.description}</p>
         <span className="hiw-subtext" style={{ fontWeight: 700, color: 'var(--button-yellow-bg, #FFE066)', fontSize: 16 }}>{service.priceLabel}</span>
       </div>
+      {service.key === 'booths' && (
+        <img
+          src="/assets/CLICK-ME.svg"
+          alt="Click me"
+          style={{ position: 'absolute', top: 6, right: 6, width: 120, height: 'auto', pointerEvents: 'none', zIndex: 30 }}
+        />
+      )}
       {(hover || selected) && (
         <div
           style={{
