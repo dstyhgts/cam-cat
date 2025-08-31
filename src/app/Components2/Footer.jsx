@@ -48,14 +48,12 @@ export default function Footer() {
           engine.world.gravity.y = 0;
           addBoundaries();
 
-          // Create items (4 on mobile, 10 on desktop) - only use first 10 images
+          // Create items (4 on mobile, 10 on desktop)
           const numItems = isMobile ? 4 : 10;
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            // Use correct .JPG extension and ensure we only use images 1-10
-            const imageNumber = (i % 10) + 1; // This ensures we only use img1.JPG through img10.JPG
-            items.push(new Item(x, y, `/assets/img${imageNumber}.JPG`));
+            items.push(new Item(x, y, `/assets/img${i + 1}.JPG`));
           }
         };
 
