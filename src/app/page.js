@@ -8,7 +8,7 @@ export default function Home() {
     <html lang="en">
       <body>
       <Navbar />
-      <Sidebar />
+      {/* <Sidebar /> */}
     </body>
     </html>
   );

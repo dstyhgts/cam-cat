@@ -26,7 +26,10 @@ const NewNavbar = () => {
       <div className="navbar-left">
         <a href="#section1" className="navbar-logo-link" onClick={() => { window.location.hash = '#section1'; }}>
           <img src="./assets/camera-icon32-1.svg" alt="Camera Catering Logo" className="navbar-logo" />
-          <h1 className="navbar-title">CAMERA CATERING</h1>
+          <h1 className="navbar-title">
+            CAMERA CATERING
+            <div className="location-text">LOS ANGELES • SAN DIEGO • SAN FRANCISCO</div>
+          </h1>
         </a>
       </div>
       <div className="navbar-right" ref={menuRef}>
@@ -36,7 +39,11 @@ const NewNavbar = () => {
         </div>
         {/* Mobile/Small/Intermediate view: show menu icon */}
         <div className="menu-icon" onClick={toggleMenu}>
-          <img src="./assets/camera-icon13.svg" alt="Menu Icon" />
+          <div className="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>

@@ -74,7 +74,7 @@
     font-size: 16px;
     line-height: 1.3;
     margin-bottom: 1rem;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     text-shadow: none !important;
     box-shadow: none !important;
   }

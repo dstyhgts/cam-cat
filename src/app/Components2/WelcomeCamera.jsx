@@ -58,22 +58,19 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle" style={{ marginTop: '24px' }}>
-            YOUR <i>ONE-STOP-SHOP</i> FOR ALL THINGS <i><u>EVENT PHOTOGRAPHY.</u></i>
+            YOUR <i>ONE-STOP-SHOP</i> FOR ALL THINGS <i><u>EVENT PHOTOGRAPHY & CONTENT.</u></i>
             {/* <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i> */}
           </p>
 
           <div className="new-section">
-            <span className="new-badge">*ATTENTION!</span>
+            {/* <span className="new-badge">*ATTENTION!</span> */}
             <p className="new-description">
               {/* Rapid® Print cameras to take the user experience to the next level. 
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
-              <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i>
+              <i>Ditch</i> the disposables, and <i>go <u>digital!</u></i>
             </p>
             <p className="new-description">
-              <i>We <u>pioneered</u> Digital Camera Rental's for events. <br/> With the possibility for thousands of photographs and videos of your event, 
-              Camera Catering literally brings the party to life by putting the cameras in the hands of your guests.
-              With anywhere fom 15 to 100+ vintage cameras, we can capture the whole event, and then some, all while making 
-              sure your guests are the ones who keep the memories.</i>
+              <i>We <u>pioneered</u> Digital Camera Rental's for events and <br/> we proudly service Los Angeles, San Diego, Santa <br/>Barabara, San Francisco, and everywhere in between.</i>
             </p>
           </div>
         </div>
