@@ -50,10 +50,23 @@ export default function Footer() {
 
           // Create items (4 on mobile, 10 on desktop)
           const numItems = isMobile ? 4 : 10;
+          
+          // Use a wider range of available images (1-58) and shuffle them
+          const availableImages = [];
+          for (let i = 1; i <= 58; i++) {
+            availableImages.push(i);
+          }
+          // Shuffle the array to get random images
+          for (let i = availableImages.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [availableImages[i], availableImages[j]] = [availableImages[j], availableImages[i]];
+          }
+          
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            items.push(new Item(x, y, `/assets/img${i + 1}.JPG`));
+            const imageIndex = availableImages[i];
+            items.push(new Item(x, y, `/assets/img${imageIndex}.JPG`));
           }
         };
 
@@ -100,6 +113,15 @@ export default function Footer() {
 
             const img = document.createElement("img");
             img.src = imagePath;
+            img.alt = `Footer Image ${imagePath.split('/').pop()}`;
+            
+            // Add error handling for missing images
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${imagePath}`);
+              // Optionally set a fallback image or hide the card
+              img.style.display = 'none';
+            };
+            
             // Do not set inline sizing/styles; let CSS from `.item img` handle it
             this.div.appendChild(img);
 
