@@ -10,7 +10,7 @@ const SERVICES = [
     {
     key: 'photo_video',
       title: 'PHOTO + VIDEO',
-    description: 'Photographers, Videographers... A mix between high-quality, vintage styles, candid, and everything in between...',
+    description: 'Photographers, Videographers... A mix between high-quality, vintage styles, candid...',
     price: 6450,
     addOns: [
       { key: 'photos', label: '800+ edited photos (digital + vintage)', price: 1800 },
