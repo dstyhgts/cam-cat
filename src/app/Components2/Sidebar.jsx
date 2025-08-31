@@ -236,7 +236,7 @@ export default function Sidebar() {
         <div className="card" onClick={() => {
           window.location.href = 'tel:8056783444';
         }}>
-          <div className="card-title">
+          <div className="card-title-phone">
             <span style={{ cursor: 'pointer' }}>+1(805)-678-3444</span>
           </div>
           <div className="card-copy">
@@ -300,7 +300,7 @@ export default function Sidebar() {
           overflow: hidden;
           transition: background 0.3s, color 0.3s;
         }
-        .card:nth-child(1) .card-title {
+        .card:nth-child(1) .card-title .card-title-phone{
           display: flex;
           justify-content: space-between;
           position: relative;
@@ -316,7 +316,7 @@ export default function Sidebar() {
         .card:hover .close-btn {
           color: #000;
         }
-        .card-title {
+        .card-title .card-title-phone{
           font-size: 67.77px;
           letter-spacing: -0.035em;
           opacity: 1;
@@ -380,6 +380,11 @@ export default function Sidebar() {
           }
         }
         @media (max-width: 600px) {
+          .card-title-phone{
+          font-size: 50.77px;
+          letter-spacing: -0.035em;
+          opacity: 1;
+        }
         .card-title {
             font-size: 67.77px;
             line-height: .8em;

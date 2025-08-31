@@ -53,7 +53,7 @@ export default function Footer() {
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            items.push(new Item(x, y, `/assets/img${i + 1}.jpg`));
+            items.push(new Item(x, y, `/assets/img${i + 1}.JPG`));
           }
         };
 
@@ -89,11 +89,19 @@ export default function Footer() {
 
             this.div = document.createElement("div");
             this.div.className = "item";
+            this.div.style.position = "absolute";
             this.div.style.left = `${this.body.position.x - 50}px`;
             this.div.style.top = `${this.body.position.y - 100}px`;
+            this.div.style.width = "100px";
+            this.div.style.height = "200px";
+            this.div.style.zIndex = "1";
 
             const img = document.createElement("img");
             img.src = imagePath;
+            img.style.width = "100px";
+            img.style.height = "200px";
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "8px";
             this.div.appendChild(img);
 
             containerRef.current.appendChild(this.div);
