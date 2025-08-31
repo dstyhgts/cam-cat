@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./WelcomePopup.module.css";
 
-export default function WelcomePopup({ delay = 120000 }) {
+export default function WelcomePopup({ delay = 1200000 }) {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
