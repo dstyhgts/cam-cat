@@ -48,26 +48,31 @@ export default function Footer() {
           engine.world.gravity.y = 0;
           addBoundaries();
 
-          // Create items (4 on mobile, 10 on desktop) - use first 10 images only
+          // Create items (4 on mobile, 10 on desktop)
           const numItems = isMobile ? 4 : 10;
-          // Use a fixed array of the first 10 image paths to ensure they load
-          const imagePaths = [
-            '/assets/img1.JPG',
-            '/assets/img2.JPG', 
-            '/assets/img3.JPG',
-            '/assets/img4.JPG',
-            '/assets/img5.JPG',
-            '/assets/img6.JPG',
-            '/assets/img7.JPG',
-            '/assets/img8.JPG',
-            '/assets/img9.JPG',
-            '/assets/img10.JPG'
+          
+          // Use a curated list of images that we know exist
+          const availableImages = [
+            '/assets/img1.JPG', '/assets/img2.JPG', '/assets/img3.JPG', '/assets/img4.JPG', '/assets/img5.JPG',
+            '/assets/img6.JPG', '/assets/img7.JPG', '/assets/img8.JPG', '/assets/img9.JPG', '/assets/img10.JPG',
+            '/assets/img11.JPG', '/assets/img12.JPG', '/assets/img13.JPG', '/assets/img14.JPG', '/assets/img15.JPG',
+            '/assets/img16.JPG', '/assets/img17.JPG', '/assets/img18.JPG', '/assets/img19.JPG', '/assets/img20.JPG',
+            '/assets/img21.JPG', '/assets/img22.JPG', '/assets/img23.JPG', '/assets/img24.JPG', '/assets/img25.JPG',
+            '/assets/img26.JPG', '/assets/img27.JPG', '/assets/img28.JPG', '/assets/img29.JPG', '/assets/img30.JPG',
+            '/assets/img31.JPG', '/assets/img32.JPG', '/assets/img33.JPG', '/assets/img34.JPG', '/assets/img35.JPG',
+            '/assets/img36.JPG', '/assets/img37.JPG', '/assets/img38.JPG', '/assets/img39.JPG', '/assets/img40.JPG',
+            '/assets/img41.JPG', '/assets/img42.JPG', '/assets/img43.JPG', '/assets/img44.JPG', '/assets/img45.JPG',
+            '/assets/img46.JPG', '/assets/img47.JPG', '/assets/img48.JPG', '/assets/img49.JPG', '/assets/img50.JPG',
+            '/assets/img51.JPG', '/assets/img52.JPG', '/assets/img53.JPG', '/assets/img54.JPG', '/assets/img55.JPG',
+            '/assets/img56.JPG', '/assets/img57.JPG', '/assets/img58.JPG'
           ];
           
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            items.push(new Item(x, y, imagePaths[i]));
+            // Pick a random image from the available list
+            const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+            items.push(new Item(x, y, randomImage));
           }
         };
 
@@ -115,12 +120,12 @@ export default function Footer() {
             const img = document.createElement("img");
             img.src = imagePath;
             img.alt = `Footer Image ${imagePath.split('/').pop()}`;
-            // Add error handling for image loading
+            // Add error handling for missing images
             img.onerror = () => {
               console.warn(`Failed to load image: ${imagePath}`);
-              // Don't hide the card, just log the error
+              // Optionally hide the card or show a placeholder
+              this.div.style.display = 'none';
             };
-            // Do not set inline sizing/styles; let CSS from `.item img` handle it
             this.div.appendChild(img);
 
             containerRef.current.appendChild(this.div);
@@ -185,7 +190,7 @@ export default function Footer() {
           top: 0,
           left: 0,
           width: "50vw",
-          height: "100vh",
+          height: "0vh",
           overflow: "visible",
           background: "var(--footer-bg)",
           zIndex: 2,
