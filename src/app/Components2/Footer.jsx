@@ -48,12 +48,26 @@ export default function Footer() {
           engine.world.gravity.y = 0;
           addBoundaries();
 
-          // Create items (4 on mobile, 10 on desktop)
+          // Create items (4 on mobile, 10 on desktop) - use first 10 images only
           const numItems = isMobile ? 4 : 10;
+          // Use a fixed array of the first 10 image paths to ensure they load
+          const imagePaths = [
+            '/assets/img1.JPG',
+            '/assets/img2.JPG', 
+            '/assets/img3.JPG',
+            '/assets/img4.JPG',
+            '/assets/img5.JPG',
+            '/assets/img6.JPG',
+            '/assets/img7.JPG',
+            '/assets/img8.JPG',
+            '/assets/img9.JPG',
+            '/assets/img10.JPG'
+          ];
+          
           for (let i = 0; i < numItems; i++) {
             let x = p.random(100, p.width - 100);
             let y = p.random(100, p.height - 100);
-            items.push(new Item(x, y, `/assets/img${i + 1}.JPG`));
+            items.push(new Item(x, y, imagePaths[i]));
           }
         };
 
@@ -100,6 +114,13 @@ export default function Footer() {
 
             const img = document.createElement("img");
             img.src = imagePath;
+            img.alt = `Footer Image ${imagePath.split('/').pop()}`;
+            // Add error handling for image loading
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${imagePath}`);
+              // Optionally set a fallback or hide the card
+              this.div.style.display = 'none';
+            };
             // Do not set inline sizing/styles; let CSS from `.item img` handle it
             this.div.appendChild(img);
 
