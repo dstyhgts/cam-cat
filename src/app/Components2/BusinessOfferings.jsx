@@ -9,8 +9,8 @@ const EVENT_HOURS = 4; // Default event duration for calculations
 const SERVICES = [
     {
     key: 'photo_video',
-      title: 'PHOTOGRAPHY + VIDEOGRAPHY',
-    description: 'High-quality + vintage styles... 800+ edited photos, video highlights, short film...',
+      title: 'PHOTO + VIDEO',
+    description: 'Photographers, Videographers... A mix between high-quality, vintage styles, candid, and everything in between...',
     price: 6450,
     addOns: [
       { key: 'photos', label: '800+ edited photos (digital + vintage)', price: 1800 },
