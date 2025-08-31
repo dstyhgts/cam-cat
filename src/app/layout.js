@@ -173,7 +173,7 @@ export default function RootLayout({ children }) {
                 <ColorfulBranding2 /> */}
                 {/* <Footer /> */}
               </div>
-              {/* <Sidebar /> */}
+              <Sidebar />
               <WelcomePopup delay={5000} />
             </>
           )}
