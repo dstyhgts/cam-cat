@@ -118,8 +118,7 @@ export default function Footer() {
             // Add error handling for image loading
             img.onerror = () => {
               console.warn(`Failed to load image: ${imagePath}`);
-              // Optionally set a fallback or hide the card
-              this.div.style.display = 'none';
+              // Don't hide the card, just log the error
             };
             // Do not set inline sizing/styles; let CSS from `.item img` handle it
             this.div.appendChild(img);
@@ -186,7 +185,7 @@ export default function Footer() {
           top: 0,
           left: 0,
           width: "50vw",
-          height: "0vh",
+          height: "100vh",
           overflow: "visible",
           background: "var(--footer-bg)",
           zIndex: 2,
