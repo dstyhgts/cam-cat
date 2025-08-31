@@ -26,6 +26,7 @@ import Preloader from "./Components2/Preloader";
 export default function RootLayout({ children }) {
   const [showPreloader, setShowPreloader] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   // Preload critical assets
   useEffect(() => {
@@ -104,9 +105,11 @@ export default function RootLayout({ children }) {
         });
 
         await Promise.all([...preloadPromises, ...videoPromises]);
+        setAssetsLoaded(true);
         setIsLoading(false);
       } catch (error) {
         console.log('Preload error:', error);
+        setAssetsLoaded(true);
         setIsLoading(false);
       }
     };
@@ -117,6 +120,7 @@ export default function RootLayout({ children }) {
   const handleEnter = () => {
     setShowPreloader(false);
   };
+
   return (
     <html lang="en">
       <head>
@@ -141,42 +145,47 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider>
-          {showPreloader ? (
-            <Preloader onEnter={handleEnter} />
-          ) : (
-            <>
-              <div>
-                {/* <NewNavbar /> */}
-                <NewNavbar />
-                {/* <ImagesContainer /> */}
-                <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
-                  {/* <LandingGallery /> */}
-                  <WelcomeCamera />
-                </section>
-                <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
-                  <BusinessOfferings />
-                </section>
-                <section style={{ scrollMarginTop: '80px' }}>
-                  <ColorfulBranding />
-                </section>
-                <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
-                  <BigSvg />
-                  {/* <ThreeCards /> */}
-                  <ColorfulBranding2 />
-                </section>
-                <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
-                  <Footer />
-                </section>
-                {/* <ImagesContainer /> */}
-                {/* <SimpleStage  /> */}
-                {/* <ColorfulBranding />
-                <ColorfulBranding2 /> */}
-                {/* <Footer /> */}
-              </div>
-              <Sidebar />
-              <WelcomePopup delay={5000} />
-            </>
+          {/* Preloader - positioned absolutely to overlay content */}
+          {showPreloader && (
+            <div style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              zIndex: 9999,
+              backgroundColor: 'rgba(0, 0, 0, 0.95)'
+            }}>
+              <Preloader onEnter={handleEnter} />
+            </div>
           )}
+          
+          {/* Main content - always rendered but may be hidden by preloader */}
+          <div style={{
+            opacity: showPreloader ? 0 : 1,
+            transition: 'opacity 0.5s ease-in-out',
+            pointerEvents: showPreloader ? 'none' : 'auto'
+          }}>
+            <NewNavbar />
+            <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+              <WelcomeCamera />
+            </section>
+            <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
+              <BusinessOfferings />
+            </section>
+            <section style={{ scrollMarginTop: '80px' }}>
+              <ColorfulBranding />
+            </section>
+            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+              <BigSvg />
+              <ColorfulBranding2 />
+            </section>
+            <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
+              <Footer />
+            </section>
+          </div>
+          <Sidebar />
+          <WelcomePopup delay={5000} />
         </ThemeProvider>
       </body>
     </html>
