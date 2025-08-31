@@ -52,7 +52,7 @@ const SERVICES = [
       { key: 'vendor', label: 'Other vendor content included', price: 1100 },
       { key: 'delivery', label: 'Full delivery of edited files', price: 1000 },
     ],
-    priceLabel: 'Price starts at $2500',
+    priceLabel: 'Pricing starts at $1500',
     },
   ];
 

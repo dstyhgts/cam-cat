@@ -17,7 +17,7 @@ import ImagesContainer from "./Components2/ImageContainer";
 import NewNavbar from "./Components2/NewNavbar";
 import SimpleStage from "./Components2/SimpleStage";
 import { ThemeProvider } from "./Components2/ThemeProvider";
-import BusinessOfferings from "./Components/BusinessOfferings";
+import BusinessOfferings from "./Components2/BusinessOfferings";
 import WelcomePopup from "./Components2/WelcomePopup";
 // import GlobalComponentsWrapper from "./Components/GlobalComponentsWrapper";
 
