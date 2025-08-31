@@ -84,32 +84,33 @@ export default function Footer() {
               angle: Math.random() * Math.PI * 2,
             };
 
-            this.body = Bodies.rectangle(x, y, 100, 200, options);
+            // Match global `.item` card dimensions (see globals.css)
+            const ITEM_WIDTH = 200;
+            const ITEM_HEIGHT = 225;
+
+            this.body = Bodies.rectangle(x, y, ITEM_WIDTH, ITEM_HEIGHT, options);
             World.add(engine.world, this.body);
 
             this.div = document.createElement("div");
-            this.div.className = "item";
+            this.div.className = "item footer-card"; // ensure footer cards get standardized styling
             this.div.style.position = "absolute";
-            this.div.style.left = `${this.body.position.x - 50}px`;
-            this.div.style.top = `${this.body.position.y - 100}px`;
-            this.div.style.width = "100px";
-            this.div.style.height = "200px";
+            this.div.style.left = `${this.body.position.x - ITEM_WIDTH / 2}px`;
+            this.div.style.top = `${this.body.position.y - ITEM_HEIGHT / 2}px`;
             this.div.style.zIndex = "1";
 
             const img = document.createElement("img");
             img.src = imagePath;
-            img.style.width = "100px";
-            img.style.height = "200px";
-            img.style.objectFit = "cover";
-            img.style.borderRadius = "8px";
+            // Do not set inline sizing/styles; let CSS from `.item img` handle it
             this.div.appendChild(img);
 
             containerRef.current.appendChild(this.div);
           }
 
           update() {
-            this.div.style.left = `${this.body.position.x - 50}px`;
-            this.div.style.top = `${this.body.position.y - 100}px`;
+            const ITEM_WIDTH = 200;
+            const ITEM_HEIGHT = 225;
+            this.div.style.left = `${this.body.position.x - ITEM_WIDTH / 2}px`;
+            this.div.style.top = `${this.body.position.y - ITEM_HEIGHT / 2}px`;
             this.div.style.transform = `rotate(${this.body.angle}rad)`;
           }
         }
