@@ -46,10 +46,10 @@ export default function Footer() {
           const isMobile = window.innerWidth < 900;
           engine.world.gravity.x = 0;
           engine.world.gravity.y = 0;
-          addBoundaries();
+          // Removed boundaries so images can overlap
 
-          // Create items (4 on mobile, 10 on desktop)
-          const numItems = isMobile ? 4 : 10;
+          // Create items (3 on mobile, 8 on desktop)
+          const numItems = isMobile ? 3 : 8;
           
           // Use a curated list of images that we know exist
           const availableImages = [
@@ -75,16 +75,6 @@ export default function Footer() {
             items.push(new Item(x, y, randomImage));
           }
         };
-
-        function addBoundaries() {
-          const thickness = 50;
-          World.add(engine.world, [
-            Bodies.rectangle(p.width / 2, -thickness / 2, p.width, thickness, { isStatic: true }),
-            Bodies.rectangle(p.width / 2, p.height + thickness / 2, p.width, thickness, { isStatic: true }),
-            Bodies.rectangle(-thickness / 2, p.height / 2, thickness, p.height, { isStatic: true }),
-            Bodies.rectangle(p.width + thickness / 2, p.height / 2, thickness, p.height, { isStatic: true }),
-          ]);
-        }
 
         p.draw = function () {
           // Clear the canvas to transparent
