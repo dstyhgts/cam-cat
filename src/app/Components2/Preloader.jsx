@@ -62,7 +62,7 @@ export default function Preloader({ onEnter }) {
               resolve();
             };
           });
-          img.src = `/assets/img${i}.jpg`;
+          img.src = `/assets/img${i}.JPG`;
           imagePromises.push(promise);
         }
 
