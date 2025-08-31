@@ -237,7 +237,7 @@ export default function Sidebar() {
           window.location.href = 'tel:8056783444';
         }}>
           <div className="card-title-phone">
-            <span style={{ cursor: 'pointer' }}>+1(805)-678-3444</span>
+            <span style={{ cursor: 'pointer' }}>+1(805)678- 3444</span>
           </div>
           <div className="card-copy">
             <p>We are available 6 days a week from 10am-10pm.
@@ -316,7 +316,12 @@ export default function Sidebar() {
         .card:hover .close-btn {
           color: #000;
         }
-        .card-title .card-title-phone{
+        .card-title {
+          font-size: 67.77px;
+          letter-spacing: -0.035em;
+          opacity: 1;
+        }
+        .card-title-phone{
           font-size: 67.77px;
           letter-spacing: -0.035em;
           opacity: 1;
