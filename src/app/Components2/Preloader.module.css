@@ -59,7 +59,7 @@
 
 .loading-progress {
   height: 100%;
-  background: linear-gradient(90deg, var(--text-color) 0%, var(--welcome-button-bg) 50%, var(--text-color) 100%);
+  background: linear-gradient(90deg, var(--text-color) 0%, var(--button-text-color) 50%, var(--text-color) 100%);
   border-radius: 2px;
   transition: width 0.1s ease;
   position: relative;
@@ -100,7 +100,7 @@
 }
 
 .enter-text-ready {
-  color: var(--welcome-button-bg);
+  color: var(--button-text-color);
   text-shadow: 0 0 20px rgba(255, 216, 93, 0.5);
   animation: glow 2s ease-in-out infinite alternate;
 }
@@ -108,7 +108,7 @@
 .enter-button {
   background: none;
   border: 2px solid var(--welcome-button-bg);
-  color: var(--welcome-button-bg);
+  color: var(--button-text-color);
   padding: 1rem 3rem;
   font-size: 1.2rem;
   font-weight: 700;

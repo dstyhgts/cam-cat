@@ -164,7 +164,7 @@
   }
   
   .navbar-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 6px 12px 4px 12px;
     border-radius: 20px;
     white-space: nowrap;
@@ -174,8 +174,7 @@
   }
   
   .location-text {
-    font-size: 0.5rem;
-    margin-top: 1px;
+    display: none;
   }
   
   .navbar-logo {

@@ -72,7 +72,7 @@ function ServiceButton({ service, selected, onToggle, onHover, hover }) {
       <div className="hiw-card hiw-default" style={{ minHeight: 120, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <h6 style={{ fontSize: 24, margin: 0 }}>{service.title}</h6>
         <p className="hiw-subtext" style={{ fontSize: 15, margin: '8px 0 0 0' }}>{service.description}</p>
-        <span className="hiw-subtext" style={{ fontWeight: 700, color: 'var(--button-yellow-bg, #FFE066)', fontSize: 16 }}>{service.priceLabel}</span>
+        <span className="hiw-subtext" style={{ fontWeight: 700, color: 'var(--button-text-color)', fontSize: 16 }}>{service.priceLabel}</span>
       </div>
       {service.key === 'booths' && (
         <img
