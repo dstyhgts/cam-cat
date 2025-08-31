@@ -123,7 +123,7 @@ export default function Sidebar() {
 
       {/* Overlay toggle and sidebar cards */}
       <div className="overlay-toggle preload">
-        <p className="overlay-toggle-text">Ready for The Next Steps?</p>
+        <p className="overlay-toggle-text">Contact Us!</p>
         <p className="overlay-toggle-arrow">
           <i className="ph ph-arrow-right"></i>
         </p>
@@ -343,10 +343,13 @@ export default function Sidebar() {
             padding: 0.5em;
           }
           .overlay-toggle {
-            width: 70vw;
+            width: auto;
+            min-width: fit-content;
+            max-width: 70vw;
             height: auto;
             margin: 1em;
-            padding: 0.75em;
+            padding: 0.75em 16px;
+            justify-content: flex-end;
           }
           .card {
             padding: 0.75em;
