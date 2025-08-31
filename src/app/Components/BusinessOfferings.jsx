@@ -978,7 +978,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
         </div>
       </div>
       {/* Your Package Sidebar below the buttons */}
-      <aside className="your-package-sidebar" style={{ flex: 1, minWidth: 320, maxWidth: 400, marginLeft: 48, background: 'rgba(255,255,255,0.95)', borderRadius: 24, boxShadow: '0 2px 16px rgba(0,0,0,0.08)', padding: '2rem 2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'sticky', top: 32, height: 'fit-content' }}>
+      <aside className="your-package-sidebar" style={{ flex: 1, minWidth: 320, maxWidth: 450, marginLeft: 48, background: 'rgba(255,255,255,0.95)', borderRadius: 24, boxShadow: '0 2px 16px rgba(0,0,0,0.08)', padding: '2rem 2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'sticky', top: 32, height: 'fit-content' }}>
         <h2 style={{ fontWeight: 900, fontSize: '2rem', marginBottom: '0.5rem', color: '#222' }}>Your Package</h2>
         {selectedServices.length === 0 ? (
           <div style={{ color: '#666', fontSize: '1.1rem' }}>
@@ -1001,7 +1001,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                   <div style={{ color: '#666', fontSize: 15, margin: '2px 0 6px 0' }}>{
                     s.key === 'camera_rentals' ? (addOnState[s.key]?.full ? '*CLASSIC Package @ $4500' : '"CAMERA." Package @ $2500') : s.priceLabel
                   }</div>
-                  <div style={{ margin: '8px 0 0 0' }}>
+                  <div style={{ margin: '8px 0 0 0', position: 'relative' }}>
                     {s.key === 'camera_rentals' ? (
                       <>
                         {/* Basic Package toggle */}
@@ -1092,6 +1092,41 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                           <span className="hiw-subtext" style={{ color: '#888', fontSize: 13 }}>
                             Pricing shown based on 4 hour event duration.
                           </span>
+                        </div>
+                        {/* Service Subtotal */}
+                        <div style={{ 
+                          position: 'absolute', 
+                          bottom: 0, 
+                          right: 0, 
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <div style={{ 
+                            fontSize: 10, 
+                            color: '#666',
+                            fontWeight: 500,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px'
+                          }}>
+                            total
+                          </div>
+                          <div style={{ 
+                            fontWeight: 600, 
+                            fontSize: 16, 
+                            color: '#27ae60',
+                            background: 'rgba(255,255,255,0.9)',
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid #e0e0e0'
+                          }}>
+                            ${(() => {
+                              const service = SERVICES.find(serv => serv.key === 'camera_rentals');
+                              const result = getServiceTotal(service, addOnState.camera_rentals, 0);
+                              return typeof result === 'number' ? result : (result?.total || 0);
+                            })().toLocaleString()}
+                          </div>
                         </div>
                       </>
                     ) : s.key === 'booths' ? (
@@ -1216,6 +1251,37 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                             Pricing shown based on 3 hour event duration.
                           </span>
                         </div>
+                        {/* Service Subtotal */}
+                        <div style={{ 
+                          position: 'absolute', 
+                          bottom: 0, 
+                          right: 0, 
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <div style={{ 
+                            fontSize: 10, 
+                            color: '#666',
+                            fontWeight: 500,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px'
+                          }}>
+                            total
+                          </div>
+                          <div style={{ 
+                            fontWeight: 600, 
+                            fontSize: 16, 
+                            color: '#27ae60',
+                            background: 'rgba(255,255,255,0.9)',
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid #e0e0e0'
+                          }}>
+                            ${getServiceTotal(SERVICES.find(serv => serv.key === 'booths'), boothState).toLocaleString()}
+                          </div>
+                        </div>
                       </>
                     ) : s.key === 'photo_video' ? (
                       <>
@@ -1271,6 +1337,37 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                           <span className="hiw-subtext" style={{ color: '#888', fontSize: 13 }}>
                             Pricing shown based on 4 hour event duration.
                           </span>
+                        </div>
+                        {/* Service Subtotal */}
+                        <div style={{ 
+                          position: 'absolute', 
+                          bottom: 0, 
+                          right: 0, 
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <div style={{ 
+                            fontSize: 10, 
+                            color: '#666',
+                            fontWeight: 500,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px'
+                          }}>
+                            total
+                          </div>
+                          <div style={{ 
+                            fontWeight: 600, 
+                            fontSize: 16, 
+                            color: '#27ae60',
+                            background: 'rgba(255,255,255,0.9)',
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid #e0e0e0'
+                          }}>
+                            ${addOnState[s.key]?.full ? 6450 : getServiceTotal(SERVICES.find(serv => serv.key === 'photo_video'), addOnState[s.key]?.addOns).toLocaleString()}
+                          </div>
                         </div>
                       </>
                     ) : s.key === 'content_editing' ? (
@@ -1337,6 +1434,41 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                             </div>
                           );
                         })}
+                        {/* Service Subtotal */}
+                        <div style={{ 
+                          position: 'absolute', 
+                          bottom: 0, 
+                          right: 0, 
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <div style={{ 
+                            fontSize: 10, 
+                            color: '#666',
+                            fontWeight: 500,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px'
+                          }}>
+                            total
+                          </div>
+                          <div style={{ 
+                            fontWeight: 600, 
+                            fontSize: 16, 
+                            color: '#27ae60',
+                            background: 'rgba(255,255,255,0.9)',
+                            padding: '4px 8px',
+                            borderRadius: '6px',
+                            border: '1px solid #e0e0e0'
+                          }}>
+                            ${(() => {
+                              const service = SERVICES.find(serv => serv.key === 'content_editing');
+                              const result = getServiceTotal(service, addOnState.content_editing, 0);
+                              return typeof result === 'number' ? result : (result?.total || 0);
+                            })().toLocaleString()}
+                          </div>
+                        </div>
                       </>
                     ) : null}
                   </div>
@@ -1508,7 +1640,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
             align-items: center !important;
             position: static !important;
             padding: 1rem !important;
-            margin: 24px 0 0 0 !important;
+            margin: 24px 0 24px 0 !important;
             box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
           }
           .main-grid {
