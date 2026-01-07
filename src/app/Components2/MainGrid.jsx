@@ -144,7 +144,7 @@ const MainGrid = () => {
         </div>
       </div>
       {/* About card, full width */}
-      <div className="about-row" id="about-card"><AboutCard /></div>
+      {/* <div className="about-row" id="about-card"><AboutCard /></div> */}
       <style jsx>{`
         .open-me-top-right {
           position: absolute;
