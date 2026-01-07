@@ -123,7 +123,7 @@ export default function Sidebar() {
 
       {/* Overlay toggle and sidebar cards */}
       <div className="overlay-toggle preload">
-        <p className="overlay-toggle-text">Ready for The Next Steps?</p>
+        <p className="overlay-toggle-text">Contact Us!</p>
         <p className="overlay-toggle-arrow">
           <i className="ph ph-arrow-right"></i>
         </p>
@@ -197,7 +197,7 @@ export default function Sidebar() {
             </div>
           </div>
           <div className="card-copy">
-            <p>Quick, Easy, and Free - we give you a tenative quote based off of
+            <p>Recieve a tentative quote based off of
               details such as guest count, event-type, and age-group.
             </p>
           </div>
@@ -230,15 +230,17 @@ export default function Sidebar() {
             <Link href="/about">Get In Touch</Link>
           </div>
           <div className="card-copy">
-            <p>Reach us at:<br/>(805)678-3444<br/>info@cameracatering.com<br/>Or click to have us reach out to you!</p>
+            <p>Click to have us reach out to you! Or to schedule a consultation.</p>
           </div>
         </div>
-        <div className="card">
-          <div className="card-title">
-            <Link href="/contact">Welcome Packet</Link>
+        <div className="card" onClick={() => {
+          window.location.href = 'tel:8056783444';
+        }}>
+          <div className="card-title-phone">
+            <span style={{ cursor: 'pointer' }}>+1(805)678- 3444</span>
           </div>
           <div className="card-copy">
-            <p>Coming Soon for a Client Near You.
+            <p>We are available 6 days a week from 10am-10pm.
             </p>
           </div>
         </div>
@@ -298,7 +300,7 @@ export default function Sidebar() {
           overflow: hidden;
           transition: background 0.3s, color 0.3s;
         }
-        .card:nth-child(1) .card-title {
+        .card:nth-child(1) .card-title .card-title-phone{
           display: flex;
           justify-content: space-between;
           position: relative;
@@ -315,6 +317,11 @@ export default function Sidebar() {
           color: #000;
         }
         .card-title {
+          font-size: 67.77px;
+          letter-spacing: -0.035em;
+          opacity: 1;
+        }
+        .card-title-phone{
           font-size: 67.77px;
           letter-spacing: -0.035em;
           opacity: 1;
@@ -341,10 +348,13 @@ export default function Sidebar() {
             padding: 0.5em;
           }
           .overlay-toggle {
-            width: 70vw;
+            width: auto;
+            min-width: fit-content;
+            max-width: 70vw;
             height: auto;
             margin: 1em;
-            padding: 0.75em;
+            padding: 0.75em 16px;
+            justify-content: flex-end;
           }
           .card {
             padding: 0.75em;
@@ -375,6 +385,11 @@ export default function Sidebar() {
           }
         }
         @media (max-width: 600px) {
+          .card-title-phone{
+          font-size: 50.77px;
+          letter-spacing: -0.035em;
+          opacity: 1;
+        }
         .card-title {
             font-size: 67.77px;
             line-height: .8em;
@@ -382,7 +397,7 @@ export default function Sidebar() {
           }
           .card-copy {
             font-size: 10px;
-            line-height: 1.1em;
+            line-height: 1.6em;
             
           }
         }

@@ -50,11 +50,13 @@
   --testimonial-text-light: #ffffff;
   
   --navbar-title-color: #ffffff;
-  --navbar-menu-bg: #61397d;
+  --navbar-menu-bg: rgba(102, 196, 204, 0.95);
   --navbar-menu-border: #ffffff;
+  --navbar-menu-text: #000000;
   --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;
+  --button-text-color: #FFD85D;
   --button-white-border: #FFFFFF;
   --button-white-text: #FFFFFF;
   
@@ -149,6 +151,7 @@
   --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;
+  --button-text-color: #8c84ff;
   --button-white-border: #000000;
   --button-white-text: #000000;
   
@@ -1243,7 +1246,7 @@ img {
 }
 
 #how-it-works,
-#print-package,
+
 #testimonials,
 #about-card,
 #threecards {

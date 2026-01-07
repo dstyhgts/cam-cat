@@ -108,7 +108,8 @@ const TheMemoryButton = () => {
               <p> With a mix of unedited, behind-the-scenes footage and professionally curated content, delivered in full, your
                   event becomes a story. 
                   Every photo and video is reviewed, cleaned up, and sent off—so you don't just get a data dump, 
-                  you get the fully curated timeline without any missing pieces. When you invite Camera Catering to your event, you don't just get a highlight reel of the night, you get <i><u>everything.</u></i> Every perspective, every 
+                  you get the fully curated timeline without any missing pieces. 
+                  <br/><br/> When you invite Camera Catering to your event, you don't just get a highlight reel of the night, you get <i><u>everything.</u></i> Every perspective, every 
                   interaction, every forgotten moment—captured, relived, and saved. You get <i><u>the complete story.</u></i>
                   </p>
               

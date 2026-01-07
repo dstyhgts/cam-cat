@@ -105,7 +105,7 @@ const MainGrid = () => {
       <div className="small-buttons-row">
         <TheCameraBarButton />
         <WhyNowButton />
-        <TheInstantButton />
+        {/* <TheInstantButton /> */}
         {/* <TheMemoryButton /> */}
       </div>
       <div className="small-buttons-row">{/* <WhyNowButton /> */}</div>

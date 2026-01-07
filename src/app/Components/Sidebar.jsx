@@ -341,7 +341,9 @@ export default function Sidebar() {
             padding: 0.5em;
           }
           .overlay-toggle {
-            width: 70vw;
+            width: auto;
+            min-width: fit-content;
+            max-width: 70vw;
             height: auto;
             margin: 1em;
             padding: 0.75em;

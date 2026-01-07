@@ -14,12 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
  * Adjust or add more <br/> as you like.
  */
 const fullText = `
-A-la-carte options include photo booths, "confessional"-video booths, 16mm film, Polaroid, 
-and instant-print cameras.<br/> <br/> Need paparazzi for a brand activation?
-Faux security-cam footage of your wedding? POV sunglasses? Done, easy. <br/> <br/> Our <i>directors, editors, photographers, and 
-cinematographers elevate weddings, baby showers, birthdays, brand activations, pop-ups, fashion shows, and 
-bar/bat mitzvahs—making your night a movie.
- <br/> <br/> We know cameras. <br/> We also know that when you give someone a camera, you don't just get photos— <br/>you get their story.
+We aim to make your event production easier to manage and more engaging for your guests. <br/> <br/> Need a paparazzi-welcome for a brand activation?
+Done. Faux security-cam footage of your wedding? Easy. POV sunglasses, 360-degree videos, and instant-print cameras, <i> or anything else you imagine...?</i> We can do that.
+ <br/> <br/> Our <i>team, of editors, photographers, and 
+filmmakers elevate weddings, baby showers, birthdays, brand activations, pop-ups, and fashion shows— turing your night into a movie.
+ <br/> <br/> We know cameras. <br/> We also know the power of images and videos, and how they can be used to tell stories, create memories, and connect people.
                                            
 `;
 
@@ -46,7 +45,7 @@ const imagesData = [
     { wordIndex: 28, float: "right", size: "large", src: "/assets/camera-icon32.svg" },
     { wordIndex: 39, float: "left", size: "small", src: "/assets/camera-icon113.svg" },
     { wordIndex: 45, float: "right", size: "large", src: "/assets/camera-icon114.svg" },
-    { wordIndex: 52, float: "left", size: "large", src: "/assets/camera-icon115.svg" },
+    { wordIndex: 58, float: "left", size: "large", src: "/assets/camera-icon115.svg" },
     { wordIndex: 59, float: "right", size: "small", src: "/assets/camera-icon116.svg" },
     { wordIndex: 66, float: "left", size: "large", src: "/assets/camera-icon117-1.svg" },
     { wordIndex: 73, float: "right", size: "large", src: "/assets/camera-icon12.svg" },

@@ -71,7 +71,7 @@ const PrintPackButton = () => {
           <h2 className="classics-title">*CLASSIC PACKAGE</h2>
           <p className="classics-subtext">
            Our Classic Package welcomes The Camera Bar to your event. <u>Make your party unlike any other...</u> one to <i>never forget.</i>
-            <p className="price-right"><i>Pricing Begins at $4,100</i></p>
+            <p className="price-right"><i>Pricing Begins at $4,500</i></p>
 
             <span className="emoji"></span>
           </p>
@@ -118,11 +118,11 @@ const PrintPackButton = () => {
                       for all things props, costumes, and adventure. It's place to come together, to be creative, and to be yourself- 
                       under the guidance of our Cam-Tenders.</p>
                 </li>
-                <li>📸 30 vintage cameras:
+                <li>📸 25 vintage cameras:
                     <p>Here we introduce your guests to VHS camcorders & film photography cameras. Small, simple, and made to be passed around. Left out, handed off, 
                       capturing the event from every possible angle, for both a photographic and video archive. </p>
                 </li>
-                <li>🎥 2 Cam-Tenders*: 
+                <li>🎥 1 Cam-Tender*: 
                     <p>Two Camera-Men or Woman guide guests into the world of 
                       analog nostalgia, and make sure the cameras get into the hands of your guests. Our Cam-tenders inspire
                       capturing cadid moments, finding the natural storytellers at your event, and guiding 
@@ -131,7 +131,7 @@ const PrintPackButton = () => {
                       (*Up to 4 Hours; billed at $150/hr thereafter)</p>
                 </li>
                 
-                <li>📤 Delivery in 36 hours:
+                <li>📤 Delivery in 72 hours:
                     <p>Sent directly to the host and guests who captured the night via email & text. We make sure that the best 
                       shots don't get lost in someone's camera roll.</p>
                 </li>
@@ -147,7 +147,7 @@ const PrintPackButton = () => {
               </p>
               <p1>
               <br />
-              (Pricing is based on a standard 4-hour event. Client will be billed $250/hr thereafter.)
+              {/* (Pricing is based on a standard 4-hour event. Client will be billed $250/hr thereafter.) */}
               </p1>
             </div>
           </div>
@@ -158,14 +158,14 @@ const PrintPackButton = () => {
             <div className="classics-inner-frame">
               <h2><em>INCLUDES:</em></h2>
               <h5>
-                <strong>Cameras (30):</strong><br />
+                <strong>Cameras (25)):</strong><br />
                 </h5>
                 <p>Digicam:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6>
                 <p>'VHS' Camcorder:</p>
-                <h6>📹 📹 📹 📹 📹<br />📹 <br /></h6>
-                <p>Vintage Film:</p>
-                <h6>🎥 🎥 🎥 🎥 <br /></h6>
+                <h6>📹 📹 📹 📹 📹<br /></h6>
+                {/* <p>Vintage Film:</p>
+                <h6>🎥 🎥 🎥 🎥 <br /></h6> */}
                 {/* <p>Rapid® Print:</p>
                 <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br /></h6> */}
                 <p> 
@@ -174,12 +174,12 @@ const PrintPackButton = () => {
                 <h3><strong>DAY-AFTER:</strong><br /></h3>
                 <h5>(Deliverables)</h5>
                 <br />📸 Total Images Delivered: <u>ALL!</u>
-                <br />📸 Professionally Edited Photos: <u>25</u> of our favorites.
+                <br />📸 Professionally Edited Photos: <u>500</u> of our favorites.
                 <br /> 📼 Total Video Captured: <u>ALL!</u> (Up to 6 hours)
-                <br />🎥 Trimmed Version: <u>10 minutes</u> of refined recap footage
+                <br />🎥 Trimmed Short Film: <u>5-10 minutes</u> of refined recap footage.
                 <br />🎥 <u>3-minute highlight edit</u>—quick, fun, no revisions. A thank-you for letting us in.
                 <br />🎞 Every image and video is reviewed before delivery (removing unusable content)
-                <br />📤 Edits are Delivered in <u>36 hours</u>—because nostalgia hits best before the memories fade.
+                <br />📤 Edits are Delivered in <u>72 hours</u>—because nostalgia hits best before the memories fade.
               </p>
               {/* <p><br />
                 <em>Add a Cam-Tender ($150/hr)—<br />for when 

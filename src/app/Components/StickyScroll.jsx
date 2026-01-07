@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import GalleryScroll from "./GalleryScroll"; // Import the GalleryScroll component
+import BusinessOfferings from '../Components2/BusinessOfferings';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,8 +187,12 @@ export default function StickyScroll() {
     <div className="ss-app" ref={container}>
       <section className="ss-intro">
         <h1>
-        Because when you give someone a camera, you don’t just get photos—you get their story.        </h1>
+          Because when you give someone a camera, you don’t just get photos—you get their story.
+        </h1>
       </section>
+
+      {/* Insert the BusinessOfferings component here */}
+      <BusinessOfferings />
 
       <section className="ss-cards">
         {cardsData.map((card, index) => (

@@ -153,7 +153,7 @@ const NostalgiaPackButton = () => {
               
             
                 <strong>What You Get:</strong><br />
-                  1. 20 Digital Cameras <br />
+                  1. 15 Digital Cameras <br />
                   2. 1 Set of Back-Up batteries for each camera; labeled and ready to shoot <br />
                   3. An inviting "tag"to help guests find and understand the intricacies of the cameras.
                   4. Built-in insurance for each camera.
