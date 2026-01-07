@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Adjust or add more <br/> as you like.
  */
 const fullText = `<u>Camera Catering</u> is your <i>one-stop shop</i> for <i><u>event photo+</u></i> <i><u>video content.</u></i> <br/> <br/> Everything camera and anything content: fully custom 
-and creative. <br/> <br/> We bring <i>dozens</i> of <i><u>digicams</u></i> & <i><u>camcorders</u></i>. We bring cutting edge <i> Photo Booths, 
+and creative. <br/> <br/> We bring <i>dozens</i> of <i><u>digicams</u></i> , <i><u>camcorders</u></i> & <i><u>instant-prints</u></i>. We bring cutting edge <i> Photo Booths, 
 <i>Video Booths</i>, and <i>Phone Booths</i> that make your event <i>magic.</i> <br/> <br/>  <i>We digitize everything, cut social posts, 
 and deliver within 72 hours. </i> <br/> <br/> Stop juggling vendors—invite Camera Catering and <i>NEVER look back</i>; <u> remember.</u>`;
 //OLD TEXT

@@ -59,9 +59,9 @@ const NewNavbar = () => {
           <li>
             <a href="#testimonials" onClick={handleMenuItemClick}>Testimonials</a>
           </li>
-          <li>
+          {/* <li>
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>
-          </li>
+          </li> */}
           <li>
             <a href="#footer" onClick={e => {
               e.preventDefault();

@@ -242,7 +242,7 @@ export default function BusinessOfferings() {
   // Camera Rental full package items
   const cameraRentalFullItems = [
     { key: 'cameras25', label: '25 Total Cameras' },
-    { key: 'polaroid5', label: '5x Polaroid Cameras' },
+    { key: 'polaroid5', label: '5x Instax Cameras' },
     { key: 'film5', label: '5x Film Cameras' },
     { key: 'bar', label: '+ The Camera Bar' },
     { key: 'cam_tender', label: '+ Cam-Tender' },
@@ -274,7 +274,7 @@ export default function BusinessOfferings() {
   const cameraRentalAlaCarteItems = [
     { key: 'bar', label: 'The Camera Bar', price: 500, perHour: true },
     { key: 'cam_tender', label: 'Cam-Tender', price: 200, perHour: true },
-    { key: 'polaroid5', label: '+5 Polaroid Cams', price: 350, perHour: true },
+    { key: 'polaroid5', label: '+5 Instax Cams', price: 350, perHour: true },
     { key: 'film5', label: '+5 Film Cams', price: 350, perHour: true },
     { key: 'cameras5', label: '+5 Digicams', price: 150, perHour: true },
     { key: 'cameras3', label: '+3 Camcorders', price: 180, perHour: true },
