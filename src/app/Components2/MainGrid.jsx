@@ -5,7 +5,7 @@ import TheInstantButton from './TheInstantButton';
 import TheCameraBarButton from './TheCameraBarButton';
 import TheMemoryButton from './TheMemoryButton';
 import WhyNowButton from './WhyNowButton';
-import PrintPackButton from './PrintPackButton';
+import PrintPackButton2 from './PrintPackButton2';
 import NostalgiaPackButton from './NostalgiaPackButton';
 import ClassicsPackButton from './ClassicsPackButton';
 import PremierePackButton from './PremierePackButton';
@@ -112,9 +112,9 @@ const MainGrid = () => {
       <div id="print-package"></div>
       {/* Pack buttons, one per row */}
       <div className="pack-button-row"><NostalgiaPackButton /></div>
+      <div className="pack-button-row"><PrintPackButton2 /></div>
       <div className="pack-button-row"><ClassicsPackButton /></div>
-      <div className="pack-button-row"><PremierePackButton /></div>
-      {/* <div className="pack-button-row"><PrintPackButton /></div> */}
+      {/* <div className="pack-button-row"><PremierePackButton /></div> */}
       <div className="pack-button-row"><DiamondPackButton /></div>
       {/* Testimonials: small and med two per row, big spans two columns */}
       <div className="testimonial-row">

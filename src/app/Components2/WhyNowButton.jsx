@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './PrintPackButton.css';
 import './WhyNowButton.css';
 
 const WhyNowButton = () => {

@@ -59,19 +59,19 @@ const NostalgiaPackButton = () => {
         <div className="nostpack-card nostpack-default">
             <p className="nostpack-topline">Learn about our...</p>
           <h2 className="nostpack-title">
-            <span className="nostalgia-title-word"><em>DIGITAL</em></span><br />
+            <span className="nostalgia-title-word"><em>"PRINT"</em></span><br />
             <span className="package-title-word">PACKAGE</span>
           </h2>
           <p className="nostpack-subtext">
-          Our signature product ---- 15 <i>"indisposible"</i> cameras catered to the moment.
-          <p className="price-right"><i>Pricing Begins at $1,700</i></p>
+          Handheld Photobooths ---- 10 Fujifilm Instax cameras, with a built-in printers.
+          <p className="price-right"><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
         <div className="nostpack-ellipse">
         <p>Pack</p>
       </div>
       <div className="nostpack-ellipse2">
-            <p1>1</p1>
+            <p1>2</p1>
           </div>
       </div>
       )}
@@ -83,8 +83,8 @@ const NostalgiaPackButton = () => {
           <div className="nostpack-expanded-card left-card">
             {/* Overhanging title box */}
             <div className="nostpack-overflow-title">
-              <h3><u>DIGICAMS!</u></h3>
-              <p><i>"Indisposible"</i> Cameras = Infinite Possibilities.</p>
+              <h3><u>"PRINT"</u></h3>
+              <p><i>On demand printing; in demand prints.</i></p>
             </div>
 
             {/* Inner frame for text content */}
@@ -95,26 +95,19 @@ const NostalgiaPackButton = () => {
               <p>
               {/* Some moments are meant to be disposable—but that doesn't 
               mean they should be photographed on disposable cameras.  */}
-              Our signature package brings only what is neccessary ----
-              reusable, vintage, and tactile <u>digital</u> cameras, with an emphasis on the fun of the moment and the joys of photography. 
-              <br/><br/>This package includes only 15 "indisposible" cameras 
-              passed off guest to guest. It's for the events that need cameras in the action, 
-              not on the sidelines, in a more traditional way- on tables, on wrists, and in the hands of those who find them.
+              Some memories need to be touched, felt, and shared. Our Print Package is for the events that need a 
+              little more than a digital camera, but a little less than a full-blown photobooth. <br /><br />
               </p>
               <h3><u>INCLUDES:</u></h3>
               <ul>
-                <li>1) 15x Digital Cameras: 
-                    <p>Small, simple, and made to be passed      
-                      around. Guests find them, pick the up, 
-                      and use them to capture what they want like any disposable camera would allow - only no limits here... </p>
+                <li>1) 12x Fujifilm Instax: 
+                    <p> These world class instant print cameras are built for fast and consistent on-demand printing. They are small, simple, and made for magic. </p>
                 </li>
-                <li>2) Interactive Memories: 
-                    <p>We make sure that every guest has a camera in their hands, 
-                      and that they are able to capture the moment they want to capture.</p>
+                <li>2) Interactive Archive: 
+                    <p>Photos are printed on the spot, and guests can take them home as physical keepsakes. If interested in upgrading to a digital archive, we can do that too.</p>
                 </li>
-                <li>3) Delivery in 36 hours: 
-                    <p>A fully preserved archive of the night sent to you within 36 hours of the events conclusion. 
-                    If agreed upon, we can send the files to the guests who captured the night as well; <i>making the night a little more interactive and ready to post.</i></p>
+                <li>(Add-On) More Magic: 
+                    <p>The Instax cameras are built for immediate printing. However, we can add more magic to the night with a little more gear by providing higher end instant print cameras that can both print and store photo digitally. This is a great option for events that want to print a lot of photos, and also look at them later. </p>
                 </li>
                 {/* <li>(Add-On) Cam-Tender: 
                     <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
@@ -124,8 +117,7 @@ const NostalgiaPackButton = () => {
                 </li> */}
               </ul>
               <ul>
-              <br></br>No production, no planning, no pressure. 
-              Just real moments, instantly preserved.'
+              <br></br>Most of your guests already know how these works. They are easy to use, and they are a lot of fun.
               </ul>
               <p1>
               <br />
@@ -140,22 +132,23 @@ const NostalgiaPackButton = () => {
             <div className="nostpack-inner-frame">
             {/* <h2><em>INCLUDES:</em></h2> */}
               <h5>
-              <strong>Cameras (15):</strong>
+              <strong>Cameras (12):</strong>
                 </h5>
-                <p>Digicam:</p>
-                <h6>📸 📸 📸 📸 📸 <br />📸 📸 📸 📸 📸 <br />📸 📸<br /></h6>
+                <p>Instax Cameras:</p>
+                <h6>📷 📷 📷 📷 📷 <br />📷 📷 📷 📷 📷 <br />📷 📷<br /></h6>
                 <br />
-                <p>VHS Camcorder:</p>
-                <h6>📹 📹 📹<br /><br /> </h6>
+                {/* <p>VHS Camcorder:</p>
+                <h6>📹 📹 📹<br /><br /> </h6> */}
               
             
                 <strong>WHAT YOU GET:</strong><br /><i>
-                  1) 15 Digital Cameras <br />
-                  2) 1 Set of Back-Up batteries for each camera; labeled and ready to shoot <br />
-                  3) An inviting "tag"to help guests find and understand the intricacies of the cameras.<br />
-                  4) Built-in insurance for each camera that covers any accidental damage (up to $150).</i>
-
+                   1) 12x Fujifilm Instax Cameras <br />
+                   2) 20x Packs of Photo Paper for Printing (Print up to 20 photos each). <br />
+                   3) 3 Back-up Instax Cameras just in case. <br />
+                   </i>
               <p><br />
+              🔹 <em>Add on <u>Extra Paper</u> for $30 a pack.</em><br />
+              🔹 <em>Add on <u>Extra 5x Instax Cameras</u> for $350/hr.</em> <br />
               🔹 <em>Add on our <u>Cam-Tender</u> for $500 (+$150/hr) for when 
                   guests need a little more direction and <u>to make sure you get a ton of photos.</u> <br /><br />
                   </em>

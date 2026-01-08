@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../Components2/MainGrid.css';
 import '../Components2/HowItWorksButton.css';
-import '../Components2/PrintPackButton.css';
 import { PopupButton } from '@typeform/embed-react';
 
 const EVENT_HOURS = 4; // Default event duration for calculations
@@ -191,9 +190,11 @@ function AlaCarteBubble({ quantity, onAdd, onSubtract }) {
 }
 
 export default function BusinessOfferings() {
-  const [selected, setSelected] = useState([]); // [serviceKey]
+  // Initialize with Camera Catering selected by default
+  const [selected, setSelected] = useState(['camera_rentals']); // [serviceKey]
   const [hovered, setHovered] = useState(null); // serviceKey
-  const [addOnState, setAddOnState] = useState({}); // { serviceKey: { full: true, addOns: { addOnKey: true/false } } }
+  // Initialize addOnState with camera_rentals default state
+  const [addOnState, setAddOnState] = useState({ camera_rentals: { full: false } }); // { serviceKey: { full: true, addOns: { addOnKey: true/false } } }
   const [showBundles, setShowBundles] = useState(false);
   const [anim, showAnim] = useAnimatedPrice();
   const prevTotalRef = useRef(0);
@@ -241,34 +242,44 @@ export default function BusinessOfferings() {
 
   // Camera Rental full package items
   const cameraRentalFullItems = [
-    { key: 'cameras25', label: '25 Total Cameras' },
-    { key: 'polaroid5', label: '5x Instax Cameras' },
+    { key: 'cameras25', label: '30 Total Cameras' },
+    { key: 'polaroid5', label: '10x Instax Cameras' },
     { key: 'film5', label: '5x Film Cameras' },
+    { key: 'qr_codes', label: 'QR-CODES' },
     { key: 'bar', label: '+ The Camera Bar' },
     { key: 'cam_tender', label: '+ Cam-Tender' },
     { key: 'photos500', label: 'Up to 500 Edited photos.' },
     { key: 'vintage', label: '"Home-Video" Recap"' },
     { key: 'recap', label: '"Photo-Dump" Video' },
     { key: 'delivery72', label: '72 Hour Delivery' },
+    // { key: 'plusMore', label: '+ More!' },
   ];
-  // Camera Rental basic package items
-  const cameraRentalBasicItems = [
-    { label: '15 Cameras.' },
+  // Camera Rental Digital Package items (formerly Basic Package)
+  const cameraRentalDigitalItems = [
+    { label: '12x Digital Cameras' },
+    { label: '3x VHS Camcorders' },
     // { label: '250 Edited photos.' },
     // { label: '"Home-Video" Recap' },
-    { label: '"Photo-Dump" Recap Video' },
+    // { label: '"Photo-Dump" Recap Video' },
     { label: 'All Raw Video + Photos' },
     { label: '36 Hour Delivery' },
+  ];
+  // Camera Rental Print Package items
+  const cameraRentalPrintItems = [
+    { label: '12x Instax Insta-Print Cameras' },
+    { label: '20x Instax photo paper packs' },
+    { label: 'Up to 400 printable photos!' },
   ];
   // Camera Rental full package included quantities
   const cameraRentalFullIncluded = {
     bar: 1, // Camera Bar for 4 hours
     cam_tender: 1, // 1 Cam-Tender included in full package
-    polaroid5: 1, // 5x Polaroid Cameras for 4 hours
+    polaroid5: 2, // 5x Polaroid Cameras for 4 hours
     film5: 1, // 5x Film Cameras for 4 hours
     cameras5: 0, // Not included in full package
     cameras3: 0, // Not included in full package
     weekend: 0, // Not included in full package
+    qr_codes: 1, // QR-CODES included in full package
   };
   // Update cameraRentalAlaCarteItems to separate Camera Bar and Cam-Tender, and allow multiple Cam-Tenders
   const cameraRentalAlaCarteItems = [
@@ -279,6 +290,7 @@ export default function BusinessOfferings() {
     { key: 'cameras5', label: '+5 Digicams', price: 150, perHour: true },
     { key: 'cameras3', label: '+3 Camcorders', price: 180, perHour: true },
     { key: 'weekend', label: 'Weekend Rental (3-Days)', price: 2050, perHour: false },
+    { key: 'qr_codes', label: 'QR-CODES', price: 150, perHour: false },
   ];
   const CAMERA_RENTAL_HOURS = 4;
   const [cameraRentalAlaCarte, setCameraRentalAlaCarte] = useState({
@@ -287,9 +299,12 @@ export default function BusinessOfferings() {
     polaroid5: 0,
     film5: 0,
     cameras5: 0,
+    qr_codes: 0,
   });
-  // Add state for cameraRentalBasicOn
-  const [cameraRentalBasicOn, setCameraRentalBasicOn] = useState(true);
+  // Add state for cameraRentalDigitalOn (formerly Basic, now Digital Package)
+  const [cameraRentalDigitalOn, setCameraRentalDigitalOn] = useState(true);
+  // Add state for cameraRentalPrintOn (new Print Package)
+  const [cameraRentalPrintOn, setCameraRentalPrintOn] = useState(false);
 
   // Add state for toggling add-ons visibility
   const [showAddOns, setShowAddOns] = useState(false);
@@ -326,12 +341,12 @@ export default function BusinessOfferings() {
   };
   const [boothState, setBoothState] = useState(defaultBoothState);
 
-  // --- Fix for 2 & 3: Always reset add-ons to 0 when toggling to Basic, and always animate the full price difference including add-ons when switching between Full and Basic ---
+  // --- Fix for 2 & 3: Always reset add-ons to 0 when toggling to Digital, and always animate the full price difference including add-ons when switching between Full and Digital ---
   const handleCameraRentalPackageToggle = (isFull) => {
     // Calculate previous total (with current add-ons)
     const prevTotal = getServiceTotal(
       SERVICES.find(s => s.key === 'camera_rentals'),
-      { ...addOnState.camera_rentals, full: cameraRentalBasicOn ? false : true },
+      { ...addOnState.camera_rentals, full: cameraRentalDigitalOn ? false : true },
       0
     ).total + Object.entries(cameraRentalAlaCarte).reduce((sum, [key, qty]) => {
       const item = cameraRentalAlaCarteItems.find(i => i.key === key);
@@ -342,7 +357,7 @@ export default function BusinessOfferings() {
     let newAlaCarte = isFull ? cameraRentalAlaCarte : { bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 };
     if (!isFull) {
       newAlaCarte = { bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 };
-      setCameraRentalBasicOn(true); // Reset to basic package
+      setCameraRentalDigitalOn(true); // Reset to digital package
     }
 
     // Calculate new total (with new add-on state)
@@ -388,9 +403,9 @@ export default function BusinessOfferings() {
     showAnim(newTotal - prevTotal);
     setSelected(newSelected);
     setAddOnState(newAddOnState);
-    setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+    setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0, qr_codes: 0 });
     if (!isSelected) {
-      setCameraRentalBasicOn(true); // Ensure Basic Package is selected by default
+      setCameraRentalDigitalOn(true); // Ensure Digital Package is selected by default
     }
   };
 
@@ -445,7 +460,7 @@ export default function BusinessOfferings() {
       const service = SERVICES.find((s) => s.key === 'camera_rentals');
       const isSelected = selected.includes('camera_rentals');
       if (isSelected) {
-        const { total: currentTotal } = getServiceTotal(service, addOnState.camera_rentals || { full: cameraRentalBasicOn }, 0);
+        const { total: currentTotal } = getServiceTotal(service, addOnState.camera_rentals || { full: cameraRentalDigitalOn }, 0);
         showAnim(-currentTotal);
         setSelected(selected.filter((k) => k !== 'camera_rentals'));
         setAddOnState((prev) => {
@@ -453,15 +468,17 @@ export default function BusinessOfferings() {
           delete next.camera_rentals;
           return next;
         });
-        setCameraRentalBasicOn(true);
-        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+        setCameraRentalDigitalOn(true);
+        setCameraRentalPrintOn(false);
+        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0, qr_codes: 0 });
       } else {
         const { total: addPrice } = getServiceTotal(service, { full: false }, 0);
         showAnim(addPrice);
         setSelected([...selected, 'camera_rentals']);
         setAddOnState((prev) => ({ ...prev, camera_rentals: { full: false } }));
-        setCameraRentalBasicOn(true);
-        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+        setCameraRentalDigitalOn(true);
+        setCameraRentalPrintOn(false);
+        setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0, qr_codes: 0 });
       }
       return;
     }
@@ -492,8 +509,9 @@ export default function BusinessOfferings() {
         } else if (key === 'video_booth') {
           setVideoBoothAddOnsState({ instant_download: false, branded_microphones: false });
         } else if (key === 'camera_rentals') {
-          setCameraRentalBasicOn(true); // Reset to Basic Package
-          setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+          setCameraRentalDigitalOn(true); // Reset to Digital Package
+          setCameraRentalPrintOn(false);
+          setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0, qr_codes: 0 });
         }
         // Animate price drop
         const service = SERVICES.find((s) => s.key === key);
@@ -627,8 +645,13 @@ export default function BusinessOfferings() {
     if (service.key === 'camera_rentals') {
       let total = 0;
       let subtotal = 0;
-      // Basic package is always $2500 if basic is ON
-      if (cameraRentalBasicOn && !addOnsOverride.full) {
+      // Digital Package (formerly Basic) is $1700 if digital is ON
+      if (cameraRentalDigitalOn && !addOnsOverride.full) {
+        total += 1700;
+        subtotal += 1700;
+      }
+      // Print Package is $2600 if print is ON
+      if (cameraRentalPrintOn && !addOnsOverride.full) {
         total += 2500;
         subtotal += 2500;
       }
@@ -746,7 +769,12 @@ export default function BusinessOfferings() {
   }
 
   // Calculate total and discount
-  const selectedServices = SERVICES.filter((s) => selected.includes(s.key));
+  // Sort services so camera_rentals (CAMERA CATERING) always appears first
+  const selectedServices = SERVICES.filter((s) => selected.includes(s.key)).sort((a, b) => {
+    if (a.key === 'camera_rentals') return -1;
+    if (b.key === 'camera_rentals') return 1;
+    return 0; // Keep original order for other services
+  });
   // Compute totals for all services EXCEPT booths; we'll add booths explicitly to avoid any state sync issues
   const serviceTotals = selectedServices.filter(s => s.key !== 'booths').map((s) => {
     if (s.key === 'camera_rentals') {
@@ -931,8 +959,9 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     if (serviceKey === 'camera_rentals') {
       const result = getServiceTotal(service, addOnState.camera_rentals, 0);
       removeAmount = typeof result === 'number' ? result : (result?.total || 0);
-      setCameraRentalBasicOn(true);
-      setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0 });
+      setCameraRentalDigitalOn(true);
+      setCameraRentalPrintOn(false);
+      setCameraRentalAlaCarte({ bar: 0, cam_tender: 0, polaroid5: 0, film5: 0, cameras5: 0, qr_codes: 0 });
       setAddOnState((prev) => {
         const next = { ...prev };
         delete next.camera_rentals;
@@ -999,14 +1028,32 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
                   </button>
                   <div style={{ fontWeight: 700, fontSize: 18, color: '#222', paddingRight: 28 }}>{s.title}</div>
                   <div style={{ color: '#666', fontSize: 15, margin: '2px 0 6px 0' }}>{
-                    s.key === 'camera_rentals' ? (addOnState[s.key]?.full ? '*CLASSIC Package @ $4500' : '"CAMERA." Package @ $2500') : s.priceLabel
+                    s.key === 'camera_rentals' ? (
+                      addOnState[s.key]?.full 
+                        ? '*CLASSIC Package' 
+                        : cameraRentalDigitalOn && cameraRentalPrintOn
+                        ? 'Digital Package + Print Package'
+                        : cameraRentalDigitalOn
+                        ? 'Digital Package'
+                        : cameraRentalPrintOn
+                        ? 'Print Package'
+                        : 'Select a package'
+                    ) : s.priceLabel
                   }</div>
-                  <div style={{ margin: '8px 0 0 0', position: 'relative' }}>
+                  <div style={{ margin: '8px 0 0 0', position: 'relative', backgroundColor: s.key === 'camera_rentals' ? 'rgba(0,0,0,0.03)' : 'transparent', padding: s.key === 'camera_rentals' ? '12px' : '0', borderRadius: s.key === 'camera_rentals' ? '8px' : '0' }}>
                     {s.key === 'camera_rentals' ? (
                       <>
-                        {/* Basic Package toggle */}
+                        {/* Digital Package toggle */}
                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8, cursor: 'pointer' }} onClick={() => {
-  setCameraRentalBasicOn(true);
+  // Calculate price difference directly
+  const newDigitalState = !cameraRentalDigitalOn;
+  const priceDelta = newDigitalState ? 1550 : -1550;
+  
+  // Show animation
+  showAnim(priceDelta);
+  
+  // Toggle Digital Package
+  setCameraRentalDigitalOn(newDigitalState);
   setAddOnState((prev) => ({
     ...prev,
     camera_rentals: {
@@ -1016,27 +1063,91 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
     }
   }));
 }}>
-  <ToggleCircle checked={cameraRentalBasicOn} />
-  <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Basic Package</span>
+  <ToggleCircle checked={cameraRentalDigitalOn} />
+  <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Digital Package</span>
+  <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$1700</span>
+</div>
+{cameraRentalDigitalOn && (
+  <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15, marginBottom: 8 }}>
+    {cameraRentalDigitalItems.map((a, i) => (
+      <li key={i}>{a.label}</li>
+    ))}
+  </ul>
+)}
+{/* Print Package toggle */}
+<div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8, cursor: 'pointer' }} onClick={() => {
+  // Calculate price difference directly
+  const newPrintState = !cameraRentalPrintOn;
+  const priceDelta = newPrintState ? 2500 : -2500;
+  
+  // Show animation
+  showAnim(priceDelta);
+  
+  // Toggle Print Package
+  setCameraRentalPrintOn(newPrintState);
+  setAddOnState((prev) => ({
+    ...prev,
+    camera_rentals: {
+      ...prev.camera_rentals,
+      full: false,
+      addOns: Object.fromEntries(cameraRentalFullItems.map((a) => [a.key, false]))
+    }
+  }));
+}}>
+  <ToggleCircle checked={cameraRentalPrintOn} />
+  <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Print Package</span>
   <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$2500</span>
 </div>
-{cameraRentalBasicOn && (
+{cameraRentalPrintOn && (
   <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15, marginBottom: 8 }}>
-    {cameraRentalBasicItems.map((a, i) => (
+    {cameraRentalPrintItems.map((a, i) => (
       <li key={i}>{a.label}</li>
     ))}
   </ul>
 )}
 <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8, cursor: 'pointer' }} onClick={() => {
-  setCameraRentalBasicOn(false);
+  const service = SERVICES.find(s => s.key === 'camera_rentals');
+  // Calculate previous total (before toggle)
+  const prevTotal = getServiceTotal(service, addOnState.camera_rentals || { full: false }, 0);
+  const prevTotalValue = typeof prevTotal === 'number' ? prevTotal : (prevTotal?.total || 0);
+  
+  // Toggle Full Package
+  const newFullState = !addOnState.camera_rentals?.full;
+  setCameraRentalDigitalOn(false);
+  setCameraRentalPrintOn(false);
   setAddOnState((prev) => ({
     ...prev,
     camera_rentals: {
       ...prev.camera_rentals,
-      full: true,
-      addOns: Object.fromEntries(cameraRentalFullItems.map((a) => [a.key, true]))
+      full: newFullState,
+      addOns: Object.fromEntries(cameraRentalFullItems.map((a) => [a.key, newFullState]))
     }
   }));
+  
+  // Set included add-ons when Full Package is toggled on
+  if (newFullState) {
+    setCameraRentalAlaCarte((prev) => ({
+      ...prev,
+      bar: cameraRentalFullIncluded.bar || 0,
+      cam_tender: cameraRentalFullIncluded.cam_tender || 0,
+      polaroid5: cameraRentalFullIncluded.polaroid5 || 0,
+      film5: cameraRentalFullIncluded.film5 || 0,
+      qr_codes: cameraRentalFullIncluded.qr_codes || 0,
+    }));
+  } else {
+    setCameraRentalAlaCarte((prev) => ({
+      ...prev,
+      bar: 0,
+      cam_tender: 0,
+      polaroid5: 0,
+      film5: 0,
+      qr_codes: 0,
+    }));
+  }
+  
+  // Calculate new total (Full Package is $4500, or $0 if turning off)
+  const newTotalValue = newFullState ? 4500 : 0;
+  showAnim(newTotalValue - prevTotalValue);
 }}>
   <ToggleCircle checked={addOnState.camera_rentals?.full} />
   <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Full Package</span>

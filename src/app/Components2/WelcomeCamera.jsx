@@ -53,12 +53,12 @@ const WelcomeCamera = () => {
         <div className="left-content" style={{ pointerEvents: 'none' }}>
           {/* <h1 className="main-title">YOU HOLD THE CAMERA*</h1> */}
           {/* <h1 className="main-title">UNLIMITED CONTENT AT YOUR EVENT.</h1> */}
-          <h1 className="main-title" style={{ marginTop: '15px' }}>YOU HOLD THE <i>DIGI- CAMS!</i></h1>
+          <h1 className="main-title" style={{ marginTop: '15px' }}>WE BRING THE <i>DIGI-CAMS!</i></h1>
           {/* <p className="subtitle">
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle" style={{ marginTop: '24px' }}>
-            YOUR <i>ONE-STOP-SHOP</i> FOR RENTING <i><u> DIGICAMS, CAMCORDERS, AND INSTANT-PRINT CAMS.</u></i>
+            California's <u>one-stop shop</u> for renting <i> Digicams, VHS Camcorders & Instant-Print Cameras to <u>your event!</u></i>
             {/* <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i> */}
           </p>
 
@@ -67,7 +67,7 @@ const WelcomeCamera = () => {
             <p className="new-description">
               {/* Rapid® Print cameras to take the user experience to the next level. 
               It's basically a hand-held Photo Booth, but so much better. Trust us. */}
-              <i>Ditch</i> the disposables, and <i>go <u>digital!</u></i>
+              <i>Ditch</i> the disposables, and <i>go <u>digital!</u></i><br/><br/>
             </p>
             <p className="new-description">
               <i>We <u>pioneered</u> Digital Camera Rental's for events and <br/> we proudly service Los Angeles, San Diego, Santa <br/>Barabara, San Francisco, and everywhere in between.</i>

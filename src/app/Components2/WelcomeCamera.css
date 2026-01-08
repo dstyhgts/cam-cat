@@ -65,7 +65,7 @@
     color: var(--text-secondary);
     margin: 0 0 2rem;
     line-height: .8;
-    text-shadow:rgba(0, 0, 0, 0.3) !important;
+    text-shadow: none !important;
     box-shadow: none !important;
   }
   
