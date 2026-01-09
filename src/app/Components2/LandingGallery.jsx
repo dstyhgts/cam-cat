@@ -7,6 +7,9 @@ import CustomEase from "gsap/CustomEase";
 
 gsap.registerPlugin(CustomEase);
 
+// Server-side flag to toggle between versions
+const USE_DIGICAM_VERSION = true;
+
 const LandingGallery = ({ className = "", ...props }) => {
   const containerRef = useRef(null);
   const galleryRef = useRef(null);
@@ -24,12 +27,20 @@ const LandingGallery = ({ className = "", ...props }) => {
     // Determine item count based on screen width
     const getItemsCount = () => {
       const width = window.innerWidth;
-      if (width < 900) return 10; // mobile: half of desktop
-      return 20; // desktop: reduced by 3 from original
+      if (USE_DIGICAM_VERSION) {
+        return 23; // Both mobile and desktop: digicam-1 through digicam-23
+      } else {
+        if (width < 900) return 10; // mobile: half of desktop
+        return 20; // desktop: reduced by 3 from original
+      }
     };
     let itemsCount = getItemsCount();
     const container = containerRef.current;
     const gallery = galleryRef.current;
+    
+    // Rotation offset for continuous circular animation (digicam version only)
+    let rotationOffset = 0;
+    let animationId = null;
 
     // Advanced hover functions for circular layout:
     const advancedMouseEnter = (e, items) => {
@@ -136,19 +147,83 @@ const LandingGallery = ({ className = "", ...props }) => {
       // Recalculate itemsCount in case of resize
       itemsCount = getItemsCount();
       const isVerySmallScreen = window.innerWidth <= 450;
-      for (let i = 8; i < 8 + itemsCount; i++) {
+      
+      // Generate image indices based on version
+      let imageIndices = [];
+      if (USE_DIGICAM_VERSION) {
+        // Use digicam-1 through digicam-itemsCount
+        imageIndices = Array.from({ length: itemsCount }, (_, i) => i + 1);
+        // Randomize the order
+        for (let i = imageIndices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [imageIndices[i], imageIndices[j]] = [imageIndices[j], imageIndices[i]];
+        }
+      } else {
+        // Original version: img8 through img(8 + itemsCount - 1)
+        imageIndices = Array.from({ length: itemsCount }, (_, i) => i + 8);
+      }
+      
+      // Track image loads for digicam version
+      let loadedImages = 0;
+      let layoutRecalcTimeout = null;
+      
+      imageIndices.forEach((index) => {
         const item = document.createElement("div");
         item.classList.add("item");
+        if (USE_DIGICAM_VERSION) {
+          item.classList.add("digicam-item");
+          // Set inline styles to override global card styles
+          item.style.padding = '0';
+          item.style.background = 'transparent';
+          item.style.borderRadius = '0';
+          item.style.width = 'auto';
+          item.style.height = 'auto';
+          item.style.overflow = 'visible';
+          item.style.boxShadow = 'none';
+        }
 
         const img = document.createElement("img");
-        img.src = `/assets/img${i}.jpg`;
-        img.alt = `Image ${i}`;
+        if (USE_DIGICAM_VERSION) {
+          img.src = `/assets/digicam-${index}.png`;
+          img.alt = `Digicam ${index}`;
+          // Set inline styles to ensure no card styling and transparency
+          img.style.width = 'auto';
+          img.style.height = 'auto';
+          img.style.maxWidth = '200px';
+          img.style.maxHeight = '225px';
+          img.style.objectFit = 'contain';
+          img.style.display = 'block';
+          img.style.background = 'none';
+          img.style.backgroundColor = 'transparent';
+        } else {
+          img.src = `/assets/img${index}.jpg`;
+          img.alt = `Image ${index}`;
+        }
         img.loading = "lazy";
 
         item.appendChild(img);
         gallery.appendChild(item);
+        
+        // For digicam version, wait for images to load then recalculate layout
+        if (USE_DIGICAM_VERSION) {
+          img.onload = () => {
+            loadedImages++;
+            // Debounce layout recalculation - only recalculate after a short delay
+            // This prevents multiple rapid recalculations as images load
+            if (layoutRecalcTimeout) clearTimeout(layoutRecalcTimeout);
+            layoutRecalcTimeout = setTimeout(() => {
+              setCircularLayout();
+            }, 100);
+          };
+          // Also handle images that are already cached/loaded
+          if (img.complete) {
+            img.onload();
+          }
+        }
 
-        if (!isVerySmallScreen) {
+        // Only enable drag events on desktop (not mobile)
+        const isDesktop = window.innerWidth >= 900;
+        if (isDesktop && !isVerySmallScreen) {
           // Drag events
           item.addEventListener('mousedown', (e) => {
             galleryBox = gallery.getBoundingClientRect();
@@ -229,11 +304,11 @@ const LandingGallery = ({ className = "", ...props }) => {
             }
           });
         }
-      }
+      });
     };
 
     // Set circular layout for the items
-    const setCircularLayout = () => {
+    const setCircularLayout = (useRotationOffset = false) => {
       const items = container.querySelectorAll(".item");
       if (!items.length) return;
       const width = container.offsetWidth;
@@ -242,7 +317,13 @@ const LandingGallery = ({ className = "", ...props }) => {
       // No change to radius logic, just more of each card is visible
       const numberOfItems = items.length;
       const angleIncrement = (2 * Math.PI) / numberOfItems;
-      const radius = isMobile ? width * 0.35 : 210;
+      // Increase radius by 10% for digicam version, and additional 15% on desktop
+      const baseRadius = isMobile ? width * 0.35 : 210;
+      let radius = USE_DIGICAM_VERSION ? baseRadius * 1.1 : baseRadius;
+      // Additional 15% increase for desktop digicam version
+      if (USE_DIGICAM_VERSION && !isMobile) {
+        radius = radius * 1.15;
+      }
       // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <450px)
       let centerX;
       if (isMobile && width < 450) {
@@ -255,22 +336,63 @@ const LandingGallery = ({ className = "", ...props }) => {
       console.log('LandingGallery width:', width, 'centerX:', centerX);
       const centerY = height / 2;
       items.forEach((item, index) => {
-        const angle = index * angleIncrement;
-        const x = centerX + radius * Math.cos(angle) - item.offsetWidth / 2;
-        const y = centerY + radius * Math.sin(angle) - item.offsetHeight / 2;
+        // Store base angle on initial layout, or use stored value
+        const storedBaseAngle = item.dataset.baseAngle;
+        const calculatedBaseAngle = index * angleIncrement;
+        const baseAngle = storedBaseAngle ? parseFloat(storedBaseAngle) : calculatedBaseAngle;
+        
+        // Store base angle if not already stored
+        if (!storedBaseAngle) {
+          item.dataset.baseAngle = calculatedBaseAngle.toString();
+        }
+        
+        // Apply rotation offset for continuous animation (digicam version only)
+        const angle = useRotationOffset && USE_DIGICAM_VERSION 
+          ? baseAngle + rotationOffset 
+          : baseAngle;
+        // For digicam items, use image dimensions if available, otherwise use item dimensions
+        let itemWidth, itemHeight;
+        if (USE_DIGICAM_VERSION && item.querySelector('img')) {
+          const img = item.querySelector('img');
+          // Use natural width/height if available, otherwise use computed dimensions
+          if (img.naturalWidth && img.naturalHeight) {
+            const aspectRatio = img.naturalWidth / img.naturalHeight;
+            const maxW = 200;
+            const maxH = 225;
+            if (aspectRatio > 1) {
+              itemWidth = Math.min(maxW, img.naturalWidth);
+              itemHeight = itemWidth / aspectRatio;
+            } else {
+              itemHeight = Math.min(maxH, img.naturalHeight);
+              itemWidth = itemHeight * aspectRatio;
+            }
+          } else {
+            itemWidth = item.offsetWidth || img.offsetWidth || 200;
+            itemHeight = item.offsetHeight || img.offsetHeight || 225;
+          }
+        } else {
+          itemWidth = item.offsetWidth || 200;
+          itemHeight = item.offsetHeight || 225;
+        }
+        const x = centerX + radius * Math.cos(angle) - itemWidth / 2;
+        const y = centerY + radius * Math.sin(angle) - itemHeight / 2;
+        // For digicam version, add 90 degrees to rotation
+        const baseRotation = (angle * 180) / Math.PI + 90;
+        const finalRotation = USE_DIGICAM_VERSION ? baseRotation + 90 : baseRotation;
         gsap.set(item, {
           left: `${x}px`,
           top: `${y}px`,
-          rotation: (angle * 180) / Math.PI + 90,
+          rotation: finalRotation,
           transform: "translateY(0%)",
           x: 0,
           y: 0,
           scale: 1,
         });
-        item.dataset.originalRotation = (angle * 180) / Math.PI + 90;
+        item.dataset.originalRotation = finalRotation;
       });
-      // Attach advanced hover listeners
-      if (window.innerWidth > 450) {
+      // Attach advanced hover listeners only on desktop (not mobile)
+      const isDesktop = window.innerWidth >= 900;
+      if (isDesktop && window.innerWidth > 450) {
         items.forEach((item) => {
           item.addEventListener("mouseenter", (e) => advancedMouseEnter(e, items));
           item.addEventListener("mouseleave", (e) => advancedMouseLeave(e, items));
@@ -278,17 +400,65 @@ const LandingGallery = ({ className = "", ...props }) => {
       }
     };
 
+    // Continuous rotation animation for digicam version (mobile only)
+    const startRotationAnimation = () => {
+      if (!USE_DIGICAM_VERSION) return;
+      
+      // Only start rotation on mobile (< 900px)
+      const isMobile = window.innerWidth < 900;
+      if (!isMobile) return;
+      
+      const rotate = () => {
+        // Check if still mobile (in case of resize)
+        if (window.innerWidth >= 900) {
+          stopRotationAnimation();
+          return;
+        }
+        // Slowly rotate (1 full rotation every ~40 seconds at 60fps)
+        // 2π / (40 * 60) ≈ 0.00262 per frame
+        rotationOffset += 0.00262;
+        if (rotationOffset >= 2 * Math.PI) {
+          rotationOffset = 0;
+        }
+        setCircularLayout(true);
+        animationId = requestAnimationFrame(rotate);
+      };
+      rotate();
+    };
+    
+    const stopRotationAnimation = () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    };
+
     // Initialize gallery immediately in circular layout
     const initGallery = () => {
       createItems();
       setCircularLayout();
+      // Start rotation animation for digicam version (mobile only)
+      if (USE_DIGICAM_VERSION) {
+        startRotationAnimation();
+      }
+      // Update SVG positions after initial layout
+      setTimeout(() => {
+        if (typeof positionDragMe !== 'undefined') positionDragMe();
+        if (typeof positionClickMe !== 'undefined') positionClickMe();
+      }, 150);
     };
 
     initGallery();
     // Re-center and re-create items on resize
     const handleResize = () => {
+      stopRotationAnimation();
+      rotationOffset = 0; // Reset rotation offset on resize
       createItems();
       setCircularLayout();
+      // Restart rotation animation only if mobile and digicam version
+      if (USE_DIGICAM_VERSION) {
+        startRotationAnimation();
+      }
     };
     window.addEventListener('resize', handleResize);
 
@@ -305,11 +475,16 @@ const LandingGallery = ({ className = "", ...props }) => {
       } else {
         dragMeRef.current.style.display = 'block';
       }
-      // Use the same logic as setCircularLayout
+      // Use the same logic as setCircularLayout (including 10% radius increase for digicam)
       const items = container.querySelectorAll('.item');
       if (!items.length) return;
       const numberOfItems = items.length;
-      const radius = width < 900 ? width * 0.35 : 210;
+      const baseRadius = isMobile ? width * 0.35 : 210;
+      let radius = USE_DIGICAM_VERSION ? baseRadius * 1.1 : baseRadius;
+      // Additional 15% increase for desktop digicam version
+      if (USE_DIGICAM_VERSION && !isMobile) {
+        radius = radius * 1.15;
+      }
       let centerX;
       if (width < 900 && width < 450) {
         centerX = width * 1.25;
@@ -351,11 +526,29 @@ const LandingGallery = ({ className = "", ...props }) => {
       svg.style.top = `${top}px`;
       svg.style.transform = 'translateX(-50%)';
       svg.style.zIndex = 40;
+      // Show CLICK-ME on all devices (both mobile and desktop)
       svg.style.display = 'block';
     };
     positionClickMe();
     window.addEventListener('resize', positionClickMe);
-    return () => window.removeEventListener('resize', positionClickMe);
+    
+    // Update SVG positions after layout changes
+    const updateSvgPositions = () => {
+      setTimeout(() => {
+        positionDragMe();
+        positionClickMe();
+      }, 50);
+    };
+    
+    // Call updateSvgPositions after initial layout
+    setTimeout(updateSvgPositions, 100);
+    
+    return () => {
+      stopRotationAnimation();
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', positionDragMe);
+      window.removeEventListener('resize', positionClickMe);
+    };
   }, []);
 
   return (
@@ -429,6 +622,31 @@ const LandingGallery = ({ className = "", ...props }) => {
           box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 8px rgba(0,0,0,0.12);
           cursor: grabbing !important;
           pointer-events: auto !important;
+        }
+        /* Digicam version: remove ALL card styling, just show transparent PNGs */
+        .item.digicam-item {
+          padding: 0 !important;
+          background: transparent !important;
+          border-radius: 0 !important;
+          width: auto !important;
+          height: auto !important;
+          overflow: visible !important;
+          box-shadow: none !important;
+        }
+        .item.digicam-item img {
+          background: none !important;
+          background-color: transparent !important;
+          border-radius: 0 !important;
+          width: auto !important;
+          height: auto !important;
+          max-width: 200px !important;
+          max-height: 225px !important;
+          object-fit: contain !important;
+          display: block !important;
+          /* Use drop-shadow filter to only shadow visible content, not transparent areas */
+          filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1)) !important;
+          box-shadow: none !important;
+          mix-blend-mode: normal !important;
         }
         @media (max-width: 900px) {
           .drag-me-desktop {
