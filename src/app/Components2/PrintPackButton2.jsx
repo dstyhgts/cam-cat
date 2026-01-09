@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './NostalgiaPackButton.css';
+import styles from './PrintPackButton2.module.css';
 
 const NostalgiaPackButton = () => {
   const [expanded, setExpanded] = useState(false);
@@ -29,85 +29,85 @@ const NostalgiaPackButton = () => {
 
   return (
     <div
-      className={`nostpack-container ${expanded ? 'expanded' : ''}`}
+      className={`${styles.container} ${expanded ? styles.expanded : ''}`}
       ref={cardRef}
       onClick={handleToggle}
       aria-expanded={expanded}
     >
       {/* Background for hover tilt (hidden when expanded) */}
-      {!expanded && <div className="nostpack-background" />}
+      {!expanded && <div className={styles.background} />}
 
       {/* 3 icons animate in on hover (only if not expanded) */}
       {!expanded && (
         <>
-          <img className="star star1" src="/assets/camera-icon10.svg" alt="Camera Icon 11" style={{ width: '96px', height: '96px' }} />
-          <img className="star star2" src="/assets/camera-icon12.svg" alt="Camera Icon 12" style={{ width: '96px', height: '96px' }} />
-          <img className="star star3" src="/assets/camera-icon13.svg" alt="Camera Icon 13" style={{ width: '96px', height: '96px' }} />
+          <img className={`${styles.star} ${styles.star1}`} src="/assets/camera-icon10.svg" alt="Camera Icon 11" style={{ width: '96px', height: '96px' }} />
+          <img className={`${styles.star} ${styles.star2}`} src="/assets/camera-icon12.svg" alt="Camera Icon 12" style={{ width: '96px', height: '96px' }} />
+          <img className={`${styles.star} ${styles.star3}`} src="/assets/camera-icon13.svg" alt="Camera Icon 13" style={{ width: '96px', height: '96px' }} />
         </>
       )}
 
       {/* Two arrows at bottom (behind the card) */}
       {!expanded && (
-        <div className="bottom-arrows">
-          <span className="arrow-down">↓</span>
-          <span className="arrow-down">↓</span>
+        <div className={styles.bottomArrows}>
+          <span className={styles.arrowDown}>↓</span>
+          <span className={styles.arrowDownRight}>↓</span>
         </div>
       )}
 
       {/* ========== DEFAULT / HOVER (512×256) ========== */}
       {!expanded && (
-        <div className="nostpack-card nostpack-default">
-            <p className="nostpack-topline">Learn about our...</p>
-          <h2 className="nostpack-title">
-            <span className="nostalgia-title-word"><em>"PRINT"</em></span><br />
-            <span className="package-title-word">PACKAGE</span>
+        <div className={styles.card}>
+            <p className={styles.topline}>Learn about our...</p>
+          <h2 className={styles.title}>
+            <span className={styles.nostalgiaTitleWord}><em>"PRINT"</em></span><br />
+            <span className={styles.packageTitleWord}>PACKAGE</span>
           </h2>
-          <p className="nostpack-subtext">
+          <p className={styles.subtext}>
           Handheld Photobooths ---- 10 Fujifilm Instax cameras, with a built-in printers.
-          <p className="price-right"><i>Pricing Begins at $2,500</i></p>
+          <p className={styles.priceRight}><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
-        <div className="nostpack-ellipse">
+        <div className={styles.ellipse}>
         <p>Pack</p>
       </div>
-      <div className="nostpack-ellipse2">
-            <p1>2</p1>
+      <div className={styles.ellipse2}>
+            <p1 className={styles.p1}>2</p1>
           </div>
       </div>
       )}
 
       {/* ========== EXPANDED STATE ========== */}
       {expanded && (
-        <div className="nostpack-expanded-layout">
+        <div className={styles.expandedLayout}>
           {/* LEFT CARD (with overhanging rectangle) */}
-          <div className="nostpack-expanded-card left-card">
+          <div className={`${styles.expandedCard} ${styles.leftCard}`}>
             {/* Overhanging title box */}
-            <div className="nostpack-overflow-title">
-              <h3><u>"PRINT"</u></h3>
-              <p><i>On demand printing; in demand prints.</i></p>
+            <div className={styles.overflowTitle}>
+              <h3 className={styles.h3}><u>"PRINT"</u></h3>
+              <p className={styles.p}><i>On demand printing; in demand prints.</i></p>
             </div>
 
             {/* Inner frame for text content */}
-            <div className="nostpack-inner-frame">
+            <div className={styles.innerFrame}>
               {/* <h3 className="subcard-title">
                 "RAPID" PRINT <span className="emoji">🚀</span>
               </h3> */}
-              <p>
+              <p className={styles.p}>
               {/* Some moments are meant to be disposable—but that doesn't 
               mean they should be photographed on disposable cameras.  */}
               Some memories need to be touched, felt, and shared. Our Print Package is for the events that need a 
               little more than a digital camera, but a little less than a full-blown photobooth. <br /><br />
               </p>
-              <h3><u>INCLUDES:</u></h3>
+              <h3 className={styles.h3}><u>INCLUDES:</u></h3>
               <ul>
                 <li>1) 12x Fujifilm Instax: 
-                    <p> These world class instant print cameras are built for fast and consistent on-demand printing. They are small, simple, and made for magic. </p>
+                    <p className={styles.p}> These world class instant print cameras are built for fast and consistent on-demand printing. They are small, simple, and made for magic. </p>
                 </li>
                 <li>2) Interactive Archive: 
-                    <p>Photos are printed on the spot, and guests can take them home as physical keepsakes. If interested in upgrading to a digital archive, we can do that too.</p>
+                    <p className={styles.p}>Photos are printed on the spot, and guests can take them home as physical keepsakes. If interested in upgrading to a digital archive, we can do that too.</p>
                 </li>
                 <li>(Add-On) More Magic: 
-                    <p>The Instax cameras are built for immediate printing. However, we can add more magic to the night with a little more gear by providing higher end instant print cameras that can both print and store photo digitally. This is a great option for events that want to print a lot of photos, and also look at them later. </p>
+                    <p className={styles.p}>The Instax cameras are built for immediate printing. However, we can add more magic to the night with a little more gear by providing higher end instant print cameras that can both print and store photo digitally. This is a great option for events that want to print a lot of photos, and also look at them later. </p>
                 </li>
                 {/* <li>(Add-On) Cam-Tender: 
                     <p>Our Cam-tender inspires capturing cadid moments, ephasizing a fun and
@@ -119,7 +119,7 @@ const NostalgiaPackButton = () => {
               <ul>
               <br></br>Most of your guests already know how these works. They are easy to use, and they are a lot of fun.
               </ul>
-              <p1>
+              <p1 className={styles.p1}>
               <br />
               (Pricing is based on a standard 4-hour event. Client will be billed $250/hr thereafter.)
               </p1>
@@ -127,15 +127,15 @@ const NostalgiaPackButton = () => {
           </div>
 
           {/* RIGHT CARD (simpler) */}
-          <div className="nostpack-expanded-card right-card">
+          <div className={`${styles.expandedCard} ${styles.rightCard}`}>
             {/* Inner frame for text content */}
-            <div className="nostpack-inner-frame">
+            <div className={styles.innerFrame}>
             {/* <h2><em>INCLUDES:</em></h2> */}
-              <h5>
+              <h5 className={styles.h5}>
               <strong>Cameras (12):</strong>
                 </h5>
-                <p>Instax Cameras:</p>
-                <h6>📷 📷 📷 📷 📷 <br />📷 📷 📷 📷 📷 <br />📷 📷<br /></h6>
+                <p className={styles.p}>Instax Cameras:</p>
+                <h6 className={styles.h6}>📷 📷 📷 📷 📷 <br />📷 📷 📷 📷 📷 <br />📷 📷<br /></h6>
                 <br />
                 {/* <p>VHS Camcorder:</p>
                 <h6>📹 📹 📹<br /><br /> </h6> */}
@@ -146,7 +146,7 @@ const NostalgiaPackButton = () => {
                    2) 20x Packs of Photo Paper for Printing (Print up to 20 photos each). <br />
                    3) 3 Back-up Instax Cameras just in case. <br />
                    </i>
-              <p><br />
+              <p className={styles.p}><br />
               🔹 <em>Add on <u>Extra Paper</u> for $30 a pack.</em><br />
               🔹 <em>Add on <u>Extra 5x Instax Cameras</u> for $350/hr.</em> <br />
               🔹 <em>Add on our <u>Cam-Tender</u> for $500 (+$150/hr) for when 

@@ -65,6 +65,16 @@
   --print-pack-dark-bg: #3F2452;
   --print-pack-lighter-bg: #784289;
   
+  /* NostalgiaPackButton (Digital Package) specific colors - Light mode */
+  --nostalgia-pack-bg: #61397D;
+  --nostalgia-pack-dark-bg: #3F2452;
+  --nostalgia-pack-lighter-bg: #784289;
+  
+  /* PrintPackButton2 (Print Package) specific colors - Light mode (matches Premiere Pack) */
+  --print-pack2-bg: #0E6E8D;
+  --print-pack2-dark-bg: #08475C;
+  --print-pack2-lighter-bg: #0E6E8D;
+  
   --classics-pack-bg: #397D52;
   --classics-pack-dark-bg: #1F442C;
   
@@ -159,6 +169,16 @@
   --print-pack-bg: #ffffff;
   --print-pack-dark-bg: #e8e8e8;
   --print-pack-lighter-bg: #f0f0f0;
+  
+  /* NostalgiaPackButton (Digital Package) specific colors - Dark mode */
+  --nostalgia-pack-bg: #ffffff;
+  --nostalgia-pack-dark-bg: #e8e8e8;
+  --nostalgia-pack-lighter-bg: #f0f0f0;
+  
+  /* PrintPackButton2 (Print Package) specific colors - Dark mode (same as Nostalgia in dark mode) */
+  --print-pack2-bg: #ffffff;
+  --print-pack2-dark-bg: #e8e8e8;
+  --print-pack2-lighter-bg: #f0f0f0;
   
   --classics-pack-bg: #ffffff;
   --classics-pack-dark-bg: #e8e8e8;
