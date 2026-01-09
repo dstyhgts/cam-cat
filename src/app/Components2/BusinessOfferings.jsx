@@ -645,10 +645,10 @@ export default function BusinessOfferings() {
     if (service.key === 'camera_rentals') {
       let total = 0;
       let subtotal = 0;
-      // Digital Package (formerly Basic) is $1700 if digital is ON
+      // Digital Package (formerly Basic) is $2200 if digital is ON
       if (cameraRentalDigitalOn && !addOnsOverride.full) {
-        total += 1700;
-        subtotal += 1700;
+        total += 2200;
+        subtotal += 2200;
       }
       // Print Package is $2600 if print is ON
       if (cameraRentalPrintOn && !addOnsOverride.full) {
@@ -1065,7 +1065,7 @@ const multiItemDiscount = selectedServices.length >= 2 ? Math.round(total * 0.05
 }}>
   <ToggleCircle checked={cameraRentalDigitalOn} />
   <span style={{ fontWeight: 600, fontSize: 15, color: '#222' }}>Digital Package</span>
-  <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$1700</span>
+  <span style={{ fontWeight: 600, fontSize: 15, color: '#27ae60', marginLeft: 8 }}>$2200</span>
 </div>
 {cameraRentalDigitalOn && (
   <ul style={{ margin: 0, paddingLeft: 18, color: '#333', fontSize: 15, marginBottom: 8 }}>

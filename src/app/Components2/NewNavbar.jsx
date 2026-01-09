@@ -57,7 +57,7 @@ const NewNavbar = () => {
             <a href="#how-it-works" onClick={handleMenuItemClick}>"Camera Catering"</a>
           </li>
           <li>
-            <a href="#testimonials" onClick={handleMenuItemClick}>Testimonials</a>
+            <a href="#testimonials" onClick={handleMenuItemClick}>The Experience</a>
           </li>
           {/* <li>
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>

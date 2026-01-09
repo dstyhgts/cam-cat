@@ -64,7 +64,7 @@ const NostalgiaPackButton = () => {
           </h2>
           <p className={styles.subtext}>
           Our signature product ---- 15 <i>"indisposible"</i> cameras catered to the moment.
-          <p className={styles.priceRight}><i>Pricing Begins at $1,700</i></p>
+          <p className={styles.priceRight}><i>Pricing Begins at $2,200</i></p>
             <span className="emoji"></span>
           </p>
         <div className={styles.ellipse}>
@@ -83,7 +83,7 @@ const NostalgiaPackButton = () => {
           <div className={`${styles.expandedCard} ${styles.leftCard}`}>
             {/* Overhanging title box */}
             <div className={styles.overflowTitle}>
-              <h3 className={styles.h3}><u>DIGICAMS!</u></h3>
+              <h3 className={styles.h3}><u>DIGITAL!</u></h3>
               <p className={styles.p}><i>"Indisposible"</i> Cameras = Infinite Possibilities.</p>
             </div>
 

@@ -60,8 +60,8 @@ const HowItWorksButton = () => {
           <h3><i><u>CAM</u></i></h3>
           <h2> <i>CATERING</i></h2>
           <p className="hiw-subtext">
-          <br /><br />
-            Explore our <i><u>one-of-a-kind</u></i> event photo & video experience + <i><u>how it works.</u></i> <br />
+          <br />
+            Explore our <i><u>one-of-a-kind</u></i> event photo & video experience and learn about <i><u>how it works.</u></i> <br />
             {/* Every guest sees the night differently... we let them take the lead. */}
           </p>
           <span className="arrow">→</span>
@@ -72,19 +72,19 @@ const HowItWorksButton = () => {
       {expanded && (
         <div className="hiw-card hiw-expanded" ref={cardRef}>
           <div className="hiw-overflow-title">
-            <h1><i>HOW</i> IT WORKS</h1>
+            <h1><i>What</i> Is <br /><i><u>Camera Catering?</u></i></h1>
           </div>
 
           <div className="hiw-expanded-content">
             <p className="intro-paragraph">
-            Every guest sees the 
+            <i>Every guest sees the 
             night differently. 
             We make sure those 
             perspectives don't 
-            get lost!
+            get lost!</i>
             </p>
 
-            <h6>We set the stage:</h6>
+            <h6>WE BRING THE CAMERAS. <br/>YOU DO THE REST.</h6>
 
             <img className="hiw-overflow-svg" src="/assets/camera-icon12.svg" alt="Camera Icon" />
 
@@ -98,24 +98,24 @@ const HowItWorksButton = () => {
                 </span>
               </li> */}
               <li>
-                <span className="emoji">🤩</span>
-                <i>Vintage Video &amp; Digital Cameras</i><br />
+                <span className="emoji">1)</span>
+                <i>Digital, Film, VHS &amp; Instat Print Cameras</i><br />
                 <span className="li-desc">
-                <p1>Guests can snap candid, staged, story-driven shots from every angle. No phones,
-                no filters-just tangible, real-time memories in their hands with absolute control and absolutley no limits.</p1>
+                <p1>We bring anywhere form 1-50 classic cameras to your event. Teh goal is to guve your guests a hands-on experience that cover the full scope of photography and video.
+                  We set the stage for them to snap, pass, and share the cameras as they see fit, and become the arbiters of the story that is your event.</p1>
                 </span>
               </li>
               <li>
-                <span className="emoji">📷</span>
-                <i>Cam-Tenders as Facilitators</i><br />
+                <span className="emoji">2)</span>
+                <i>Cam-Tenders + The Camera Bar</i><br />
                 <span className="li-desc">
-                <p1>The Full Experience: Our "Cam-Tenders" distribute and rotate a variety of retro camcorders, 
-                digital point-and-shoots, and film cameras for a full spectrum of event coverage. We aren't just dropping off gear; we're igniting the energy, breaking the ice, and keeping the 
-                cameras in circulation.</p1>
+                <p1>The Full Experience: Our "Cam-Tenders" and our "Camera Bar" are there to help guide your guests on their journey for a creative experience.
+                They aren't just handing out gear and props; they're igniting the energy, 
+                breaking the ice, and keeping the cameras in motion. They aren't photographers, they are your guests' co-conspirators, directors, and influencers whom aim to inspire creativity through their passion for photography and video.</p1>
                 </span>
               </li>
               <li>
-                <span className="emoji">☎️</span>
+                <span className="emoji">3)</span>
                 <i>Get Into Character</i><br />
                 <span className="li-desc">
                 <p1>Everyone loves playing with props. We bring a variety of props, accessories, and costumes to help guests tell their story and make it their own.</p1>
@@ -124,11 +124,11 @@ const HowItWorksButton = () => {
             </ul>
 
             <div className="hiw-experience">
-              <p>From the moment the cameras hit their hands, guests are documenting their own experience 
+              <p><i>From the moment the cameras hit their hands, guests are documenting their own experience 
                   from inside the action, not watching from the sidelines.
                   <br/><br/>
                   After the event, we digitize everything, giving hosts and guests a full archive of the night. 
-                  We make sure those memories stay with the people who made them, not just the host.</p>
+                  We make sure those memories stay with the people who made them for good.</i></p>
               
             </div>
           </div>

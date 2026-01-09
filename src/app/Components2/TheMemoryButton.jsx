@@ -40,10 +40,9 @@ const TheMemoryButton = () => {
       {/* DEFAULT (256×256) */}
       {!expanded && (
         <div className="memory-card memory-default">
-          <h6>WHAT <i>YOU</i> GET...</h6>
+          <h3>MORE</h3><h2> SERVICES.</h2>
           <p className="memory-subtext">
-          You get:<br/><br /><br />
-          <i> The Complete Story.</i> 
+          We are your one-stop-shop for all <i>camera-based</i> services <u>your event needs.</u><br/><br /><br />
           </p>
           <span className="arrow">→</span>
         </div>
@@ -53,13 +52,12 @@ const TheMemoryButton = () => {
       {expanded && (
         <div className="memory-card memory-expanded">
           <div className="memory-overflow-title">
-            <h1><i>WHAT</i> YOU GET</h1>
+            <h1><i>OTHER</i> SERVICES.</h1>
           </div>
 
           <div className="memory-expanded-content">
             <p className="intro-paragraph">
-            What we deliver isn't just content—it's a time capsule. A fragmented, beautiful, guest-driven 
-            archive of the night, built in real time and delivered while the energy is still fresh.
+            What we deliver isn't just content—it's a time capsule. By having our hands on everything photography and video related, we offer 100% personalized solutions for your event.
             </p>
 
             <h6>YOU CAN EXPECT:</h6>
@@ -68,12 +66,12 @@ const TheMemoryButton = () => {
 
             <ul className="memory-bullets">
               <li>
-                <span className="emoji">✔️</span>
-                <i>A (Literally) Infinite Number of Moments </i><br />
+                <span className="emoji">1)</span>
+                <i>CAMERA CATERING: </i><br />
                 <span className="li-desc">
                   <p1>With dozens of cameras in play, every pocket of the event gets documented, 
                   from the dance floor chaos to the whispered side conversations. Details matter, and now you can capture them with no limits.
-                  We never cap the number of photos or videos, so you can capture every moment, every angle, every interaction.</p1>
+                  </p1>
                 </span>
               </li>
               {/* <li>
@@ -85,31 +83,47 @@ const TheMemoryButton = () => {
                 </span>
               </li> */}
               <li>
-                <span className="emoji">📤</span>
-                <i>Rapid Delivery (Nostalgia Hits Quick) </i><br />
+                <span className="emoji">2)</span>
+                <i>BOOTH RENTALS: </i><br />
                 <span className="li-desc">
-                <p1>Every photo and video, gets sorted, refined, and sent out within 12-36 hours—not just to 
-                the host, but directly to the guests who lived it. </p1>
+                <p1>We offer a variety of booth rentals that are perfect for your event. We offer photo booths, video booths, and phone booths, that are each fully customizable and tailored to your event.</p1>
                 </span>
               </li>
               <li>
-                <span className="emoji">🎞️</span>
-                <i>A Fully Curated Recap </i><br />
+                <span className="emoji">3)</span>
+                <i>PHOTOGRAPHY & VIDEOGRAPHY: </i><br />
                 <span className="li-desc">
-                <p1> Each package comes with a cinematic nostalgia edit, because sometimes, the 
-                    best way to relive a night is to see it like it's already a throwback.
-                    </p1>
+                <p1> Of course, we offer photography and videography services to capture your event straight from the hands of industry professionals. They fit nicely alongside our camera catering services and booth rentals to fill in all the gaps.
+                </p1>
+                </span>
+              </li>
+              <li>
+                <span className="emoji">4)</span>
+                <i>CONTENT EDITING: </i><br />
+                <span className="li-desc">
+                <p1> No one wants to see a raw, unedited video or photo. We offer a variety of content editing services to help you get the best out of your event from instagram reels and carousels to longform films and videos. We believe in the power of storytelling and want to help you tell your story in the best way possible.
+                </p1>
+                </span>
+              </li>
+              <li>
+                <span className="emoji">5)</span>
+                <i>QR-CODES: </i><br />
+                <span className="li-desc">
+                <p1> The only thing we're missing is a way to get the photos and videos from your guests phones. We offer QR-Code solutions and digital storage so that guests can scan and upload their photos and videos to a central location for easy sharing. This makes sure that not a single moment is lost.
+                </p1>
                 </span>
               </li>
             </ul>
 
             <div className="memory-experience">
-              <p> With a mix of unedited, behind-the-scenes footage and professionally curated content, delivered in full, your
+              {/* <p> With a mix of unedited, behind-the-scenes footage and professionally curated content, delivered in full, your
                   event becomes a story. 
                   Every photo and video is reviewed, cleaned up, and sent off—so you don't just get a data dump, 
-                  you get the fully curated timeline without any missing pieces. 
-                  <br/><br/> When you invite Camera Catering to your event, you don't just get a highlight reel of the night, you get <i><u>everything.</u></i> Every perspective, every 
+                  you get the fully curated timeline without any missing pieces.  */}
+                  <p>
+                  <i>When you invite Camera Catering to your event, you don't just get a highlight reel of the night, you get <i><u>everything.</u></i> Every perspective, every 
                   interaction, every forgotten moment—captured, relived, and saved. You get <i><u>the complete story.</u></i>
+                  </i>
                   </p>
               
             </div>

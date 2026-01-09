@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import HowItWorksButton from './HowItWorksButton';
 import './MainGrid.css';
 import TheInstantButton from './TheInstantButton';
@@ -26,66 +26,150 @@ function seededRandom(seed) {
 // New stacked photo cards component
 const StackedPhotoCards = () => {
   const stackRef = useRef(null);
+  const [clickedCardIndex, setClickedCardIndex] = useState(null);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const cardWidth = 300;
   const cardHeight = 337;
   const leftPad = 80;
-  const cardCount = 10;
-  const totalImages = 58; // img31.JPG to img58.JPG
+  const centerCardCount = 10;
+  const sideCardCount = 6;
+  const totalImages = 58; // img1.JPG to img58.JPG
 
-  // Generate the pool of image paths for 31-58 only
-  const allImages = [];
-  for (let i = 31; i <= totalImages; i++) {
-    allImages.push(`/assets/img${i}.JPG`);
-  }
-
-  // Shuffle the pool and pick the first 10 unique images
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+  // Memoize card generation so it only happens once on mount
+  const { allCards, totalHeight } = useMemo(() => {
+    // Generate the pool of image paths for all images 1-58
+    const allImages = [];
+    for (let i = 1; i <= totalImages; i++) {
+      allImages.push(`/assets/img${i}.JPG`);
     }
-    return array;
-  }
-  const images = shuffle([...allImages]).slice(0, cardCount);
 
-  // Build the cards array with rotation, offset, and top position
-  let topSum = 0;
-  const cards = images.map((src, i) => {
-    const rot = Math.random() * 48 - 24; // -24 to 24 deg
-    const hOffset = i === 0 ? -120 : Math.random() * 240 - 120; // first image always leftmost
-    const vOffset = 140 + Math.random() * 100; // 140 to 240 px
-    const top = topSum;
-    topSum += vOffset;
-    return { src, rot, hOffset, top };
-  });
+    // Shuffle the pool
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+    const shuffledImages = shuffle([...allImages]);
+    
+    // Pick images for center stack and side cards
+    const centerImages = shuffledImages.slice(0, centerCardCount);
+    const sideImages = shuffledImages.slice(centerCardCount, centerCardCount + sideCardCount);
+
+    // Build the center cards array with rotation, offset, and top position
+    let topSum = 0;
+    const centerCards = centerImages.map((src, i) => {
+      const rot = Math.random() * 48 - 24; // -24 to 24 deg
+      const hOffset = i === 0 ? -60 : Math.random() * 120 - 60; // first image always leftmost, reduced gap by 50%
+      const vOffset = 140 + Math.random() * 100; // 140 to 240 px
+      const top = topSum;
+      topSum += vOffset;
+      return { src, rot, hOffset, top, side: 'center' };
+    });
+
+    // Calculate total height for side card positioning
+    const calculatedTotalHeight = topSum + cardHeight;
+
+    // Build the side cards array - randomly positioned on left and right
+    const sideCards = sideImages.map((src, i) => {
+      const rot = Math.random() * 48 - 24; // -24 to 24 deg
+      // Randomly assign to left or right side
+      const side = Math.random() < 0.5 ? 'left' : 'right';
+      // Position horizontally: left side goes negative, right side goes positive (reduced gap by 50%)
+      const hOffset = side === 'left' 
+        ? -(cardWidth + 25 + Math.random() * 50) // -325 to -375px (left of stack)
+        : (150 + Math.random() * 50); // 150 to 200px (right of stack)
+      // Random vertical position along the stack height
+      const top = Math.random() * (calculatedTotalHeight - cardHeight);
+      return { src, rot, hOffset, top, side };
+    });
+
+    // Combine all cards
+    const combinedCards = [...centerCards, ...sideCards];
+    
+    return { allCards: combinedCards, totalHeight: calculatedTotalHeight };
+  }, []); // Empty dependency array means this only runs once on mount
+
+  const handleCardClick = (index) => {
+    // On mobile, click toggles the card
+    if (isMobile) {
+      setClickedCardIndex(index === clickedCardIndex ? null : index);
+    }
+  };
+
+  const handleCardHover = (index) => {
+    // On desktop, hover brings card to front
+    if (!isMobile) {
+      setHoveredCardIndex(index);
+    }
+  };
+
+  const handleCardLeave = () => {
+    // On desktop, remove hover state
+    if (!isMobile) {
+      setHoveredCardIndex(null);
+    }
+  };
 
   return (
-    <div ref={stackRef} className="stacked-photo-cards" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'relative', minHeight: `${cardHeight + 200 * (cardCount - 1)}px`, paddingLeft: `${leftPad}px` }}>
-      {cards.map((card, i) => (
-        <div
-          className="item stacked-photo-card"
-          key={i}
-          style={{
-            position: 'absolute',
-            width: `${cardWidth}px`,
-            height: `${cardHeight}px`,
-            top: `${card.top}px`,
-            left: `calc(${leftPad}px + ${card.hOffset}px)`,
-            transform: `rotate(${card.rot}deg)`,
-            zIndex: 10 + i,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-            userSelect: 'none',
-          }}
-        >
-          {/* <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} loading="lazy" /> */}
-          <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} />
-
-        </div>
-      ))}
+    <div ref={stackRef} className="stacked-photo-cards" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'relative', minHeight: `${totalHeight}px`, paddingLeft: `${leftPad}px` }}>
+      {allCards.map((card, i) => {
+        const isClicked = clickedCardIndex === i;
+        const isHovered = hoveredCardIndex === i;
+        const baseZIndex = card.side === 'center' ? 10 + i : 5 + i;
+        // On mobile: use click, on desktop: use hover
+        const zIndex = isMobile 
+          ? (isClicked ? 1000 : baseZIndex)
+          : (isHovered ? 1000 : baseZIndex);
+        
+        // Smooth scale and translateZ for hover effect (desktop only)
+        const isActive = isMobile ? isClicked : isHovered;
+        const scale = isActive ? 1.05 : 1;
+        const translateZ = isActive ? 20 : 0;
+        const transform = `rotate(${card.rot}deg) scale(${scale}) translateZ(${translateZ}px)`;
+        
+        return (
+          <div
+            className="item stacked-photo-card"
+            key={i}
+            onClick={() => handleCardClick(i)}
+            onMouseEnter={() => handleCardHover(i)}
+            onMouseLeave={handleCardLeave}
+            style={{
+              position: 'absolute',
+              width: `${cardWidth}px`,
+              height: `${cardHeight}px`,
+              top: `${card.top}px`,
+              left: `calc(${leftPad}px + ${card.hOffset}px)`,
+              transform: transform,
+              zIndex: zIndex,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'auto',
+              userSelect: 'none',
+              cursor: 'pointer',
+              transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s',
+              willChange: 'transform',
+            }}
+          >
+            <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} />
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -104,8 +188,8 @@ const MainGrid = () => {
       </div>
       <div className="small-buttons-row">
         <TheCameraBarButton />
+        <TheInstantButton />
         <WhyNowButton />
-        {/* <TheInstantButton /> */}
         {/* <TheMemoryButton /> */}
       </div>
       <div className="small-buttons-row">{/* <WhyNowButton /> */}</div>
@@ -122,6 +206,7 @@ const MainGrid = () => {
         <TestimonialMed />
       </div>
       <div className="testimonial-big-row"><TestimonialBig /></div>
+      <div className="testimonial-big-row"><TestimonialBig videoSrc="/assets/The Cousins_1.mp4" /></div>
       {/* IMAGINE-THIS SVG overlayed at the start of the photo cards stack */}
       {/* Photo stack in its own left column cell */}
       <div className="photo-stack-col" style={{ gridColumn: 1, position: 'relative' }}>

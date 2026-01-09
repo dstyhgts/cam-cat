@@ -40,9 +40,9 @@ const NostalgiaPackButton = () => {
       {/* 3 icons animate in on hover (only if not expanded) */}
       {!expanded && (
         <>
-          <img className={`${styles.star} ${styles.star1}`} src="/assets/camera-icon10.svg" alt="Camera Icon 11" style={{ width: '96px', height: '96px' }} />
-          <img className={`${styles.star} ${styles.star2}`} src="/assets/camera-icon12.svg" alt="Camera Icon 12" style={{ width: '96px', height: '96px' }} />
-          <img className={`${styles.star} ${styles.star3}`} src="/assets/camera-icon13.svg" alt="Camera Icon 13" style={{ width: '96px', height: '96px' }} />
+          <img className={`${styles.star} ${styles.star1}`} src="/assets/camera-icon11.svg" alt="Camera Icon 11" style={{ width: '96px', height: '96px' }} />
+          {/* <img className={`${styles.star} ${styles.star2}`} src="/assets/camera-icon14.svg" alt="Camera Icon 12" style={{ width: '96px', height: '96px' }} /> */}
+          <img className={`${styles.star} ${styles.star3}`} src="/assets/camera-icon15.svg" alt="Camera Icon 13" style={{ width: '96px', height: '96px' }} />
         </>
       )}
 
@@ -63,7 +63,7 @@ const NostalgiaPackButton = () => {
             <span className={styles.packageTitleWord}>PACKAGE</span>
           </h2>
           <p className={styles.subtext}>
-          Handheld Photobooths ---- 10 Fujifilm Instax cameras, with a built-in printers.
+          Handheld Photobooths ---- 12 Fujifilm Instax cameras, with a built-in printers.
           <p className={styles.priceRight}><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
