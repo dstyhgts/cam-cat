@@ -55,17 +55,19 @@ const StackedPhotoCards = () => {
       allImages.push(`/assets/img${i}.JPG`);
     }
 
-    // Shuffle the pool
+    // Shuffle the pool using Fisher-Yates algorithm for true randomness
+    // This ensures all images from img1 to img58 have equal probability of being selected
     function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
+      const shuffled = [...array]; // Create a copy to avoid mutating the original
+      for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
-      return array;
+      return shuffled;
     }
-    const shuffledImages = shuffle([...allImages]);
+    const shuffledImages = shuffle(allImages);
     
-    // Pick images for center stack and side cards
+    // Randomly pick images for center stack and side cards from the shuffled pool
     const centerImages = shuffledImages.slice(0, centerCardCount);
     const sideImages = shuffledImages.slice(centerCardCount, centerCardCount + sideCardCount);
 
@@ -105,13 +107,17 @@ const StackedPhotoCards = () => {
 
   const handleCardClick = (index) => {
     // On mobile, click toggles the card
+    // On desktop, click sets the card to front (replaces previous clicked card)
     if (isMobile) {
+      setClickedCardIndex(index === clickedCardIndex ? null : index);
+    } else {
+      // Desktop: set clicked card (or deselect if clicking the same card)
       setClickedCardIndex(index === clickedCardIndex ? null : index);
     }
   };
 
   const handleCardHover = (index) => {
-    // On desktop, hover brings card to front
+    // On desktop, hover brings card to front (but clicked card will still be on top)
     if (!isMobile) {
       setHoveredCardIndex(index);
     }
@@ -130,13 +136,13 @@ const StackedPhotoCards = () => {
         const isClicked = clickedCardIndex === i;
         const isHovered = hoveredCardIndex === i;
         const baseZIndex = card.side === 'center' ? 10 + i : 5 + i;
-        // On mobile: use click, on desktop: use hover
-        const zIndex = isMobile 
-          ? (isClicked ? 1000 : baseZIndex)
-          : (isHovered ? 1000 : baseZIndex);
+        // Priority: clicked > hovered > base
+        const zIndex = isClicked ? 1000 : (isHovered ? 1000 : baseZIndex);
         
-        // Smooth scale and translateZ for hover effect (desktop only)
-        const isActive = isMobile ? isClicked : isHovered;
+        // Smooth scale and translateZ for active effect
+        // On desktop: clicked card or hovered card
+        // On mobile: clicked card only
+        const isActive = isClicked || (!isMobile && isHovered);
         const scale = isActive ? 1.05 : 1;
         const translateZ = isActive ? 20 : 0;
         const transform = `rotate(${card.rot}deg) scale(${scale}) translateZ(${translateZ}px)`;
@@ -216,12 +222,12 @@ const MainGrid = () => {
         <div style={{ position: 'relative' }}>
           <StackedPhotoCards />
           {/* GET CAMERAS button at the bottom of the photo stack, overlapping last photo */}
-          <div className="order-btn-photo-stack" style={{ position: 'absolute', left: '50%', bottom: '-30px', transform: 'translateX(-50%) rotate(3deg)', zIndex: 100, width: 'max-content', pointerEvents: 'auto' }}>
+          <div className="order-btn-photo-stack" style={{ position: 'absolute', left: '50%', bottom: '-30px', transform: 'translateX(-50%) rotate(3deg)', zIndex: 10000, width: 'max-content', pointerEvents: 'auto' }}>
             <PopupButton
               id="yyPNXkPK"
               className="order-button"
               size={80}
-              style={{ width: '100%', zIndex: 100, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
+              style={{ width: '100%', zIndex: 10000, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
             >
               GET CAMERAS!
             </PopupButton>
@@ -243,7 +249,7 @@ const MainGrid = () => {
           position: absolute;
           top: 0;
           right: -200px;
-          z-index: 200;
+          z-index: 10000;
           display: block;
         }
           
@@ -256,11 +262,11 @@ const MainGrid = () => {
             z-index: 200;
           }
              .imagine-this-overlay {
-            left: 50%;
-            right: 200px;
-            transform: translateX(150px);
             top: 0;
-            z-index: 200;
+            right: -200px;
+            left: auto;
+            transform: none;
+            z-index: 10000;
           }
           .order-btn-photo-stack {
             left: 50% !important;
@@ -268,6 +274,7 @@ const MainGrid = () => {
             transform: translateX(-50%) rotate(3deg) !important;
             width: max-content !important;
             margin: 2rem 0 0 0 !important;
+            z-index: 10000 !important;
           }
           
 
