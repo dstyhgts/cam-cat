@@ -83,8 +83,8 @@ const NostalgiaPackButton = () => {
           <div className={`${styles.expandedCard} ${styles.leftCard}`}>
             {/* Overhanging title box */}
             <div className={styles.overflowTitle}>
-              <h3 className={styles.h3}><u>DIGITAL!</u></h3>
-              <p className={styles.p}><i>"Indisposible"</i> Cameras = Infinite Possibilities.</p>
+              <h3 className={styles.h3}><u>DIGI.</u></h3>
+              <p className={styles.p}><i>"Indisposible"</i> Cameras = Infinite Photos.</p>
             </div>
 
             {/* Inner frame for text content */}

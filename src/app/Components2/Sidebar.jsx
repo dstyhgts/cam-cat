@@ -257,7 +257,7 @@ export default function Sidebar() {
           height: 150px;
           margin: 0.75em;
           padding: 1em;
-          border-radius: 0.5em;
+          border-radius: 30px;
           background: #FFD85D;
           display: flex;
           justify-content: space-between;
@@ -292,7 +292,7 @@ export default function Sidebar() {
           flex: 1;
           background: #8c84ff;
           color: #fff;
-          border-radius: 0.5em;
+          border-radius: 30px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
