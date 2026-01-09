@@ -15,7 +15,6 @@ const LandingGallery = ({ className = "", ...props }) => {
   const galleryRef = useRef(null);
   const titleRef = useRef(null);
   const subTitleRef = useRef(null); // subheading ref
-  const dragMeRef = useRef(null); // ref for the SVG
   const clickMeRef = useRef(null); // ref for the CLICK-ME SVG
 
   useEffect(() => {
@@ -195,6 +194,9 @@ const LandingGallery = ({ className = "", ...props }) => {
           img.style.display = 'block';
           img.style.background = 'none';
           img.style.backgroundColor = 'transparent';
+          // Add drop-shadow filter inline to ensure it's applied
+          img.style.filter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
+          img.style.webkitFilter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
         } else {
           img.src = `/assets/img${index}.jpg`;
           img.alt = `Image ${index}`;
@@ -221,89 +223,7 @@ const LandingGallery = ({ className = "", ...props }) => {
           }
         }
 
-        // Only enable drag events on desktop (not mobile)
-        const isDesktop = window.innerWidth >= 900;
-        if (isDesktop && !isVerySmallScreen) {
-          // Drag events
-          item.addEventListener('mousedown', (e) => {
-            galleryBox = gallery.getBoundingClientRect();
-            const rect = item.getBoundingClientRect();
-            dragOffset.x = e.clientX - rect.left;
-            dragOffset.y = e.clientY - rect.top;
-            dragStart.x = e.clientX;
-            dragStart.y = e.clientY;
-            dragStartGallery.x = rect.left - galleryBox.left;
-            dragStartGallery.y = rect.top - galleryBox.top;
-            draggingItem = item;
-            isDragging = false;
-            dragTimeout = setTimeout(() => {
-              if (draggingItem && !isDragging) {
-                isDragging = true;
-                item.classList.add('dragged');
-                item.style.transform = '';
-                item.style.position = 'absolute';
-                item.style.left = `${dragStartGallery.x}px`;
-                item.style.top = `${dragStartGallery.y}px`;
-                item.style.zIndex = 1000;
-              }
-            }, 120);
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-          });
-          item.addEventListener('mousemove', (e) => {
-            if (!draggingItem || isDragging) return;
-            if (Math.abs(e.clientX - dragStart.x) > 3 || Math.abs(e.clientY - dragStart.y) > 3) {
-              clearTimeout(dragTimeout);
-              isDragging = true;
-              item.classList.add('dragged');
-              item.style.transform = '';
-              item.style.position = 'absolute';
-              item.style.left = `${dragStartGallery.x}px`;
-              item.style.top = `${dragStartGallery.y}px`;
-              item.style.zIndex = 1000;
-            }
-          });
-          item.addEventListener('touchstart', (e) => {
-            galleryBox = gallery.getBoundingClientRect();
-            const rect = item.getBoundingClientRect();
-            const touch = e.touches[0];
-            dragOffset.x = touch.clientX - rect.left;
-            dragOffset.y = touch.clientY - rect.top;
-            dragStart.x = touch.clientX;
-            dragStart.y = touch.clientY;
-            dragStartGallery.x = rect.left - galleryBox.left;
-            dragStartGallery.y = rect.top - galleryBox.top;
-            draggingItem = item;
-            isDragging = false;
-            dragTimeout = setTimeout(() => {
-              if (draggingItem && !isDragging) {
-                isDragging = true;
-                item.classList.add('dragged');
-                item.style.transform = '';
-                item.style.position = 'absolute';
-                item.style.left = `${dragStartGallery.x}px`;
-                item.style.top = `${dragStartGallery.y}px`;
-                item.style.zIndex = 1000;
-              }
-            }, 120);
-            document.addEventListener('touchmove', onMouseMove);
-            document.addEventListener('touchend', onMouseUp);
-          });
-          item.addEventListener('touchmove', (e) => {
-            if (!draggingItem || isDragging) return;
-            const touch = e.touches[0];
-            if (Math.abs(touch.clientX - dragStart.x) > 3 || Math.abs(touch.clientY - dragStart.y) > 3) {
-              clearTimeout(dragTimeout);
-              isDragging = true;
-              item.classList.add('dragged');
-              item.style.transform = '';
-              item.style.position = 'absolute';
-              item.style.left = `${dragStartGallery.x}px`;
-              item.style.top = `${dragStartGallery.y}px`;
-              item.style.zIndex = 1000;
-            }
-          });
-        }
+        // Drag functionality removed - no drag events attached
       });
     };
 
@@ -327,9 +247,9 @@ const LandingGallery = ({ className = "", ...props }) => {
       // Center for desktop, right-half overflow for mobile (minus 100px, and shift for <450px)
       let centerX;
       if (isMobile && width < 450) {
-        centerX = width * 1.25; // Only 1/4 of the leftmost side is visible
+        centerX = width * 1.25 - 50; // Only 1/4 of the leftmost side is visible, shifted 50px left
       } else if (isMobile) {
-        centerX = width + radius / 2 - 100;
+        centerX = width + radius / 2 - 100 - 50; // Shifted 50px left
       } else {
         centerX = width / 2;
       }
@@ -380,13 +300,11 @@ const LandingGallery = ({ className = "", ...props }) => {
         const baseRotation = (angle * 180) / Math.PI + 90;
         const finalRotation = USE_DIGICAM_VERSION ? baseRotation + 90 : baseRotation;
         gsap.set(item, {
-          left: `${x}px`,
-          top: `${y}px`,
+          x: x,
+          y: y,
           rotation: finalRotation,
-          transform: "translateY(0%)",
-          x: 0,
-          y: 0,
           scale: 1,
+          force3D: true, // Enable hardware acceleration for smoother animation
         });
         item.dataset.originalRotation = finalRotation;
       });
@@ -400,30 +318,92 @@ const LandingGallery = ({ className = "", ...props }) => {
       }
     };
 
-    // Continuous rotation animation for digicam version (mobile only)
+    // Continuous rotation animation for digicam version (both mobile and desktop)
     const startRotationAnimation = () => {
       if (!USE_DIGICAM_VERSION) return;
       
-      // Only start rotation on mobile (< 900px)
-      const isMobile = window.innerWidth < 900;
-      if (!isMobile) return;
+      // Use GSAP ticker for smoother animation
+      const items = container.querySelectorAll(".item");
+      if (!items.length) return;
       
-      const rotate = () => {
-        // Check if still mobile (in case of resize)
-        if (window.innerWidth >= 900) {
-          stopRotationAnimation();
-          return;
+      const updatePositions = () => {
+        const width = container.offsetWidth;
+        const height = container.offsetHeight;
+        const isMobile = width < 900;
+        
+        // Calculate radius with proper increases for digicam version
+        const baseRadius = isMobile ? width * 0.35 : 210;
+        let radius = baseRadius * 1.1; // 10% increase for digicam
+        // Additional 15% increase for desktop digicam version
+        if (!isMobile) {
+          radius = radius * 1.15;
         }
-        // Slowly rotate (1 full rotation every ~40 seconds at 60fps)
-        // 2π / (40 * 60) ≈ 0.00262 per frame
-        rotationOffset += 0.00262;
+        
+        // Calculate center position
+        let centerX;
+        if (isMobile && width < 450) {
+          centerX = width * 1.25 - 50; // Shifted 50px left
+        } else if (isMobile) {
+          centerX = width + radius / 2 - 100 - 50; // Shifted 50px left
+        } else {
+          centerX = width / 2;
+        }
+        const centerY = height / 2;
+        
+        // Animation speed: 1 full rotation every ~40 seconds
+        const rotationSpeed = (2 * Math.PI) / (40 * 60); // radians per frame at 60fps
+        
+        rotationOffset += rotationSpeed;
         if (rotationOffset >= 2 * Math.PI) {
           rotationOffset = 0;
         }
-        setCircularLayout(true);
-        animationId = requestAnimationFrame(rotate);
+        
+        // Batch update all items using GSAP for smooth animation
+        items.forEach((item, index) => {
+          const storedBaseAngle = item.dataset.baseAngle;
+          const angleIncrement = (2 * Math.PI) / items.length;
+          const baseAngle = storedBaseAngle ? parseFloat(storedBaseAngle) : (index * angleIncrement);
+          const angle = baseAngle + rotationOffset;
+          
+          // Get item dimensions
+          const img = item.querySelector('img');
+          let itemWidth, itemHeight;
+          if (img && img.naturalWidth && img.naturalHeight) {
+            const aspectRatio = img.naturalWidth / img.naturalHeight;
+            const maxW = 200;
+            const maxH = 225;
+            if (aspectRatio > 1) {
+              itemWidth = Math.min(maxW, img.naturalWidth);
+              itemHeight = itemWidth / aspectRatio;
+            } else {
+              itemHeight = Math.min(maxH, img.naturalHeight);
+              itemWidth = itemHeight * aspectRatio;
+            }
+          } else {
+            itemWidth = item.offsetWidth || 200;
+            itemHeight = item.offsetHeight || 225;
+          }
+          
+          const x = centerX + radius * Math.cos(angle) - itemWidth / 2;
+          const y = centerY + radius * Math.sin(angle) - itemHeight / 2;
+          const finalRotation = (angle * 180) / Math.PI + 90 + 90; // +90 for digicam version
+          
+          // Use GSAP for smooth transforms
+          // GSAP will handle conflicts with hover animations automatically
+          gsap.set(item, {
+            x: x,
+            y: y,
+            rotation: finalRotation,
+            force3D: true, // Enable hardware acceleration
+          });
+          // Update stored rotation for hover effects
+          item.dataset.originalRotation = finalRotation;
+        });
+        
+        animationId = requestAnimationFrame(updatePositions);
       };
-      rotate();
+      
+      updatePositions();
     };
     
     const stopRotationAnimation = () => {
@@ -437,13 +417,12 @@ const LandingGallery = ({ className = "", ...props }) => {
     const initGallery = () => {
       createItems();
       setCircularLayout();
-      // Start rotation animation for digicam version (mobile only)
+      // Start rotation animation for digicam version (both mobile and desktop)
       if (USE_DIGICAM_VERSION) {
         startRotationAnimation();
       }
-      // Update SVG positions after initial layout
+      // Update CLICK-ME position after initial layout
       setTimeout(() => {
-        if (typeof positionDragMe !== 'undefined') positionDragMe();
         if (typeof positionClickMe !== 'undefined') positionClickMe();
       }, 150);
     };
@@ -455,61 +434,14 @@ const LandingGallery = ({ className = "", ...props }) => {
       rotationOffset = 0; // Reset rotation offset on resize
       createItems();
       setCircularLayout();
-      // Restart rotation animation only if mobile and digicam version
+      // Restart rotation animation for digicam version (both mobile and desktop)
       if (USE_DIGICAM_VERSION) {
         startRotationAnimation();
       }
     };
     window.addEventListener('resize', handleResize);
 
-    // After setCircularLayout, position the drag-me SVG
-    const positionDragMe = () => {
-      if (!galleryRef.current || !dragMeRef.current) return;
-      const container = containerRef.current;
-      const width = container.offsetWidth;
-      const height = container.offsetHeight;
-      const isMobile = width < 900;
-      if (isMobile) {
-        dragMeRef.current.style.display = 'none';
-        return;
-      } else {
-        dragMeRef.current.style.display = 'block';
-      }
-      // Use the same logic as setCircularLayout (including 10% radius increase for digicam)
-      const items = container.querySelectorAll('.item');
-      if (!items.length) return;
-      const numberOfItems = items.length;
-      const baseRadius = isMobile ? width * 0.35 : 210;
-      let radius = USE_DIGICAM_VERSION ? baseRadius * 1.1 : baseRadius;
-      // Additional 15% increase for desktop digicam version
-      if (USE_DIGICAM_VERSION && !isMobile) {
-        radius = radius * 1.15;
-      }
-      let centerX;
-      if (width < 900 && width < 450) {
-        centerX = width * 1.25;
-      } else if (width < 900) {
-        centerX = width + radius / 2 - 100;
-      } else {
-        centerX = width / 2;
-      }
-      const centerY = height / 2;
-      // Place SVG just outside the circle's bottom right
-      const offset = 90; // px outside the circle, increased for red space
-      const svg = dragMeRef.current;
-      // Calculate a point more to the right (60deg)
-      const angle = Math.PI / 3; // 60deg for more right
-      const svgX = centerX + radius * Math.cos(angle) + offset + 40; // manually move 75px right
-      const svgY = centerY + radius * Math.sin(angle) + offset;
-      svg.style.position = 'absolute';
-      svg.style.left = `${svgX}px`;
-      svg.style.top = `${svgY}px`;
-      svg.style.zIndex = 30;
-      svg.style.transform = 'rotate(30deg)';
-    };
-    // After layout, position the SVG
-    setTimeout(positionDragMe, 0);
-    window.addEventListener('resize', positionDragMe);
+    // DRAG-ME SVG removed - no longer needed
 
     // Dynamically position the CLICK-ME SVG below the theme toggle
     const positionClickMe = () => {
@@ -532,10 +464,9 @@ const LandingGallery = ({ className = "", ...props }) => {
     positionClickMe();
     window.addEventListener('resize', positionClickMe);
     
-    // Update SVG positions after layout changes
+    // Update CLICK-ME position after layout changes
     const updateSvgPositions = () => {
       setTimeout(() => {
-        positionDragMe();
         positionClickMe();
       }, 50);
     };
@@ -546,7 +477,6 @@ const LandingGallery = ({ className = "", ...props }) => {
     return () => {
       stopRotationAnimation();
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('resize', positionDragMe);
       window.removeEventListener('resize', positionClickMe);
     };
   }, []);
@@ -565,10 +495,6 @@ const LandingGallery = ({ className = "", ...props }) => {
         </div>
         <div className="lg-gallery-wrapper" style={{position:'relative', width:'100%', height:'100%'}}>
           <div className="lg-gallery" ref={galleryRef}></div>
-          {/* DRAG-ME SVG, desktop only, positioned dynamically */}
-          <div ref={dragMeRef} style={{width:'90px', height:'auto', display:'none', pointerEvents:'none'}}>
-            <img src="/assets/DRAG-ME.svg" alt="Drag me" style={{ width: '100%', height: 'auto' }} />
-          </div>
         </div>
       </div>
       <style jsx>{`
@@ -632,6 +558,10 @@ const LandingGallery = ({ className = "", ...props }) => {
           height: auto !important;
           overflow: visible !important;
           box-shadow: none !important;
+          will-change: transform; /* Optimize for animation */
+          transform: translateZ(0); /* Force hardware acceleration */
+          /* Ensure filter is preserved during GSAP transforms */
+          filter: none !important;
         }
         .item.digicam-item img {
           background: none !important;
@@ -644,9 +574,14 @@ const LandingGallery = ({ className = "", ...props }) => {
           object-fit: contain !important;
           display: block !important;
           /* Use drop-shadow filter to only shadow visible content, not transparent areas */
-          filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1)) !important;
+          /* drop-shadow respects alpha channel - only shadows non-transparent pixels */
+          /* Inline style takes precedence, but this ensures it's set in CSS as well */
+          filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important;
           box-shadow: none !important;
+          -webkit-filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important; /* Safari support */
           mix-blend-mode: normal !important;
+          /* Ensure filter persists through GSAP transforms */
+          will-change: transform, filter;
         }
         @media (max-width: 900px) {
           .drag-me-desktop {
