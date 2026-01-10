@@ -14,11 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
  * Adjust or add more <br/> as you like.
  */
 const fullText = `
-We aim to make your event production easier to manage and more engaging for your guests. <br/> <br/> Need a paparazzi-welcome for a brand activation?
-Done. Faux security-cam footage of your wedding? Easy. POV sunglasses, 360-degree videos, and instant-print cameras, <i> or anything else you imagine...?</i> We can do that.
+We aim to make your event production easier to manage and more engaging for your guests. <br/> <br/> Need a paparazzi-welcome for a <i>brand activation?</i>
+Done. Faux security-cam footage of your <i>wedding?</i> Easy. <i>POV sunglasses, 360-degree videos, and instant-print cameras</i> AND <u>EVERYTHING</u> <i>you can imagine...?</i> Yeah... We can do that.
  <br/> <br/> Our <i>team, of editors, photographers, and 
-filmmakers elevate weddings, baby showers, birthdays, brand activations, pop-ups, and fashion shows— turing your night into a movie.
- <br/> <br/> We know cameras. <br/> We also know the power of images and videos, and how they can be used to tell stories, create memories, and connect people.
+filmmakers elevate <i>weddings, <i>baby showers, <i>birthdays, <i>brand activations, <i>pop-ups, and <i>fashion shows</i>— turing your night into a movie.
+ <br/> <br/>  <br/> We know the power of images + videos, and how they can be used to tell better stories, create stronger memories, and connect us to the people in our lives. <br/> <br/><i><u>We know cameras.</u></i>
                                            
 `;
 

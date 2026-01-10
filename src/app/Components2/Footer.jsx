@@ -249,7 +249,7 @@ export default function Footer() {
           {/* <br />          <br />
           <a  target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>REACH US: </a>
           <br /> */}
-            <a href="https://instagram.com/camera.catering" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: "var(--text-secondary)" }}>INSTAGRAM</a>
+            <a href="https://instagram.com/camera.cater" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: "var(--text-secondary)" }}>INSTAGRAM</a>
             <a href="tel:8056783444" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: "var(--text-secondary)" }}>(805)678-3444</a>
             <a href="mailto:info@cameracatering.com?subject=Interested%20in%20Camera%20Catering!" target="_blank" rel="noopener noreferrer" className="footer-link footer-contact" style={{ color: "var(--text-secondary)" }}>info@camera<br/>catering.com</a><br />
             {/* <a href="https://yelp.com" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: theme === "dark" ? "#fff" : "#000" }}>YELP</a> */}
