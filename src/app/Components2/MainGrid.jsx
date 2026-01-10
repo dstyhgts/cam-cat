@@ -667,9 +667,9 @@ const MainGrid = () => {
           }
           .imagine-this-overlay {
             left: 50%;
-            right: 120px;
+            right: 130px;
             transform: translateX(120px);
-            top: 0;
+            top: -10px;
             z-index: 10000; /* Always above photo cards (max z-index: 1000) */
           }
         }
