@@ -126,7 +126,7 @@ export default function WelcomePopup({ delay = 1200000 }) {
               </div>
               
               <button type="submit" className={styles.submitButton}>
-                Get Started
+                Stay Connected!
               </button>
             </form>
           </>
