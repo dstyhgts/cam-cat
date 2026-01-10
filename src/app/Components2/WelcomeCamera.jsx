@@ -269,7 +269,7 @@ const WelcomeCamera = () => {
               size={80}
               style={{ width: '100%', zIndex: 10, position: 'relative', pointerEvents: 'auto', whiteSpace: 'nowrap', fontSize: '2.2rem' }}
             >
-              BOOK NOW!
+              RENT INSTAX!
             </PopupButton>
           </div>
           <style jsx global>{`
