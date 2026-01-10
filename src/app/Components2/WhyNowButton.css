@@ -74,12 +74,14 @@
 }
 
 /* Hover tilt if not expanded */
-.why-now-container:not(.expanded):hover .why-now-card {
+.why-now-container:not(.expanded):hover .why-now-card,
+.why-now-container:not(.expanded).scroll-in-view .why-now-card {
   transform: rotate(3deg);
   background-color: rgba(185,66,57, 0.9); /* 80% opacity on hover */
 
 }
-.why-now-container:not(.expanded):hover .why-now-background {
+.why-now-container:not(.expanded):hover .why-now-background,
+.why-now-container:not(.expanded).scroll-in-view .why-now-background {
   opacity: 1;
   transform: translate(15px, 15px) rotate(3deg);
 }

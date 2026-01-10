@@ -85,11 +85,12 @@ const StackedPhotoCards = () => {
     // Calculate total height for side card positioning
     const calculatedTotalHeight = topSum + cardHeight;
 
-    // Build the side cards array - randomly positioned on left and right
+    // Build the side cards array - evenly split between left and right
     const sideCards = sideImages.map((src, i) => {
       const rot = Math.random() * 48 - 24; // -24 to 24 deg
-      // Randomly assign to left or right side
-      const side = Math.random() < 0.5 ? 'left' : 'right';
+      // Split evenly: first half go to left, second half go to right
+      const halfCount = Math.floor(sideCardCount / 2);
+      const side = i < halfCount ? 'left' : 'right';
       // Position horizontally: left side goes negative, right side goes positive (reduced gap by 50%)
       const hOffset = side === 'left' 
         ? -(cardWidth + 25 + Math.random() * 50) // -325 to -375px (left of stack)
@@ -181,6 +182,295 @@ const StackedPhotoCards = () => {
 };
 
 const MainGrid = () => {
+  // Refs for all button components that should trigger hover on scroll
+  const howItWorksRef = useRef(null);
+  const memoryButtonRef = useRef(null);
+  const cameraBarButtonRef = useRef(null);
+  const instantButtonRef = useRef(null);
+  const whyNowButtonRef = useRef(null);
+  const nostalgiaPackRef = useRef(null);
+  const printPackRef = useRef(null);
+  const classicsPackRef = useRef(null);
+  const diamondPackRef = useRef(null);
+  const photoStackButtonRef = useRef(null);
+
+  // Intersection Observer to add scroll-in-view class when items come into view
+  // Only one item at a time will have the hover animation active for 0.5 seconds
+  useEffect(() => {
+    let observer = null;
+    let timeoutId = null;
+    let scrollTimeout = null;
+    let animationTimeout = null;
+    let handleScroll = null;
+    let handleResize = null;
+    const visibleItems = new Set();
+
+    // Function to find container within an element
+    // Handles both regular CSS classes and CSS module classes
+    const findContainer = (element) => {
+      if (!element) return null;
+      
+      // Helper to check if an element has a container class
+      const hasContainerClass = (el) => {
+        if (!el || !el.classList) return false;
+        const classList = Array.from(el.classList);
+        // Check for exact matches first (regular CSS classes)
+        if (classList.some(cls => 
+          cls === 'hiw-container' || 
+          cls === 'memory-container' || 
+          cls === 'camera-bar-container' || 
+          cls === 'instant-container' || 
+          cls === 'why-now-container' || 
+          cls === 'nostpack-container' || 
+          cls === 'classics-container' || 
+          cls === 'diamond-container'
+        )) {
+          return true;
+        }
+        // Check for CSS module classes (contain "container" in the scoped name)
+        // CSS modules generate names like "ComponentName_className_hash"
+        return classList.some(cls => cls.toLowerCase().includes('container'));
+      };
+      
+      // First, check if the element itself is a container (for direct refs)
+      if (hasContainerClass(element)) {
+        return element;
+      }
+      
+      // Check first child (most components render their container as the root element)
+      // This is the most common case - wrapper div contains component, component's root is the container
+      // For CSS modules (NostalgiaPackButton, PrintPackButton2), the container is always the first child
+      const firstChild = element.firstElementChild;
+      if (firstChild) {
+        // Check if first child has container class (works for both regular CSS and CSS modules)
+        if (hasContainerClass(firstChild)) {
+          return firstChild;
+        }
+        // Additional explicit check for CSS modules - check all classes
+        if (firstChild.classList) {
+          const classList = Array.from(firstChild.classList);
+          // For CSS modules, any class containing "container" should be the container
+          const containerClass = classList.find(cls => cls.toLowerCase().includes('container'));
+          if (containerClass) {
+            return firstChild;
+          }
+        }
+      }
+      
+      // Fallback: try to find containers with standard class names via querySelector
+      let container = element.querySelector('.hiw-container, .memory-container, .camera-bar-container, .instant-container, .why-now-container, .nostpack-container, .classics-container, .diamond-container');
+      
+      // If still not found, look for CSS module containers (class names contain "container")
+      if (!container) {
+        // Check all children recursively for elements with "container" in class name
+        // Prioritize direct children first, then go deeper
+        const directChildren = Array.from(element.children);
+        for (let el of directChildren) {
+          if (hasContainerClass(el)) {
+            container = el;
+            break;
+          }
+        }
+        // If still not found, check all descendants
+        if (!container) {
+          const allElements = element.querySelectorAll('*');
+          for (let el of allElements) {
+            if (hasContainerClass(el)) {
+              container = el;
+              break;
+            }
+          }
+        }
+      }
+      
+      return container;
+    };
+
+    // Get all refs - includes all buttons from both columns
+    // Column 1: howItWorksRef, cameraBarButtonRef, whyNowButtonRef
+    // Column 2: memoryButtonRef (row 1), instantButtonRef (row 2)
+    // Full width: nostalgiaPackRef, printPackRef, classicsPackRef, diamondPackRef
+    // Photo stack button: photoStackButtonRef
+    const getAllRefs = () => [
+      howItWorksRef,
+      memoryButtonRef,      // Column 2, Row 1
+      cameraBarButtonRef,
+      instantButtonRef,     // Column 2, Row 2
+      whyNowButtonRef,
+      nostalgiaPackRef,
+      printPackRef,
+      classicsPackRef,
+      diamondPackRef,
+      photoStackButtonRef  // Photo stack button
+    ];
+
+    // Function to determine which item should be active (closest to viewport center)
+    const updateActiveItem = () => {
+      // Clear any existing animation timeout
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+        animationTimeout = null;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestItem = null;
+      let closestDistance = Infinity;
+
+      // Find the item closest to the center of the viewport
+      // Also check all refs directly to ensure we don't miss any items
+      const allRefElements = getAllRefs()
+        .map(ref => ref.current)
+        .filter(el => el !== null);
+      
+      // Combine visibleItems from observer with all ref elements
+      const itemsToCheck = new Set([...visibleItems, ...allRefElements]);
+      
+      itemsToCheck.forEach((element) => {
+        if (!element) return;
+        const rect = element.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(elementCenter - viewportCenter);
+
+        // Only consider items that are actually visible in viewport
+        // Check if element is in viewport (with some margin)
+        const isInViewport = rect.bottom > -50 && rect.top < window.innerHeight + 50;
+        if (isInViewport && distance < closestDistance) {
+          closestDistance = distance;
+          closestItem = element;
+        }
+      });
+
+      // Remove scroll-in-view from all items first
+      getAllRefs().forEach((ref) => {
+        if (ref.current) {
+          const container = findContainer(ref.current);
+          if (container) {
+            container.classList.remove('scroll-in-view');
+          }
+        }
+      });
+
+      // Add scroll-in-view to the closest item
+      if (closestItem) {
+        let container = findContainer(closestItem);
+        
+        // If container not found, check if it's an order-button wrapper
+        if (!container) {
+          // Check if the element itself is an order-button wrapper
+          if (closestItem.classList && (
+            closestItem.classList.contains('order-btn-photo-stack') || 
+            closestItem.classList.contains('order-btn-desktop')
+          )) {
+            container = closestItem;
+          } else {
+            // Check for order-button inside
+            const orderButton = closestItem.querySelector('.order-button');
+            if (orderButton) {
+              // Add scroll-in-view to the wrapper div, not the button itself
+              container = closestItem;
+            } else {
+              // Try direct first child check (for CSS modules)
+              const firstChild = closestItem.firstElementChild;
+              if (firstChild && firstChild.classList) {
+                const classArray = Array.from(firstChild.classList);
+                // Check if first child has any class containing "container" (case-insensitive)
+                const hasContainer = classArray.some(cls => 
+                  cls.toLowerCase().includes('container')
+                );
+                if (hasContainer) {
+                  container = firstChild;
+                }
+              }
+            }
+          }
+        }
+        
+        if (container) {
+          // Ensure the scroll-in-view class is added
+          container.classList.add('scroll-in-view');
+          
+          // Remove the class after 0.5 seconds
+          animationTimeout = setTimeout(() => {
+            if (container) {
+              container.classList.remove('scroll-in-view');
+            }
+          }, 500);
+        }
+      }
+    };
+
+    // Wait for components to render before setting up observer
+    timeoutId = setTimeout(() => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger earlier (when 20% from top/bottom of viewport)
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] // Multiple thresholds for better tracking
+      };
+
+      const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleItems.add(entry.target);
+          } else {
+            visibleItems.delete(entry.target);
+          }
+        });
+        updateActiveItem();
+      };
+
+      observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      // Observe all button wrapper divs
+      getAllRefs().forEach((ref) => {
+        if (ref.current) {
+          observer.observe(ref.current);
+        }
+      });
+
+      // Add scroll listener to continuously update active item
+      handleScroll = () => {
+        if (scrollTimeout) return;
+        scrollTimeout = requestAnimationFrame(() => {
+          updateActiveItem();
+          scrollTimeout = null;
+        });
+      };
+
+      handleResize = () => {
+        updateActiveItem();
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', handleResize, { passive: true });
+
+      // Initial update
+      updateActiveItem();
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
+      if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout);
+      }
+      if (handleScroll) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+      if (handleResize) {
+        window.removeEventListener('resize', handleResize);
+      }
+      if (observer) {
+        getAllRefs().forEach((ref) => {
+          if (ref.current) {
+            observer.unobserve(ref.current);
+          }
+        });
+      }
+    };
+  }, []);
+
   return (
     <div className="main-grid" style={{ position: 'relative' }}>
       {/* OPEN-ME SVG, top right corner, desktop only */}
@@ -189,23 +479,23 @@ const MainGrid = () => {
       </div>
       {/* Small buttons, two per row */}
       <div className="small-buttons-row">
-        <div id="how-it-works"><HowItWorksButton /></div>
-        <TheMemoryButton />
+        <div id="how-it-works" ref={howItWorksRef}><HowItWorksButton /></div>
+        <div ref={memoryButtonRef}><TheMemoryButton /></div>
       </div>
       <div className="small-buttons-row">
-        <TheCameraBarButton />
-        <TheInstantButton />
-        <WhyNowButton />
+        <div ref={cameraBarButtonRef}><TheCameraBarButton /></div>
+        <div ref={instantButtonRef}><TheInstantButton /></div>
+        <div ref={whyNowButtonRef}><WhyNowButton /></div>
         {/* <TheMemoryButton /> */}
       </div>
       <div className="small-buttons-row">{/* <WhyNowButton /> */}</div>
       <div id="print-package"></div>
       {/* Pack buttons, one per row */}
-      <div className="pack-button-row"><NostalgiaPackButton /></div>
-      <div className="pack-button-row"><PrintPackButton2 /></div>
-      <div className="pack-button-row"><ClassicsPackButton /></div>
+      <div className="pack-button-row" ref={nostalgiaPackRef}><NostalgiaPackButton /></div>
+      <div className="pack-button-row" ref={printPackRef}><PrintPackButton2 /></div>
+      <div className="pack-button-row" ref={classicsPackRef}><ClassicsPackButton /></div>
       {/* <div className="pack-button-row"><PremierePackButton /></div> */}
-      <div className="pack-button-row"><DiamondPackButton /></div>
+      <div className="pack-button-row" ref={diamondPackRef}><DiamondPackButton /></div>
       {/* Testimonials: small and med two per row, big spans two columns */}
       <div className="testimonial-row">
         <div id="testimonials"><TestimonialSmall /></div>
@@ -222,7 +512,7 @@ const MainGrid = () => {
         <div style={{ position: 'relative' }}>
           <StackedPhotoCards />
           {/* GET CAMERAS button at the bottom of the photo stack, overlapping last photo */}
-          <div className="order-btn-photo-stack" style={{ position: 'absolute', left: '50%', bottom: '-30px', transform: 'translateX(-50%) rotate(3deg)', zIndex: 10000, width: 'max-content', pointerEvents: 'auto' }}>
+          <div className="order-btn-photo-stack" ref={photoStackButtonRef} style={{ position: 'absolute', left: '50%', bottom: '-30px', transform: 'translateX(-50%) rotate(3deg)', zIndex: 10000, width: 'max-content', pointerEvents: 'auto' }}>
             <PopupButton
               id="yyPNXkPK"
               className="order-button"

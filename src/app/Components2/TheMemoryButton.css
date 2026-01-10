@@ -74,12 +74,14 @@
 }
 
 /* Hover tilt if not expanded */
-.memory-container:not(.expanded):hover .memory-card {
+.memory-container:not(.expanded):hover .memory-card,
+.memory-container:not(.expanded).scroll-in-view .memory-card {
   transform: rotate(-3deg);
   background-color: rgba(104,135,57, .9); /* 80% opacity on hover */
 
 }
-.memory-container:not(.expanded):hover .memory-background {
+.memory-container:not(.expanded):hover .memory-background,
+.memory-container:not(.expanded).scroll-in-view .memory-background {
   opacity: 1;
   transform: translate(-15px, -15px) rotate(-3deg);
 }

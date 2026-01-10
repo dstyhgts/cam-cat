@@ -63,7 +63,7 @@ const NostalgiaPackButton = () => {
             <span className={styles.packageTitleWord}>PACKAGE</span>
           </h2>
           <p className={styles.subtext}>
-          Handheld Photobooths ---- 12 Fujifilm Instax cameras, with a built-in printers.
+          Handheld Photobooths ---- 8 Fujifilm Instax cameras, with a built-in printers.
           <p className={styles.priceRight}><i>Pricing Begins at $2,500</i></p>
             <span className="emoji"></span>
           </p>
@@ -100,7 +100,7 @@ const NostalgiaPackButton = () => {
               </p>
               <h3 className={styles.h3}><u>INCLUDES:</u></h3>
               <ul>
-                <li>1) 12x Fujifilm Instax: 
+                <li>1) 8x Fujifilm Instax: 
                     <p className={styles.p}> These world class instant print cameras are built for fast and consistent on-demand printing. They are small, simple, and made for magic. </p>
                 </li>
                 <li>2) Interactive Archive: 
@@ -132,18 +132,18 @@ const NostalgiaPackButton = () => {
             <div className={styles.innerFrame}>
             {/* <h2><em>INCLUDES:</em></h2> */}
               <h5 className={styles.h5}>
-              <strong>Cameras (12):</strong>
+              <strong>Cameras (8):</strong>
                 </h5>
                 <p className={styles.p}>Instax Cameras:</p>
-                <h6 className={styles.h6}>📷 📷 📷 📷 📷 <br />📷 📷 📷 📷 📷 <br />📷 📷<br /></h6>
+                <h6 className={styles.h6}>📷 📷 📷 📷  <br />📷 📷 📷 📷  <br /></h6>
                 <br />
                 {/* <p>VHS Camcorder:</p>
                 <h6>📹 📹 📹<br /><br /> </h6> */}
               
             
                 <strong>WHAT YOU GET:</strong><br /><i>
-                   1) 12x Fujifilm Instax Cameras <br />
-                   2) 20x Packs of Photo Paper for Printing (Print up to 20 photos each). <br />
+                   1)8x Fujifilm Instax Cameras <br />
+                   2) 16x Packs of Print Paper (2x Per Camera; 20 photos each). <br />
                    3) 3 Back-up Instax Cameras just in case. <br />
                    </i>
               <p className={styles.p}><br />

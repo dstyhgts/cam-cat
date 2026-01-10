@@ -157,11 +157,13 @@
   }
   
   /* Hover effect: slight translation + slight opacity change */
-  .container:not(.expanded):hover .card {
+  .container:not(.expanded):hover .card,
+  .container:not(.expanded):global(.scroll-in-view) .card {
     opacity: 0.9;
     transform: translate(0px, -30px);
   }
-  .container:not(.expanded):hover .background {
+  .container:not(.expanded):hover .background,
+  .container:not(.expanded):global(.scroll-in-view) .background {
     opacity: 1;
   }
   
@@ -185,7 +187,8 @@
   .star1 { top: 20px; right: 40px; }
   .star2 { top: 70px; left: 100px; }
   .star3 { top: 150px; right: 80px; }
-  .container:not(.expanded):hover .star {
+  .container:not(.expanded):hover .star,
+  .container:not(.expanded):global(.scroll-in-view) .star {
     opacity: 1;
     transform: translateY(-40px);
   }

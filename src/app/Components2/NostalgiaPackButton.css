@@ -201,11 +201,13 @@ h3
   }
   
   /* Hover effect: slight translation + slight opacity change */
-  .nostpack-container:not(.expanded):hover .nostpack-card {
+  .nostpack-container:not(.expanded):hover .nostpack-card,
+  .nostpack-container:not(.expanded).scroll-in-view .nostpack-card {
     opacity: 0.9;
     transform: translate(0px, -30px);
   }
-  .nostpack-container:not(.expanded):hover .nostpack-background {
+  .nostpack-container:not(.expanded):hover .nostpack-background,
+  .nostpack-container:not(.expanded).scroll-in-view .nostpack-background {
     opacity: 1;
   }
   
@@ -229,7 +231,8 @@ h3
   .star1 { top: 20px; right: 40px; }
   .star2 { top: 70px; left: 100px; }
   .star3 { top: 150px; right: 80px; }
-  .nostpack-container:not(.expanded):hover .star {
+  .nostpack-container:not(.expanded):hover .star,
+  .nostpack-container:not(.expanded).scroll-in-view .star {
     opacity: 1;
     transform: translateY(-40px);
   }

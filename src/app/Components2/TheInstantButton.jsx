@@ -42,7 +42,7 @@ const TheInstantButton = () => {
         <div className="instant-card instant-default">
           <h6><i>INSTANT</i></h6><h3> CAMs</h3>
           <p className="instant-subtext">
-         <br/>We offerFujifilm's Instax cameras for a classic instant-print experience.
+         <br/>We offer <i>Fujifilm's Instax cameras</i> for a classic instant-print experience.
           </p>
           <span className="arrow">→</span>
         </div>

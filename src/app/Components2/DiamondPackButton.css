@@ -153,7 +153,8 @@ h3
   }
   
   /* Container hover => top card moves up 20px if not clicked */
-  .diamond-container:hover .diamond-card:not(.clicked) {
+  .diamond-container:hover .diamond-card:not(.clicked),
+  .diamond-container.scroll-in-view .diamond-card:not(.clicked) {
     opacity: 0.9;
     /* transform: translateY(-30px); */
   }

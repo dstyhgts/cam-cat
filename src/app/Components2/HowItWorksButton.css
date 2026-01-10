@@ -75,12 +75,14 @@
 }
 
 /* Hover tilt if not expanded */
-.hiw-container:not(.expanded):hover .hiw-card {
+.hiw-container:not(.expanded):hover .hiw-card,
+.hiw-container:not(.expanded).scroll-in-view .hiw-card {
   transform: rotate(3deg);
   background-color: rgba(102,196,20400, 0.9); /* 80% opacity on hover */
 
 }
-.hiw-container:not(.expanded):hover .hiw-background {
+.hiw-container:not(.expanded):hover .hiw-background,
+.hiw-container:not(.expanded).scroll-in-view .hiw-background {
   opacity: 1;
   transform: translate(15px, 15px) rotate(3deg);
 }

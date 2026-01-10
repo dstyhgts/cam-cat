@@ -74,12 +74,14 @@
 }
 
 /* Hover tilt if not expanded */
-.instant-container:not(.expanded):hover .instant-card {
+.instant-container:not(.expanded):hover .instant-card,
+.instant-container:not(.expanded).scroll-in-view .instant-card {
   transform: rotate(-3deg);
   background-color: rgba(116,146,19400, .9); /* 80% opacity on hover */
 
 }
-.instant-container:not(.expanded):hover .instant-background {
+.instant-container:not(.expanded):hover .instant-background,
+.instant-container:not(.expanded).scroll-in-view .instant-background {
   opacity: 1;
   transform: translate(-15px, -15px) rotate(-3deg);
 }

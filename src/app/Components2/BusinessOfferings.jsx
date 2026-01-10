@@ -266,9 +266,9 @@ export default function BusinessOfferings() {
   ];
   // Camera Rental Print Package items
   const cameraRentalPrintItems = [
-    { label: '12x Instax Insta-Print Cameras' },
-    { label: '20x Instax photo paper packs' },
-    { label: 'Up to 400 printable photos!' },
+    { label: '8x Instax Insta-Print Cameras' },
+    { label: '16x Instax photo paper packs' },
+    { label: 'Up to 320 printable photos!' },
   ];
   // Camera Rental full package included quantities
   const cameraRentalFullIncluded = {

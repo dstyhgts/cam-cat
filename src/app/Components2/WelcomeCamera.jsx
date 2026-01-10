@@ -23,6 +23,120 @@ function useIsMobile(maxWidth = 400) {
 const WelcomeCamera = () => {
   const isMobile = useIsMobile(400);
   const [videoLoading, setVideoLoading] = useState(true);
+  const welcomeButtonRef = useRef(null);
+
+  // Intersection Observer for scroll-based hover animation on button
+  useEffect(() => {
+    let observer = null;
+    let timeoutId = null;
+    let scrollTimeout = null;
+    let animationTimeout = null;
+    let handleScroll = null;
+    let handleResize = null;
+    const visibleItems = new Set();
+
+    // Function to update active item
+    const updateActiveItem = () => {
+        if (animationTimeout) {
+          clearTimeout(animationTimeout);
+          animationTimeout = null;
+        }
+
+        const viewportCenter = window.innerHeight / 2;
+        let closestItem = null;
+        let closestDistance = Infinity;
+
+        // Check if button is visible
+        if (welcomeButtonRef.current) {
+          const rect = welcomeButtonRef.current.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(elementCenter - viewportCenter);
+          const isInViewport = rect.bottom > -50 && rect.top < window.innerHeight + 50;
+          
+          if (isInViewport && distance < closestDistance) {
+            closestDistance = distance;
+            closestItem = welcomeButtonRef.current;
+          }
+        }
+
+        // Remove scroll-in-view from button
+        if (welcomeButtonRef.current) {
+          welcomeButtonRef.current.classList.remove('scroll-in-view');
+        }
+
+        // Add scroll-in-view to closest item
+        if (closestItem) {
+          closestItem.classList.add('scroll-in-view');
+          animationTimeout = setTimeout(() => {
+            if (closestItem) {
+              closestItem.classList.remove('scroll-in-view');
+            }
+          }, 500);
+        }
+      };
+
+    // Wait for component to render
+    timeoutId = setTimeout(() => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+      };
+
+      const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleItems.add(entry.target);
+          } else {
+            visibleItems.delete(entry.target);
+          }
+        });
+        updateActiveItem();
+      };
+
+      observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      if (welcomeButtonRef.current) {
+        observer.observe(welcomeButtonRef.current);
+      }
+
+      handleScroll = () => {
+        if (scrollTimeout) return;
+        scrollTimeout = requestAnimationFrame(() => {
+          updateActiveItem();
+          scrollTimeout = null;
+        });
+      };
+
+      handleResize = () => {
+        updateActiveItem();
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', handleResize, { passive: true });
+
+      updateActiveItem();
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
+      if (scrollTimeout) {
+        cancelAnimationFrame(scrollTimeout);
+      }
+      if (handleScroll) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+      if (handleResize) {
+        window.removeEventListener('resize', handleResize);
+      }
+      if (observer && welcomeButtonRef.current) {
+        observer.unobserve(welcomeButtonRef.current);
+      }
+    };
+  }, []);
 
   // Simple spinner component
   const Spinner = () => (
@@ -102,7 +216,13 @@ const WelcomeCamera = () => {
                 <div className="item" style={{ left: '0%', top: '20%', width: '250px', height: '281px', transform: 'rotate(-14deg)', zIndex: 1 }}>
                   <img src="/assets/img57.JPG" alt="Event 1" />
                 </div>
-                {/* Card 2: Video */}
+                {/* Card 2: Image (previously Video) - No card, just transparent PNG */}
+                <img 
+                  src="/assets/instax12.PNG" 
+                  alt="Instax Mini 12 Cameras" 
+                  style={{ left: '31.25%', top: '27px', width: '250px', height: 'auto', transform: 'rotate(7deg) scale(1.5525)', zIndex: 2, position: 'absolute', objectFit: 'contain', background: 'transparent', filter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))', WebkitFilter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))' }}
+                />
+                {/* Commented out video code - can be restored if needed
                 <div className="item video-card-centered" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>
                   {videoLoading && <Spinner />}
                   <video
@@ -118,6 +238,7 @@ const WelcomeCamera = () => {
                     Your browser does not support the video tag.
                   </video>
                 </div>
+                */}
                 {/* Card 3: Image */}
                 <div className="item" style={{ left: '62.5%', top: '25%', width: '250px', height: '281px', transform: 'rotate(13deg)', zIndex: 0 }}>
                   <img src='/assets/img16.jpg' alt="Event 2" />
@@ -126,7 +247,7 @@ const WelcomeCamera = () => {
             )}
           </div>
           {/* GET CAMERAS button, original styling and class names */}
-          <div className="order-btn-desktop" style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10 }}>
+          <div className="order-btn-desktop" ref={welcomeButtonRef} style={{ position: 'absolute', left: '50%', bottom: '20px', transform: 'translateX(-50%) rotate(3deg)', width: '320px', pointerEvents: 'auto', zIndex: 10 }}>
             <PopupButton
               id="yyPNXkPK"
               className="order-button"

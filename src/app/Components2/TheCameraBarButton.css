@@ -74,12 +74,14 @@
 }
 
 /* Hover tilt if not expanded */
-.camera-bar-container:not(.expanded):hover .camera-bar-card {
+.camera-bar-container:not(.expanded):hover .camera-bar-card,
+.camera-bar-container:not(.expanded).scroll-in-view .camera-bar-card {
   transform: rotate(-3deg);
   background-color: rgba(140,101,19800, 0.9); /* 80% opacity on hover */
 
 }
-.camera-bar-container:not(.expanded):hover .camera-bar-background {
+.camera-bar-container:not(.expanded):hover .camera-bar-background,
+.camera-bar-container:not(.expanded).scroll-in-view .camera-bar-background {
   opacity: 1;
   transform: translate(-15px, 15px) rotate(-3deg);
 }
