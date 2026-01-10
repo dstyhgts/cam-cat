@@ -137,8 +137,10 @@ const StackedPhotoCards = () => {
       const hOffset = side === 'left' 
         ? -(cardWidth + 25 + Math.random() * 50) // -325 to -375px (left of stack)
         : (150 + Math.random() * 50); // 150 to 200px (right of stack)
-      // Random vertical position along the stack height
-      const top = Math.random() * (calculatedTotalHeight - cardHeight);
+      // Random vertical position along the stack height, but never within top 128px
+      const minTop = 64; // Minimum distance from top
+      const maxTop = calculatedTotalHeight - cardHeight; // Maximum top position
+      const top = minTop + Math.random() * Math.max(0, maxTop - minTop);
       return { src, rot, hOffset, top, side };
     });
 
