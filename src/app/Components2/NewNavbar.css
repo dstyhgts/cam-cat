@@ -103,6 +103,7 @@
     background: var(--navbar-title-color);
     border-radius: 2px;
     transition: all 0.3s ease;
+    transform-origin: center;
   }
   
   .hamburger-menu span:nth-child(1) {
@@ -117,16 +118,32 @@
     top: 14px;
   }
   
-  /* Hamburger animation when menu is open */
-  .menu-icon:hover .hamburger-menu span:nth-child(1) {
+  /* Hamburger to X animation when menu is open */
+  .hamburger-menu.open span:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+  }
+  
+  .hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  .hamburger-menu.open span:nth-child(3) {
+    top: 7px;
+    transform: rotate(-45deg);
+  }
+  
+  /* Hamburger hover animation when menu is closed */
+  .menu-icon:hover .hamburger-menu:not(.open) span:nth-child(1) {
     transform: rotate(1deg);
   }
   
-  .menu-icon:hover .hamburger-menu span:nth-child(2) {
+  .menu-icon:hover .hamburger-menu:not(.open) span:nth-child(2) {
     transform: rotate(-1deg);
   }
   
-  .menu-icon:hover .hamburger-menu span:nth-child(3) {
+  .menu-icon:hover .hamburger-menu:not(.open) span:nth-child(3) {
     transform: rotate(1deg);
   }
 
@@ -136,8 +153,8 @@
     right: 20px; /* Ensure the dropdown is pinned to the right */
     top: 50px; /* Adjust as needed */
     background: var(--navbar-menu-bg);
-    border: 5px solid var(--navbar-menu-border);
-    border-radius: 30px;
+    border: 2px solid var(--navbar-menu-border);
+    border-radius: 30px; /* Matches navbar-title and other site elements */
     list-style: none;
     flex-direction: column;
     gap: 10px;
@@ -201,6 +218,22 @@
   
   .hamburger-menu span:nth-child(3) {
     top: 12px;
+  }
+  
+  /* Hamburger to X animation for small mobile when menu is open */
+  .hamburger-menu.open span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+  
+  .hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  .hamburger-menu.open span:nth-child(3) {
+    top: 6px;
+    transform: rotate(-45deg);
   }
   
   .navbar-right {

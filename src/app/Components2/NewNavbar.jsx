@@ -39,7 +39,7 @@ const NewNavbar = () => {
         </div>
         {/* Mobile/Small/Intermediate view: show menu icon */}
         <div className="menu-icon" onClick={toggleMenu}>
-          <div className="hamburger-menu">
+          <div className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`}>
             <span></span>
             <span></span>
             <span></span>

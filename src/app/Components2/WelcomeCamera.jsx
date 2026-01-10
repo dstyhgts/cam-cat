@@ -217,10 +217,25 @@ const WelcomeCamera = () => {
                   <img src="/assets/img57.JPG" alt="Event 1" />
                 </div>
                 {/* Card 2: Image (previously Video) - No card, just transparent PNG */}
+                {/* drop-shadow respects alpha channel - only shadows non-transparent pixels, transparent areas are ignored */}
                 <img 
                   src="/assets/instax12.PNG" 
                   alt="Instax Mini 12 Cameras" 
-                  style={{ left: '31.25%', top: '27px', width: '250px', height: 'auto', transform: 'rotate(7deg) scale(1.5525)', zIndex: 2, position: 'absolute', objectFit: 'contain', background: 'transparent', filter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))', WebkitFilter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))' }}
+                  style={{ 
+                    left: '31.25%', 
+                    top: '27px', 
+                    width: '250px', 
+                    height: 'auto', 
+                    transform: 'rotate(7deg) scale(1.5525)', 
+                    zIndex: 2, 
+                    position: 'absolute', 
+                    objectFit: 'contain', 
+                    background: 'transparent', 
+                    backgroundColor: 'transparent',
+                    filter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))', 
+                    WebkitFilter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))',
+                    boxShadow: 'none' // Critical: prevents box-shadow which would shadow entire bounding box including transparent areas
+                  }}
                 />
                 {/* Commented out video code - can be restored if needed
                 <div className="item video-card-centered" style={{ left: '31.25%', top: '0%', width: '250px', height: '281px', transform: 'rotate(7deg) scale(1.15)', zIndex: 2, background: '#e3e3e3', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute' }}>

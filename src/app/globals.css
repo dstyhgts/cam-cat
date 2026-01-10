@@ -52,7 +52,7 @@
   --navbar-title-color: #ffffff;
   --navbar-menu-bg: rgba(102, 196, 204, 0.95);
   --navbar-menu-border: #ffffff;
-  --navbar-menu-text: #000000;
+  --navbar-menu-text: #ffffff;
   --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;
@@ -158,6 +158,7 @@
   --navbar-title-color: #000000;
   --navbar-menu-bg: #f0f0f0;
   --navbar-menu-border: #000000;
+  --navbar-menu-text: #000000;
   --navbar-hover-color: #8c84ff;
   
   --button-yellow-bg: #FFD85D;

@@ -194,9 +194,11 @@ const LandingGallery = ({ className = "", ...props }) => {
           img.style.display = 'block';
           img.style.background = 'none';
           img.style.backgroundColor = 'transparent';
-          // Add drop-shadow filter inline to ensure it's applied
+          // Add drop-shadow filter inline - drop-shadow respects alpha channel
+          // Only non-transparent pixels will receive shadows, transparent areas are ignored
           img.style.filter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
           img.style.webkitFilter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
+          img.style.boxShadow = 'none'; // Ensure no box-shadow (which would shadow entire bounding box)
         } else {
           img.src = `/assets/img${index}.jpg`;
           img.alt = `Image ${index}`;
@@ -573,12 +575,11 @@ const LandingGallery = ({ className = "", ...props }) => {
           max-height: 225px !important;
           object-fit: contain !important;
           display: block !important;
-          /* Use drop-shadow filter to only shadow visible content, not transparent areas */
-          /* drop-shadow respects alpha channel - only shadows non-transparent pixels */
-          /* Inline style takes precedence, but this ensures it's set in CSS as well */
+          /* drop-shadow filter respects alpha channel - only shadows non-transparent pixels */
+          /* Transparent areas are completely ignored, shadows only appear on visible content */
           filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important;
-          box-shadow: none !important;
           -webkit-filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important; /* Safari support */
+          box-shadow: none !important; /* Critical: no box-shadow which would shadow entire bounding box including transparent areas */
           mix-blend-mode: normal !important;
           /* Ensure filter persists through GSAP transforms */
           will-change: transform, filter;
