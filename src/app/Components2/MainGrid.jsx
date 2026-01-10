@@ -666,7 +666,7 @@ const MainGrid = () => {
             z-index: 200;
           }
             .order-btn-photo-stack {
-            left: 80% !important;
+            left: 75% !important;
             right: auto !important;
             transform: translateX(-50%) rotate(3deg) !important;
             width: max-content !important;
