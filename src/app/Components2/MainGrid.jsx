@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import HowItWorksButton from './HowItWorksButton';
 import './MainGrid.css';
 import TheInstantButton from './TheInstantButton';
@@ -29,6 +29,9 @@ const StackedPhotoCards = () => {
   const [clickedCardIndex, setClickedCardIndex] = useState(null);
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [loadedImages, setLoadedImages] = useState(new Set());
+  const [failedImages, setFailedImages] = useState(new Set());
+  const imageRefs = useRef({});
 
   // Detect mobile on mount and resize
   useEffect(() => {
@@ -46,6 +49,45 @@ const StackedPhotoCards = () => {
   const centerCardCount = 10;
   const sideCardCount = 6;
   const totalImages = 58; // img1.JPG to img58.JPG
+
+  // Preload all images to ensure they're available
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = [];
+      for (let i = 1; i <= totalImages; i++) {
+        const imgPath = `/assets/img${i}.JPG`;
+        const img = new Image();
+        img.src = imgPath;
+        
+        const promise = new Promise((resolve, reject) => {
+          img.onload = () => {
+            setLoadedImages(prev => new Set([...prev, imgPath]));
+            resolve(imgPath);
+          };
+          img.onerror = () => {
+            // Try lowercase extension as fallback
+            const fallbackPath = `/assets/img${i}.jpg`;
+            const fallbackImg = new Image();
+            fallbackImg.src = fallbackPath;
+            fallbackImg.onload = () => {
+              setLoadedImages(prev => new Set([...prev, fallbackPath]));
+              resolve(fallbackPath);
+            };
+            fallbackImg.onerror = () => {
+              setFailedImages(prev => new Set([...prev, imgPath, fallbackPath]));
+              reject(new Error(`Failed to load image ${i}`));
+            };
+          };
+        });
+        imagePromises.push(promise);
+      }
+      
+      // Wait for all images to attempt loading (don't block on failures)
+      await Promise.allSettled(imagePromises);
+    };
+
+    preloadImages();
+  }, [totalImages]);
 
   // Memoize card generation so it only happens once on mount
   const { allCards, totalHeight } = useMemo(() => {
@@ -105,6 +147,25 @@ const StackedPhotoCards = () => {
     
     return { allCards: combinedCards, totalHeight: calculatedTotalHeight };
   }, []); // Empty dependency array means this only runs once on mount
+
+  // Handle image load errors with retry logic
+  const handleImageError = useCallback((e, cardSrc, cardIndex) => {
+    const img = e.target;
+    // Try lowercase extension as fallback
+    if (cardSrc.endsWith('.JPG')) {
+      const fallbackSrc = cardSrc.replace('.JPG', '.jpg');
+      img.src = fallbackSrc;
+      img.onerror = () => {
+        // If both fail, mark as failed and show placeholder
+        setFailedImages(prev => new Set([...prev, cardSrc, fallbackSrc]));
+        img.style.display = 'none';
+      };
+    } else {
+      // Already tried lowercase, mark as failed
+      setFailedImages(prev => new Set([...prev, cardSrc]));
+      img.style.display = 'none';
+    }
+  }, []);
 
   const handleCardClick = (index) => {
     // On mobile, click toggles the card
@@ -173,7 +234,29 @@ const StackedPhotoCards = () => {
               willChange: 'transform',
             }}
           >
-            <img src={card.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.3em', background: '#E3E1AA', pointerEvents: 'none', userSelect: 'none' }} />
+            <img 
+              ref={(el) => {
+                if (el) imageRefs.current[i] = el;
+              }}
+              src={card.src} 
+              alt="" 
+              onError={(e) => handleImageError(e, card.src, i)}
+              onLoad={() => {
+                setLoadedImages(prev => new Set([...prev, card.src]));
+              }}
+              loading="eager"
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'cover', 
+                borderRadius: '0.3em', 
+                background: '#E3E1AA', 
+                pointerEvents: 'none', 
+                userSelect: 'none',
+                opacity: loadedImages.has(card.src) || loadedImages.has(card.src.replace('.JPG', '.jpg')) ? 1 : 0.7,
+                transition: 'opacity 0.3s ease-in-out'
+              }} 
+            />
           </div>
         );
       })}
