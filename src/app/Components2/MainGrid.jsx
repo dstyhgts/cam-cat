@@ -624,7 +624,7 @@ const MainGrid = () => {
           position: absolute;
           top: 0;
           right: -200px;
-          z-index: 10000;
+          z-index: 10000; /* Always above photo cards (max z-index: 1000) */
           display: block;
         }
           
@@ -641,7 +641,7 @@ const MainGrid = () => {
             right: -200px;
             left: auto;
             transform: none;
-            z-index: 10000;
+            z-index: 10000; /* Always above photo cards (max z-index: 1000) */
           }
           .order-btn-photo-stack {
             left: 50% !important;
@@ -669,7 +669,7 @@ const MainGrid = () => {
             right: 120px;
             transform: translateX(120px);
             top: 0;
-            z-index: 200;
+            z-index: 10000; /* Always above photo cards (max z-index: 1000) */
           }
         }
       `}</style>
