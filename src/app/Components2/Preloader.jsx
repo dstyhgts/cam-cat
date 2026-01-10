@@ -89,6 +89,15 @@ export default function Preloader({ onEnter }) {
 
   const handleEnter = () => {
     if (canEnter) {
+      // Scroll to top of the page
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Also try document scrolling methods for compatibility
+      if (window.document.documentElement) {
+        window.document.documentElement.scrollTop = 0;
+      }
+      if (window.document.body) {
+        window.document.body.scrollTop = 0;
+      }
       onEnter();
     }
   };

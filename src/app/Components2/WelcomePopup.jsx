@@ -32,6 +32,9 @@ export default function WelcomePopup({ delay = 1200000 }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Close popup immediately when "Get Started" is clicked
+    setIsVisible(false);
+    
     try {
       // Send data to our API endpoint
       const response = await fetch('/api/subscribe', {
@@ -46,19 +49,11 @@ export default function WelcomePopup({ delay = 1200000 }) {
       
       if (result.success) {
         console.log('Subscription successful:', result.message);
-        setIsSubmitted(true);
-        
-        // Hide popup after 3 seconds
-        setTimeout(() => {
-          setIsVisible(false);
-        }, 3000);
       } else {
         console.error('Subscription failed:', result.message);
-        alert('Sorry, there was an error. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Sorry, there was an error. Please try again.');
     }
   };
 
@@ -66,11 +61,18 @@ export default function WelcomePopup({ delay = 1200000 }) {
     setIsVisible(false);
   };
 
+  const handleOverlayClick = (e) => {
+    // Close popup when clicking on the overlay (outside the popup)
+    if (e.target === e.currentTarget) {
+      setIsVisible(false);
+    }
+  };
+
   if (!isVisible) return null;
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.popup}>
+    <div className={styles.overlay} onClick={handleOverlayClick}>
+      <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={handleClose}>
           ×
         </button>
