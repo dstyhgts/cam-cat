@@ -48,16 +48,24 @@ const NewNavbar = () => {
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <a href="#section1" onClick={handleMenuItemClick}>Get Started</a>
+            <a href="#section1" onClick={handleMenuItemClick}>Welcome</a>
           </li>
-          <li>
-            <a href="#business-offerings" onClick={handleMenuItemClick}>Services & Pricing</a>
-          </li>
+          
           <li>
             <a href="#how-it-works" onClick={handleMenuItemClick}>"Camera Catering"</a>
           </li>
           <li>
-            <a href="#testimonials" onClick={handleMenuItemClick}>The Experience</a>
+            <a href="#testimonials" onClick={e => {
+              e.preventDefault();
+              handleMenuItemClick();
+              const testimonials = document.getElementById('testimonials');
+              if (testimonials) {
+                testimonials.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>The Experience</a>
+          </li>
+          <li>
+            <a href="#business-offerings" onClick={handleMenuItemClick}>Services & Pricing</a>
           </li>
           {/* <li>
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>

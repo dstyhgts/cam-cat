@@ -583,10 +583,11 @@ const MainGrid = () => {
       <div className="pack-button-row" ref={diamondPackRef}><DiamondPackButton /></div>
       {/* Testimonials: small and med two per row, big spans two columns */}
       <div className="testimonial-row">
-        <div id="testimonials"><TestimonialSmall /></div>
-        <TestimonialMed />
+        {/* <div id="testimonials"></div> */}
+        {/* <TestimonialSmall />
+        <TestimonialMed /> */}
       </div>
-      <div className="testimonial-big-row"><TestimonialBig /></div>
+      <div id="testimonials" className="testimonial-big-row"><TestimonialBig /></div>
       <div className="testimonial-big-row"><TestimonialBig videoSrc="/assets/The Cousins_1.mp4" /></div>
       {/* IMAGINE-THIS SVG overlayed at the start of the photo cards stack */}
       {/* Photo stack in its own left column cell */}

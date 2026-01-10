@@ -173,13 +173,13 @@ export default function RootLayout({ children }) {
             <section style={{ scrollMarginTop: '80px' }}>
               <ColorfulBranding />
             </section>
+            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+              <BigSvg />
+            </section>
             <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
               <BusinessOfferings />
             </section>
-            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
-              <BigSvg />
-              <ColorfulBranding2 />
-            </section>
+            <ColorfulBranding2 />
             <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
               <Footer />
             </section>
