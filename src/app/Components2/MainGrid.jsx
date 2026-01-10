@@ -628,6 +628,15 @@ const MainGrid = () => {
           z-index: 10000; /* Always above photo cards (max z-index: 1000) */
           display: block;
         }
+          .order-btn-photo-stack {
+            left: 100% !important;
+            right: auto !important;
+            bottom: 30px !important;
+            transform: translateX(-50%) rotate(3deg) !important;
+            width: max-content !important;
+            margin: 2rem 0 0 0 !important;
+            z-index: 10000 !important;
+          }
           
         @media (max-width: 900px) {
           .open-me-top-right {
