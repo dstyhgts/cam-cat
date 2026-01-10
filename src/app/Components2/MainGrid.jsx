@@ -664,7 +664,7 @@ const MainGrid = () => {
         //   }
         //   .imagine-this-overlay {
         //     left: 50%;
-        //     right: 200px;
+        //     right: 100px;
         //     transform: translateX(120px);
         //     top: 0;
         //     z-index: 200;
