@@ -657,14 +657,14 @@ const MainGrid = () => {
         @media (max-width: 450px) {
           .open-me-top-right {
             left: auto;
-            right: 0px;
-            top: 40px;
+            right: 30px;
+            top: 30px;
             transform: none;
             z-index: 200;
           }
           .imagine-this-overlay {
             left: 50%;
-            right: 112px;
+            right: 120px;
             transform: translateX(120px);
             top: 0;
             z-index: 200;
