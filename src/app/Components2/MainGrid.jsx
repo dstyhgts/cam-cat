@@ -665,6 +665,14 @@ const MainGrid = () => {
             transform: none;
             z-index: 200;
           }
+            .order-btn-photo-stack {
+            left: 80% !important;
+            right: auto !important;
+            transform: translateX(-50%) rotate(3deg) !important;
+            width: max-content !important;
+            margin: 2rem 0 0 0 !important;
+            z-index: 10000 !important;
+          }
           .imagine-this-overlay {
             left: 50%;
             right: 130px;
