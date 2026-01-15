@@ -133,7 +133,7 @@ export default function RootLayout({ children }) {
         <link rel="preload" href="/assets/camera-icon113.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon111.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon100.svg" as="image" type="image/svg+xml" />
-        <link rel="icon" href="/assets/camera-icon12.svg" type="image/svg+xml" />
+        <link rel="icon" href="/assets/camera-icon12.png" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon13.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon115.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon23.svg" as="image" type="image/svg+xml" />
