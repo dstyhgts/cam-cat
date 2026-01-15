@@ -48,11 +48,25 @@ const NewNavbar = () => {
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <a href="welcome" onClick={handleMenuItemClick}>Welcome</a>
+            <a href="welcome" onClick={e => {
+              e.preventDefault();
+              handleMenuItemClick();
+              const section1 = document.getElementById('section1');
+              if (section1) {
+                section1.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Welcome</a>
           </li>
           
           <li>
-            <a href="catering" onClick={handleMenuItemClick}>"Camera Catering"</a>
+            <a href="catering" onClick={e => {
+              e.preventDefault();
+              handleMenuItemClick();
+              const businessOfferings = document.getElementById('business-offerings');
+              if (businessOfferings) {
+                businessOfferings.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>"Camera Catering"</a>
           </li>
           <li>
             <a href="the-experience" onClick={e => {
@@ -65,7 +79,14 @@ const NewNavbar = () => {
             }}>The Experience</a>
           </li>
           <li>
-            <a href="services-pricing" onClick={handleMenuItemClick}>Services & Pricing</a>
+            <a href="services-pricing" onClick={e => {
+              e.preventDefault();
+              handleMenuItemClick();
+              const businessOfferings = document.getElementById('business-offerings');
+              if (businessOfferings) {
+                businessOfferings.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>Services & Pricing</a>
           </li>
           {/* <li>
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>
