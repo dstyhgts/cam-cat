@@ -85,3 +85,10 @@
 .about-row {
   margin-top: 12px !important;
 }
+
+/* Apply pastel filter to MainGrid SVGs only in Dawn theme */
+[data-theme="dawn"] .open-me-top-right img,
+[data-theme="dawn"] .imagine-this-overlay img {
+  filter: var(--svg-filter-dawn, hue-rotate(15deg) saturate(1.2) brightness(1.1));
+  transition: filter 0.3s ease;
+}

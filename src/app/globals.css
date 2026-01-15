@@ -218,6 +218,115 @@
   --big-svg-layout-bg: #f0f0f0;
 }
 
+[data-theme="dawn"] {
+  /* Dawn theme - Feminine pastel colors */
+  --bg-primary: #FFFFFC;
+  --bg-secondary: #FFC6FF;
+  --bg-tertiary: #BDB2FF;
+  --text-primary: #5A4A6B;
+  --text-secondary: #8B6FA8;
+  --text-color: #6B4C7A;
+  --accent-color: #FFADAD;
+  --border-color: #E8C5E8;
+  --bg-hover: #FFE5FF;
+  --shadow: 0 2px 8px rgba(189, 178, 255, 0.2);
+  --footer-bg: #FFC6FF;
+  --container-bg: #FFFFFC;
+  
+  /* Component-specific colors for dawn mode */
+  --welcome-card-bg: #BDB2FF;
+  --welcome-card-border: #FFC6FF;
+  --welcome-button-bg: #FFD6A5;
+  --welcome-button-text: #8B6FA8;
+  --welcome-button-border: #BDB2FF;
+  --welcome-button-hover-bg: #FFADAD;
+  --welcome-button-hover-text: #FFFFFC;
+  --welcome-button-hover-border: #FFFFFC;
+  
+  --three-cards-bg: #FFFFFC;
+  --three-card-border: #FFC6FF;
+  --three-card-interior: #CAFFBF;
+  --three-card-top-bg: #9BF6FF;
+  --three-card-text: #5A4A6B;
+  --three-cards-button-bg: #FFD6A5;
+  --three-cards-button-text: #8B6FA8;
+  --three-cards-button-border: #BDB2FF;
+  
+  --about-card-border: #FFC6FF;
+  --about-card-image-bg: #BDB2FF;
+  --about-card-text-color: #5A4A6B;
+  
+  --testimonial-bg: #FFE5FF;
+  --testimonial-border: #FFC6FF;
+  --testimonial-text-dark: #5A4A6B;
+  --testimonial-text-light: #FFFFFC;
+  
+  --navbar-title-color: #8B6FA8;
+  --navbar-menu-bg: rgba(255, 198, 255, 0.95);
+  --navbar-menu-border: #FFC6FF;
+  --navbar-menu-text: #5A4A6B;
+  --navbar-hover-color: #FFADAD;
+  
+  --button-yellow-bg: #FFD6A5;
+  --button-text-color: #8B6FA8;
+  --button-white-border: #FFC6FF;
+  --button-white-text: #5A4A6B;
+  
+  /* Package button colors for dawn mode */
+  --print-pack-bg: #BDB2FF;
+  --print-pack-dark-bg: #9BF6FF;
+  --print-pack-lighter-bg: #CAFFBF;
+  
+  /* NostalgiaPackButton (Digital Package) specific colors - Dawn mode */
+  --nostalgia-pack-bg: #BDB2FF;
+  --nostalgia-pack-dark-bg: #9BF6FF;
+  --nostalgia-pack-lighter-bg: #CAFFBF;
+  
+  /* PrintPackButton2 (Print Package) specific colors - Dawn mode */
+  --print-pack2-bg: #A0C4FF;
+  --print-pack2-dark-bg: #9BF6FF;
+  --print-pack2-lighter-bg: #CAFFBF;
+  
+  --classics-pack-bg: #CAFFBF;
+  --classics-pack-dark-bg: #9BF6FF;
+  
+  --premiere-pack-bg: #A0C4FF;
+  --premiere-pack-dark-bg: #9BF6FF;
+  
+  --diamond-pack-bg: #FFFFFC;
+  --diamond-pack-text: #8B6FA8;
+  --diamond-pack-light-text: #BDB2FF;
+  --diamond-pack-gray-text: #CAFFBF;
+  
+  /* Button specific colors for dawn mode */
+  --instant-button-bg: #A0C4FF;
+  --memory-button-bg: #CAFFBF;
+  --how-it-works-button-bg: #BDB2FF;
+  
+  --big-svg-bg: #FFFFFC;
+  
+  /* Additional component colors for dawn mode */
+  --why-now-button-bg: #FFADAD;
+  --camera-bar-button-bg: #BDB2FF;
+  
+  /* LandingGallery colors for dawn mode */
+  --landing-gallery-bg: #FFFFFC;
+  --landing-gallery-item-bg: #FFE5FF;
+  
+  /* ColorfulBranding colors for dawn mode */
+  --colorful-branding-bg: #FFC6FF;
+  --colorful-branding-text: #5A4A6B;
+  
+  /* MainGrid colors for dawn mode */
+  --main-grid-bg: transparent;
+  
+  /* BigSvg colors for dawn mode */
+  --big-svg-layout-bg: #FFFFFC;
+  
+  /* SVG filter variables for Dawn theme - transforms colors to pastel palette */
+  --svg-filter-dawn: hue-rotate(15deg) saturate(1.2) brightness(1.1);
+}
+
 /* html and body allow native scrolling on their own */
 html,
 body {
@@ -232,6 +341,10 @@ body {
 }
 
 html[data-theme="dark"], body[data-theme="dark"] {
+  background-color: var(--bg-primary) !important;
+}
+
+html[data-theme="dawn"], body[data-theme="dawn"] {
   background-color: var(--bg-primary) !important;
 }
 

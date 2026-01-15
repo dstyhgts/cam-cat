@@ -186,8 +186,8 @@ export default function Sidebar() {
                 style={{
                   fontSize: '60px',
                   color: closeHover
-                    ? (theme === 'dark' ? '#000' : '#fff')
-                    : (theme === 'dark' ? '#fff' : '#000'),
+                    ? (theme === 'dark' ? '#000' : theme === 'dawn' ? '#5A4A6B' : '#fff')
+                    : (theme === 'dark' ? '#fff' : theme === 'dawn' ? '#8B6FA8' : '#000'),
                   pointerEvents: 'none',
                   transition: 'color 0.2s',
                 }}

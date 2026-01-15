@@ -35,6 +35,12 @@
     max-width: 100%;
     height: auto;
     /* If you need a minimum or maximum height, adjust accordingly. */
+    transition: filter 0.3s ease;
+  }
+
+  /* Apply pastel filter to large SVG only in Dawn theme */
+  [data-theme="dawn"] .large-svg {
+    filter: var(--svg-filter-dawn, hue-rotate(15deg) saturate(1.2) brightness(1.1));
   }
 
   @media (max-width: 900px) {

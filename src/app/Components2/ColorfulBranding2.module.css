@@ -78,6 +78,14 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: filter 0.3s ease;
+  }
+
+  /* Apply pastel filter to SVGs only in Dawn theme */
+  [data-theme="dawn"] .floatImageSmall img,
+  [data-theme="dawn"] .floatImageLarge img,
+  [data-theme="dawn"] .floatImageCenter img {
+    filter: var(--svg-filter-dawn, hue-rotate(15deg) saturate(1.2) brightness(1.1));
   }
   
   /* 

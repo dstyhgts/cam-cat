@@ -37,6 +37,10 @@
 }
 
 .toggleThumb.dark {
+  transform: translateX(13px);
+}
+
+.toggleThumb.dawn {
   transform: translateX(26px);
 }
 
