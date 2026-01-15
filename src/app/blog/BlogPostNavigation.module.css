@@ -1,0 +1,168 @@
+.navigation {
+  margin: 3rem 0 0 0;
+  padding: 2rem 0;
+  border-top: 2px solid var(--border-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navigation.top {
+  display: none; /* Hide top navigation - we don't need it in this layout */
+}
+
+.navigation.bottom {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3rem;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity 0.3s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+.navLinkDisabled {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-primary);
+  opacity: 0.3;
+  flex: 1;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.navArrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.navContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.navLabel {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: "PP Neue Montreal", sans-serif;
+}
+
+.navTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "PP Neue Montreal", sans-serif;
+}
+
+.backToBlog {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: "PP Neue Montreal", sans-serif;
+  white-space: nowrap;
+}
+
+.backToBlog:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--accent-color);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navigation {
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+  }
+
+  .navigation.top {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navContainer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .navLink,
+  .navLinkDisabled {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .navContent {
+    display: none; /* Hide text on mobile, show only arrows */
+  }
+
+  .navArrow {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+  .backToBlog {
+    display: none; /* Hide "Back to Blog" on mobile in top nav */
+  }
+
+  .navigation.bottom .backToBlog {
+    display: block; /* Show in bottom nav */
+    order: -1;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .navigation.bottom .navContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navigation.bottom .navLink,
+  .navigation.bottom .navLinkDisabled {
+    width: 100%;
+  }
+
+  .navigation.bottom .navContent {
+    display: flex; /* Show text in bottom nav */
+  }
+
+  .navigation.bottom .navTitle {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}

@@ -1,6 +1,7 @@
-// app/page.js
+// app/layout.js
 "use client";
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Footer from "./Components2/Footer";
 import LandingGallery from "./Components2/LandingGallery";
 import Navbar from "./Components/Navbar";
@@ -24,7 +25,9 @@ import Preloader from "./Components2/Preloader";
 // import GlobalComponentsWrapper from "./Components/GlobalComponentsWrapper";
 
 export default function RootLayout({ children }) {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const [showPreloader, setShowPreloader] = useState(isHomePage);
   const [isLoading, setIsLoading] = useState(true);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
@@ -145,8 +148,8 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider>
-          {/* Preloader - positioned absolutely to overlay content */}
-          {showPreloader && (
+          {/* Preloader - only on homepage */}
+          {isHomePage && showPreloader && (
             <div style={{
               position: 'fixed',
               top: 0,
@@ -162,30 +165,36 @@ export default function RootLayout({ children }) {
           
           {/* Main content - always rendered but may be hidden by preloader */}
           <div style={{
-            opacity: showPreloader ? 0 : 1,
+            opacity: (isHomePage && showPreloader) ? 0 : 1,
             transition: 'opacity 0.5s ease-in-out',
-            pointerEvents: showPreloader ? 'none' : 'auto'
+            pointerEvents: (isHomePage && showPreloader) ? 'none' : 'auto'
           }}>
-            <NewNavbar />
-            <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
-              <WelcomeCamera />
-            </section>
-            <section style={{ scrollMarginTop: '80px' }}>
-              <ColorfulBranding />
-            </section>
-            <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
-              <BigSvg />
-            </section>
-            <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
-              <BusinessOfferings />
-            </section>
-            <ColorfulBranding2 />
-            <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
-              <Footer />
-            </section>
+            {isHomePage ? (
+              <>
+                <NewNavbar />
+                <section id="section1" style={{ height: '100%', scrollMarginTop: '80px' }}>
+                  <WelcomeCamera />
+                </section>
+                <section style={{ scrollMarginTop: '80px' }}>
+                  <ColorfulBranding />
+                </section>
+                <section id="main-content" style={{ width: '100%', scrollMarginTop: '50px' }}>
+                  <BigSvg />
+                </section>
+                <section id="business-offerings" style={{ scrollMarginTop: '80px' }}>
+                  <BusinessOfferings />
+                </section>
+                <ColorfulBranding2 />
+                <section id="footer" style={{ width: '100%', scrollMarginTop: '50px' }}>
+                  <Footer />
+                </section>
+                <WelcomePopup delay={5000} />
+              </>
+            ) : (
+              children
+            )}
           </div>
-          <Sidebar />
-          <WelcomePopup delay={5000} />
+          {isHomePage && <Sidebar />}
         </ThemeProvider>
       </body>
     </html>

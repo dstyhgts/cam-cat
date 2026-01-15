@@ -1,0 +1,130 @@
+.sidebar {
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 10;
+}
+
+.sidebarTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  font-family: "PP Neue Montreal", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.relatedPostsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.relatedPostItem {
+  margin: 0;
+}
+
+.relatedPostLink {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  font-family: "PP Neue Montreal", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.relatedPostLink:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.relatedPostLink.current {
+  background-color: var(--accent-color);
+  color: var(--text-secondary);
+  border-color: var(--accent-color);
+  font-weight: 600;
+}
+
+.currentMarker {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.relatedPostLink.current .currentMarker {
+  color: var(--text-secondary);
+}
+
+.relatedPostTitle {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Scrollbar styling for sidebar content */
+.relatedPostsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.relatedPostsList::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+.relatedPostsList::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.relatedPostsList::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+  opacity: 0.8;
+}
+
+/* Tablet and below - move sidebar to top */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    padding: 0;
+  }
+
+  .sidebarTitle {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsive - Hide sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar completely on mobile */
+  }
+}
