@@ -57,8 +57,8 @@ const HowItWorksButton = () => {
       {/* DEFAULT (256×256) */}
       {!expanded && (
         <div className="hiw-card hiw-default" ref={cardRef}>
-          <h3><i><u>CAM</u></i></h3>
-          <h2> <i>CATERING</i></h2>
+          <h3><i><u>CAM</u>-CAT?</i></h3>
+          {/* <h2> <i>CATERING</i></h2> */}
           <p className="hiw-subtext">
           <br />
             Explore our <i><u>one-of-a-kind</u></i> event photo & video experience and learn about <i><u>how it works.</u></i> <br />

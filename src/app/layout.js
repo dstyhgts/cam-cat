@@ -128,18 +128,19 @@ export default function RootLayout({ children }) {
         <link rel="preload" href="/assets/camera-icon113.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon111.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon100.svg" as="image" type="image/svg+xml" />
+        <link rel="icon" href="/assets/camera-icon13.svg" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon13.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon115.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon23.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon20.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/hero.jpg" as="image" type="image/jpeg" />
         <link rel="preload" href="/logo.png" as="image" type="image/png" />
-        <link rel="preload" href="/assets/about1.JPG" as="image" type="image/jpeg" />
+        {/* <link rel="preload" href="/assets/about1.JPG" as="image" type="image/jpeg" />
         <link rel="preload" href="/assets/about2.JPG" as="image" type="image/jpeg" />
         <link rel="preload" href="/assets/about3.JPG" as="image" type="image/jpeg" />
         <link rel="preload" href="/assets/about4.JPG" as="image" type="image/jpeg" />
         <link rel="preload" href="/assets/about5.JPG" as="image" type="image/jpeg" />
-        <link rel="preload" href="/assets/about6.JPG" as="image" type="image/jpeg" />
+        <link rel="preload" href="/assets/about6.JPG" as="image" type="image/jpeg" /> */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
