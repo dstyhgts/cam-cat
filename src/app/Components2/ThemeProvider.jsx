@@ -25,7 +25,9 @@ export function ThemeProvider({ children }) {
     // On first load, check localStorage or use time-based
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme");
-      if (saved === "light" || saved === "dark" || saved === "dawn") return saved;
+      // Dawn theme is temporarily hidden - convert to light if found
+      if (saved === "dawn") return "light";
+      if (saved === "light" || saved === "dark") return saved;
     }
     return getTimeBasedTheme();
   });
@@ -33,7 +35,12 @@ export function ThemeProvider({ children }) {
   // On mount, re-check localStorage and set theme
   useEffect(() => {
     const saved = localStorage.getItem("theme");
-    if (saved === "light" || saved === "dark" || saved === "dawn") {
+    // Dawn theme is temporarily hidden - convert to light if found
+    if (saved === "dawn") {
+      setTheme("light");
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    } else if (saved === "light" || saved === "dark") {
       setTheme(saved);
       document.documentElement.setAttribute("data-theme", saved);
     } else {
@@ -49,11 +56,12 @@ export function ThemeProvider({ children }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // User can toggle theme (override) - cycles through light -> dark -> dawn -> light
+  // User can toggle theme (override) - cycles through light -> dark -> light
+  // Dawn theme is temporarily hidden but code preserved for future use
   const toggleTheme = () => {
     setTheme((prev) => {
       if (prev === "light") return "dark";
-      if (prev === "dark") return "dawn";
+      // if (prev === "dark") return "dawn"; // Dawn temporarily disabled
       return "light";
     });
   };

@@ -220,6 +220,7 @@
 
 [data-theme="dawn"] {
   /* Dawn theme - Feminine pastel colors */
+  /* NOTE: Dawn theme is temporarily hidden from user selection but CSS preserved for future use */
   --bg-primary: #FFFFFC;
   --bg-secondary: #FFC6FF;
   --bg-tertiary: #BDB2FF;
