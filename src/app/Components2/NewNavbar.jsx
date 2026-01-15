@@ -48,14 +48,14 @@ const NewNavbar = () => {
         {/* Navigation items */}
         <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <a href="#section1" onClick={handleMenuItemClick}>Welcome</a>
+            <a href="welcome" onClick={handleMenuItemClick}>Welcome</a>
           </li>
           
           <li>
-            <a href="#how-it-works" onClick={handleMenuItemClick}>"Camera Catering"</a>
+            <a href="catering" onClick={handleMenuItemClick}>"Camera Catering"</a>
           </li>
           <li>
-            <a href="#testimonials" onClick={e => {
+            <a href="the-experience" onClick={e => {
               e.preventDefault();
               handleMenuItemClick();
               const testimonials = document.getElementById('testimonials');
@@ -65,13 +65,13 @@ const NewNavbar = () => {
             }}>The Experience</a>
           </li>
           <li>
-            <a href="#business-offerings" onClick={handleMenuItemClick}>Services & Pricing</a>
+            <a href="services-pricing" onClick={handleMenuItemClick}>Services & Pricing</a>
           </li>
           {/* <li>
             <a href="#about-card" onClick={handleMenuItemClick}>About</a>
           </li> */}
           <li>
-            <a href="#footer" onClick={e => {
+            <a href="connect" onClick={e => {
               e.preventDefault();
               handleMenuItemClick();
               const footer = document.getElementById('footer');
