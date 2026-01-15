@@ -127,13 +127,13 @@ export default function RootLayout({ children }) {
         <title>Rent Digicams, VHS, & Instax Camera's for your events! CA, LA, SF, SD, SB, OC</title>
         <meta
           name="description"
-          content="WE BRING THE CAMERAS, YOU TAKE THE PHOTOS... Our one-of-a-kind service: Ditch disposable cameras, rent bulk digicams and camcorders instead."
+          content="WE BRING THE CAMERAS, YOU TAKE THE PHOTOS... Complete solutions for event photography + videography content!"
         />
         <link rel="preload" href="/assets/camera-icon112.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon113.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon111.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon100.svg" as="image" type="image/svg+xml" />
-        <link rel="icon" href="/assets/camera-icon13.svg" type="image/svg+xml" />
+        <link rel="icon" href="/assets/camera-icon12.svg" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon13.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon115.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/assets/camera-icon23.svg" as="image" type="image/svg+xml" />
