@@ -62,7 +62,7 @@ const NewNavbar = () => {
             <a href="catering" onClick={e => {
               e.preventDefault();
               handleMenuItemClick();
-              const businessOfferings = document.getElementById('business-offerings');
+              const businessOfferings = document.getElementById('main-content');
               if (businessOfferings) {
                 businessOfferings.scrollIntoView({ behavior: 'smooth' });
               }
