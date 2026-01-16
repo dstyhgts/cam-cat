@@ -172,7 +172,7 @@ const WelcomeCamera = () => {
             Every celebration is a story. Camera Catering makes each guest the storyteller.
           </p> */}
           <p className="subtitle" style={{ marginTop: '24px' }}>
-            Your <i>One-Stop-Shop</i> for <i> <u>Digicam, VHS & Instant-Print Cameras</u></i> catered for <i><u>your event!</u></i>
+            LA's <i>One-Stop-Shop</i> for <u>bulk</u> <i> Digicam, VHS & Instant-Print Camera</i> rentals for <i><u>your event!</u></i>
             {/* <i>DITCH</i> THE DISPOSABLES, AND <i>GO <u>DIGITAL!</u></i> */}
           </p>
 
