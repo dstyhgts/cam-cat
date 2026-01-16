@@ -194,10 +194,10 @@ const LandingGallery = ({ className = "", ...props }) => {
           img.style.display = 'block';
           img.style.background = 'none';
           img.style.backgroundColor = 'transparent';
-          // Add drop-shadow filter inline - drop-shadow respects alpha channel
-          // Only non-transparent pixels will receive shadows, transparent areas are ignored
-          img.style.filter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
-          img.style.webkitFilter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
+          // CRITICAL: Do NOT apply filter until image is fully loaded
+          // This prevents shadow from appearing on transparent areas during load
+          img.style.filter = 'none';
+          img.style.webkitFilter = 'none';
           img.style.boxShadow = 'none'; // Ensure no box-shadow (which would shadow entire bounding box)
         } else {
           img.src = `/assets/img${index}.jpg`;
@@ -210,7 +210,17 @@ const LandingGallery = ({ className = "", ...props }) => {
         
         // For digicam version, wait for images to load then recalculate layout
         if (USE_DIGICAM_VERSION) {
+          const applyShadowFilter = () => {
+            // Apply drop-shadow filter ONLY after image is fully loaded
+            // This ensures the browser knows which parts are transparent
+            // drop-shadow respects alpha channel - only shadows non-transparent pixels
+            img.style.filter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
+            img.style.webkitFilter = 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))';
+            img.setAttribute('data-loaded', 'true');
+          };
+          
           img.onload = () => {
+            applyShadowFilter();
             loadedImages++;
             // Debounce layout recalculation - only recalculate after a short delay
             // This prevents multiple rapid recalculations as images load
@@ -219,10 +229,21 @@ const LandingGallery = ({ className = "", ...props }) => {
               setCircularLayout();
             }, 100);
           };
-          // Also handle images that are already cached/loaded
-          if (img.complete) {
-            img.onload();
-          }
+          
+          // Handle error case - still apply filter even if load fails
+          img.onerror = () => {
+            applyShadowFilter();
+          };
+          
+          // Check if image is already loaded (cached)
+          // Use requestAnimationFrame to ensure DOM is ready
+          requestAnimationFrame(() => {
+            if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
+              // Image is already loaded, apply filter immediately
+              applyShadowFilter();
+              img.onload();
+            }
+          });
         }
 
         // Drag functionality removed - no drag events attached
@@ -575,14 +596,18 @@ const LandingGallery = ({ className = "", ...props }) => {
           max-height: 225px !important;
           object-fit: contain !important;
           display: block !important;
-          /* drop-shadow filter respects alpha channel - only shadows non-transparent pixels */
-          /* Transparent areas are completely ignored, shadows only appear on visible content */
-          filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important;
-          -webkit-filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)) !important; /* Safari support */
+          /* CRITICAL: Do NOT apply filter in CSS - it will be applied via inline styles after image loads */
+          /* This prevents shadow from appearing on transparent areas during load */
+          filter: none !important;
+          -webkit-filter: none !important;
           box-shadow: none !important; /* Critical: no box-shadow which would shadow entire bounding box including transparent areas */
           mix-blend-mode: normal !important;
-          /* Ensure filter persists through GSAP transforms */
+          /* Ensure filter persists through GSAP transforms once applied */
           will-change: transform, filter;
+        }
+        /* Only apply filter after image has loaded (handled by inline styles in JS) */
+        .item.digicam-item img[data-loaded="true"] {
+          /* This class is for reference - actual filter is applied via inline styles */
         }
         @media (max-width: 900px) {
           .drag-me-desktop {
