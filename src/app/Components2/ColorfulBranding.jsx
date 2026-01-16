@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Example text containing <br/> for manual line breaks.
  * Adjust or add more <br/> as you like.
  */
-const fullText = `<u>Camera Catering</u> is California's <i>#1</i> camera rental service for <i><u>EVENT Photo +</u></i> <i><u> Video CONTENT.</u></i> <br/> <br/> Everything camera and anything content: fully custom 
+const fullText = `<u>CAMERA CATERING</u> is California's <i>#1</i> solution for <i><u>EVENT Photo +</u></i> <i><u> Video CONTENT.</u></i> <br/> <br/> We offer bulk-camera rentals anything else Camera-And-Content: fully custom 
 and creative. <br/> <br/> We bring <i>dozens</i> of <i><u>digicams</u></i> , <i><u>video</u></i> & <i><u>instant-print cameras</u></i>. <br/> <br/>We offer cutting edge <i> Photo Booths, 
 <i>Video Booths</i>, and <i>Phone Booths</i> that bring your event <i>to life.</i> <br/> <br/>  <i>We digitize everything, edit social posts, 
 and deliver everything within 36-72 hours. </i> <br/> <br/> Stop juggling vendors... invite Camera Catering and <i> make the memories easy to remember, </i> <u> forever.</u>`;
